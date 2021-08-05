@@ -1,0 +1,153 @@
+
+
+//ONBOARDING
+"OnboardingTitleOne" = "";
+"OnobardingTextOne" = "";
+"OnboardingTitleTwo" = "";
+"OnobardingTextTwo" = "";
+"OnboardingTitleThree" = "";
+"OnobardingTextThree" = "";
+
+//HOME
+"Title" = "";
+"Subtitle" = "";
+"ReadingButton" = "";
+"SuccessCardTitle" = "";
+"SuccessCardSubtitle" = "";
+"MoreButton" = "";
+"Co2Title" = "";
+"Co2Subtitle" = "";
+"TipsTitle" = "";
+"TipsSubtitle" = "";
+"ShowMore" = "";
+"ContactTitle" = "";
+"ShareButton" = "";
+
+//CODE READING
+"CodeReadingTitle" = "";
+"CodeReadingSubtitle" = "";
+"Link" = "";
+"Next" = "";
+
+//READING STEPS
+"ReadingStepsTitle" = "";
+"ReadingStepsSubTitle" = "";
+"Submit" = "";
+"Change" = "";
+"SubmitReadings" = "";
+
+//METER READING
+"ReadingDate" = "";
+"ScanMessage" = "";
+"WaterInfoTitle" = "";
+"HeaterInfoTitle" = "";
+"ElectricityInfoTitle" = "";
+"InfoBoxText" = "";
+"MeterNumber" = "";
+"MeterReading" = "";
+"WaterInfoMeterNumber" = "";
+"WaterInfoMeterReading" = "";
+"HeaterInfoMeterNumber" = "";
+"HeaterInfoMeterReading" = "";
+"ElectricityInfoMeterNumber" = "";
+"ElectricityInfoMeterReading" = "";
+
+//MANUAL INPUT
+"ManualInputTitle" = "";
+"ManualInputSubtitle" = "";
+"CounterNumberTextField" = "";
+"CounterTypeTextField" = "";
+"ReadingDateTextField" = "";
+"MessageTitle" = "";
+"Message" = "";
+
+//CONTACT DETAILS
+"FirstNameTextField" = "";
+"LastNameTextField" = "";
+"EmailTextField" = "";
+"SendCopyText" = "";
+"PhoneTextField" = "";
+"Address" = "";
+"StreetTextField" = "";
+"HouseNumberTextField" = "";
+"PostcodeTextField" = "";
+"CityTextField" = "";
+"FloorTextField" = "";
+"RequiredFields" = "";
+"ReasonOfReading" = "";
+"AnualBilling" = "";
+"ChangeOfSUpplier" = "";
+"ControlReading" = "";
+
+
+//CONFIRMATION SCREEN
+"Contact" = "";
+"Send" = "";
+
+//SUCCESS SCREEN
+"SuccessTitle" = "";
+"SuccessSubtitle" = "";
+"LearnMore" = "";
+
+//MORE SCREEN
+"AboutCardTitle" = "";
+"AboutCardSubtitle" = "";
+"Language" = "";
+"Faq" = "";
+"Contact" = "";
+"ContactForm" = "";
+"Privacy" = "";
+"Imprint" = "";
+"RestartOnboarding" = "";
+"ShareApp" = "";
+
+//CONTACT PAGE
+"ContactTitle" = "";
+"ContactEmailSubtitle" = "";
+"EmailLink" = "";
+"ContactAddress" = "";
+
+//PRIVACY
+"Privacy" = "";
+"PrivacyTitleOne" = "";
+"PrivacyParagraphOne" = "";
+"PrivacyTitleTwo" = "";
+"PrivacyParagraphTwo " = "";
+
+
+//IMPRINT
+"Imprint" = "";
+"ImprintInformation" = "";
+"ImprintRepresentedBy" = "";
+"ImprintSalesTaxTitle" = "";
+"ImprintSalesTaxText" = "";
+"ImprintResponsibilityTitle" = "";
+"ImprintResponsibilityText" = "";
+"ImprintDisclamerTitle" = "";
+"ImprintDisclamerText" = "";
+
+//ABOUT SCREEN
+"About" = "";
+"AboutTitle" = "";
+"AboutParagraphOne" = "";
+"AboutParagraphTwo" = "";
+"AboutSubtitleOne" = "";
+"AboutBulletpointOne" = "";
+"AboutBulletpointTwo" = "";
+"AboutBulletpointThree" = "";
+"AboutBulletpointFour" = "";
+"AboutBulletpointFive" = "";
+"AboutCardText" = "";
+"AboutPrinciplesTitle" = "";
+"AboutPrinciplesParagraph" = "";
+"AboutPrinciplesSubtitleOne" = "";
+"AboutPrinciplesParagraphOne" = "";
+"AboutPrinciplesSubtitleTwo" = "";
+"AboutPrinciplesParagraphTwo" = "";
+"AboutPrinciplesSubtitleThree" = "";
+"AboutPrinciplesParagraphThree" = "";
+
+//CONTACT FORM
+"ContactForm" = "";
+"ContactFormTitle" = "";
+"ContactFormParagraph" = "";

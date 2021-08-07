@@ -194,13 +194,9 @@ class MainViewModel: ObservableObject {
         return formatter.string(from: NSNumber(value: number)) ?? "0"
     }
 
+    // TODO: consider deleting - unused
     func checkReadingStepStatus() -> Bool {
-        for i in self.readingStepsProgress {
-            if !i {
-                return false
-            }
-        }
-        return true
+        !readingStepsProgress.contains(false)
     }
 
     // API REQUESTS

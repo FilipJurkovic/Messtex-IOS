@@ -33,7 +33,7 @@ extension EmailHelper {
             if let defaultUrl = URL(string: "mailto:\(mails)?subject=\(subjectEncoded)&body=\(bodyEncoded)"),
                UIApplication.shared.canOpenURL(defaultUrl) {
                 haveExternalMailbox = true
-                alert.addAction(UIAlertAction(title: "Mail", style: .default, handler: { (_) in
+                alert.addAction(UIAlertAction(title: "Mail", style: .default, handler: { _ in
                     UIApplication.shared.open(defaultUrl)
                 }))
             }
@@ -41,7 +41,7 @@ extension EmailHelper {
             if let gmailUrl = URL(string: "googlegmail://co?to=\(mails)&subject=\(subjectEncoded)&body=\(bodyEncoded)"),
                UIApplication.shared.canOpenURL(gmailUrl) {
                 haveExternalMailbox = true
-                alert.addAction(UIAlertAction(title: "Gmail", style: .default, handler: { (_) in
+                alert.addAction(UIAlertAction(title: "Gmail", style: .default, handler: { _ in
                     UIApplication.shared.open(gmailUrl)
                 }))
             }
@@ -53,7 +53,7 @@ extension EmailHelper {
 
                 if let settingsUrl = URL(string: UIApplication.openSettingsURLString),
                    UIApplication.shared.canOpenURL(settingsUrl) {
-                    alert.addAction(UIAlertAction(title: "Open Settings App", style: .default, handler: { (_) in
+                    alert.addAction(UIAlertAction(title: "Open Settings App", style: .default, handler: { _ in
                         UIApplication.shared.open(settingsUrl)
                     }))
                 }

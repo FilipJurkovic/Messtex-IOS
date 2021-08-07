@@ -60,7 +60,7 @@ struct FloatingTextField: View {
                 .stroke(self.error ? Color.danger : !text.isEmpty ? Color.dark : Color.medium, lineWidth: 1)
                 .frame(height: textFieldHeight)
 
-            TextField("", text: $text, onEditingChanged: { (edit) in
+            TextField("", text: $text, onEditingChanged: { edit in
                 isEditing = edit
             })
 
@@ -104,7 +104,7 @@ struct FloatingNumericTextField: View {
                 .stroke(self.error ? Color.danger : !String(text).isEmpty ? Color.dark : Color.medium, lineWidth: 1)
                 .frame(height: textFieldHeight)
 
-            TextField("", value: $text, formatter: NumberFormatter(), onEditingChanged: { (edit) in
+            TextField("", value: $text, formatter: NumberFormatter(), onEditingChanged: { edit in
                 isEditing = edit
             })
             .paragraph()

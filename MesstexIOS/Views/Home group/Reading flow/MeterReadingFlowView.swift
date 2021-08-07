@@ -67,7 +67,7 @@ struct MeterReadingFlowView: View {
                 .transition(.slide)
                 .navigationTitle("")
                 .navigationBarHidden(true)
-                .onAppear() {
+                .onAppear {
                     UIPageControl.appearance().currentPageIndicatorTintColor = .clear
                     UIPageControl.appearance().pageIndicatorTintColor = .clear
                 }

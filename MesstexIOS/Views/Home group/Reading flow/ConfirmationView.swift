@@ -23,7 +23,7 @@ struct ConfirmationView: View {
                     }.padding(.horizontal, 24)
 
                 }
-                ZStack() {
+                ZStack {
                     Image("reading_paper")
                         .resizable()
                         .frame(width: 353.3, height: 527.4)

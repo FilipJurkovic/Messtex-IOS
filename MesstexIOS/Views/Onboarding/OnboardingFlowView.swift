@@ -24,7 +24,7 @@ struct OnboardingFlowView: View {
             }.indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
             .tabViewStyle(PageTabViewStyle())
             .animation(.linear)
-            .onAppear() {
+            .onAppear {
                 UIPageControl.appearance().currentPageIndicatorTintColor = .primary
                 UIPageControl.appearance().pageIndicatorTintColor = .tetriary
             }

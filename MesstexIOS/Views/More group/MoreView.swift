@@ -13,7 +13,7 @@ struct MoreView: View {
 
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack() {
+            VStack {
                 ZStack(alignment: .bottom) {
                     Image("more_top")
                         .resizable()

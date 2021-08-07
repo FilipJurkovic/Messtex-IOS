@@ -41,7 +41,7 @@ struct MeterReadingFlowView: View {
                     ReadingStepsView(viewModel: viewModel)
                         .tag(ReadingFlowEnum.readingStepsView)
 
-                    MeterReadingView(cameraView: CameraView(captureAction: { image, values in
+                    MeterReadingView(cameraView: CameraView(captureAction: { _, values in
 
                         viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue = viewModel.removePoint(value: values[0])
 

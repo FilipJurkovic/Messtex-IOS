@@ -25,7 +25,7 @@ struct MesstexIOSApp: App {
         WindowGroup {
             MainView(viewModel: viewModel)
                 .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
-                .onReceive(timer) { time in
+                .onReceive(timer) { _ in
                     viewModel.getCO2Levels()
                 }
         }

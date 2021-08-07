@@ -50,7 +50,7 @@ struct MeterReadingView: View {
 
     @ObservedObject var viewModel: MainViewModel
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { _ in
             ZStack {
                 cameraView
                 Image("overlay_image")

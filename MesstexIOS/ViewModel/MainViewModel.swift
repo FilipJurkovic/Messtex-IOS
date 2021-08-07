@@ -215,7 +215,7 @@ class MainViewModel: ObservableObject {
         request.setValue("Bearer eecf7fd0-cee9-11eb-b752-fde919688281", forHTTPHeaderField: "Authorization")
 
         DispatchQueue.main.async {
-            URLSession.shared.dataTask(with: request) { (data, response, error) in
+            URLSession.shared.dataTask(with: request) { (data, _, _) in
                 guard let data = data else {return}
                 let co2_value = try! JSONDecoder().decode(Double.self, from: data)
                 self.co2Level = CarbonDataModel(co2Level: co2_value)
@@ -233,7 +233,7 @@ class MainViewModel: ObservableObject {
         request.setValue("Bearer eecf7fd0-cee9-11eb-b752-fde919688281", forHTTPHeaderField: "Authorization")
 
         DispatchQueue.main.async {
-            URLSession.shared.dataTask(with: request) { (data, response, error) in
+            URLSession.shared.dataTask(with: request) { (data, _, _) in
                 guard let data = data else {return}
 
                 self.faq = try! JSONDecoder().decode(Faq.self, from: data)
@@ -262,7 +262,7 @@ class MainViewModel: ObservableObject {
         self.isProgressBarActive = true
 
         DispatchQueue.main.async {
-            URLSession.shared.dataTask(with: request) { (data, response, error) in
+            URLSession.shared.dataTask(with: request) { (data, _, error) in
                 guard let data = data else {return}
 
                 do {
@@ -309,7 +309,7 @@ class MainViewModel: ObservableObject {
         self.isProgressBarActive = true
 
         DispatchQueue.main.async {
-            URLSession.shared.dataTask(with: request) { (data, response, error) in
+            URLSession.shared.dataTask(with: request) { (data, _, error) in
                 guard let data = data else {return}
                 self.co2Level = try! JSONDecoder().decode(CarbonDataModel.self, from: data)
 

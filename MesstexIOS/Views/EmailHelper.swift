@@ -1,5 +1,5 @@
-import SwiftUI
 import MessageUI
+import SwiftUI
 
 class EmailHelper: NSObject {
     /// singleton

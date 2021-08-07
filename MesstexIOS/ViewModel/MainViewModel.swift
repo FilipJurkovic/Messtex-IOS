@@ -5,8 +5,8 @@
 //  Created by Filip Jurković on 27.07.2021..
 //
 
-import Foundation
 import AVFoundation
+import Foundation
 
 class MainViewModel: ObservableObject {
 

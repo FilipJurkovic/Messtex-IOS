@@ -24,8 +24,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
-import SwiftUI
 import MeterReading
+import SwiftUI
 
 // adapted from https://stackoverflow.com/a/57295284
 struct CameraView: UIViewRepresentable {

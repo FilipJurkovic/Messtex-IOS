@@ -5,9 +5,9 @@
 //  Created by Filip Jurković on 15.07.2021..
 //
 
-import SwiftUI
-import Foundation
 import CoreGraphics
+import Foundation
+import SwiftUI
 
 extension Color {
 

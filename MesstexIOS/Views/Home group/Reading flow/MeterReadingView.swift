@@ -5,9 +5,9 @@
 //  Created by Filip Jurković on 23.07.2021..
 //
 
+import AVFoundation
 import SwiftUI
 import UIKit
-import AVFoundation
 
 struct CameraHeaderView: View {
 

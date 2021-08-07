@@ -5,9 +5,9 @@
 //  Created by Filip Jurković on 24/05/2021.
 //
 
+import OSLog
 import SwiftUI
 import UIKit
-import OSLog
 
 @main
 struct MesstexIOSApp: App {

@@ -87,7 +87,8 @@ struct ReadingStepsView: View {
                         }
                         }.padding(.horizontal, 24)
                         .frame(width: UIScreen.main.bounds.size.width)
-                    }}
+                    }
+                }
                     .padding(.bottom, 43)
 
                 Button(

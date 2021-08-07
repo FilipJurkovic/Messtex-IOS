@@ -634,7 +634,8 @@ struct AboutUsCardWidget: View {
                                 Image(systemName: "chevron.right")
                                     .foregroundColor(.light)
 
-                            }}
+                            }
+                        }
                     })
                     .padding(.init(top: 0, leading: 0, bottom: 19, trailing: 19))
             }.frame(width: 327, height: 176)

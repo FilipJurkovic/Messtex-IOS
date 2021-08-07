@@ -17,7 +17,8 @@ struct MainView: View {
                 HomeView(viewModel: viewModel).tabItem { Label("Home", systemImage: "house") }
 
                 MoreView(viewModel: viewModel, shouldShowOnboarding: $shouldShowOnboarding).tabItem { Image(uiImage: UIImage(systemName: "ellipsis")!.imageWithoutBaseline())
-                    Text("More")}
+                    Text("More")
+                }
             }
             .animation(.easeInOut)
             .transition(.slide)

@@ -220,7 +220,8 @@ class MainViewModel: ObservableObject {
                 let co2_value = try! JSONDecoder().decode(Double.self, from: data)
                 self.co2Level = CarbonDataModel(co2Level: co2_value)
                 print(data)
-            }.resume()}
+            }.resume()
+        }
     }
 
     func getFAQs() {
@@ -292,7 +293,8 @@ class MainViewModel: ObservableObject {
                 }
 
             }
-            .resume()}
+            .resume()
+        }
     }
 
     func takeMeterReadings() {

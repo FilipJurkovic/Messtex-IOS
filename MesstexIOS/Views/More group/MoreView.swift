@@ -14,7 +14,7 @@ struct MoreView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack() {
-                ZStack(alignment:.bottom){
+                ZStack(alignment:.bottom) {
                     Image("more_top")
                         .resizable()
                         .frame(width: UIScreen.main.bounds.size.width)
@@ -29,7 +29,7 @@ struct MoreView: View {
                 AboutUsCardWidget()
                     .padding(.init(top: 20, leading: 0, bottom: 38, trailing: 0))
 
-                Group{
+                Group {
                     NavigationLink(
                         destination: FaqView(viewModel: viewModel),
                         label: {
@@ -75,14 +75,13 @@ struct MoreView: View {
                     .frame(height:32)
                     .foregroundColor(.primary_30)
 
-                Group{
+                Group {
                     Button(
                         action: {shouldShowOnboarding.toggle()},
                         label: {
-                            ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)){
+                            ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
                                 Rectangle()
-                                HStack(alignment:.top)
-                                {
+                                HStack(alignment:.top) {
                                     Text("RestartOnboarding")
                                         .foregroundColor(.dark)
                                         .padding(.leading, 12)
@@ -102,10 +101,9 @@ struct MoreView: View {
                     Button(
                         action: openShareSheet,
                         label: {
-                            ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)){
+                            ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
                                 Rectangle()
-                                HStack(alignment:.top)
-                                {
+                                HStack(alignment:.top) {
                                     Text(LocalizedStringKey("ShareApp"))
                                         .foregroundColor(.dark)
                                         .padding(.leading, 12)

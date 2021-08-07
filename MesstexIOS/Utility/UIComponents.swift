@@ -21,10 +21,9 @@ struct LogoImage: View {
 struct CardButton: View {
     var cardName: String
     var body: some View {
-        ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)){
+        ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
             Rectangle()
-            HStack(alignment:.top)
-            {
+            HStack(alignment:.top) {
                 Text(LocalizedStringKey(cardName))
                     .foregroundColor(.dark)
                     .padding(.leading, 12)
@@ -171,7 +170,7 @@ struct PrimaryButton: View {
 
     var body: some View {
         Button(action: handler, label: {
-            ZStack{
+            ZStack {
                 RoundedRectangle(cornerRadius: 28)
                     .foregroundColor(.primary_color)
                     .opacity(isEnabled ? 1.0 : 0.3)
@@ -191,7 +190,7 @@ struct PrimaryButtonStyle: View {
     var isEnabled: Bool = true
 
     var body: some View {
-        ZStack{
+        ZStack {
             RoundedRectangle(cornerRadius: 28)
                 .foregroundColor(.primary_color)
                 .opacity(isEnabled ? 1.0 : 0.3)
@@ -206,12 +205,11 @@ struct PrimaryButtonStyle: View {
 struct ManualReadingButtonStyle: View {
 
     var body: some View {
-        ZStack{
+        ZStack {
             RoundedRectangle(cornerRadius: 28)
                 .foregroundColor(.primary_color)
                 .opacity(0.3)
-            HStack
-            {
+            HStack {
                 Text(LocalizedStringKey("ManualButton"))
                     .paragraphBold()
                     .foregroundColor(.light)
@@ -228,7 +226,7 @@ struct ManualReadingButtonStyle: View {
 struct OutlinedButtonStyle: View {
     var buttonLabel: String
     var body: some View {
-        ZStack{
+        ZStack {
             RoundedRectangle(cornerRadius: 18)
                 .stroke(Color.primary_tint, lineWidth: 1.6)
             Text(LocalizedStringKey(buttonLabel))
@@ -240,7 +238,7 @@ struct OutlinedButtonStyle: View {
 
 struct SubmitButtonStyle: View {
     var body: some View {
-        ZStack{ZStack{
+        ZStack {ZStack {
             RoundedRectangle(cornerRadius: 18)
                 .stroke(Color.primary_shade, lineWidth: 2)
             Text(LocalizedStringKey("Submit"))
@@ -254,7 +252,7 @@ struct SubmitButtonStyle: View {
 
 struct ChangeButtonStyle: View {
     var body: some View {
-        ZStack{ZStack{
+        ZStack {ZStack {
             RoundedRectangle(cornerRadius: 18)
                 .foregroundColor(.secondary)
             Text(LocalizedStringKey("Change"))
@@ -269,7 +267,7 @@ struct ChangeButtonStyle: View {
 struct StepIndicator: View {
     var stepIndex: Int
     var body: some View {
-        ZStack(alignment: .center){
+        ZStack(alignment: .center) {
             Circle()
                 .stroke(Color.primary_shade,lineWidth: 2)
                 .frame(width: 36, height: 36)
@@ -351,13 +349,13 @@ struct RadioButton: View {
     }
 
     var body: some View {
-        HStack(spacing: 8){
-            Button(action:{
+        HStack(spacing: 8) {
+            Button(action: {
                 self.callback(self.id)
             }) {
                 if self.selectedID == self.id {
                     selected
-                } else{
+                } else {
                     unSelected
                 }
             }
@@ -370,8 +368,8 @@ struct RadioButton: View {
 
     }
 
-    private var selected : some View{
-        ZStack{
+    private var selected : some View {
+        ZStack {
             Circle()
                 .stroke(Color.dark, lineWidth: 1)
 
@@ -381,7 +379,7 @@ struct RadioButton: View {
         }.frame(width:24, height:24)
     }
 
-    private var unSelected : some View{
+    private var unSelected : some View {
 
         Circle()
             .stroke(Color.dark, lineWidth: 1)
@@ -403,7 +401,7 @@ struct RadioButtonGroup: View {
             ForEach(0..<items.count) { index in
                 RadioButton(self.items[index], callback: self.radioGroupCallback, selectedID: self.selectedId)
                     .padding(.vertical, 20)
-                if(index != items.count-1){
+                if(index != items.count-1) {
                     Divider()
                         .foregroundColor(.tetriary)
                         .padding(.horizontal, 10)
@@ -424,10 +422,10 @@ struct Loader: View {
     @State var animate = false
 
     var body: some View {
-        ZStack{
+        ZStack {
             RoundedRectangle(cornerRadius: 26)
                 .foregroundColor(.light)
-            VStack{
+            VStack {
                 Spacer()
 
                 Circle()
@@ -444,7 +442,7 @@ struct Loader: View {
                 Spacer()
             }
         }.frame(width: 250, height: 180)
-        .onAppear{
+        .onAppear {
             self.animate.toggle()
         }
     }
@@ -453,17 +451,17 @@ struct Loader: View {
 
 struct FinishedReadingWidget : View {
 
-    var body: some View{
-        VStack{
-            ZStack{
+    var body: some View {
+        VStack {
+            ZStack {
                 RoundedRectangle(cornerRadius: 4)
                     .foregroundColor(.primary_color)
-                HStack{
+                HStack {
                     Image("successful_read")
                         .resizable()
                         .frame(width: 61, height: 78)
                         .padding(.trailing, 29)
-                    VStack(alignment:.leading){
+                    VStack(alignment:.leading) {
                         Text(LocalizedStringKey("SuccessCardTitle"))
                             .heading2()
                             .foregroundColor(.light)
@@ -487,12 +485,12 @@ struct FinishedReadingWidget : View {
 
 struct Co2Widget : View {
     var co2Level: Double
-    var body: some View{
-        ZStack(alignment: .bottom){
-            ZStack(alignment: .bottom){
+    var body: some View {
+        ZStack(alignment: .bottom) {
+            ZStack(alignment: .bottom) {
                 Rectangle()
                     .foregroundColor(.primary_color)
-                VStack{
+                VStack {
                     Text(LocalizedStringKey("Co2Title"))
                         .heading2()
                         .foregroundColor(.light)
@@ -526,9 +524,9 @@ struct FaqWidget : View {
     @Binding var flags : [Bool]
     var faq: Faq
 
-    var body: some View{
-        VStack{
-            ForEach(0..<questionCount){ index in
+    var body: some View {
+        VStack {
+            ForEach(0..<questionCount) { index in
                 DisclosureGroup(
                     isExpanded: $flags[index],
                     content: {
@@ -537,10 +535,10 @@ struct FaqWidget : View {
 
                     },
                     label: {
-                        if flags[index]{
+                        if flags[index] {
                             Text(faq.faqs[index].question)
                                 .paragraphBold()
-                        } else{
+                        } else {
                             Text(faq.faqs[index].question)
                                 .paragraph()
                         }
@@ -554,7 +552,7 @@ struct FaqWidget : View {
                 }
                 .animation(.easeIn)
 
-                if index != flags.count-1{
+                if index != flags.count-1 {
                     Divider()
                         .frame(height:3)
                         .foregroundColor(.medium)
@@ -569,8 +567,8 @@ struct ReadingFlowHeaderWidget : View {
 
     var title: String
     var description: String
-    var body: some View{
-        VStack{
+    var body: some View {
+        VStack {
             Image("reading_graphics")
                 .resizable()
                 .frame(width: 114, height: 95)
@@ -591,18 +589,18 @@ struct ReadingFlowHeaderWidget : View {
 
 struct AboutUsCardWidget : View {
 
-    var body: some View{
-        ZStack{
+    var body: some View {
+        ZStack {
             Rectangle()
                 .foregroundColor(.light)
                 .shadow(color: .tetriary, radius: 2, x: 2, y: 3)
-            HStack{
+            HStack {
                 Image("faq_card_image")
                     .alignmentGuide(.leading, computeValue: { dimension in
                         dimension[.leading]
                     })
                     .padding(.trailing)
-                VStack(alignment:.leading){
+                VStack(alignment:.leading) {
                     Text(LocalizedStringKey("AboutCardTitle"))
                         .heading2()
                         .foregroundColor(.primary_color)
@@ -620,15 +618,14 @@ struct AboutUsCardWidget : View {
                 }
                 Spacer()
             }
-            ZStack(alignment: .bottomTrailing){
+            ZStack(alignment: .bottomTrailing) {
                 Rectangle()
                     .foregroundColor(.light.opacity(0.0))
                 NavigationLink(
                     destination: AboutUsView(),
                     label : {
-                        VStack
-                        {
-                            ZStack{
+                        VStack {
+                            ZStack {
                                 Circle()
                                     .foregroundColor(Color.primary_color)
                                     .frame(width: 40, height:40)

@@ -16,8 +16,8 @@ struct CameraHeaderView: View {
     @ObservedObject var viewModel : MainViewModel
 
     var body: some View {
-        ZStack{
-            HStack{
+        ZStack {
+            HStack {
                 Spacer()
                 Text("\(NSLocalizedString("ReadingDate", comment: "ReadingDate")) \(Date().formatDate())" as String)
                     .paragraph()
@@ -27,7 +27,7 @@ struct CameraHeaderView: View {
             HStack {
                 Button(action : {
                     viewModel.currentReadingView = ReadingFlowEnum.readingStepsView
-                }){
+                }) {
                     RoundButtonStyle(imageName: "xmark", backgroundColor: .tetriary_tint, iconColor: .dark)
                 }
                 .accentColor(.white)
@@ -74,12 +74,12 @@ struct MeterReadingView: View {
                             let meterModel: MeterReceivingData = viewModel.userData.meters[index]
                             if !viewModel.postModelData.meterReadings.isEmpty && viewModel.postModelData.meterReadings.endIndex-1 < index {
                                 viewModel.postModelData.meterReadings[index] = MeterReadingData(counterNumber: meterModel.counterNumber, counterType: meterModel.counterType, counterValue:  "", userMessage: "")
-                            }else{
+                            }else {
                                 viewModel.postModelData.meterReadings.append(MeterReadingData(counterNumber: meterModel.counterNumber, counterType: meterModel.counterType, counterValue:  "", userMessage: ""))
                             }
                         }
 
-                    HStack{
+                    HStack {
                         Button(action: {cameraView.toggleFlash(state: !viewModel.isTorchOn)
                             viewModel.isTorchOn = !viewModel.isTorchOn
                         } , label: {
@@ -108,7 +108,7 @@ struct MeterReadingView: View {
         .navigationTitle("")
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
-        .sheet(isPresented: $viewModel.isInfoSheetOpen){
+        .sheet(isPresented: $viewModel.isInfoSheetOpen) {
             InfoView(viewModel: viewModel, index: viewModel.getInfoViewIndex(meterType: viewModel.userData.meters[index].counterType))
         }
     }

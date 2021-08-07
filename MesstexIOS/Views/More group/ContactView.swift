@@ -25,7 +25,7 @@ struct ContactView: View {
     }
 
     var body: some View {
-        VStack(alignment:.leading){
+        VStack(alignment:.leading) {
             Text(LocalizedStringKey("ContactTitle"))
                 .heading1()
                 .foregroundColor(.primary_color)
@@ -61,8 +61,7 @@ struct ContactView: View {
         .navigationBarBackButtonHidden(true)
         .navigationBarTitle("Contact", displayMode: .inline)
         .toolbar {
-            ToolbarItem(placement: .navigationBarLeading)
-            {
+            ToolbarItem(placement: .navigationBarLeading) {
                 btnBack
             }
         }

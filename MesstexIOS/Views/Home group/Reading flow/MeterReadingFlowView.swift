@@ -12,18 +12,18 @@ struct MeterReadingFlowView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var body: some View {
-        ZStack{
-            VStack(spacing: 0){
-                if viewModel.currentReadingView != ReadingFlowEnum.meterReadingView && viewModel.currentReadingView != ReadingFlowEnum.successView{
-                    HStack{
+        ZStack {
+            VStack(spacing: 0) {
+                if viewModel.currentReadingView != ReadingFlowEnum.meterReadingView && viewModel.currentReadingView != ReadingFlowEnum.successView {
+                    HStack {
                         Button(action : {
-                            if viewModel.currentReadingView == ReadingFlowEnum.codeReadingView{
+                            if viewModel.currentReadingView == ReadingFlowEnum.codeReadingView {
                                 self.presentationMode.wrappedValue.dismiss()
                             } else {
                                 viewModel.getPreviousTabView()
                             }
 
-                        }, label:{
+                        }, label: {
                             Image(systemName: "arrow.left")
                                 .foregroundColor(.dark)
                         }).padding(.leading, 24)
@@ -34,7 +34,7 @@ struct MeterReadingFlowView: View {
                             .padding(EdgeInsets(top: 18.2, leading: 0, bottom: 0, trailing: 30.1))
                     }.background(Color.clear)
                 }
-                TabView(selection: $viewModel.currentReadingView){
+                TabView(selection: $viewModel.currentReadingView) {
                     CodeReadingView(viewModel: viewModel)
                         .tag(ReadingFlowEnum.codeReadingView)
 
@@ -67,14 +67,14 @@ struct MeterReadingFlowView: View {
                 .transition(.slide)
                 .navigationTitle("")
                 .navigationBarHidden(true)
-                .onAppear(){
+                .onAppear() {
                     UIPageControl.appearance().currentPageIndicatorTintColor = .clear
                     UIPageControl.appearance().pageIndicatorTintColor = .clear
                 }
             }
 
-            if viewModel.isProgressBarActive{
-                ZStack{
+            if viewModel.isProgressBarActive {
+                ZStack {
                     Rectangle()
                         .foregroundColor(.dark)
                         .opacity(0.3)

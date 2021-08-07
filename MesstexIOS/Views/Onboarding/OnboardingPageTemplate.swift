@@ -12,7 +12,7 @@ struct OnboardingPageTemplate: View {
     let title: String
     let description: String
     var body: some View {
-        VStack{
+        VStack {
             Image(image)
                 .resizable()
                 .frame(width: 311, height: 400)

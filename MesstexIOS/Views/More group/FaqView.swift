@@ -27,13 +27,12 @@ struct FaqView: View {
     }
 
     var body: some View {
-        VStack{
+        VStack {
             FaqWidget(questionCount: viewModel.faq.faqs.count, flags: $viewModel.faqFlagIndex, faq: viewModel.faq)
                 .navigationBarBackButtonHidden(true)
                 .navigationBarTitle(LocalizedStringKey("Faq"), displayMode: .inline)
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading)
-                    {
+                    ToolbarItem(placement: .navigationBarLeading) {
                         btnBack
                     }
                 }

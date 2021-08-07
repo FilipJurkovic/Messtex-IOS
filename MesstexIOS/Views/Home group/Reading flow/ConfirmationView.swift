@@ -12,10 +12,10 @@ struct ConfirmationView: View {
     @ObservedObject var viewModel : MainViewModel
     var length = 8
     var body: some View {
-        ZStack{
-            ScrollView(showsIndicators: false){
-                VStack{
-                    HStack{
+        ZStack {
+            ScrollView(showsIndicators: false) {
+                VStack {
+                    HStack {
                         Text(LocalizedStringKey("YourCopy"))
                             .heading2()
                             .foregroundColor(.primary_color)
@@ -23,17 +23,17 @@ struct ConfirmationView: View {
                     }.padding(.horizontal, 24)
 
                 }
-                ZStack(){
+                ZStack() {
                     Image("reading_paper")
                         .resizable()
                         .frame(width: 353.3, height: 527.4)
                         .padding(EdgeInsets(top: 24, leading: 0, bottom: 38, trailing: 0))
-                    ScrollView(showsIndicators: false){
-                        VStack(alignment:.leading){
-                            ForEach(0...viewModel.postModelData.meterReadings.count, id: \.self){ index in
-                                VStack(alignment:.leading, spacing:0){
+                    ScrollView(showsIndicators: false) {
+                        VStack(alignment:.leading) {
+                            ForEach(0...viewModel.postModelData.meterReadings.count, id: \.self) { index in
+                                VStack(alignment:.leading, spacing:0) {
                                     if index != viewModel.postModelData.meterReadings.count {
-                                        HStack{
+                                        HStack {
 
                                             Image(viewModel.getMeterTypeIcon(meterType: viewModel.postModelData.meterReadings[index].counterType))
                                                 .resizable()
@@ -59,8 +59,8 @@ struct ConfirmationView: View {
                                             .frame(height:1)
                                     }
 
-                                    else{
-                                        HStack{
+                                    else {
+                                        HStack {
                                             Text(LocalizedStringKey("Contact"))
                                                 .paragraphBold()
                                                 .foregroundColor(.primary_color)
@@ -88,7 +88,7 @@ struct ConfirmationView: View {
                                 }
                             }
 
-                            HStack{
+                            HStack {
 
                                 Text(LocalizedStringKey("ReasonOfReading"))
                                     .paragraphBold()

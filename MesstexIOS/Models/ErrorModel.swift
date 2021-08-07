@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct ErrorModel: Codable{
+struct ErrorModel: Codable {
     var message: String
 }

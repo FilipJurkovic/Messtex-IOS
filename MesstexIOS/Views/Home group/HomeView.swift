@@ -22,10 +22,10 @@ struct HomeView: View {
     @State  var flags: [Bool] = [false, false, false]
 
     var body: some View {
-        ScrollView(showsIndicators: false){
-            VStack{
-                Group{
-                    ZStack(alignment:.bottom){
+        ScrollView(showsIndicators: false) {
+            VStack {
+                Group {
+                    ZStack(alignment:.bottom) {
                         Image("home_top")
                             .resizable()
                             .frame(width: UIScreen.main.bounds.size.width)
@@ -47,14 +47,14 @@ struct HomeView: View {
                         .multilineTextAlignment(.center)
                         .padding(!viewModel.isReadingFinished ? EdgeInsets(top: 0, leading: 0, bottom: 83, trailing: 0) :
                                     EdgeInsets(top: 0, leading: 0, bottom: 41, trailing: 0))
-                    if !viewModel.isReadingFinished{
+                    if !viewModel.isReadingFinished {
                         NavigationLink(
                             destination: MeterReadingFlowView(viewModel: viewModel),
                             label : {
                                 PrimaryButtonStyle(buttonLabel: "ReadingButton")
                             })
                     }
-                    else{
+                    else {
                         FinishedReadingWidget()
                     }
 
@@ -70,7 +70,7 @@ struct HomeView: View {
                 .navigationBarHidden(true)
                 .padding(.bottom, 45)
 
-            VStack{
+            VStack {
                 Text(LocalizedStringKey("TipsTitle"))
                     .heading2()
                     .foregroundColor(.dark)
@@ -96,7 +96,7 @@ struct HomeView: View {
             }
             .padding(.bottom, 154)
 
-            VStack{
+            VStack {
                 Text(LocalizedStringKey("ContactTitle"))
                     .heading2()
                     .foregroundColor(.dark)

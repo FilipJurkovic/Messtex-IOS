@@ -15,8 +15,8 @@ struct ManualReadingView: View {
     var index : Int
 
     var body: some View {
-        ScrollView(showsIndicators: false){
-            VStack{
+        ScrollView(showsIndicators: false) {
+            VStack {
                 Image("reading_graphics")
                     .resizable()
                     .frame(width: 114, height: 95)
@@ -31,7 +31,7 @@ struct ManualReadingView: View {
                     .foregroundColor(.dark)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 28)
-                VStack(spacing:0){
+                VStack(spacing:0) {
                     FloatingNumericTextField(placeHolder: "CounterNumberTextField", text: $viewModel.userData.meters[index].counterNumber)
                         .frame(width: 325)
                         .padding(.bottom, 7)
@@ -45,7 +45,7 @@ struct ManualReadingView: View {
                         .padding(.bottom, 32)
                         .disabled(true)
 
-                    HStack{
+                    HStack {
                         Text(viewModel.userData.meters[index].counterTypeName)
                             .heading2()
                             .foregroundColor(.primary_color)
@@ -53,7 +53,7 @@ struct ManualReadingView: View {
                         Spacer()
                     }
 
-                    ZStack{
+                    ZStack {
                         Image("manual_reading_shape")
                             .resizable()
                             .frame(width:327, height:57)
@@ -62,7 +62,7 @@ struct ManualReadingView: View {
                         backgroundField
                     }
 
-                    HStack{
+                    HStack {
                         Text(LocalizedStringKey("MessageTitle"))
                             .paragraphBold()
                             .foregroundColor(.primary_color)

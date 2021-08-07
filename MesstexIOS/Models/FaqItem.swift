@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FaqItem : Codable{
+struct FaqItem : Codable {
     var sortNumber: Int
     var question: String
     var answer: String

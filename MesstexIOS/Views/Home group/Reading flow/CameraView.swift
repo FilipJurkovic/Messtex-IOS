@@ -56,7 +56,7 @@ struct CameraView: UIViewRepresentable {
     }
 
     func makeCoordinator() -> Coordinator {
-        Coordinator(reader: reader, callback:   { results, image in
+        Coordinator(reader: reader, callback: { results, image in
             let resultStrings = results.map {$0.cleanReadingString()}
             captureAction(image, resultStrings)
         } )
@@ -74,7 +74,7 @@ struct CameraView: UIViewRepresentable {
             // TODO: handle barcode scanning result
         }
 
-        init(reader : PIXMeterReadingView, callback: @escaping ([PIXMeterReadingResult], UIImage) -> Void){
+        init(reader : PIXMeterReadingView, callback: @escaping ([PIXMeterReadingResult], UIImage) -> Void) {
             self.callback = callback
             super.init()
             reader.delegate = self

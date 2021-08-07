@@ -18,10 +18,10 @@ struct InfoView: View {
     var numberExplanationArray: [LocalizedStringKey] = [LocalizedStringKey("WaterInfoMeterNumber"),LocalizedStringKey("HeaterInfoMeterNumber"),LocalizedStringKey("ElectricityInfoMeterNumber")]
     var readingExplanationArray: [LocalizedStringKey] = [LocalizedStringKey("WaterInfoMeterReading"),LocalizedStringKey("HeaterInfoMeterReading"),LocalizedStringKey("ElectricityInfoMeterReading")]
     var body: some View {
-        VStack(spacing:0){
-            HStack{
+        VStack(spacing:0) {
+            HStack {
                 Spacer()
-                Button(action : {viewModel.isInfoSheetOpen = false}){
+                Button(action : {viewModel.isInfoSheetOpen = false}) {
                     RoundButtonStyle(imageName: "xmark", backgroundColor: .tetriary_tint, iconColor: .dark)
                 }
             }
@@ -39,7 +39,7 @@ struct InfoView: View {
                 .frame(width: 287.32, height: 240.68)
                 .padding(.bottom, 33)
 
-            HStack{
+            HStack {
                 Text(LocalizedStringKey("MeterNumber"))
                     .paragraphBold()
                     .foregroundColor(.primary_color)
@@ -51,7 +51,7 @@ struct InfoView: View {
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.bottom, 24)
 
-            HStack{
+            HStack {
                 Text(LocalizedStringKey("MeterReading"))
                     .paragraphBold()
                     .foregroundColor(.primary_color)

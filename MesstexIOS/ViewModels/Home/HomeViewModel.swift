@@ -10,7 +10,7 @@ import Foundation
 class HomeViewModel: ObservableObject {
     @Published var pageIndex : Page = .pageUserInfo
 
-    func setPage(page: Page){
+    func setPage(page: Page) {
         pageIndex = page
     }
 }

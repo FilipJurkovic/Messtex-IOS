@@ -24,12 +24,12 @@ struct AboutUsView: View {
     }
 
     var body: some View {
-        ScrollView(showsIndicators: false){
+        ScrollView(showsIndicators: false) {
             Image("about_top")
                 .resizable()
                 .frame(width:UIScreen.main.bounds.size.width)
-            VStack(alignment:.leading){
-                Group{
+            VStack(alignment:.leading) {
+                Group {
                     Text(LocalizedStringKey("AboutTitle"))
                         .heading2()
                         .foregroundColor(.primary_color)
@@ -44,8 +44,8 @@ struct AboutUsView: View {
                         .foregroundColor(.primary_color)
                         .padding(.bottom, 16)
 
-                    VStack{
-                        HStack{
+                    VStack {
+                        HStack {
                             Image("bullet_point")
                                 .padding(.trailing, 17)
                             Text(LocalizedStringKey("AboutBulletpointOne"))
@@ -55,7 +55,7 @@ struct AboutUsView: View {
                         }
                         .padding(.bottom, 22)
 
-                        HStack{
+                        HStack {
                             Image("bullet_point")
                                 .padding(.trailing, 17)
                             Text(LocalizedStringKey("AboutBulletpointTwo"))
@@ -64,7 +64,7 @@ struct AboutUsView: View {
                             Spacer()
                         }.padding(.bottom, 22)
 
-                        HStack{
+                        HStack {
                             Image("bullet_point")
                                 .padding(.trailing, 17)
                             Text(LocalizedStringKey("AboutBulletpointThree"))
@@ -73,7 +73,7 @@ struct AboutUsView: View {
                             Spacer()
                         }.padding(.bottom, 22)
 
-                        HStack{
+                        HStack {
                             Image("bullet_point")
                                 .padding(.trailing, 17)
                             Text(LocalizedStringKey("AboutBulletpointFour"))
@@ -82,7 +82,7 @@ struct AboutUsView: View {
                             Spacer()
                         }.padding(.bottom, 22)
 
-                        HStack{
+                        HStack {
                             Image("bullet_point")
                                 .padding(.trailing, 17)
                             Text(LocalizedStringKey("AboutBulletpointFive"))
@@ -105,14 +105,13 @@ struct AboutUsView: View {
             .navigationBarBackButtonHidden(true)
             .navigationBarTitle(LocalizedStringKey("About"), displayMode: .inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading)
-                {
+                ToolbarItem(placement: .navigationBarLeading) {
                     btnBack
                         .foregroundColor(.dark)
                 }
             }
 
-            ZStack{
+            ZStack {
                 Rectangle()
                     .foregroundColor(.primary_color)
                 Text(LocalizedStringKey("AboutCardText"))
@@ -125,7 +124,7 @@ struct AboutUsView: View {
             .frame(width: UIScreen.main.bounds.size.width, height: 250, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             .padding(.bottom, 66)
 
-            VStack(alignment:.leading){
+            VStack(alignment:.leading) {
                 Text(LocalizedStringKey("AboutPrinciplesTitle"))
                     .heading2()
                     .foregroundColor(.primary_color)
@@ -134,7 +133,7 @@ struct AboutUsView: View {
                 Text(LocalizedStringKey("AboutPrinciplesParagraph"))
                     .paragraph()
                     .padding(.bottom, 23)
-                Group{
+                Group {
                     StepIndicator(stepIndex: 1)
                         .padding(.bottom, 7)
                     Text(LocalizedStringKey("AboutPrinciplesSubtitleOne"))

@@ -28,8 +28,8 @@ struct ContactFormView: View {
     }
 
     var body: some View {
-        ScrollView(showsIndicators: false){
-            VStack(alignment: .leading, spacing: 0){
+        ScrollView(showsIndicators: false) {
+            VStack(alignment: .leading, spacing: 0) {
                 Text(LocalizedStringKey("ContactFormTitle"))
                     .heading2()
                     .foregroundColor(.primary_color)
@@ -58,8 +58,7 @@ struct ContactFormView: View {
             .navigationBarBackButtonHidden(true)
             .navigationBarTitle(LocalizedStringKey("ContactForm"), displayMode: .inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading)
-                {
+                ToolbarItem(placement: .navigationBarLeading) {
                     btnBack
                         .foregroundColor(.dark)
                 }

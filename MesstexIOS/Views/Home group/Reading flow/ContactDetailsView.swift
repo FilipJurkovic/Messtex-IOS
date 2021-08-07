@@ -13,17 +13,17 @@ struct ContactDetailsView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
 
     var body: some View {
-        ScrollView(showsIndicators: false){
-            Group{
-                VStack(spacing:0){
-                    HStack{
+        ScrollView(showsIndicators: false) {
+            Group {
+                VStack(spacing:0) {
+                    HStack {
                         Text(LocalizedStringKey("ContactDetailsTitle"))
                             .heading2()
                             .foregroundColor(.primary_color)
                             .padding(.bottom, 15)
                         Spacer()
                     }
-                    HStack{
+                    HStack {
                         Text(LocalizedStringKey("ContactDetailsSubtitle"))
                             .paragraph()
                             .foregroundColor(.dark)
@@ -31,14 +31,14 @@ struct ContactDetailsView: View {
                         Spacer()
                     }
 
-                    Group{
+                    Group {
                         FloatingTextField(placeHolder: "FirstNameTextField", text: $viewModel.userData.firstName)
                             .padding(.bottom, 7)
                         FloatingTextField(placeHolder: "LastNameTextField", text: $viewModel.userData.lastName)
                             .padding(.bottom, 7)
                         FloatingTextField(placeHolder: "EmailTextField", text: .constant(Date().formatDate()))
 
-                        HStack{
+                        HStack {
                             Toggle("",isOn: $viewModel.postModelData.sendCopy)
                                 .labelsHidden()
                                 .toggleStyle(SwitchToggleStyle(tint: .primary_color))
@@ -51,8 +51,8 @@ struct ContactDetailsView: View {
                             .padding(.bottom, 32)
                     }
 
-                    Group{
-                        HStack{
+                    Group {
+                        HStack {
                             Text(LocalizedStringKey("Address"))
                                 .heading2()
                                 .foregroundColor(.primary_color)
@@ -76,7 +76,7 @@ struct ContactDetailsView: View {
                             .padding(.bottom, 7)
                     }
 
-                    HStack{
+                    HStack {
                         Text(LocalizedStringKey("ReasonOfReading"))
                             .heading2()
                             .foregroundColor(.primary_color)

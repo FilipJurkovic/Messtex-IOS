@@ -12,26 +12,26 @@ struct ReadingStepsView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     var body: some View {
 
-        ScrollView(showsIndicators: false){
-            VStack{
+        ScrollView(showsIndicators: false) {
+            VStack {
 
                 ReadingFlowHeaderWidget(title: "ReadingStepsTitle", description: "ReadingStepsSubTitle")
                     .padding(.bottom, 41)
 
-                VStack(spacing: 0){
+                VStack(spacing: 0) {
                     ForEach(0...viewModel.userData.meters.count, id: \.self) { index in
 
                         let lastIndexCheck: Bool = index != (viewModel.readingStepsProgress.endIndex - 1)
 
-                        VStack(alignment: HorizontalAlignment.leading, spacing: 0){ HStack{
+                        VStack(alignment: HorizontalAlignment.leading, spacing: 0) { HStack {
 
-                            if index < (viewModel.readingStepsProgress.endIndex - 1){
+                            if index < (viewModel.readingStepsProgress.endIndex - 1) {
 
-                                if viewModel.readingStepsProgress[index]{
+                                if viewModel.readingStepsProgress[index] {
                                     Image("bullet_point")
                                         .frame(width: 36, height: 36)
                                         .padding(.trailing, 17)
-                                } else{
+                                } else {
                                     StepIndicator(stepIndex: index+1)
                                 }
                                 Image(viewModel.getMeterTypeIcon(meterType: viewModel.userData.meters[index].counterType))
@@ -49,19 +49,19 @@ struct ReadingStepsView: View {
                                         viewModel.currentReadingView = ReadingFlowEnum.meterReadingView
                                     },
                                     label: {
-                                        if viewModel.readingStepsProgress[index]{
+                                        if viewModel.readingStepsProgress[index] {
                                             ChangeButtonStyle()
-                                        } else{
+                                        } else {
                                             SubmitButtonStyle()
                                         }
                                     })
 
-                            } else{
-                                if viewModel.readingStepsProgress.last!{
+                            } else {
+                                if viewModel.readingStepsProgress.last! {
                                     Image("bullet_point")
                                         .frame(width: 36, height: 36)
                                         .padding(.trailing, 17)
-                                } else{
+                                } else {
                                     StepIndicator(stepIndex: index+1)
                                 }
 
@@ -73,9 +73,9 @@ struct ReadingStepsView: View {
                                 Button(
                                     action: {viewModel.currentReadingView = ReadingFlowEnum.contactDetailsView},
                                     label: {
-                                        if viewModel.readingStepsProgress.last!{
+                                        if viewModel.readingStepsProgress.last! {
                                             ChangeButtonStyle()
-                                        } else{
+                                        } else {
                                             SubmitButtonStyle()
                                         }
                                     })

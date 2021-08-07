@@ -23,9 +23,9 @@ public struct CodeReadingView: View {
 
     public var body: some View {
 
-        ZStack{
-            ScrollView(showsIndicators: false){
-                VStack{
+        ZStack {
+            ScrollView(showsIndicators: false) {
+                VStack {
                     ReadingFlowHeaderWidget(title: "CodeReadingTitle", description: "CodeReadingSubtitle")
                         .padding(.bottom, 35)
 
@@ -43,11 +43,11 @@ public struct CodeReadingView: View {
                             .padding(.bottom, 22.7)
                     }
 
-                    ZStack(alignment:.topTrailing){
-                        VStack{
+                    ZStack(alignment:.topTrailing) {
+                        VStack {
                             Spacer()
-                            HStack{
-                                ZStack{
+                            HStack {
+                                ZStack {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.tetriary_30, lineWidth: 1)
                                     Image("example_brief")
@@ -101,7 +101,7 @@ public struct CodeReadingView: View {
                 }
 
                 else {
-                    ZStack(alignment: .center){
+                    ZStack(alignment: .center) {
                         RoundedRectangle(cornerRadius: 12.8)
                             .stroke(viewModel.verificationError.message.isEmpty ? Color.primary_shade : Color.danger, lineWidth: 1.6)
 

@@ -51,11 +51,11 @@ class MainViewModel: ObservableObject {
         self.isReadingFinished = false
     }
 
-    func toggleFaqFlagIndex(index: Int){
+    func toggleFaqFlagIndex(index: Int) {
         self.faqFlagIndex[index] = !self.faqFlagIndex[index]
     }
 
-    func removePoint(value: String) -> String{
+    func removePoint(value: String) -> String {
         var mutatedValue = value
         if let idx = mutatedValue.firstIndex(of: ".") {
             let pos = mutatedValue.distance(from: mutatedValue.startIndex, to: idx)
@@ -63,19 +63,19 @@ class MainViewModel: ObservableObject {
             if deltaLength == 1 {
                 mutatedValue.append("0")
             }
-        }else{
+        }else {
             mutatedValue.append("00")
         }
         return mutatedValue.replacingOccurrences(of: ".", with: "")
     }
 
-    func addComma(value: String) -> String{
+    func addComma(value: String) -> String {
         let commaPosition: String.Index = value.index(value.startIndex, offsetBy: value.count-2)
 
         return "\(value.substring(to: commaPosition)).\(value.substring(from: commaPosition))"
     }
 
-    func isContactFormValid() -> Bool{
+    func isContactFormValid() -> Bool {
         let isNameValid: Bool = self.contactFormData.name != ""
         let isEmailValid: Bool = self.contactFormData.email != ""
         let isMessageValid: Bool = self.contactFormData.message != ""
@@ -83,7 +83,7 @@ class MainViewModel: ObservableObject {
         return isNameValid && isEmailValid && isMessageValid
     }
 
-    func areContactDetailsValid() -> Bool{
+    func areContactDetailsValid() -> Bool {
         let isFirstNameValid: Bool = self.userData.firstName != ""
         let isEmailValid: Bool = self.userData.email != ""
         let isLastNameValid: Bool = self.userData.lastName != ""
@@ -91,8 +91,8 @@ class MainViewModel: ObservableObject {
         return isFirstNameValid &&  isLastNameValid && isEmailValid && isPhoneValid
     }
 
-    func getMeterTypeIcon(meterType: String) -> String{
-        switch meterType{
+    func getMeterTypeIcon(meterType: String) -> String {
+        switch meterType {
         case "WMZ":
             return "heat_meter"
 
@@ -113,8 +113,8 @@ class MainViewModel: ObservableObject {
         }
     }
 
-    func getInfoViewIndex(meterType: String) -> Int{
-        switch meterType{
+    func getInfoViewIndex(meterType: String) -> Int {
+        switch meterType {
         case "WMZ":
             return 1
 
@@ -136,7 +136,7 @@ class MainViewModel: ObservableObject {
 
     }
 
-    func getPreviousTabView(){
+    func getPreviousTabView() {
         switch self.currentReadingView {
         case ReadingFlowEnum.readingStepsView:
             self.currentReadingView = ReadingFlowEnum.codeReadingView
@@ -187,16 +187,16 @@ class MainViewModel: ObservableObject {
         self.postModelData.verificationCode = pin
     }
 
-    func formatNumber(number: Int) -> String{
+    func formatNumber(number: Int) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .none
 
         return formatter.string(from: NSNumber(value: number)) ?? "0"
     }
 
-    func checkReadingStepStatus() -> Bool{
-        for i in self.readingStepsProgress{
-            if !i{
+    func checkReadingStepStatus() -> Bool {
+        for i in self.readingStepsProgress {
+            if !i {
                 return false
             }
         }
@@ -206,7 +206,7 @@ class MainViewModel: ObservableObject {
     //API REQUESTS
     let url = URL(string: "https://api.ninoxdb.de/v1/teams/yCZezLbXfFAiwR6r3/databases/qmz4hgc0o1bh/query")
 
-    func getCO2Levels(){
+    func getCO2Levels() {
         let jsonBody = try? JSONEncoder().encode(PostModel(query: "getCO2Level()"))
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"
@@ -215,7 +215,7 @@ class MainViewModel: ObservableObject {
         request.setValue("Bearer eecf7fd0-cee9-11eb-b752-fde919688281", forHTTPHeaderField: "Authorization")
 
         DispatchQueue.main.async {
-            URLSession.shared.dataTask(with: request){ (data, response, error) in
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
                 guard let data = data else {return}
                 let co2_value = try! JSONDecoder().decode(Double.self, from: data)
                 self.co2Level = CarbonDataModel(co2Level: co2_value)
@@ -223,7 +223,7 @@ class MainViewModel: ObservableObject {
             }.resume()}
     }
 
-    func getFAQs(){
+    func getFAQs() {
         let jsonBody = try? JSONEncoder().encode(PostModel(query: "getFAQs()"))
 
         var request = URLRequest(url: url!)
@@ -233,13 +233,13 @@ class MainViewModel: ObservableObject {
         request.setValue("Bearer eecf7fd0-cee9-11eb-b752-fde919688281", forHTTPHeaderField: "Authorization")
 
         DispatchQueue.main.async {
-            URLSession.shared.dataTask(with: request){ (data, response, error) in
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
                 guard let data = data else {return}
 
                 self.faq = try! JSONDecoder().decode(Faq.self, from: data)
 
                 var newBoolArray: [Bool] = []
-                for _ in 0...self.faq.faqs.count-1{
+                for _ in 0...self.faq.faqs.count-1 {
                     newBoolArray.append(false)
                 }
                 self.faqFlagIndex = newBoolArray
@@ -248,7 +248,7 @@ class MainViewModel: ObservableObject {
         }
     }
 
-    func getUtilizationUnitData(pin : String){
+    func getUtilizationUnitData(pin : String) {
         let body = try? JSONEncoder().encode(UtilizationModel(verificationCode: pin))
         let json: String = String(data: body!, encoding: String.Encoding.utf8) ?? " "
         let jsonBody = try? JSONEncoder().encode(PostModel(query: "getUtilizationUnitData(\"\(json.replacingOccurrences(of: "\"", with: "\"\""))\")"))
@@ -262,20 +262,20 @@ class MainViewModel: ObservableObject {
         self.isProgressBarActive = true
 
         DispatchQueue.main.async {
-            URLSession.shared.dataTask(with: request){ (data, response, error) in
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
                 guard let data = data else {return}
 
-                do{
+                do {
                     try JSONDecoder().decode(UtilizationResponseModel.self, from: data)
                     self.userData = try! JSONDecoder().decode(UtilizationResponseModel.self, from: data)
                     self.verificationError = ErrorModel(message: "")
 
                     var newBoolArray: [Bool] = []
-                    for _ in 0...self.userData.meters.count{
+                    for _ in 0...self.userData.meters.count {
                         newBoolArray.append(false)
                     }
 
-                    for meter in self.userData.meters{
+                    for meter in self.userData.meters {
                         self.postModelData.meterReadings.append(MeterReadingData(counterNumber: meter.counterNumber, counterType: meter.counterType, counterValue: "", userMessage: ""))
                     }
                     self.populatePostModelData(pin: pin)
@@ -283,10 +283,10 @@ class MainViewModel: ObservableObject {
                     self.readingStepsProgress = newBoolArray
                     self.readingStepsProgress[newBoolArray.endIndex-1] = self.areContactDetailsValid()
                     self.isProgressBarActive = false
-                    if error == nil{
+                    if error == nil {
                         self.currentReadingView = ReadingFlowEnum.readingStepsView
                     }
-                } catch{
+                } catch {
                     self.verificationError = try! JSONDecoder().decode(ErrorModel.self, from: data)
                     self.isProgressBarActive = false
                 }
@@ -295,7 +295,7 @@ class MainViewModel: ObservableObject {
             .resume()}
     }
 
-    func takeMeterReadings(){
+    func takeMeterReadings() {
         let body = try? JSONEncoder().encode(postModelData)
         let json: String = String(data: body!, encoding: String.Encoding.utf8) ?? " "
         let jsonBody = try? JSONEncoder().encode(PostModel(query: "takeMeterReadings(\"\(json.replacingOccurrences(of: "\"", with: "\"\""))\")"))
@@ -309,12 +309,12 @@ class MainViewModel: ObservableObject {
         self.isProgressBarActive = true
 
         DispatchQueue.main.async {
-            URLSession.shared.dataTask(with: request){ (data, response, error) in
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
                 guard let data = data else {return}
                 self.co2Level = try! JSONDecoder().decode(CarbonDataModel.self, from: data)
 
                 self.isProgressBarActive = false
-                if error == nil{
+                if error == nil {
                     self.currentReadingView = ReadingFlowEnum.successView
                 }
 
@@ -322,7 +322,7 @@ class MainViewModel: ObservableObject {
         }
     }
 
-    func takeContactForm(){
+    func takeContactForm() {
         let body = try? JSONEncoder().encode(contactFormData)
         let json: String = String(data: body!, encoding: String.Encoding.utf8) ?? " "
         let jsonBody = try? JSONEncoder().encode(PostModel(query: "takeContactForm(\"\(json.replacingOccurrences(of: "\"", with: "\"\""))\")"))

@@ -13,8 +13,8 @@ struct SuccessVIew: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var body: some View {
-        ScrollView(showsIndicators: false){
-            VStack(spacing:0){
+        ScrollView(showsIndicators: false) {
+            VStack(spacing:0) {
                 Image("successful_read")
                     .resizable()
                     .frame(width: 205, height: 171)

@@ -12,8 +12,8 @@ struct MainView: View {
     @AppStorage("shouldShowOnboarding") var shouldShowOnboarding: Bool = true
 
     var body: some View {
-        NavigationView{
-            TabView{
+        NavigationView {
+            TabView {
                 HomeView(viewModel: viewModel).tabItem { Label("Home", systemImage: "house") }
 
                 MoreView(viewModel: viewModel, shouldShowOnboarding: $shouldShowOnboarding).tabItem { Image(uiImage: UIImage(systemName: "ellipsis")!.imageWithoutBaseline())
@@ -25,9 +25,8 @@ struct MainView: View {
             .overlay(NavigationLink(
                         destination: MeterReadingFlowView(viewModel: viewModel),
                         label : {
-                            VStack
-                            {
-                                ZStack{
+                            VStack {
+                                ZStack {
                                     Circle()
                                         .foregroundColor(Color.primary_30)
                                         .frame(width: 56, height:56)
@@ -44,7 +43,7 @@ struct MainView: View {
                                     .tiny()
                             }.offset(y: -1)
                         }),alignment: .bottom)
-            .onAppear{
+            .onAppear {
                 UITabBar.appearance().backgroundColor = .clear
                 UITabBar.appearance().isTranslucent = false
                 UINavigationBar.appearance().titleTextAttributes = [.font : UIFont(name: "Roboto-Bold", size: 18)!]

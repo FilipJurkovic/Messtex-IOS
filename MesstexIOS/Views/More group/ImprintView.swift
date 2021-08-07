@@ -24,9 +24,9 @@ struct ImprintView: View {
     }
 
     var body: some View {
-        ScrollView(showsIndicators: false){
-            VStack(alignment:.leading){
-                Group{
+        ScrollView(showsIndicators: false) {
+            VStack(alignment:.leading) {
+                Group {
                     Text(LocalizedStringKey("ImprintInformation"))
                         .heading2()
                         .foregroundColor(.primary_color)
@@ -80,7 +80,7 @@ struct ImprintView: View {
                         .padding(.bottom, 23)
 
                 }
-                Group{
+                Group {
                     Text(LocalizedStringKey("ImprintDisclamerTitle"))
                         .heading2()
                         .foregroundColor(.primary_color)
@@ -98,8 +98,7 @@ struct ImprintView: View {
             .navigationBarBackButtonHidden(true)
             .navigationBarTitle("Contact", displayMode: .inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading)
-                {
+                ToolbarItem(placement: .navigationBarLeading) {
                     btnBack
                         .foregroundColor(.dark)
                 }

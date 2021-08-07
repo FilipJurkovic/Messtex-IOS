@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PostModelRecord: Codable{
+struct PostModelRecord: Codable {
     var verificationCode: String
     var meterReadings: Array<MeterReadingData>
     var firstName: String

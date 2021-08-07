@@ -13,8 +13,8 @@ struct OnboardingFlowView: View {
     @State var pageIndex: Int = 0
 
     var body: some View {
-        ZStack(alignment: .bottom){
-            TabView(selection: $pageIndex){
+        ZStack(alignment: .bottom) {
+            TabView(selection: $pageIndex) {
                 OnboardingPageTemplate(image: "onboarding_one", title: "OnboardingTitleOne", description: "OnobardingTextOne")
                     .tag(0)
                 OnboardingPageTemplate(image: "onboarding_two", title: "OnboardingTitleTwo", description: "OnobardingTextTwo")
@@ -24,12 +24,12 @@ struct OnboardingFlowView: View {
             }.indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
             .tabViewStyle(PageTabViewStyle())
             .animation(.linear)
-            .onAppear(){
+            .onAppear() {
                 UIPageControl.appearance().currentPageIndicatorTintColor = .primary
                 UIPageControl.appearance().pageIndicatorTintColor = .tetriary
             }
-            VStack{
-                HStack{
+            VStack {
+                HStack {
                     Button(action: {shouldShowOnboarding.toggle()}, label: {
                         Text(LocalizedStringKey("Skip"))
                             .underline()
@@ -40,15 +40,15 @@ struct OnboardingFlowView: View {
                 }.frame(width:UIScreen.main.bounds.size.width, alignment:.trailing)
                 Spacer()
             }
-            HStack{
+            HStack {
                 Button(action: {
-                    if(pageIndex < 2){
+                    if(pageIndex < 2) {
                         pageIndex = pageIndex+1
-                    } else{
+                    } else {
                         shouldShowOnboarding.toggle()
                     }
                 }, label: {
-                    ZStack{
+                    ZStack {
                         Circle()
                             .foregroundColor(.light)
                             .frame(width: 48, height: 48)

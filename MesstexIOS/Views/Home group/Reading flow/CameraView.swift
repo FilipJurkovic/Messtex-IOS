@@ -33,7 +33,7 @@ struct CameraView: UIViewRepresentable {
     // results are delivered on capture
     var captureAction: (UIImage, [String]) -> Void
 
-    var reader: PIXMeterReadingView = PIXMeterReadingView()
+    var reader = PIXMeterReadingView()
 
     func toggleFlash(state: Bool) {
         self.reader.isTorchOn = state

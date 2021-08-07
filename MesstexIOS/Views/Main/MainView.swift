@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject var viewModel: MainViewModel
-    @AppStorage("shouldShowOnboarding") var shouldShowOnboarding: Bool = true
+    @AppStorage("shouldShowOnboarding") var shouldShowOnboarding = true
 
     var body: some View {
         NavigationView {

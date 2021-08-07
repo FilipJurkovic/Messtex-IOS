@@ -45,7 +45,7 @@ struct FloatingTextField: View {
     private let placeHolderText: String
     @Binding var text: String
     @State private var isEditing = false
-    var error: Bool = false
+    var error = false
     public init(placeHolder: String,
                 text: Binding<String>) {
         self._text = text
@@ -89,7 +89,7 @@ struct FloatingNumericTextField: View {
     private let placeHolderText: String
     @Binding var text: Int
     @State private var isEditing = false
-    var error: Bool = false
+    var error = false
     public init(placeHolder: String,
                 text: Binding<Int>) {
         self._text = text
@@ -132,7 +132,7 @@ struct FloatingTextEditor: View {
     private let placeHolderText: String
     @Binding var text: String
     @State private var isEditing = false
-    var error: Bool = false
+    var error = false
     public init(placeHolder: String,
                 text: Binding<String>) {
         self._text = text
@@ -167,7 +167,7 @@ struct FloatingTextEditor: View {
 struct PrimaryButton: View {
     var handler: () -> Void
     var buttonLabel: String
-    var isEnabled: Bool = true
+    var isEnabled = true
 
     var body: some View {
         Button(action: handler, label: {
@@ -188,7 +188,7 @@ struct PrimaryButton: View {
 
 struct PrimaryButtonStyle: View {
     var buttonLabel: String
-    var isEnabled: Bool = true
+    var isEnabled = true
 
     var body: some View {
         ZStack {

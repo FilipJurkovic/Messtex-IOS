@@ -251,7 +251,7 @@ class MainViewModel: ObservableObject {
 
     func getUtilizationUnitData(pin: String) {
         let body = try? JSONEncoder().encode(UtilizationModel(verificationCode: pin))
-        let json: String = String(data: body!, encoding: String.Encoding.utf8) ?? " "
+        let json = String(data: body!, encoding: String.Encoding.utf8) ?? " "
         let jsonBody = try? JSONEncoder().encode(PostModel(query: "getUtilizationUnitData(\"\(json.replacingOccurrences(of: "\"", with: "\"\""))\")"))
 
         var request = URLRequest(url: url!)
@@ -299,7 +299,7 @@ class MainViewModel: ObservableObject {
 
     func takeMeterReadings() {
         let body = try? JSONEncoder().encode(postModelData)
-        let json: String = String(data: body!, encoding: String.Encoding.utf8) ?? " "
+        let json = String(data: body!, encoding: String.Encoding.utf8) ?? " "
         let jsonBody = try? JSONEncoder().encode(PostModel(query: "takeMeterReadings(\"\(json.replacingOccurrences(of: "\"", with: "\"\""))\")"))
 
         var request = URLRequest(url: url!)
@@ -326,7 +326,7 @@ class MainViewModel: ObservableObject {
 
     func takeContactForm() {
         let body = try? JSONEncoder().encode(contactFormData)
-        let json: String = String(data: body!, encoding: String.Encoding.utf8) ?? " "
+        let json = String(data: body!, encoding: String.Encoding.utf8) ?? " "
         let jsonBody = try? JSONEncoder().encode(PostModel(query: "takeContactForm(\"\(json.replacingOccurrences(of: "\"", with: "\"\""))\")"))
 
         var request = URLRequest(url: url!)

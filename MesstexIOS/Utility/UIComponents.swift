@@ -70,7 +70,7 @@ struct FloatingTextField: View {
             .accentColor(Color.medium)
             .animation(.linear)
             .offset(y: 8)
-            ///Floating Placeholder
+            /// Floating Placeholder
             Text(LocalizedStringKey(placeHolderText))
                 .paragraph()
                 .foregroundColor(Color.medium)
@@ -113,7 +113,7 @@ struct FloatingNumericTextField: View {
             .animation(.linear)
             .offset(y: 8)
 
-            ///Floating Placeholder
+            /// Floating Placeholder
             Text(LocalizedStringKey(placeHolderText))
                 .paragraph()
                 .foregroundColor(Color.medium)
@@ -558,7 +558,7 @@ struct FaqWidget: View {
                         .foregroundColor(.medium)
                 }
             }
-            //Spacer()
+            // Spacer()
         }.padding(.horizontal, 26)
     }
 }
@@ -642,9 +642,9 @@ struct AboutUsCardWidget: View {
     }
 }
 
-//struct FinishedReadingWidget : View {
+// struct FinishedReadingWidget : View {
 //
 //    var body: some View{
 //
 //    }
-//}
+// }

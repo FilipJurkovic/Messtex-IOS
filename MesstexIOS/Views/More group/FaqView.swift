@@ -40,8 +40,8 @@ struct FaqView: View {
         }
     }
 }
-//struct FaqView_Previews: PreviewProvider {
+// struct FaqView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        FaqView(viewModel: MainViewModel())
 //    }
-//}
+// }

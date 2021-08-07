@@ -10,7 +10,7 @@ import AVFoundation
 
 class MainViewModel: ObservableObject {
 
-    //API DATA
+    // API DATA
     @Published var co2Level: CarbonDataModel
     @Published var faq: Faq
     @Published var userData: UtilizationResponseModel
@@ -21,7 +21,7 @@ class MainViewModel: ObservableObject {
     @Published var faqFlagIndex: [Bool]
     @Published var readingStepsProgress: [Bool]
 
-    //RANDOM PARAMS
+    // RANDOM PARAMS
     @Published var isProgressBarActive: Bool
     @Published var currentReadingView: ReadingFlowEnum
     @Published var currentMeterIndex: Int
@@ -30,7 +30,7 @@ class MainViewModel: ObservableObject {
     @Published var dismissReadingFlow: Bool
     @Published var isReadingFinished: Bool
 
-    //VIEWMODEL INITIALIZATION
+    // VIEWMODEL INITIALIZATION
     init() {
         self.co2Level = CarbonDataModel(co2Level: 0.0)
         self.faq = Faq(faqs: [])
@@ -203,7 +203,7 @@ class MainViewModel: ObservableObject {
         return true
     }
 
-    //API REQUESTS
+    // API REQUESTS
     let url = URL(string: "https://api.ninoxdb.de/v1/teams/yCZezLbXfFAiwR6r3/databases/qmz4hgc0o1bh/query")
 
     func getCO2Levels() {

@@ -115,7 +115,7 @@ struct MeterReadingView: View {
 
 }
 
-//struct MeterReadingView_Previews: PreviewProvider {
+// struct MeterReadingView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        Group {
 //            MeterReadingView(isManualCaptureAllowed: true, captureAction: {image, values in})
@@ -124,4 +124,4 @@ struct MeterReadingView: View {
 //            MeterReadingView(isManualCaptureAllowed: false, captureAction: {image, values in})
 //        }
 //    }
-//}
+// }

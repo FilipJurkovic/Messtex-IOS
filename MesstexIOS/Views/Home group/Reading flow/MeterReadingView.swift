@@ -81,7 +81,7 @@ struct MeterReadingView: View {
 
                     HStack {
                         Button(action: {cameraView.toggleFlash(state: !viewModel.isTorchOn)
-                            viewModel.isTorchOn = !viewModel.isTorchOn
+                            viewModel.isTorchOn.toggle()
                         }, label: {
                             ZStack {
                                 Circle()
@@ -94,8 +94,7 @@ struct MeterReadingView: View {
                             }
                         }).padding(.trailing, 15)
                         Button(action: {
-                            viewModel.isInfoSheetOpen = !viewModel.isInfoSheetOpen
-
+                            viewModel.isInfoSheetOpen.toggle()
                         }, label: {
                             LargeRoundButtonStyle(imageName: "info", backgroundColor: .primary_color, iconColor: .light)
                         })

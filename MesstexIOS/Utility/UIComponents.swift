@@ -401,7 +401,7 @@ struct RadioButtonGroup: View {
             ForEach(0..<items.count) { index in
                 RadioButton(self.items[index], callback: self.radioGroupCallback, selectedID: self.selectedId)
                     .padding(.vertical, 20)
-                if(index != items.count-1) {
+                if index != items.count-1 {
                     Divider()
                         .foregroundColor(.tetriary)
                         .padding(.horizontal, 10)

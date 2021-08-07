@@ -42,7 +42,7 @@ struct OnboardingFlowView: View {
             }
             HStack {
                 Button(action: {
-                    if(pageIndex < 2) {
+                    if pageIndex < 2 {
                         pageIndex = pageIndex+1
                     } else {
                         shouldShowOnboarding.toggle()

@@ -59,7 +59,7 @@ struct CameraView: UIViewRepresentable {
         Coordinator(reader: reader, callback: { results, image in
             let resultStrings = results.map {$0.cleanReadingString()}
             captureAction(image, resultStrings)
-        } )
+        })
     }
 
     class Coordinator: NSObject, PIXMeterReadingViewDelegate {

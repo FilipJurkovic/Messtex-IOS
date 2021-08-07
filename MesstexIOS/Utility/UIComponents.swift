@@ -70,7 +70,8 @@ struct FloatingTextField: View {
             .accentColor(Color.medium)
             .animation(.linear)
             .offset(y: 8)
-            /// Floating Placeholder
+
+            // Floating Placeholder
             Text(LocalizedStringKey(placeHolderText))
                 .paragraph()
                 .foregroundColor(Color.medium)
@@ -113,7 +114,7 @@ struct FloatingNumericTextField: View {
             .animation(.linear)
             .offset(y: 8)
 
-            /// Floating Placeholder
+            // Floating Placeholder
             Text(LocalizedStringKey(placeHolderText))
                 .paragraph()
                 .foregroundColor(Color.medium)

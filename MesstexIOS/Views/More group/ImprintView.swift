@@ -25,7 +25,7 @@ struct ImprintView: View {
 
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack(alignment:.leading) {
+            VStack(alignment: .leading) {
                 Group {
                     Text(LocalizedStringKey("ImprintInformation"))
                         .heading2()

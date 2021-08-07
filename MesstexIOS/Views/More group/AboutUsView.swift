@@ -27,8 +27,8 @@ struct AboutUsView: View {
         ScrollView(showsIndicators: false) {
             Image("about_top")
                 .resizable()
-                .frame(width:UIScreen.main.bounds.size.width)
-            VStack(alignment:.leading) {
+                .frame(width: UIScreen.main.bounds.size.width)
+            VStack(alignment: .leading) {
                 Group {
                     Text(LocalizedStringKey("AboutTitle"))
                         .heading2()
@@ -121,10 +121,10 @@ struct AboutUsView: View {
                     .padding(.horizontal, 33.5)
 
             }
-            .frame(width: UIScreen.main.bounds.size.width, height: 250, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            .frame(width: UIScreen.main.bounds.size.width, height: 250, alignment: .center/*@END_MENU_TOKEN@*/)
             .padding(.bottom, 66)
 
-            VStack(alignment:.leading) {
+            VStack(alignment: .leading) {
                 Text(LocalizedStringKey("AboutPrinciplesTitle"))
                     .heading2()
                     .foregroundColor(.primary_color)

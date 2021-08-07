@@ -23,12 +23,12 @@ class MainViewModel: ObservableObject {
 
     //RANDOM PARAMS
     @Published var isProgressBarActive: Bool
-    @Published var currentReadingView : ReadingFlowEnum
+    @Published var currentReadingView: ReadingFlowEnum
     @Published var currentMeterIndex: Int
     @Published var isTorchOn: Bool
     @Published var isInfoSheetOpen: Bool
     @Published var dismissReadingFlow: Bool
-    @Published var isReadingFinished : Bool
+    @Published var isReadingFinished: Bool
 
     //VIEWMODEL INITIALIZATION
     init() {
@@ -248,7 +248,7 @@ class MainViewModel: ObservableObject {
         }
     }
 
-    func getUtilizationUnitData(pin : String) {
+    func getUtilizationUnitData(pin: String) {
         let body = try? JSONEncoder().encode(UtilizationModel(verificationCode: pin))
         let json: String = String(data: body!, encoding: String.Encoding.utf8) ?? " "
         let jsonBody = try? JSONEncoder().encode(PostModel(query: "getUtilizationUnitData(\"\(json.replacingOccurrences(of: "\"", with: "\"\""))\")"))

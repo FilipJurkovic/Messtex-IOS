@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReadingStepsView: View {
-    @ObservedObject var viewModel : MainViewModel
+    @ObservedObject var viewModel: MainViewModel
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     var body: some View {
 

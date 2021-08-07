@@ -9,19 +9,19 @@ import SwiftUI
 
 struct InfoView: View {
 
-    @ObservedObject var viewModel : MainViewModel
+    @ObservedObject var viewModel: MainViewModel
 
-    var index : Int
+    var index: Int
 
     var nameArray: [LocalizedStringKey] = [LocalizedStringKey("WaterInfoTitle"),LocalizedStringKey("HeaterInfoTitle"),LocalizedStringKey("ElectricityInfoTitle")]
     var imageArray = ["watermeter_illustration","gasmeter_illustration","electricity_illustration"]
     var numberExplanationArray: [LocalizedStringKey] = [LocalizedStringKey("WaterInfoMeterNumber"),LocalizedStringKey("HeaterInfoMeterNumber"),LocalizedStringKey("ElectricityInfoMeterNumber")]
     var readingExplanationArray: [LocalizedStringKey] = [LocalizedStringKey("WaterInfoMeterReading"),LocalizedStringKey("HeaterInfoMeterReading"),LocalizedStringKey("ElectricityInfoMeterReading")]
     var body: some View {
-        VStack(spacing:0) {
+        VStack(spacing: 0) {
             HStack {
                 Spacer()
-                Button(action : {viewModel.isInfoSheetOpen = false}) {
+                Button(action: {viewModel.isInfoSheetOpen = false}) {
                     RoundButtonStyle(imageName: "xmark", backgroundColor: .tetriary_tint, iconColor: .dark)
                 }
             }

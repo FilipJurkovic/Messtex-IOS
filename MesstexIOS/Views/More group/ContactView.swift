@@ -25,7 +25,7 @@ struct ContactView: View {
     }
 
     var body: some View {
-        VStack(alignment:.leading) {
+        VStack(alignment: .leading) {
             Text(LocalizedStringKey("ContactTitle"))
                 .heading1()
                 .foregroundColor(.primary_color)

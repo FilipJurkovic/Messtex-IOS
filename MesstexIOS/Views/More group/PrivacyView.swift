@@ -25,7 +25,7 @@ struct PrivacyView: View {
 
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack(alignment:.leading) {
+            VStack(alignment: .leading) {
                 Text("Headline")
                     .heading2()
                     .foregroundColor(.primary_color)

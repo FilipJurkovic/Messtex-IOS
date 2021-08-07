@@ -32,7 +32,7 @@ struct OnboardingPageTemplate: View {
                 .foregroundColor(.dark)
 
             Spacer()
-        }.frame(width:UIScreen.main.bounds.size.width, alignment:.top)
+        }.frame(width: UIScreen.main.bounds.size.width, alignment: .top)
     }
 }
 

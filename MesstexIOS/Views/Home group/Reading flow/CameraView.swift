@@ -74,7 +74,7 @@ struct CameraView: UIViewRepresentable {
             // TODO: handle barcode scanning result
         }
 
-        init(reader : PIXMeterReadingView, callback: @escaping ([PIXMeterReadingResult], UIImage) -> Void) {
+        init(reader: PIXMeterReadingView, callback: @escaping ([PIXMeterReadingResult], UIImage) -> Void) {
             self.callback = callback
             super.init()
             reader.delegate = self

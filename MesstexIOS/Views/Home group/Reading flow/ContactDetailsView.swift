@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ContactDetailsView: View {
 
-    @ObservedObject var viewModel : MainViewModel
+    @ObservedObject var viewModel: MainViewModel
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
 
     var body: some View {
         ScrollView(showsIndicators: false) {
             Group {
-                VStack(spacing:0) {
+                VStack(spacing: 0) {
                     HStack {
                         Text(LocalizedStringKey("ContactDetailsTitle"))
                             .heading2()
@@ -46,7 +46,7 @@ struct ContactDetailsView: View {
                                 .paragraph()
                                 .foregroundColor(.dark)
                             Spacer()
-                        }.frame(height:64)
+                        }.frame(height: 64)
                         FloatingTextField(placeHolder: "PhoneTextField", text: $viewModel.userData.phone)
                             .padding(.bottom, 32)
                     }
@@ -88,7 +88,7 @@ struct ContactDetailsView: View {
                         print("Selected is: \(selected)")
                     }.disabled(true)
 
-                }.frame(width:327)
+                }.frame(width: 327)
                 .padding(.bottom, 58)
 
                 Button(

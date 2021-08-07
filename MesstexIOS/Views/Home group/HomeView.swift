@@ -9,10 +9,10 @@ import SwiftUI
 import UIKit
 
 struct HomeView: View {
-    @ObservedObject var viewModel : MainViewModel
+    @ObservedObject var viewModel: MainViewModel
 
     var faq_home = Faq(
-        faqs:[
+        faqs: [
             FaqItem(sortNumber: 0, question: "Where can I find my electricity meter?", answer: "You can usually find the water meters in your apartment in the kitchen, bathroom and / or toilet."),
             FaqItem(sortNumber: 1, question: "Where can I find my cold water meter?", answer: "You can usually find the water meters in your apartment in the kitchen, bathroom and / or toilet."),
             FaqItem(sortNumber: 2, question: "Where can I find my RMVs?", answer: "You can usually find the RMWs in your apartment.")
@@ -25,7 +25,7 @@ struct HomeView: View {
         ScrollView(showsIndicators: false) {
             VStack {
                 Group {
-                    ZStack(alignment:.bottom) {
+                    ZStack(alignment: .bottom) {
                         Image("home_top")
                             .resizable()
                             .frame(width: UIScreen.main.bounds.size.width)
@@ -50,7 +50,7 @@ struct HomeView: View {
                     if !viewModel.isReadingFinished {
                         NavigationLink(
                             destination: MeterReadingFlowView(viewModel: viewModel),
-                            label : {
+                            label: {
                                 PrimaryButtonStyle(buttonLabel: "ReadingButton")
                             })
                     }
@@ -90,7 +90,7 @@ struct HomeView: View {
 
                 NavigationLink(
                     destination: FaqView(viewModel: viewModel),
-                    label : {
+                    label: {
                         OutlinedButtonStyle(buttonLabel: "ShowMore")
                     })
             }
@@ -108,7 +108,7 @@ struct HomeView: View {
 
                 NavigationLink(
                     destination: ContactFormView(viewModel: viewModel),
-                    label : {
+                    label: {
                         OutlinedButtonStyle(buttonLabel: "ShareButton")
                     })
             }

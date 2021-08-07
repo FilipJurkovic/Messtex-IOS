@@ -10,7 +10,7 @@ import UIKit
 
 public struct CodeReadingView: View {
 
-    @ObservedObject var viewModel : MainViewModel
+    @ObservedObject var viewModel: MainViewModel
 
     var maxDigits: Int = 6
     var label = "Enter One Time Password"
@@ -43,7 +43,7 @@ public struct CodeReadingView: View {
                             .padding(.bottom, 22.7)
                     }
 
-                    ZStack(alignment:.topTrailing) {
+                    ZStack(alignment: .topTrailing) {
                         VStack {
                             Spacer()
                             HStack {
@@ -60,7 +60,7 @@ public struct CodeReadingView: View {
 
                         NavigationLink(
                             destination: ExampleView(),
-                            label : {
+                            label: {
                                 RoundButtonStyle(imageName: "magnifyingglass", backgroundColor: .primary_color, iconColor: .light)
                             }).offset(x: 10)
                     }.frame(width: 178.31, height: 236.31)
@@ -68,7 +68,7 @@ public struct CodeReadingView: View {
 
                     NavigationLink(
                         destination: Text(pin),
-                        label : {
+                        label: {
                             Text(LocalizedStringKey("Link"))
                                 .underline()
                                 .paragraph()

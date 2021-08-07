@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ConfirmationView: View {
 
-    @ObservedObject var viewModel : MainViewModel
+    @ObservedObject var viewModel: MainViewModel
     var length = 8
     var body: some View {
         ZStack {
@@ -29,9 +29,9 @@ struct ConfirmationView: View {
                         .frame(width: 353.3, height: 527.4)
                         .padding(EdgeInsets(top: 24, leading: 0, bottom: 38, trailing: 0))
                     ScrollView(showsIndicators: false) {
-                        VStack(alignment:.leading) {
+                        VStack(alignment: .leading) {
                             ForEach(0...viewModel.postModelData.meterReadings.count, id: \.self) { index in
-                                VStack(alignment:.leading, spacing:0) {
+                                VStack(alignment: .leading, spacing: 0) {
                                     if index != viewModel.postModelData.meterReadings.count {
                                         HStack {
 
@@ -56,7 +56,7 @@ struct ConfirmationView: View {
 
                                         Divider()
                                             .foregroundColor(.tetriary)
-                                            .frame(height:1)
+                                            .frame(height: 1)
                                     }
 
                                     else {
@@ -83,7 +83,7 @@ struct ConfirmationView: View {
 
                                         Divider()
                                             .foregroundColor(.tetriary)
-                                            .frame(height:1)
+                                            .frame(height: 1)
                                     }
                                 }
                             }
@@ -103,7 +103,7 @@ struct ConfirmationView: View {
 
                             Divider()
                                 .foregroundColor(.tetriary)
-                                .frame(height:1)
+                                .frame(height: 1)
 
                         }.padding(.horizontal, 23)
                     }.frame(width: 300, height: 450)

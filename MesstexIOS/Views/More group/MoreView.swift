@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct MoreView: View {
-    @ObservedObject var viewModel : MainViewModel
-    @Binding var shouldShowOnboarding : Bool
+    @ObservedObject var viewModel: MainViewModel
+    @Binding var shouldShowOnboarding: Bool
 
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack() {
-                ZStack(alignment:.bottom) {
+                ZStack(alignment: .bottom) {
                     Image("more_top")
                         .resizable()
                         .frame(width: UIScreen.main.bounds.size.width)
@@ -36,7 +36,7 @@ struct MoreView: View {
                             CardButton(cardName: "Faq")
                         })
                     Divider().padding(.horizontal, 20)
-                        .frame(height:3)
+                        .frame(height: 3)
 
                     NavigationLink(
                         destination: ContactView(),
@@ -45,7 +45,7 @@ struct MoreView: View {
                         })
                         .accentColor(.dark)
                     Divider().padding(.horizontal, 20)
-                        .frame(height:3)
+                        .frame(height: 3)
 
                     NavigationLink(
                         destination: ContactFormView(viewModel: viewModel),
@@ -53,7 +53,7 @@ struct MoreView: View {
                             CardButton(cardName: "ContactForm")
                         })
                     Divider().padding(.horizontal, 20)
-                        .frame(height:3)
+                        .frame(height: 3)
 
                     NavigationLink(
                         destination: PrivacyView(),
@@ -61,7 +61,7 @@ struct MoreView: View {
                             CardButton(cardName: "Privacy")
                         })
                     Divider().padding(.horizontal, 20)
-                        .frame(height:3)
+                        .frame(height: 3)
 
                     NavigationLink(
                         destination: ImprintView(),
@@ -72,7 +72,7 @@ struct MoreView: View {
                 }
 
                 Rectangle()
-                    .frame(height:32)
+                    .frame(height: 32)
                     .foregroundColor(.primary_30)
 
                 Group {
@@ -81,7 +81,7 @@ struct MoreView: View {
                         label: {
                             ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
                                 Rectangle()
-                                HStack(alignment:.top) {
+                                HStack(alignment: .top) {
                                     Text("RestartOnboarding")
                                         .foregroundColor(.dark)
                                         .padding(.leading, 12)
@@ -92,18 +92,18 @@ struct MoreView: View {
                                         .foregroundColor(.dark)
                                         .padding()
                                 }
-                            }.frame(width: 351, height:54)
+                            }.frame(width: 351, height: 54)
                             .foregroundColor(.light)
                         })
                     Divider().padding(.horizontal, 20)
-                        .frame(height:3)
+                        .frame(height: 3)
 
                     Button(
                         action: openShareSheet,
                         label: {
                             ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
                                 Rectangle()
-                                HStack(alignment:.top) {
+                                HStack(alignment: .top) {
                                     Text(LocalizedStringKey("ShareApp"))
                                         .foregroundColor(.dark)
                                         .padding(.leading, 12)
@@ -114,7 +114,7 @@ struct MoreView: View {
                                         .foregroundColor(.dark)
                                         .padding()
                                 }
-                            }.frame(width: 351, height:54)
+                            }.frame(width: 351, height: 54)
                             .foregroundColor(.light)
                         })
                 }

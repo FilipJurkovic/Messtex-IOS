@@ -107,7 +107,7 @@ extension UIColor {
         return UIColor(named: "Light")!
     }
 
-    static var medium:UIColor {
+    static var medium: UIColor {
         return UIColor(named: "Medium")!
     }
 

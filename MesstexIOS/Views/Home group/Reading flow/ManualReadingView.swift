@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ManualReadingView: View {
 
-    @ObservedObject var viewModel : MainViewModel
+    @ObservedObject var viewModel: MainViewModel
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
 
-    var index : Int
+    var index: Int
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -31,7 +31,7 @@ struct ManualReadingView: View {
                     .foregroundColor(.dark)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 28)
-                VStack(spacing:0) {
+                VStack(spacing: 0) {
                     FloatingNumericTextField(placeHolder: "CounterNumberTextField", text: $viewModel.userData.meters[index].counterNumber)
                         .frame(width: 325)
                         .padding(.bottom, 7)
@@ -56,7 +56,7 @@ struct ManualReadingView: View {
                     ZStack {
                         Image("manual_reading_shape")
                             .resizable()
-                            .frame(width:327, height:57)
+                            .frame(width: 327, height: 57)
 
                         pinDots
                         backgroundField
@@ -108,7 +108,7 @@ struct ManualReadingView: View {
                         .foregroundColor(.primary_shade)
                 }
             }
-        }.offset(x:-18)
+        }.offset(x: -18)
     }
 
     private var backgroundField: some View {

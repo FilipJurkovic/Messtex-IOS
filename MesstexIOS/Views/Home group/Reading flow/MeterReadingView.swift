@@ -13,7 +13,7 @@ struct CameraHeaderView: View {
 
     var safeAreaInset: CGFloat = 0
 
-    @ObservedObject var viewModel : MainViewModel
+    @ObservedObject var viewModel: MainViewModel
 
     var body: some View {
         ZStack {
@@ -25,7 +25,7 @@ struct CameraHeaderView: View {
                 Spacer()
             }
             HStack {
-                Button(action : {
+                Button(action: {
                     viewModel.currentReadingView = ReadingFlowEnum.readingStepsView
                 }) {
                     RoundButtonStyle(imageName: "xmark", backgroundColor: .tetriary_tint, iconColor: .dark)
@@ -48,7 +48,7 @@ struct MeterReadingView: View {
 
     var index: Int = 0
 
-    @ObservedObject var viewModel : MainViewModel
+    @ObservedObject var viewModel: MainViewModel
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -56,7 +56,7 @@ struct MeterReadingView: View {
                 Image("overlay_image")
                     .resizable()
                     .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
-                VStack(spacing:0) {
+                VStack(spacing: 0) {
                     CameraHeaderView(safeAreaInset: 43, viewModel: viewModel)
                     Spacer()
                     Text("\(NSLocalizedString("ScanMessage", comment: "ScanMessage"))\nNr. \(viewModel.formatNumber(number: viewModel.userData.meters[index].counterNumber))" as String)
@@ -73,9 +73,9 @@ struct MeterReadingView: View {
                         .onTapGesture {
                             let meterModel: MeterReceivingData = viewModel.userData.meters[index]
                             if !viewModel.postModelData.meterReadings.isEmpty && viewModel.postModelData.meterReadings.endIndex-1 < index {
-                                viewModel.postModelData.meterReadings[index] = MeterReadingData(counterNumber: meterModel.counterNumber, counterType: meterModel.counterType, counterValue:  "", userMessage: "")
+                                viewModel.postModelData.meterReadings[index] = MeterReadingData(counterNumber: meterModel.counterNumber, counterType: meterModel.counterType, counterValue: "", userMessage: "")
                             }else {
-                                viewModel.postModelData.meterReadings.append(MeterReadingData(counterNumber: meterModel.counterNumber, counterType: meterModel.counterType, counterValue:  "", userMessage: ""))
+                                viewModel.postModelData.meterReadings.append(MeterReadingData(counterNumber: meterModel.counterNumber, counterType: meterModel.counterType, counterValue: "", userMessage: ""))
                             }
                         }
 

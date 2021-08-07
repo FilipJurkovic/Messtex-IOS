@@ -37,7 +37,7 @@ struct OnboardingFlowView: View {
                             .foregroundColor(.primary_color)
                             .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 17))
                     })
-                }.frame(width:UIScreen.main.bounds.size.width, alignment:.trailing)
+                }.frame(width: UIScreen.main.bounds.size.width, alignment: .trailing)
                 Spacer()
             }
             HStack {
@@ -60,7 +60,7 @@ struct OnboardingFlowView: View {
 
                     }.frame(width: 48, height: 48, alignment: .center)
                 })
-            }.frame(width:UIScreen.main.bounds.size.width, alignment:.trailing)
+            }.frame(width: UIScreen.main.bounds.size.width, alignment: .trailing)
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 26))
 
         }

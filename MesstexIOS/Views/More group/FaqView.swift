@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FaqView: View {
 
-    @ObservedObject var viewModel : MainViewModel
+    @ObservedObject var viewModel: MainViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var btnBack : some View {

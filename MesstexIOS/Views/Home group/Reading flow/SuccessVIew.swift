@@ -9,12 +9,12 @@ import SwiftUI
 
 struct SuccessVIew: View {
 
-    @ObservedObject var viewModel : MainViewModel
+    @ObservedObject var viewModel: MainViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack(spacing:0) {
+            VStack(spacing: 0) {
                 Image("successful_read")
                     .resizable()
                     .frame(width: 205, height: 171)
@@ -36,7 +36,7 @@ struct SuccessVIew: View {
                     .padding(.bottom, 19)
                 NavigationLink(
                     destination: AboutUsView(),
-                    label : {
+                    label: {
                         OutlinedButtonStyle(buttonLabel: "LearnMore")
                     })
                     .padding(.bottom, 210)
@@ -46,7 +46,7 @@ struct SuccessVIew: View {
                         viewModel.isReadingFinished = true
                         self.presentationMode.wrappedValue.dismiss()
                     } ,
-                    label : {
+                    label: {
                         PrimaryButtonStyle(buttonLabel: "Next")
                     })
             }

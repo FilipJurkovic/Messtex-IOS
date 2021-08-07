@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MeterReadingFlowView: View {
-    @ObservedObject var viewModel : MainViewModel
+    @ObservedObject var viewModel: MainViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var body: some View {
@@ -16,7 +16,7 @@ struct MeterReadingFlowView: View {
             VStack(spacing: 0) {
                 if viewModel.currentReadingView != ReadingFlowEnum.meterReadingView && viewModel.currentReadingView != ReadingFlowEnum.successView {
                     HStack {
-                        Button(action : {
+                        Button(action: {
                             if viewModel.currentReadingView == ReadingFlowEnum.codeReadingView {
                                 self.presentationMode.wrappedValue.dismiss()
                             } else {

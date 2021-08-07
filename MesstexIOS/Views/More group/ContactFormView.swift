@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContactFormView: View {
 
-    @ObservedObject var viewModel : MainViewModel
+    @ObservedObject var viewModel: MainViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     @State var isTapped = false

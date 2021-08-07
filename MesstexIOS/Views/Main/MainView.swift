@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var viewModel : MainViewModel
+    @StateObject var viewModel: MainViewModel
     @AppStorage("shouldShowOnboarding") var shouldShowOnboarding: Bool = true
 
     var body: some View {
@@ -24,19 +24,19 @@ struct MainView: View {
             .accentColor(.primary_color)
             .overlay(NavigationLink(
                         destination: MeterReadingFlowView(viewModel: viewModel),
-                        label : {
+                        label: {
                             VStack {
                                 ZStack {
                                     Circle()
                                         .foregroundColor(Color.primary_30)
-                                        .frame(width: 56, height:56)
+                                        .frame(width: 56, height: 56)
                                         .shadow(radius: 2)
                                     Image("scan_button")
                                         .resizable()
-                                        .frame(width: 56, height:56)
+                                        .frame(width: 56, height: 56)
                                     Image("scan_icon")
                                         .resizable()
-                                        .frame(width: 22, height:17)
+                                        .frame(width: 22, height: 17)
                                 }
                                 Text("Scan")
                                     .foregroundColor(Color.medium)
@@ -46,7 +46,7 @@ struct MainView: View {
             .onAppear {
                 UITabBar.appearance().backgroundColor = .clear
                 UITabBar.appearance().isTranslucent = false
-                UINavigationBar.appearance().titleTextAttributes = [.font : UIFont(name: "Roboto-Bold", size: 18)!]
+                UINavigationBar.appearance().titleTextAttributes = [.font: UIFont(name: "Roboto-Bold", size: 18)!]
                 UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.primary]
                 UINavigationBar.appearance().tintColor = .dark
                 UINavigationBar.appearance().barTintColor = .light

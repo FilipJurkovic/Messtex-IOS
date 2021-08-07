@@ -12,7 +12,7 @@ struct LogoImage: View {
     var body: some View {
         Image("logo")
             .resizable()
-            .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+            .aspectRatio(contentMode: .fill/*@END_MENU_TOKEN@*/)
             .padding(.bottom, 50)
             .frame(width: 100, height: 100)
     }
@@ -23,7 +23,7 @@ struct CardButton: View {
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
             Rectangle()
-            HStack(alignment:.top) {
+            HStack(alignment: .top) {
                 Text(LocalizedStringKey(cardName))
                     .foregroundColor(.dark)
                     .padding(.leading, 12)
@@ -34,7 +34,7 @@ struct CardButton: View {
                     .foregroundColor(.dark)
                     .padding()
             }
-        }.frame(width: 351, height:54)
+        }.frame(width: 351, height: 54)
         .foregroundColor(.light)
 
     }
@@ -69,7 +69,7 @@ struct FloatingTextField: View {
             .foregroundColor(self.error ? Color.danger : Color.dark)
             .accentColor(Color.medium)
             .animation(.linear)
-            .offset(y:8)
+            .offset(y: 8)
             ///Floating Placeholder
             Text(LocalizedStringKey(placeHolderText))
                 .paragraph()
@@ -111,7 +111,7 @@ struct FloatingNumericTextField: View {
             .foregroundColor(self.error ? Color.danger : Color.dark)
             .accentColor(Color.medium)
             .animation(.linear)
-            .offset(y:8)
+            .offset(y: 8)
 
             ///Floating Placeholder
             Text(LocalizedStringKey(placeHolderText))
@@ -217,7 +217,7 @@ struct ManualReadingButtonStyle: View {
 
                 Image("manual_scan_icon")
                     .resizable()
-                    .frame(width:16.25, height:12.51)
+                    .frame(width: 16.25, height: 12.51)
             }
 
         }.frame(width: 289, height: 60, alignment: .center)
@@ -279,7 +279,7 @@ struct StepIndicator: View {
 
 struct RoundButtonStyle: View {
     var imageName: String
-    var backgroundColor : Color
+    var backgroundColor: Color
     var iconColor: Color
 
     var body: some View {
@@ -297,7 +297,7 @@ struct RoundButtonStyle: View {
 
 struct LargeRoundButtonStyle: View {
     var imageName: String
-    var backgroundColor : Color
+    var backgroundColor: Color
     var iconColor: Color
 
     var body: some View {
@@ -327,7 +327,7 @@ struct RadioButton: View {
 
     let id: String
     let callback: (String)->()
-    let selectedID : String
+    let selectedID: String
     let size: CGFloat
     let color: Color
     let textSize: CGFloat
@@ -376,21 +376,21 @@ struct RadioButton: View {
             Circle()
                 .foregroundColor(.primary_color)
                 .frame(width: 14, height: 14)
-        }.frame(width:24, height:24)
+        }.frame(width: 24, height: 24)
     }
 
     private var unSelected : some View {
 
         Circle()
             .stroke(Color.dark, lineWidth: 1)
-            .frame(width:24, height:24)
+            .frame(width: 24, height: 24)
 
     }
 }
 
 struct RadioButtonGroup: View {
 
-    let items : [String]
+    let items: [String]
 
     @State var selectedId: String = ""
 
@@ -405,7 +405,7 @@ struct RadioButtonGroup: View {
                     Divider()
                         .foregroundColor(.tetriary)
                         .padding(.horizontal, 10)
-                        .frame(height:1)
+                        .frame(height: 1)
                 }
             }
         }
@@ -449,7 +449,7 @@ struct Loader: View {
 
 }
 
-struct FinishedReadingWidget : View {
+struct FinishedReadingWidget: View {
 
     var body: some View {
         VStack {
@@ -461,7 +461,7 @@ struct FinishedReadingWidget : View {
                         .resizable()
                         .frame(width: 61, height: 78)
                         .padding(.trailing, 29)
-                    VStack(alignment:.leading) {
+                    VStack(alignment: .leading) {
                         Text(LocalizedStringKey("SuccessCardTitle"))
                             .heading2()
                             .foregroundColor(.light)
@@ -476,14 +476,14 @@ struct FinishedReadingWidget : View {
 
             NavigationLink(
                 destination: AboutUsView(),
-                label : {
+                label: {
                     OutlinedButtonStyle(buttonLabel: "MoreButton")
                 })
         }
     }
 }
 
-struct Co2Widget : View {
+struct Co2Widget: View {
     var co2Level: Double
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -507,7 +507,7 @@ struct Co2Widget : View {
                         .padding(.bottom, 34)
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
-                }.frame(alignment:.bottom)
+                }.frame(alignment: .bottom)
             }.frame(height: 267)
             Image("earth_illustration")
                 .resizable()
@@ -518,10 +518,10 @@ struct Co2Widget : View {
     }
 }
 
-struct FaqWidget : View {
+struct FaqWidget: View {
 
-    var questionCount : Int
-    @Binding var flags : [Bool]
+    var questionCount: Int
+    @Binding var flags: [Bool]
     var faq: Faq
 
     var body: some View {
@@ -554,7 +554,7 @@ struct FaqWidget : View {
 
                 if index != flags.count-1 {
                     Divider()
-                        .frame(height:3)
+                        .frame(height: 3)
                         .foregroundColor(.medium)
                 }
             }
@@ -563,7 +563,7 @@ struct FaqWidget : View {
     }
 }
 
-struct ReadingFlowHeaderWidget : View {
+struct ReadingFlowHeaderWidget: View {
 
     var title: String
     var description: String
@@ -587,7 +587,7 @@ struct ReadingFlowHeaderWidget : View {
     }
 }
 
-struct AboutUsCardWidget : View {
+struct AboutUsCardWidget: View {
 
     var body: some View {
         ZStack {
@@ -600,7 +600,7 @@ struct AboutUsCardWidget : View {
                         dimension[.leading]
                     })
                     .padding(.trailing)
-                VStack(alignment:.leading) {
+                VStack(alignment: .leading) {
                     Text(LocalizedStringKey("AboutCardTitle"))
                         .heading2()
                         .foregroundColor(.primary_color)
@@ -623,12 +623,12 @@ struct AboutUsCardWidget : View {
                     .foregroundColor(.light.opacity(0.0))
                 NavigationLink(
                     destination: AboutUsView(),
-                    label : {
+                    label: {
                         VStack {
                             ZStack {
                                 Circle()
                                     .foregroundColor(Color.primary_color)
-                                    .frame(width: 40, height:40)
+                                    .frame(width: 40, height: 40)
                                     .shadow(radius: 2)
                                 Image(systemName: "chevron.right")
                                     .foregroundColor(.light)
@@ -636,9 +636,9 @@ struct AboutUsCardWidget : View {
                             }}
                     })
                     .padding(.init(top: 0, leading: 0, bottom: 19, trailing: 19))
-            }.frame(width:327, height: 176)
+            }.frame(width: 327, height: 176)
 
-        }.frame(width:327, height: 176)
+        }.frame(width: 327, height: 176)
     }
 }
 

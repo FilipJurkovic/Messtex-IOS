@@ -98,9 +98,7 @@ public struct CodeReadingView: View {
                     RoundedRectangle(cornerRadius: 12.8)
                         .stroke(viewModel.verificationError.message.isEmpty ? Color.primary_shade : Color.danger, lineWidth: 1.6)
                         .frame(width: 52, height: 70)
-                }
-
-                else {
+                } else {
                     ZStack(alignment: .center) {
                         RoundedRectangle(cornerRadius: 12.8)
                             .stroke(viewModel.verificationError.message.isEmpty ? Color.primary_shade : Color.danger, lineWidth: 1.6)

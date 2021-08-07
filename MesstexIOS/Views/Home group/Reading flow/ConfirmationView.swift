@@ -57,9 +57,7 @@ struct ConfirmationView: View {
                                         Divider()
                                             .foregroundColor(.tetriary)
                                             .frame(height: 1)
-                                    }
-
-                                    else {
+                                    } else {
                                         HStack {
                                             Text(LocalizedStringKey("Contact"))
                                                 .paragraphBold()

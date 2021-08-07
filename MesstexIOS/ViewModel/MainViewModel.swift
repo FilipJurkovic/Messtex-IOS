@@ -63,7 +63,7 @@ class MainViewModel: ObservableObject {
             if deltaLength == 1 {
                 mutatedValue.append("0")
             }
-        }else {
+        } else {
             mutatedValue.append("00")
         }
         return mutatedValue.replacingOccurrences(of: ".", with: "")

@@ -53,8 +53,7 @@ struct HomeView: View {
                             label: {
                                 PrimaryButtonStyle(buttonLabel: "ReadingButton")
                             })
-                    }
-                    else {
+                    } else {
                         FinishedReadingWidget()
                     }
 

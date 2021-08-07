@@ -99,9 +99,7 @@ struct ManualReadingView: View {
             Spacer()
             ForEach(0...8, id: \.self) { loopIndex in
                 if loopIndex >= self.viewModel.postModelData.meterReadings[index].counterValue.count {
-                }
-
-                else {
+                } else {
 
                     Text(self.viewModel.postModelData.meterReadings[index].counterValue[String.Index(encodedOffset: loopIndex)...String.Index(encodedOffset: loopIndex)])
                         .font(Font.custom("Roboto", size: 40))

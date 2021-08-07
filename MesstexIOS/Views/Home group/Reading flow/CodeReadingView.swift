@@ -113,7 +113,7 @@ public struct CodeReadingView: View {
     }
 
     private var backgroundField: some View {
-        return TextField("", text: $pin, onCommit: { print(pin) })
+        TextField("", text: $pin, onCommit: { print(pin) })
             .accentColor(.clear)
             .foregroundColor(.clear)
             .frame(height: 70)

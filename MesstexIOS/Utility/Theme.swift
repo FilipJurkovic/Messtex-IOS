@@ -12,75 +12,75 @@ import SwiftUI
 extension Color {
 
     static var danger: Color {
-        return Color("Danger")
+        Color("Danger")
     }
 
     static var warning: Color {
-        return Color("Warning")
+        Color("Warning")
     }
 
     static var success: Color {
-        return Color("Success")
+        Color("Success")
     }
 
     static var dark: Color {
-        return Color("Dark")
+        Color("Dark")
     }
 
     static var light: Color {
-        return Color("Light")
+        Color("Light")
     }
 
     static var medium: Color {
-        return Color("Medium")
+        Color("Medium")
     }
 
     static var primary_color: Color {
-        return Color("Primary")
+        Color("Primary")
     }
 
     static var primary_30: Color {
-        return Color("Primary_30")
+        Color("Primary_30")
     }
 
     static var primary_shade: Color {
-        return Color("Primary_shade")
+        Color("Primary_shade")
     }
 
     static var primary_tint: Color {
-        return Color("Primary_tint")
+        Color("Primary_tint")
     }
 
     static var secondary: Color {
-        return Color("Secondary")
+        Color("Secondary")
     }
 
     static var secondary_30: Color {
-        return Color("Secondary_30")
+        Color("Secondary_30")
     }
 
     static var secondary_shade: Color {
-        return Color("Secondary_shade")
+        Color("Secondary_shade")
     }
 
     static var secondary_tint: Color {
-        return Color("Secondary_tint")
+        Color("Secondary_tint")
     }
 
     static var tetriary: Color {
-        return Color("Tetriary")
+        Color("Tetriary")
     }
 
     static var tetriary_30: Color {
-        return Color("Tetriary_30")
+        Color("Tetriary_30")
     }
 
     static var tetriary_shade: Color {
-        return Color("Tetriary_shade")
+        Color("Tetriary_shade")
     }
 
     static var tetriary_tint: Color {
-        return Color("Tetriary_tint")
+        Color("Tetriary_tint")
     }
 
 }
@@ -88,75 +88,75 @@ extension Color {
 extension UIColor {
 
     static var danger: UIColor {
-        return UIColor(named: "Danger")!
+        UIColor(named: "Danger")!
     }
 
     static var warning: UIColor {
-        return UIColor(named: "Warning")!
+        UIColor(named: "Warning")!
     }
 
     static var success: UIColor {
-        return UIColor(named: "Success")!
+        UIColor(named: "Success")!
     }
 
     static var dark: UIColor {
-        return UIColor(named: "Dark")!
+        UIColor(named: "Dark")!
     }
 
     static var light: UIColor {
-        return UIColor(named: "Light")!
+        UIColor(named: "Light")!
     }
 
     static var medium: UIColor {
-        return UIColor(named: "Medium")!
+        UIColor(named: "Medium")!
     }
 
     static var primary: UIColor {
-        return UIColor(named: "Primary")!
+        UIColor(named: "Primary")!
     }
 
     static var primary_30: UIColor {
-        return UIColor(named: "Primary_30")!
+        UIColor(named: "Primary_30")!
     }
 
     static var primary_shade: UIColor {
-        return UIColor(named: "Primary_shade")!
+        UIColor(named: "Primary_shade")!
     }
 
     static var primary_tint: UIColor {
-        return UIColor(named: "Primary_tint")!
+        UIColor(named: "Primary_tint")!
     }
 
     static var secondary: UIColor {
-        return UIColor(named: "Secondary")!
+        UIColor(named: "Secondary")!
     }
 
     static var secondary_30: UIColor {
-        return UIColor(named: "Secondary_30")!
+        UIColor(named: "Secondary_30")!
     }
 
     static var secondary_shade: UIColor {
-        return UIColor(named: "Secondary_shade")!
+        UIColor(named: "Secondary_shade")!
     }
 
     static var secondary_tint: UIColor {
-        return UIColor(named: "Secondary_tint")!
+        UIColor(named: "Secondary_tint")!
     }
 
     static var tetriary: UIColor {
-        return UIColor(named: "Tetriary")!
+        UIColor(named: "Tetriary")!
     }
 
     static var tetriary_30: UIColor {
-        return UIColor(named: "Tetriary_30")!
+        UIColor(named: "Tetriary_30")!
     }
 
     static var tetriary_shade: UIColor {
-        return UIColor(named: "Tetriary_shade")!
+        UIColor(named: "Tetriary_shade")!
     }
 
     static var tetriary_tint: UIColor {
-        return UIColor(named: "Tetriary_tint")!
+        UIColor(named: "Tetriary_tint")!
     }
 }
 
@@ -169,13 +169,13 @@ struct Heading2: ViewModifier {
 
 extension View {
     func heading2() -> some View {
-        return self.modifier(Heading2())
+        self.modifier(Heading2())
     }
 }
 
 extension Text {
     func pincodeFont() -> Text {
-        return self.font(Font.custom("Roboto-Bold", size: 56))
+        self.font(Font.custom("Roboto-Bold", size: 56))
             .kerning(28.5)
             .foregroundColor(.primary_color)
     }
@@ -191,7 +191,7 @@ struct Heading1: ViewModifier {
 
 extension View {
     func heading1() -> some View {
-        return self.modifier(Heading1())
+        self.modifier(Heading1())
     }
 }
 
@@ -204,7 +204,7 @@ struct Paragraph: ViewModifier {
 
 extension View {
     func paragraph() -> some View {
-        return self.modifier(Paragraph())
+        self.modifier(Paragraph())
     }
 }
 
@@ -217,7 +217,7 @@ struct ParagraphBold: ViewModifier {
 
 extension View {
     func paragraphBold() -> some View {
-        return self.modifier(ParagraphBold())
+        self.modifier(ParagraphBold())
     }
 }
 
@@ -230,7 +230,7 @@ struct Small: ViewModifier {
 
 extension View {
     func small() -> some View {
-        return self.modifier(Small())
+        self.modifier(Small())
     }
 }
 
@@ -243,7 +243,7 @@ struct SmallBold: ViewModifier {
 
 extension View {
     func smallBold() -> some View {
-        return self.modifier(SmallBold())
+        self.modifier(SmallBold())
     }
 }
 
@@ -256,7 +256,7 @@ struct Tiny: ViewModifier {
 
 extension View {
     func tiny() -> some View {
-        return self.modifier(Tiny())
+        self.modifier(Tiny())
     }
 }
 
@@ -269,6 +269,6 @@ struct TinyBold: ViewModifier {
 
 extension View {
     func tinyBold() -> some View {
-        return self.modifier(TinyBold())
+        self.modifier(TinyBold())
     }
 }

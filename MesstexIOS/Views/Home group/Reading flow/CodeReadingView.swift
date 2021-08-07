@@ -134,4 +134,3 @@ struct CodeReadingView_Previews: PreviewProvider {
         CodeReadingView(viewModel: MainViewModel())
     }
 }
-

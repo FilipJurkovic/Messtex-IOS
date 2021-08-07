@@ -59,4 +59,3 @@ struct SuccessVIew_Previews: PreviewProvider {
         SuccessVIew(viewModel: MainViewModel())
     }
 }
-

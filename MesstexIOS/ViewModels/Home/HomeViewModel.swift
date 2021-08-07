@@ -14,4 +14,3 @@ class HomeViewModel: ObservableObject {
         pageIndex = page
     }
 }
-

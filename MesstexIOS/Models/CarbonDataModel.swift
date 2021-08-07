@@ -10,4 +10,3 @@ import Foundation
 struct CarbonDataModel: Codable{
     var co2Level: Double
 }
-

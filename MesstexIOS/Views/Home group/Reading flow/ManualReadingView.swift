@@ -131,4 +131,3 @@ struct ManualReadingView_Previews: PreviewProvider {
         ManualReadingView(viewModel: MainViewModel(), index: 0)
     }
 }
-

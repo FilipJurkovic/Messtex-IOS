@@ -352,13 +352,13 @@ struct RadioButton: View {
         HStack(spacing: 8) {
             Button(action: {
                 self.callback(self.id)
-            }) {
+            }, label: {
                 if self.selectedID == self.id {
                     selected
                 } else {
                     unSelected
                 }
-            }
+            })
             Text(LocalizedStringKey(id))
                 .paragraph()
                 .foregroundColor(.dark)

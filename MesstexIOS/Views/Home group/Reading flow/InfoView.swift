@@ -21,9 +21,11 @@ struct InfoView: View {
         VStack(spacing: 0) {
             HStack {
                 Spacer()
-                Button(action: {viewModel.isInfoSheetOpen = false}) {
+                Button(action: {
+                    viewModel.isInfoSheetOpen = false
+                }, label: {
                     RoundButtonStyle(imageName: "xmark", backgroundColor: .tetriary_tint, iconColor: .dark)
-                }
+                })
             }
             .padding(.bottom, 25)
             .padding(.top, 20)

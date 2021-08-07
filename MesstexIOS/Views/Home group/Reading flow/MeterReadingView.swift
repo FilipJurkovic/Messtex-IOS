@@ -27,9 +27,9 @@ struct CameraHeaderView: View {
             HStack {
                 Button(action: {
                     viewModel.currentReadingView = ReadingFlowEnum.readingStepsView
-                }) {
+                }, label: {
                     RoundButtonStyle(imageName: "xmark", backgroundColor: .tetriary_tint, iconColor: .dark)
-                }
+                })
                 .accentColor(.white)
                 .padding(.leading, 10)
 

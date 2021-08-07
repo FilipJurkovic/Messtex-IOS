@@ -22,11 +22,14 @@ struct ExampleView: View {
         .ignoresSafeArea()
         .frame(width: UIScreen.main.bounds.size.width, alignment: .topLeading)
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
-        }) {
-            RoundButtonStyle(imageName: "xmark", backgroundColor: .tetriary_tint, iconColor: .dark)
-        })
+        .navigationBarItems(
+            leading:
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    RoundButtonStyle(imageName: "xmark", backgroundColor: .tetriary_tint, iconColor: .dark)
+                })
+        )
     }
 }
 

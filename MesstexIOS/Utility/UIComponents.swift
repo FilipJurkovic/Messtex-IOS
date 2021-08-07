@@ -52,12 +52,12 @@ struct FloatingTextField: View {
         self.placeHolderText = placeHolder
     }
     var shouldPlaceHolderMove: Bool {
-        isEditing || (text.count != 0)
+        isEditing || !text.isEmpty
     }
     var body: some View {
         ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 4)
-                .stroke(self.error ? Color.danger : text.count != 0 ? Color.dark : Color.medium, lineWidth: 1)
+                .stroke(self.error ? Color.danger : !text.isEmpty ? Color.dark : Color.medium, lineWidth: 1)
                 .frame(height: textFieldHeight)
 
             TextField("", text: $text, onEditingChanged: { (edit) in
@@ -96,12 +96,12 @@ struct FloatingNumericTextField: View {
         self.placeHolderText = placeHolder
     }
     var shouldPlaceHolderMove: Bool {
-        isEditing || (String(text).count != 0)
+        isEditing || !String(text).isEmpty
     }
     var body: some View {
         ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 4)
-                .stroke(self.error ? Color.danger : String(text).count != 0 ? Color.dark : Color.medium, lineWidth: 1)
+                .stroke(self.error ? Color.danger : !String(text).isEmpty ? Color.dark : Color.medium, lineWidth: 1)
                 .frame(height: textFieldHeight)
 
             TextField("", value: $text, formatter: NumberFormatter(), onEditingChanged: { (edit) in
@@ -139,12 +139,12 @@ struct FloatingTextEditor: View {
         self.placeHolderText = placeHolder
     }
     var shouldPlaceHolderMove: Bool {
-        text.count != 0
+        !text.isEmpty
     }
     var body: some View {
         ZStack(alignment: .topLeading) {
             RoundedRectangle(cornerRadius: 4)
-                .stroke(self.error ? Color.danger : text.count != 0 ? Color.dark : Color.medium, lineWidth: 1)
+                .stroke(self.error ? Color.danger : !text.isEmpty ? Color.dark : Color.medium, lineWidth: 1)
             TextEditor(text: $text)
                 .offset(x: 13, y: 21)
                 .padding(.init(top: 0, leading: 0, bottom: 25, trailing: 20))

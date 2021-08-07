@@ -23,7 +23,7 @@ struct ContactView: View {
             }
         })
     }
-    
+
     var body: some View {
         VStack(alignment:.leading){
             Text(LocalizedStringKey("ContactTitle"))
@@ -36,7 +36,7 @@ struct ContactView: View {
                 .padding(.bottom, 5)
             Button(action: {
                 EmailHelper.shared.send(subject: "Support question", body: "", to: ["support@messtex.de"])
-                
+
             }, label: {
                 Text("support@messtex.de")
                     .underline()
@@ -53,9 +53,9 @@ struct ContactView: View {
 
             Text("Messtex UG\nHopfenweg 21\n85276 Pfaffenhofen")
                 .paragraph()
-            
 
-            
+
+
             Spacer()
         }
         .padding(.init(top: 25, leading: 24, bottom: 0, trailing: 0))
@@ -69,7 +69,7 @@ struct ContactView: View {
             }
         }
     }
-    
+
 }
 
 struct ContactView_Previews: PreviewProvider {

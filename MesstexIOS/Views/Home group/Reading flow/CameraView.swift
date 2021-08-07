@@ -33,13 +33,13 @@ struct CameraView: UIViewRepresentable {
 
     // results are delivered on capture
     var captureAction: (UIImage, [String]) -> Void
-    
+
     var reader: PIXMeterReadingView = PIXMeterReadingView()
 
     func toggleFlash(state: Bool) {
         self.reader.isTorchOn = state
     }
-    
+
     func manualCapture() {
         reader.initiateManualCapture()
     }
@@ -49,20 +49,20 @@ struct CameraView: UIViewRepresentable {
         reader.fractionDigits = PIXAutomatic
         reader.integerDigits = PIXAutomatic
         reader.numberOfCounters = PIXAutomatic
-        
+
         return reader
     }
-    
+
     func updateUIView(_ uiView: PIXCameraView, context: Context) {
     }
-    
+
     func makeCoordinator() -> Coordinator {
         Coordinator(reader: reader, callback:   { results, image in
             let resultStrings = results.map {$0.cleanReadingString()}
             captureAction(image, resultStrings)
         } )
     }
-    
+
     class Coordinator: NSObject, PIXMeterReadingViewDelegate {
         var callback: ([PIXMeterReadingResult], UIImage) -> Void
 
@@ -70,11 +70,11 @@ struct CameraView: UIViewRepresentable {
             meterReadingView.stopProcessing()
             self.callback(readingResults, image)
         }
-        
+
         func cameraView(_ cameraView: PIXCameraView, didScanBarcodes barcodeResults: [PIXBarcodeReadingResult], in image: UIImage, metadata: PIXMetadata) {
             // TODO: handle barcode scanning result
         }
-        
+
         init(reader : PIXMeterReadingView, callback: @escaping ([PIXMeterReadingResult], UIImage) -> Void){
             self.callback = callback
             super.init()

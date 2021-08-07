@@ -8,24 +8,24 @@
 import SwiftUI
 
 struct ManualReadingView: View {
-    
+
     @ObservedObject var viewModel : MainViewModel
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    
+
     var index : Int
-    
+
     var body: some View {
         ScrollView(showsIndicators: false){
             VStack{
                 Image("reading_graphics")
                     .resizable()
                     .frame(width: 114, height: 95)
-                
+
                 Text(LocalizedStringKey("ManualInputTitle"))
                     .heading1()
                     .foregroundColor(.primary_color)
                     .padding(.bottom, 25)
-                
+
                 Text(LocalizedStringKey("ManualInputSubtitle"))
                     .paragraphBold()
                     .foregroundColor(.dark)
@@ -44,7 +44,7 @@ struct ManualReadingView: View {
                         .frame(width: 325)
                         .padding(.bottom, 32)
                         .disabled(true)
-                    
+
                     HStack{
                         Text(viewModel.userData.meters[index].counterTypeName)
                             .heading2()
@@ -52,16 +52,16 @@ struct ManualReadingView: View {
                             .padding(.bottom, 25)
                         Spacer()
                     }
-                    
+
                     ZStack{
                         Image("manual_reading_shape")
                             .resizable()
                             .frame(width:327, height:57)
-                        
+
                         pinDots
                         backgroundField
                     }
-                    
+
                     HStack{
                         Text(LocalizedStringKey("MessageTitle"))
                             .paragraphBold()
@@ -69,13 +69,13 @@ struct ManualReadingView: View {
                             .padding(.bottom, 25)
                         Spacer()
                     }
-                    
+
                     FloatingTextEditor(placeHolder: "Message", text: $viewModel.postModelData.meterReadings[index].userMessage)
                         .frame(width: 325)
-                    
+
                 }
                 .padding(.bottom, 80)
-                
+
                 Button(
                     action: {
                         viewModel.currentReadingView = ReadingFlowEnum.readingStepsView
@@ -93,16 +93,16 @@ struct ManualReadingView: View {
             .navigationBarHidden(true)
         }
     }
-    
+
     private var pinDots: some View {
         HStack {
             Spacer()
             ForEach(0...8, id: \.self) { loopIndex in
                 if loopIndex >= self.viewModel.postModelData.meterReadings[index].counterValue.count {
                 }
-                
+
                 else {
-                    
+
                     Text(self.viewModel.postModelData.meterReadings[index].counterValue[String.Index(encodedOffset: loopIndex)...String.Index(encodedOffset: loopIndex)])
                         .font(Font.custom("Roboto", size: 40))
                         .foregroundColor(.primary_shade)
@@ -110,7 +110,7 @@ struct ManualReadingView: View {
             }
         }.offset(x:-18)
     }
-    
+
     private var backgroundField: some View {
         return TextField("", text: $viewModel.postModelData.meterReadings[index].counterValue, onCommit: {print(viewModel.postModelData.meterReadings[index].counterValue)})
             .accentColor(.clear)
@@ -122,7 +122,7 @@ struct ManualReadingView: View {
                     viewModel.postModelData.meterReadings[index].counterValue.popLast()
                 }
             })
-        
+
     }
 }
 

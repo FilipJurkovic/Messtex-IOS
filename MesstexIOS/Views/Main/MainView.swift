@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     @StateObject var viewModel : MainViewModel
     @AppStorage("shouldShowOnboarding") var shouldShowOnboarding: Bool = true
-    
+
     var body: some View {
         NavigationView{
             TabView{
@@ -55,7 +55,7 @@ struct MainView: View {
             }
             .navigationBarTitle("")
             .navigationBarHidden(true)
-            
+
         }
         .fullScreenCover(isPresented: $shouldShowOnboarding, content: {
             OnboardingFlowView(shouldShowOnboarding: $shouldShowOnboarding)

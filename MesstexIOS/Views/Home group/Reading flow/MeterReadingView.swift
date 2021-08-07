@@ -12,9 +12,9 @@ import AVFoundation
 struct CameraHeaderView: View {
 
     var safeAreaInset: CGFloat = 0
-    
+
     @ObservedObject var viewModel : MainViewModel
-    
+
     var body: some View {
         ZStack{
             HStack{
@@ -37,18 +37,18 @@ struct CameraHeaderView: View {
             }
         }        .padding(.top, safeAreaInset)
         .background(Color.clear)
-        
+
     }
 
 }
 
 struct MeterReadingView: View {
-    
+
 
     var cameraView: CameraView
-    
+
     var index: Int = 0
-    
+
     @ObservedObject var viewModel : MainViewModel
     var body: some View {
         GeometryReader { geometry in
@@ -64,7 +64,7 @@ struct MeterReadingView: View {
                         .multilineTextAlignment(.center)
                         .foregroundColor(.light)
                         .padding(.bottom, 42)
-                    
+
                     Button(
                         action: {viewModel.currentReadingView = ReadingFlowEnum.manualReadingView},
                         label: {
@@ -80,7 +80,7 @@ struct MeterReadingView: View {
                             }
                         }
 
-                    
+
                     HStack{
                         Button(action: {cameraView.toggleFlash(state: !viewModel.isTorchOn)
                             viewModel.isTorchOn = !viewModel.isTorchOn
@@ -97,11 +97,11 @@ struct MeterReadingView: View {
                         }).padding(.trailing, 15)
                         Button(action: {
                             viewModel.isInfoSheetOpen = !viewModel.isInfoSheetOpen
-                            
+
                         }, label: {
                             LargeRoundButtonStyle(imageName: "info", backgroundColor: .primary_color, iconColor: .light)
                         })
-                        
+
                     }.padding(.bottom, 50)
                 }
             }

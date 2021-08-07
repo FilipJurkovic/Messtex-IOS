@@ -11,7 +11,7 @@ import UIKit
 struct OnboardingFlowView: View {
     @Binding var shouldShowOnboarding: Bool
     @State var pageIndex: Int = 0
-    
+
     var body: some View {
         ZStack(alignment: .bottom){
             TabView(selection: $pageIndex){
@@ -57,12 +57,12 @@ struct OnboardingFlowView: View {
                             .frame(width: 7.38, height: 12.92)
                             .foregroundColor(.primary_shade)
                             .padding()
-                        
+
                     }.frame(width: 48, height: 48, alignment: .center)
                 })
             }.frame(width:UIScreen.main.bounds.size.width, alignment:.trailing)
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 26))
-            
+
         }
     }
 }

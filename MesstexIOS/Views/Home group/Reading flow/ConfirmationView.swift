@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ConfirmationView: View {
-    
+
     @ObservedObject var viewModel : MainViewModel
     var length = 8
     var body: some View {
@@ -21,7 +21,7 @@ struct ConfirmationView: View {
                             .foregroundColor(.primary_color)
                         Spacer()
                     }.padding(.horizontal, 24)
-                    
+
                 }
                 ZStack(){
                     Image("reading_paper")
@@ -38,7 +38,7 @@ struct ConfirmationView: View {
                                             Image(viewModel.getMeterTypeIcon(meterType: viewModel.postModelData.meterReadings[index].counterType))
                                                 .resizable()
                                                 .frame(width: 18, height: 18)
-                                            
+
 
                                             Text(viewModel.userData.meters[index].counterTypeName)
                                                 .paragraphBold()
@@ -59,7 +59,7 @@ struct ConfirmationView: View {
                                             .foregroundColor(.tetriary)
                                             .frame(height:1)
                                     }
-                                    
+
                                     else{
                                         HStack{
                                             Text(LocalizedStringKey("Contact"))

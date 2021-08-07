@@ -9,20 +9,20 @@ import SwiftUI
 import UIKit
 
 public struct CodeReadingView: View {
-    
+
     @ObservedObject var viewModel : MainViewModel
-    
+
     var maxDigits: Int = 6
     var label = "Enter One Time Password"
-    
+
     @State var pin: String = ""
     @State var showPin = false
     @State var isDisabled = false
-    
+
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    
+
     public var body: some View {
-        
+
         ZStack{
             ScrollView(showsIndicators: false){
                 VStack{
@@ -86,11 +86,11 @@ public struct CodeReadingView: View {
                 .navigationBarHidden(true)
 
             }
-            
+
         }
 
     }
-    
+
     private var pinDots: some View {
         HStack {
             Spacer()
@@ -100,12 +100,12 @@ public struct CodeReadingView: View {
                         .stroke(viewModel.verificationError.message.isEmpty ? Color.primary_shade : Color.danger, lineWidth: 1.6)
                         .frame(width: 52, height: 70)
                 }
-                
+
                 else {
                     ZStack(alignment: .center){
                         RoundedRectangle(cornerRadius: 12.8)
                             .stroke(viewModel.verificationError.message.isEmpty ? Color.primary_shade : Color.danger, lineWidth: 1.6)
-                        
+
                         Text(self.pin[String.Index(encodedOffset: index)...String.Index(encodedOffset: index)])
                             .font(Font.custom("Roboto-Bold", size: 56))
                             .foregroundColor(.primary_color)
@@ -114,7 +114,7 @@ public struct CodeReadingView: View {
             }
         }
     }
-    
+
     private var backgroundField: some View {
         return TextField("", text: $pin, onCommit: {print(pin)})
             .accentColor(.clear)
@@ -125,7 +125,7 @@ public struct CodeReadingView: View {
                     pin.popLast()
                 }
             })
-        
+
     }
 
 }

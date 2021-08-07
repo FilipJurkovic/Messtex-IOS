@@ -10,8 +10,8 @@ import SwiftUI
 struct MeterReadingFlowView: View {
     @ObservedObject var viewModel : MainViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
-    
+
+
     var body: some View {
         ZStack{
             VStack(spacing: 0){
@@ -23,7 +23,7 @@ struct MeterReadingFlowView: View {
                             } else {
                                 viewModel.getPreviousTabView()
                             }
-                            
+
                         }, label:{
                             Image(systemName: "arrow.left")
                                 .foregroundColor(.dark)
@@ -38,27 +38,27 @@ struct MeterReadingFlowView: View {
                 TabView(selection: $viewModel.currentReadingView){
                     CodeReadingView(viewModel: viewModel)
                         .tag(ReadingFlowEnum.codeReadingView)
-                    
+
                     ReadingStepsView(viewModel: viewModel)
                         .tag(ReadingFlowEnum.readingStepsView)
-                    
+
                     MeterReadingView(cameraView: CameraView(captureAction: { image, values in
 
                         viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue = viewModel.removePoint(value: values[0])
-                        
+
                         viewModel.currentReadingView = ReadingFlowEnum.manualReadingView
                     }), index: viewModel.currentMeterIndex, viewModel: viewModel)
                     .tag(ReadingFlowEnum.meterReadingView)
-                    
+
                     ManualReadingView(viewModel: viewModel, index: viewModel.currentMeterIndex)
                         .tag(ReadingFlowEnum.manualReadingView)
-                    
+
                     ContactDetailsView(viewModel: viewModel)
                         .tag(ReadingFlowEnum.contactDetailsView)
-                    
+
                     ConfirmationView(viewModel: viewModel)
                         .tag(ReadingFlowEnum.confirmationView)
-                    
+
                     SuccessVIew(viewModel: viewModel)
                         .tag(ReadingFlowEnum.successView)
                 }
@@ -80,7 +80,7 @@ struct MeterReadingFlowView: View {
                         .foregroundColor(.dark)
                         .opacity(0.3)
                     Loader()
-                    
+
                 }
                 .ignoresSafeArea()
                 .navigationBarBackButtonHidden(true)

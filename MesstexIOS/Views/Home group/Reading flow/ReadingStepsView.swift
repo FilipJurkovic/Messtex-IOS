@@ -11,16 +11,16 @@ struct ReadingStepsView: View {
     @ObservedObject var viewModel : MainViewModel
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     var body: some View {
-        
+
         ScrollView(showsIndicators: false){
             VStack{
 
                 ReadingFlowHeaderWidget(title: "ReadingStepsTitle", description: "ReadingStepsSubTitle")
                     .padding(.bottom, 41)
-                
+
                 VStack(spacing: 0){
                     ForEach(0...viewModel.userData.meters.count, id: \.self) { index in
-                        
+
                         let lastIndexCheck: Bool = index != (viewModel.readingStepsProgress.endIndex - 1)
 
                         VStack(alignment: HorizontalAlignment.leading, spacing: 0){ HStack{
@@ -92,7 +92,7 @@ struct ReadingStepsView: View {
                         .frame(width: UIScreen.main.bounds.size.width)
                     }}
                     .padding(.bottom, 43)
-                
+
                 Button(
                     action: { viewModel.currentReadingView = ReadingFlowEnum.confirmationView },
                     label: {

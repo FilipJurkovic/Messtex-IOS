@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct SuccessVIew: View {
-    
+
     @ObservedObject var viewModel : MainViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
+
     var body: some View {
         ScrollView(showsIndicators: false){
             VStack(spacing:0){
@@ -31,7 +31,7 @@ struct SuccessVIew: View {
                     .foregroundColor(.dark)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 65)
-                
+
                 Co2Widget(co2Level: viewModel.co2Level.co2Level)
                     .padding(.bottom, 19)
                 NavigationLink(

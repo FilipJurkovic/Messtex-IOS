@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ImprintView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
+
     var btnBack : some View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
@@ -22,7 +22,7 @@ struct ImprintView: View {
             }
         })
     }
-    
+
     var body: some View {
         ScrollView(showsIndicators: false){
             VStack(alignment:.leading){
@@ -44,14 +44,14 @@ struct ImprintView: View {
                     Text("Julia Berger-Bauer")
                         .paragraph()
                         .padding(.bottom, 23)
-                    
+
                     Text(LocalizedStringKey("Contact"))
                         .heading2()
                         .foregroundColor(.primary_color)
                         .padding(.bottom, 16)
                     Button(action: {
                         EmailHelper.shared.send(subject: "Information request", body: "", to: ["support@messtex.de"])
-                        
+
                     }, label: {
                         Text("info@messtex.de")
                             .underline()
@@ -60,7 +60,7 @@ struct ImprintView: View {
                             .padding(.bottom, 23)
 
                     })
-                    
+
                     Text(LocalizedStringKey("ImprintSalesTaxTitle"))
                         .heading2()
                         .foregroundColor(.primary_color)
@@ -69,7 +69,7 @@ struct ImprintView: View {
                     Text(LocalizedStringKey("ImprintSalesTaxText"))
                         .paragraph()
                         .padding(.bottom, 23)
-                    
+
                     Text(LocalizedStringKey("ImprintResponsibilityTitle"))
                         .heading2()
                         .foregroundColor(.primary_color)
@@ -78,8 +78,8 @@ struct ImprintView: View {
                     Text(LocalizedStringKey("ImprintResponsibilityText"))
                         .paragraph()
                         .padding(.bottom, 23)
-                    
-                    
+
+
                 }
                 Group{
                     Text(LocalizedStringKey("ImprintDisclamerTitle"))

@@ -9,7 +9,7 @@ import Foundation
 import AVFoundation
 
 class MainViewModel: ObservableObject {
-    
+
     //API DATA
     @Published var co2Level: CarbonDataModel
     @Published var faq: Faq
@@ -17,7 +17,7 @@ class MainViewModel: ObservableObject {
     @Published var postModelData: PostModelRecord
     @Published var contactFormData: ContactFormData
     @Published var verificationError: ErrorModel
-    
+
     @Published var faqFlagIndex: [Bool]
     @Published var readingStepsProgress: [Bool]
 
@@ -29,7 +29,7 @@ class MainViewModel: ObservableObject {
     @Published var isInfoSheetOpen: Bool
     @Published var dismissReadingFlow: Bool
     @Published var isReadingFinished : Bool
-    
+
     //VIEWMODEL INITIALIZATION
     init() {
         self.co2Level = CarbonDataModel(co2Level: 0.0)
@@ -38,10 +38,10 @@ class MainViewModel: ObservableObject {
         self.postModelData = PostModelRecord(verificationCode: "", meterReadings: [], firstName: "", secondName: "", email: "", phone: "", sendCopy: false)
         self.contactFormData = ContactFormData(name: "", email: "", subject: "", message: "")
         self.verificationError = ErrorModel(message: "")
-        
+
         self.faqFlagIndex = []
         self.readingStepsProgress = []
-        
+
         self.isProgressBarActive = false
         self.isTorchOn = false
         self.isInfoSheetOpen = false
@@ -54,7 +54,7 @@ class MainViewModel: ObservableObject {
     func toggleFaqFlagIndex(index: Int){
         self.faqFlagIndex[index] = !self.faqFlagIndex[index]
     }
-    
+
     func removePoint(value: String) -> String{
         var mutatedValue = value
         if let idx = mutatedValue.firstIndex(of: ".") {
@@ -68,13 +68,13 @@ class MainViewModel: ObservableObject {
         }
         return mutatedValue.replacingOccurrences(of: ".", with: "")
     }
-    
+
     func addComma(value: String) -> String{
         let commaPosition: String.Index = value.index(value.startIndex, offsetBy: value.count-2)
 
         return "\(value.substring(to: commaPosition)).\(value.substring(from: commaPosition))"
     }
-    
+
     func isContactFormValid() -> Bool{
         let isNameValid: Bool = self.contactFormData.name != ""
         let isEmailValid: Bool = self.contactFormData.email != ""
@@ -82,7 +82,7 @@ class MainViewModel: ObservableObject {
 
         return isNameValid && isEmailValid && isMessageValid
     }
-    
+
     func areContactDetailsValid() -> Bool{
         let isFirstNameValid: Bool = self.userData.firstName != ""
         let isEmailValid: Bool = self.userData.email != ""
@@ -90,7 +90,7 @@ class MainViewModel: ObservableObject {
         let isPhoneValid: Bool = self.userData.phone != ""
         return isFirstNameValid &&  isLastNameValid && isEmailValid && isPhoneValid
     }
-    
+
     func getMeterTypeIcon(meterType: String) -> String{
         switch meterType{
         case "WMZ":
@@ -112,7 +112,7 @@ class MainViewModel: ObservableObject {
             return "heat_meter"
         }
     }
-    
+
     func getInfoViewIndex(meterType: String) -> Int{
         switch meterType{
         case "WMZ":
@@ -135,28 +135,28 @@ class MainViewModel: ObservableObject {
         }
 
     }
-    
+
     func getPreviousTabView(){
         switch self.currentReadingView {
         case ReadingFlowEnum.readingStepsView:
             self.currentReadingView = ReadingFlowEnum.codeReadingView
-            
+
         case ReadingFlowEnum.meterReadingView:
             self.currentReadingView = ReadingFlowEnum.readingStepsView
-            
+
         case ReadingFlowEnum.manualReadingView:
             self.currentReadingView = ReadingFlowEnum.readingStepsView
-            
+
         case ReadingFlowEnum.contactDetailsView:
             self.currentReadingView = ReadingFlowEnum.readingStepsView
-            
+
         case ReadingFlowEnum.confirmationView:
             self.currentReadingView = ReadingFlowEnum.readingStepsView
         default:
             return
         }
     }
-    
+
     func toggleTorch() {
         guard let device = AVCaptureDevice.default(for: .video) else { return }
 
@@ -178,7 +178,7 @@ class MainViewModel: ObservableObject {
             print("Torch is not available")
         }
     }
-    
+
     func populatePostModelData(pin: String) {
         self.postModelData.firstName = self.userData.firstName
         self.postModelData.secondName = self.userData.lastName
@@ -186,14 +186,14 @@ class MainViewModel: ObservableObject {
         self.postModelData.phone = self.userData.phone
         self.postModelData.verificationCode = pin
     }
-    
+
     func formatNumber(number: Int) -> String{
         let formatter = NumberFormatter()
         formatter.numberStyle = .none
 
         return formatter.string(from: NSNumber(value: number)) ?? "0"
     }
-    
+
     func checkReadingStepStatus() -> Bool{
         for i in self.readingStepsProgress{
             if !i{
@@ -202,10 +202,10 @@ class MainViewModel: ObservableObject {
         }
         return true
     }
-    
+
     //API REQUESTS
     let url = URL(string: "https://api.ninoxdb.de/v1/teams/yCZezLbXfFAiwR6r3/databases/qmz4hgc0o1bh/query")
-    
+
     func getCO2Levels(){
         let jsonBody = try? JSONEncoder().encode(PostModel(query: "getCO2Level()"))
         var request = URLRequest(url: url!)
@@ -213,7 +213,7 @@ class MainViewModel: ObservableObject {
         request.httpBody = jsonBody
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer eecf7fd0-cee9-11eb-b752-fde919688281", forHTTPHeaderField: "Authorization")
-        
+
         DispatchQueue.main.async {
             URLSession.shared.dataTask(with: request){ (data, response, error) in
                 guard let data = data else {return}
@@ -222,17 +222,17 @@ class MainViewModel: ObservableObject {
                 print(data)
             }.resume()}
     }
-    
+
     func getFAQs(){
         let jsonBody = try? JSONEncoder().encode(PostModel(query: "getFAQs()"))
-        
+
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"
         request.httpBody = jsonBody
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer eecf7fd0-cee9-11eb-b752-fde919688281", forHTTPHeaderField: "Authorization")
-        
-        
+
+
         DispatchQueue.main.async {
             URLSession.shared.dataTask(with: request){ (data, response, error) in
                 guard let data = data else {return}
@@ -245,23 +245,23 @@ class MainViewModel: ObservableObject {
                 }
                 self.faqFlagIndex = newBoolArray
             }.resume()
-            
+
         }
     }
-    
+
     func getUtilizationUnitData(pin : String){
         let body = try? JSONEncoder().encode(UtilizationModel(verificationCode: pin))
         let json: String = String(data: body!, encoding: String.Encoding.utf8) ?? " "
         let jsonBody = try? JSONEncoder().encode(PostModel(query: "getUtilizationUnitData(\"\(json.replacingOccurrences(of: "\"", with: "\"\""))\")"))
-        
+
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"
         request.httpBody = jsonBody
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer eecf7fd0-cee9-11eb-b752-fde919688281", forHTTPHeaderField: "Authorization")
-        
+
         self.isProgressBarActive = true
-        
+
         DispatchQueue.main.async {
             URLSession.shared.dataTask(with: request){ (data, response, error) in
                 guard let data = data else {return}
@@ -295,20 +295,20 @@ class MainViewModel: ObservableObject {
             }
             .resume()}
     }
-    
+
     func takeMeterReadings(){
         let body = try? JSONEncoder().encode(postModelData)
         let json: String = String(data: body!, encoding: String.Encoding.utf8) ?? " "
         let jsonBody = try? JSONEncoder().encode(PostModel(query: "takeMeterReadings(\"\(json.replacingOccurrences(of: "\"", with: "\"\""))\")"))
-        
+
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"
         request.httpBody = jsonBody
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer eecf7fd0-cee9-11eb-b752-fde919688281", forHTTPHeaderField: "Authorization")
-        
+
         self.isProgressBarActive = true
-        
+
         DispatchQueue.main.async {
             URLSession.shared.dataTask(with: request){ (data, response, error) in
                 guard let data = data else {return}
@@ -322,18 +322,18 @@ class MainViewModel: ObservableObject {
             }.resume()
         }
     }
-    
+
     func takeContactForm(){
         let body = try? JSONEncoder().encode(contactFormData)
         let json: String = String(data: body!, encoding: String.Encoding.utf8) ?? " "
         let jsonBody = try? JSONEncoder().encode(PostModel(query: "takeContactForm(\"\(json.replacingOccurrences(of: "\"", with: "\"\""))\")"))
-        
+
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"
         request.httpBody = jsonBody
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer eecf7fd0-cee9-11eb-b752-fde919688281", forHTTPHeaderField: "Authorization")
-        
+
         DispatchQueue.main.async {
             URLSession.shared.dataTask(with: request).resume()
         }

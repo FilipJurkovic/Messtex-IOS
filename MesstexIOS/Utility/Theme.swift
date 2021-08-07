@@ -90,75 +90,75 @@ extension UIColor {
     static var danger: UIColor  {
         return UIColor(named: "Danger")!
     }
-    
+
     static var warning: UIColor  {
         return UIColor(named: "Warning")!
     }
-    
+
     static var success: UIColor  {
         return UIColor(named: "Success")!
     }
-    
-    
+
+
     static var dark: UIColor  {
         return UIColor(named: "Dark")!
     }
-    
+
     static var light: UIColor  {
         return UIColor(named: "Light")!
     }
-    
+
     static var medium:UIColor  {
         return UIColor(named: "Medium")!
     }
-    
-    
+
+
     static var primary: UIColor  {
         return UIColor(named: "Primary")!
     }
-    
+
     static var primary_30: UIColor  {
         return UIColor(named: "Primary_30")!
     }
-    
+
     static var primary_shade: UIColor  {
         return UIColor(named: "Primary_shade")!
     }
-    
+
     static var primary_tint: UIColor  {
         return UIColor(named: "Primary_tint")!
     }
-    
-    
+
+
     static var secondary: UIColor  {
         return UIColor(named: "Secondary")!
     }
-    
+
     static var secondary_30: UIColor  {
         return UIColor(named: "Secondary_30")!
     }
-    
+
     static var secondary_shade: UIColor  {
         return UIColor(named: "Secondary_shade")!
     }
-    
+
     static var secondary_tint: UIColor  {
         return UIColor(named: "Secondary_tint")!
     }
-    
-    
+
+
     static var tetriary: UIColor  {
         return UIColor(named: "Tetriary")!
     }
-    
+
     static var tetriary_30: UIColor  {
         return UIColor(named: "Tetriary_30")!
     }
-    
+
     static var tetriary_shade: UIColor  {
         return UIColor(named: "Tetriary_shade")!
     }
-    
+
     static var tetriary_tint: UIColor  {
         return UIColor(named: "Tetriary_tint")!
     }
@@ -190,7 +190,7 @@ extension Text {
 struct Heading1: ViewModifier {
     func body(content: Content) -> some View {
         content
-            
+
             .font(Font.custom("Roboto-Medium", size: 24))
     }
 }

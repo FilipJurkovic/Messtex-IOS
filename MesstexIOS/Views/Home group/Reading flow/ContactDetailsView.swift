@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ContactDetailsView: View {
-    
+
     @ObservedObject var viewModel : MainViewModel
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    
+
     var body: some View {
         ScrollView(showsIndicators: false){
             Group{
@@ -76,7 +76,7 @@ struct ContactDetailsView: View {
                             .disabled(true)
                             .padding(.bottom, 7)
                     }
-                    
+
 
                     HStack{
                         Text(LocalizedStringKey("ReasonOfReading"))
@@ -85,7 +85,7 @@ struct ContactDetailsView: View {
                             .padding(.bottom, 17)
                         Spacer()
                     }
-                    
+
                     RadioButtonGroup(items: ["Annual billing", "Change of supplier", "Control reading"], selectedId: viewModel.userData.readingReason) { selected in
                         print("Selected is: \(selected)")
                     }.disabled(true)

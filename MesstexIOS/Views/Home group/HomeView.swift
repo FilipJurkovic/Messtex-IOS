@@ -10,7 +10,7 @@ import UIKit
 
 struct HomeView: View {
     @ObservedObject var viewModel : MainViewModel
-    
+
     var faq_home = Faq(
         faqs:[
             FaqItem(sortNumber: 0, question: "Where can I find my electricity meter?", answer: "You can usually find the water meters in your apartment in the kitchen, bathroom and / or toilet."),
@@ -18,7 +18,7 @@ struct HomeView: View {
             FaqItem(sortNumber: 2, question: "Where can I find my RMVs?", answer: "You can usually find the RMWs in your apartment.")
         ]
     )
-    
+
     @State  var flags: [Bool] = [false, false, false]
 
     var body: some View {
@@ -40,7 +40,7 @@ struct HomeView: View {
                         .heading2()
                         .foregroundColor(.dark)
                         .padding(.bottom, 25)
-                    
+
                     Text(LocalizedStringKey("Subtitle"))
                         .paragraphBold()
                         .foregroundColor(.primary_color)
@@ -63,7 +63,7 @@ struct HomeView: View {
             }
             .padding(!viewModel.isReadingFinished ? EdgeInsets(top: 0, leading: 0, bottom: 208, trailing: 0) :
                         EdgeInsets(top: 0, leading: 0, bottom: 60, trailing: 0))
-            
+
             Co2Widget(co2Level: viewModel.co2Level.co2Level)
                 .edgesIgnoringSafeArea(.all)
                 .navigationBarTitle("")

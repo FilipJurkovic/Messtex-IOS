@@ -11,14 +11,14 @@ import OSLog
 
 @main
 struct MesstexIOSApp: App {
-    
+
     private var viewModel = MainViewModel()
-    
+
     init() {
         viewModel.getCO2Levels()
         viewModel.getFAQs()
     }
-    
+
     let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
 
     var body: some Scene {

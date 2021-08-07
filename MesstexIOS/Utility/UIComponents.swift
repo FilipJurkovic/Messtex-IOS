@@ -63,11 +63,11 @@ struct FloatingTextField: View {
             RoundedRectangle(cornerRadius: 4)
                 .stroke(self.error ? Color.danger : text.count != 0 ? Color.dark : Color.medium, lineWidth: 1)
                 .frame(height: textFieldHeight)
-            
+
             TextField("", text: $text,onEditingChanged: { (edit) in
                 isEditing = edit
             })
-            
+
             .paragraph()
             .offset(x: 15)
             .foregroundColor(self.error ? Color.danger : Color.dark)
@@ -82,7 +82,7 @@ struct FloatingTextField: View {
                 .offset(x: 15.0, y: -17)
                 .scaleEffect(shouldPlaceHolderMove ? 0.857 : 1.0)
                 .animation(.linear)
-            
+
         }
     }
 }
@@ -106,7 +106,7 @@ struct FloatingNumericTextField: View {
             RoundedRectangle(cornerRadius: 4)
                 .stroke(self.error ? Color.danger : String(text).count != 0 ? Color.dark : Color.medium, lineWidth: 1)
                 .frame(height: textFieldHeight)
-            
+
             TextField("", value: $text, formatter: NumberFormatter(), onEditingChanged: { (edit) in
                 isEditing = edit
             })
@@ -116,7 +116,7 @@ struct FloatingNumericTextField: View {
             .accentColor(Color.medium)
             .animation(.linear)
             .offset(y:8)
-            
+
             ///Floating Placeholder
             Text(LocalizedStringKey(placeHolderText))
                 .paragraph()
@@ -125,7 +125,7 @@ struct FloatingNumericTextField: View {
                 .offset(x: 15.0, y: -17)
                 .scaleEffect(shouldPlaceHolderMove ? 0.857 : 1.0)
                 .animation(.linear)
-            
+
         }
     }
 }
@@ -157,7 +157,7 @@ struct FloatingTextEditor: View {
                 .background(Color.light.opacity(0.0))
                 .animation(.linear)
 
-            
+
             Text(LocalizedStringKey(placeHolderText))
                 .paragraph()
                 .foregroundColor(Color.medium)
@@ -184,7 +184,7 @@ struct PrimaryButton: View {
                 Text(buttonLabel)
                     .paragraphBold()
                     .foregroundColor(.light)
-                
+
             }.frame(width: 327, height: 49, alignment: .center)
         })
         .disabled(!isEnabled)
@@ -210,7 +210,7 @@ struct PrimaryButtonStyle: View {
 }
 
 struct ManualReadingButtonStyle: View {
-    
+
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 28)
@@ -308,7 +308,7 @@ struct LargeRoundButtonStyle: View {
     var imageName: String
     var backgroundColor : Color
     var iconColor: Color
-    
+
     var body: some View {
         ZStack {
             Circle()
@@ -371,25 +371,25 @@ struct RadioButton: View {
             Text(LocalizedStringKey(id))
                 .paragraph()
                 .foregroundColor(.dark)
-            
+
             Spacer()
         }.padding(.horizontal, 14)
-        
+
     }
-    
+
     private var selected : some View{
         ZStack{
             Circle()
                 .stroke(Color.dark, lineWidth: 1)
-            
+
             Circle()
                 .foregroundColor(.primary_color)
                 .frame(width: 14, height: 14)
         }.frame(width:24, height:24)
     }
-    
+
     private var unSelected : some View{
-        
+
         Circle()
             .stroke(Color.dark, lineWidth: 1)
             .frame(width:24, height:24)
@@ -436,7 +436,7 @@ struct Loader: View {
                 .foregroundColor(.light)
             VStack{
                 Spacer()
-                
+
                 Circle()
                     .trim(from: 0, to: 0.8)
                     .stroke(Color.primary_color, style: StrokeStyle(lineWidth: 6, lineCap: .round))
@@ -444,10 +444,10 @@ struct Loader: View {
                     .rotationEffect(.init(degrees: self.animate ? 360 : 0))
                     .animation(Animation.linear(duration: 0.7).repeatForever(autoreverses: false))
                     .padding(.bottom, 20)
-                
+
                 Text(LocalizedStringKey("Loader"))
                     .paragraph()
-                
+
                 Spacer()
             }
         }.frame(width: 250, height: 180)
@@ -459,7 +459,7 @@ struct Loader: View {
 }
 
 struct FinishedReadingWidget : View {
-    
+
     var body: some View{
         VStack{
             ZStack{
@@ -482,7 +482,7 @@ struct FinishedReadingWidget : View {
                 }
             }
             .frame(width: 319, height: 138)
-            
+
             NavigationLink(
                 destination: AboutUsView(),
                 label : {
@@ -510,7 +510,7 @@ struct Co2Widget : View {
                         .font(Font.custom("Roboto-Bold", size: 56))
                         .foregroundColor(.light)
                         .padding(.bottom, 16)
-                    
+
                     Text(LocalizedStringKey("Co2Subtitle"))
                         .paragraph()
                         .foregroundColor(.light)
@@ -523,17 +523,17 @@ struct Co2Widget : View {
                 .resizable()
                 .frame(width: 101, height: 122, alignment: .top)
                 .padding(.bottom, 219)
-            
+
         }.frame(width: UIScreen.main.bounds.size.width, height: 341)
     }
 }
 
 struct FaqWidget : View {
-    
+
     var questionCount : Int
     @Binding var flags : [Bool]
     var faq: Faq
-    
+
     var body: some View{
         VStack{
             ForEach(0..<questionCount){ index in
@@ -543,7 +543,7 @@ struct FaqWidget : View {
                         Text(faq.faqs[index].answer)
                             .paragraph()
 
-                        
+
                     },
                     label: {
                         if flags[index]{
@@ -562,7 +562,7 @@ struct FaqWidget : View {
                     withAnimation(.easeOut, {flags[index].toggle()})
                 }
                 .animation(.easeIn)
-                
+
                 if index != flags.count-1{
                     Divider()
                         .frame(height:3)
@@ -575,7 +575,7 @@ struct FaqWidget : View {
 }
 
 struct ReadingFlowHeaderWidget : View {
-    
+
     var title: String
     var description: String
     var body: some View{
@@ -583,7 +583,7 @@ struct ReadingFlowHeaderWidget : View {
             Image("reading_graphics")
                 .resizable()
                 .frame(width: 114, height: 95)
-            
+
             Text(LocalizedStringKey(title))
                 .heading1()
                 .foregroundColor(.primary_color)
@@ -624,7 +624,7 @@ struct AboutUsCardWidget : View {
                         .paragraph()
                         .alignmentGuide(.top, computeValue: { dimension in
                             dimension[.top]
-                            
+
                         })
                     Spacer()
                 }
@@ -650,7 +650,7 @@ struct AboutUsCardWidget : View {
                     })
                     .padding(.init(top: 0, leading: 0, bottom: 19, trailing: 19))
             }.frame(width:327, height: 176)
-            
+
         }.frame(width:327, height: 176)
     }
 }

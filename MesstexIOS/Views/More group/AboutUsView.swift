@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AboutUsView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
+
     var btnBack : some View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
@@ -22,7 +22,7 @@ struct AboutUsView: View {
             }
         })
     }
-    
+
     var body: some View {
         ScrollView(showsIndicators: false){
             Image("about_top")
@@ -56,7 +56,7 @@ struct AboutUsView: View {
                             Spacer()
                         }
                         .padding(.bottom, 22)
-                        
+
                         HStack{
                             Image("bullet_point")
                                 .padding(.trailing, 17)
@@ -65,7 +65,7 @@ struct AboutUsView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                             Spacer()
                         }.padding(.bottom, 22)
-                        
+
                         HStack{
                             Image("bullet_point")
                                 .padding(.trailing, 17)
@@ -74,7 +74,7 @@ struct AboutUsView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                             Spacer()
                         }.padding(.bottom, 22)
-                        
+
                         HStack{
                             Image("bullet_point")
                                 .padding(.trailing, 17)
@@ -83,7 +83,7 @@ struct AboutUsView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                             Spacer()
                         }.padding(.bottom, 22)
-                        
+
                         HStack{
                             Image("bullet_point")
                                 .padding(.trailing, 17)
@@ -92,14 +92,14 @@ struct AboutUsView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                             Spacer()
                         }.padding(.bottom, 22)
-                        
+
                     }.lineLimit(10)
 
                     Text(LocalizedStringKey("AboutParagraphTwo"))
                         .paragraph()
                         .padding(.bottom, 65)
                 }
-                
+
 
                 Spacer()
             }
@@ -114,7 +114,7 @@ struct AboutUsView: View {
                         .foregroundColor(.dark)
                 }
             }
-            
+
             ZStack{
                 Rectangle()
                     .foregroundColor(.primary_color)
@@ -123,11 +123,11 @@ struct AboutUsView: View {
                     .foregroundColor(.light)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 33.5)
-                
+
             }
             .frame(width: UIScreen.main.bounds.size.width, height: 250, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             .padding(.bottom, 66)
-            
+
             VStack(alignment:.leading){
                 Text(LocalizedStringKey("AboutPrinciplesTitle"))
                     .heading2()
@@ -159,7 +159,7 @@ struct AboutUsView: View {
                         .paragraph()
                         .fixedSize(horizontal: false, vertical: true)
                         .padding(.bottom, 32)
-                    
+
 
                     StepIndicator(stepIndex: 3)
                         .padding(.bottom, 7)

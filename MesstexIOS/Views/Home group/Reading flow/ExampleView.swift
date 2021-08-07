@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExampleView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
+
     var body: some View {
         ZStack{
             Color.dark

@@ -79,7 +79,6 @@ struct ImprintView: View {
                         .paragraph()
                         .padding(.bottom, 23)
 
-
                 }
                 Group{
                     Text(LocalizedStringKey("ImprintDisclamerTitle"))
@@ -91,7 +90,6 @@ struct ImprintView: View {
                         .paragraph()
                         .padding(.bottom, 23)
                 }
-
 
                 Spacer()
             }

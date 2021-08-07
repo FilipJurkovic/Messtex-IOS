@@ -99,7 +99,6 @@ extension UIColor {
         return UIColor(named: "Success")!
     }
 
-
     static var dark: UIColor  {
         return UIColor(named: "Dark")!
     }
@@ -111,7 +110,6 @@ extension UIColor {
     static var medium:UIColor  {
         return UIColor(named: "Medium")!
     }
-
 
     static var primary: UIColor  {
         return UIColor(named: "Primary")!
@@ -129,7 +127,6 @@ extension UIColor {
         return UIColor(named: "Primary_tint")!
     }
 
-
     static var secondary: UIColor  {
         return UIColor(named: "Secondary")!
     }
@@ -145,7 +142,6 @@ extension UIColor {
     static var secondary_tint: UIColor  {
         return UIColor(named: "Secondary_tint")!
     }
-
 
     static var tetriary: UIColor  {
         return UIColor(named: "Tetriary")!
@@ -164,7 +160,6 @@ extension UIColor {
     }
 }
 
-
 struct Heading2: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -177,7 +172,6 @@ extension View {
         return self.modifier(Heading2())
     }
 }
-
 
 extension Text {
     func pincodeFont() -> Text {

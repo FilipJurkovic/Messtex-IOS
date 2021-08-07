@@ -11,7 +11,6 @@ struct MeterReadingFlowView: View {
     @ObservedObject var viewModel : MainViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
-
     var body: some View {
         ZStack{
             VStack(spacing: 0){

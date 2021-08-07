@@ -58,7 +58,6 @@ public struct CodeReadingView: View {
                             }
                         }
 
-
                         NavigationLink(
                             destination: ExampleView(),
                             label : {

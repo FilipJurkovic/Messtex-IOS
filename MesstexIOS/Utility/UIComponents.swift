@@ -18,8 +18,6 @@ struct LogoImage: View {
     }
 }
 
-
-
 struct CardButton: View {
     var cardName: String
     var body: some View {
@@ -42,7 +40,6 @@ struct CardButton: View {
 
     }
 }
-
 
 struct FloatingTextField: View {
     let textFieldHeight: CGFloat = 57
@@ -130,7 +127,6 @@ struct FloatingNumericTextField: View {
     }
 }
 
-
 struct FloatingTextEditor: View {
     let textFieldHeight: CGFloat = 168
     private let placeHolderText: String
@@ -157,7 +153,6 @@ struct FloatingTextEditor: View {
                 .background(Color.light.opacity(0.0))
                 .animation(.linear)
 
-
             Text(LocalizedStringKey(placeHolderText))
                 .paragraph()
                 .foregroundColor(Color.medium)
@@ -168,7 +163,6 @@ struct FloatingTextEditor: View {
         }
     }
 }
-
 
 struct PrimaryButton: View {
     var handler: () -> Void
@@ -271,7 +265,6 @@ struct ChangeButtonStyle: View {
         }
     }
 }
-
 
 struct StepIndicator: View {
     var stepIndex: Int
@@ -492,7 +485,6 @@ struct FinishedReadingWidget : View {
     }
 }
 
-
 struct Co2Widget : View {
     var co2Level: Double
     var body: some View{
@@ -542,7 +534,6 @@ struct FaqWidget : View {
                     content: {
                         Text(faq.faqs[index].answer)
                             .paragraph()
-
 
                     },
                     label: {
@@ -597,7 +588,6 @@ struct ReadingFlowHeaderWidget : View {
         }
     }
 }
-
 
 struct AboutUsCardWidget : View {
 

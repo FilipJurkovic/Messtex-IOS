@@ -44,7 +44,6 @@ struct CameraHeaderView: View {
 
 struct MeterReadingView: View {
 
-
     var cameraView: CameraView
 
     var index: Int = 0
@@ -79,7 +78,6 @@ struct MeterReadingView: View {
                                 viewModel.postModelData.meterReadings.append(MeterReadingData(counterNumber: meterModel.counterNumber, counterType: meterModel.counterType, counterValue:  "", userMessage: ""))
                             }
                         }
-
 
                     HStack{
                         Button(action: {cameraView.toggleFlash(state: !viewModel.isTorchOn)

@@ -31,7 +31,6 @@ struct ContactDetailsView: View {
                         Spacer()
                     }
 
-
                     Group{
                         FloatingTextField(placeHolder: "FirstNameTextField", text: $viewModel.userData.firstName)
                             .padding(.bottom, 7)
@@ -77,7 +76,6 @@ struct ContactDetailsView: View {
                             .padding(.bottom, 7)
                     }
 
-
                     HStack{
                         Text(LocalizedStringKey("ReasonOfReading"))
                             .heading2()
@@ -89,7 +87,6 @@ struct ContactDetailsView: View {
                     RadioButtonGroup(items: ["Annual billing", "Change of supplier", "Control reading"], selectedId: viewModel.userData.readingReason) { selected in
                         print("Selected is: \(selected)")
                     }.disabled(true)
-
 
                 }.frame(width:327)
                 .padding(.bottom, 58)

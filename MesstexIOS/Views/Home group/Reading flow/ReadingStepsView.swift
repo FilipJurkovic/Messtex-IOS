@@ -56,7 +56,6 @@ struct ReadingStepsView: View {
                                         }
                                     })
 
-
                             } else{
                                 if viewModel.readingStepsProgress.last!{
                                     Image("bullet_point")
@@ -65,8 +64,6 @@ struct ReadingStepsView: View {
                                 } else{
                                     StepIndicator(stepIndex: index+1)
                                 }
-
-
 
                                 Text(LocalizedStringKey("ContactData"))
                                     .paragraphBold()

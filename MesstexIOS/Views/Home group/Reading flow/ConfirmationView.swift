@@ -39,7 +39,6 @@ struct ConfirmationView: View {
                                                 .resizable()
                                                 .frame(width: 18, height: 18)
 
-
                                             Text(viewModel.userData.meters[index].counterTypeName)
                                                 .paragraphBold()
                                                 .foregroundColor(.primary_color)
@@ -113,7 +112,6 @@ struct ConfirmationView: View {
                 Button(action: {viewModel.takeMeterReadings()}, label: {
                     PrimaryButtonStyle(buttonLabel: "Send")
                 }).padding(.bottom, 75)
-
 
             }
         }

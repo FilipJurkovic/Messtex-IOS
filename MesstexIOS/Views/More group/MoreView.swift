@@ -29,7 +29,6 @@ struct MoreView: View {
                 AboutUsCardWidget()
                     .padding(.init(top: 20, leading: 0, bottom: 38, trailing: 0))
 
-
                 Group{
                     NavigationLink(
                         destination: FaqView(viewModel: viewModel),
@@ -69,7 +68,6 @@ struct MoreView: View {
                         label: {
                             CardButton(cardName: "Imprint")
                         })
-
 
                 }
 

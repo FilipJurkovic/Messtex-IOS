@@ -27,7 +27,6 @@
 import SwiftUI
 import MeterReading
 
-
 // adapted from https://stackoverflow.com/a/57295284
 struct CameraView: UIViewRepresentable {
 

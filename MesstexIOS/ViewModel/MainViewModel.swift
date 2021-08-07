@@ -232,7 +232,6 @@ class MainViewModel: ObservableObject {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer eecf7fd0-cee9-11eb-b752-fde919688281", forHTTPHeaderField: "Authorization")
 
-
         DispatchQueue.main.async {
             URLSession.shared.dataTask(with: request){ (data, response, error) in
                 guard let data = data else {return}

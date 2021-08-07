@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct ContactFormView: View {
 
     @ObservedObject var viewModel : MainViewModel

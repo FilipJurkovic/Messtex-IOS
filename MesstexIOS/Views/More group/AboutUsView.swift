@@ -44,8 +44,6 @@ struct AboutUsView: View {
                         .foregroundColor(.primary_color)
                         .padding(.bottom, 16)
 
-
-
                     VStack{
                         HStack{
                             Image("bullet_point")
@@ -99,7 +97,6 @@ struct AboutUsView: View {
                         .paragraph()
                         .padding(.bottom, 65)
                 }
-
 
                 Spacer()
             }
@@ -159,7 +156,6 @@ struct AboutUsView: View {
                         .paragraph()
                         .fixedSize(horizontal: false, vertical: true)
                         .padding(.bottom, 32)
-
 
                     StepIndicator(stepIndex: 3)
                         .padding(.bottom, 7)

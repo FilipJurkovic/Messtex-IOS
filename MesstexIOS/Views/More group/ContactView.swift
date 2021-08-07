@@ -54,8 +54,6 @@ struct ContactView: View {
             Text("Messtex UG\nHopfenweg 21\n85276 Pfaffenhofen")
                 .paragraph()
 
-
-
             Spacer()
         }
         .padding(.init(top: 25, leading: 24, bottom: 0, trailing: 0))

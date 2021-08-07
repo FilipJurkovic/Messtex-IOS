@@ -107,7 +107,7 @@ struct ConfirmationView: View {
                     }.frame(width: 300, height: 450)
 
                 }.frame(width: 353.3, height: 527.4)
-                Button(action: {viewModel.takeMeterReadings()}, label: {
+                Button(action: { viewModel.takeMeterReadings() }, label: {
                     PrimaryButtonStyle(buttonLabel: "Send")
                 }).padding(.bottom, 75)
 

@@ -216,7 +216,7 @@ class MainViewModel: ObservableObject {
 
         DispatchQueue.main.async {
             URLSession.shared.dataTask(with: request) { (data, _, _) in
-                guard let data = data else {return}
+                guard let data = data else { return }
                 let co2_value = try! JSONDecoder().decode(Double.self, from: data)
                 self.co2Level = CarbonDataModel(co2Level: co2_value)
                 print(data)
@@ -234,7 +234,7 @@ class MainViewModel: ObservableObject {
 
         DispatchQueue.main.async {
             URLSession.shared.dataTask(with: request) { (data, _, _) in
-                guard let data = data else {return}
+                guard let data = data else { return }
 
                 self.faq = try! JSONDecoder().decode(Faq.self, from: data)
 
@@ -263,7 +263,7 @@ class MainViewModel: ObservableObject {
 
         DispatchQueue.main.async {
             URLSession.shared.dataTask(with: request) { (data, _, error) in
-                guard let data = data else {return}
+                guard let data = data else { return }
 
                 do {
                     try JSONDecoder().decode(UtilizationResponseModel.self, from: data)
@@ -310,7 +310,7 @@ class MainViewModel: ObservableObject {
 
         DispatchQueue.main.async {
             URLSession.shared.dataTask(with: request) { (data, _, error) in
-                guard let data = data else {return}
+                guard let data = data else { return }
                 self.co2Level = try! JSONDecoder().decode(CarbonDataModel.self, from: data)
 
                 self.isProgressBarActive = false

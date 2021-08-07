@@ -30,7 +30,7 @@ struct OnboardingFlowView: View {
             }
             VStack {
                 HStack {
-                    Button(action: {shouldShowOnboarding.toggle()}, label: {
+                    Button(action: { shouldShowOnboarding.toggle() }, label: {
                         Text(LocalizedStringKey("Skip"))
                             .underline()
                             .paragraph()

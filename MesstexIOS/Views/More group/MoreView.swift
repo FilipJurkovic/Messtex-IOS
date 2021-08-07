@@ -77,7 +77,7 @@ struct MoreView: View {
 
                 Group {
                     Button(
-                        action: {shouldShowOnboarding.toggle()},
+                        action: { shouldShowOnboarding.toggle() },
                         label: {
                             ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
                                 Rectangle()

@@ -549,7 +549,7 @@ struct FaqWidget: View {
                 .padding(.horizontal, 10)
                 .accentColor(.dark)
                 .onTapGesture {
-                    withAnimation(.easeOut, {flags[index].toggle()})
+                    withAnimation(.easeOut, { flags[index].toggle() })
                 }
                 .animation(.easeIn)
 

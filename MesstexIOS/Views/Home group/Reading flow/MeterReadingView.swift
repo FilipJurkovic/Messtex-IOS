@@ -65,7 +65,7 @@ struct MeterReadingView: View {
                         .padding(.bottom, 42)
 
                     Button(
-                        action: {viewModel.currentReadingView = ReadingFlowEnum.manualReadingView},
+                        action: { viewModel.currentReadingView = ReadingFlowEnum.manualReadingView },
                         label: {
                             ManualReadingButtonStyle()
                         })

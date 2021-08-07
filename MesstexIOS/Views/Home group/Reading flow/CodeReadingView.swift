@@ -75,7 +75,7 @@ public struct CodeReadingView: View {
                                 .foregroundColor(.primary_color)
                                 .padding(.bottom, 47)
                         })
-                    Button(action: {viewModel.getUtilizationUnitData(pin: pin)}, label: {
+                    Button(action: { viewModel.getUtilizationUnitData(pin: pin) }, label: {
                         PrimaryButtonStyle(buttonLabel: "Next")
                     })
 
@@ -113,7 +113,7 @@ public struct CodeReadingView: View {
     }
 
     private var backgroundField: some View {
-        return TextField("", text: $pin, onCommit: {print(pin)})
+        return TextField("", text: $pin, onCommit: { print(pin) })
             .accentColor(.clear)
             .foregroundColor(.clear)
             .frame(height: 70)

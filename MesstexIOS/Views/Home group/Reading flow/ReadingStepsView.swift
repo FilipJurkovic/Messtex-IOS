@@ -71,7 +71,7 @@ struct ReadingStepsView: View {
                                     .padding(.leading, 9)
                                 Spacer()
                                 Button(
-                                    action: {viewModel.currentReadingView = ReadingFlowEnum.contactDetailsView},
+                                    action: { viewModel.currentReadingView = ReadingFlowEnum.contactDetailsView },
                                     label: {
                                         if viewModel.readingStepsProgress.last! {
                                             ChangeButtonStyle()

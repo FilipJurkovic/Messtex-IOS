@@ -110,7 +110,7 @@ struct ManualReadingView: View {
     }
 
     private var backgroundField: some View {
-        return TextField("", text: $viewModel.postModelData.meterReadings[index].counterValue, onCommit: {print(viewModel.postModelData.meterReadings[index].counterValue)})
+        return TextField("", text: $viewModel.postModelData.meterReadings[index].counterValue, onCommit: { print(viewModel.postModelData.meterReadings[index].counterValue) })
             .accentColor(.clear)
             .foregroundColor(.clear)
             .keyboardType(.numberPad)

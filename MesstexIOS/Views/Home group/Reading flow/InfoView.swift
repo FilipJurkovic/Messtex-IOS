@@ -13,10 +13,10 @@ struct InfoView: View {
 
     var index: Int
 
-    var nameArray: [LocalizedStringKey] = [LocalizedStringKey("WaterInfoTitle"),LocalizedStringKey("HeaterInfoTitle"),LocalizedStringKey("ElectricityInfoTitle")]
-    var imageArray = ["watermeter_illustration","gasmeter_illustration","electricity_illustration"]
-    var numberExplanationArray: [LocalizedStringKey] = [LocalizedStringKey("WaterInfoMeterNumber"),LocalizedStringKey("HeaterInfoMeterNumber"),LocalizedStringKey("ElectricityInfoMeterNumber")]
-    var readingExplanationArray: [LocalizedStringKey] = [LocalizedStringKey("WaterInfoMeterReading"),LocalizedStringKey("HeaterInfoMeterReading"),LocalizedStringKey("ElectricityInfoMeterReading")]
+    var nameArray: [LocalizedStringKey] = [LocalizedStringKey("WaterInfoTitle"), LocalizedStringKey("HeaterInfoTitle"), LocalizedStringKey("ElectricityInfoTitle")]
+    var imageArray = ["watermeter_illustration", "gasmeter_illustration", "electricity_illustration"]
+    var numberExplanationArray: [LocalizedStringKey] = [LocalizedStringKey("WaterInfoMeterNumber"), LocalizedStringKey("HeaterInfoMeterNumber"), LocalizedStringKey("ElectricityInfoMeterNumber")]
+    var readingExplanationArray: [LocalizedStringKey] = [LocalizedStringKey("WaterInfoMeterReading"), LocalizedStringKey("HeaterInfoMeterReading"), LocalizedStringKey("ElectricityInfoMeterReading")]
     var body: some View {
         VStack(spacing: 0) {
             HStack {

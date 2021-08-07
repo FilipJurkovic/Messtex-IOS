@@ -82,7 +82,7 @@ struct MeterReadingView: View {
                     HStack {
                         Button(action: {cameraView.toggleFlash(state: !viewModel.isTorchOn)
                             viewModel.isTorchOn = !viewModel.isTorchOn
-                        } , label: {
+                        }, label: {
                             ZStack {
                                 Circle()
                                     .frame(width: 48, height: 48)

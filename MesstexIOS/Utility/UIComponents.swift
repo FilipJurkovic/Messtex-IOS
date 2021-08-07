@@ -60,7 +60,7 @@ struct FloatingTextField: View {
                 .stroke(self.error ? Color.danger : text.count != 0 ? Color.dark : Color.medium, lineWidth: 1)
                 .frame(height: textFieldHeight)
 
-            TextField("", text: $text,onEditingChanged: { (edit) in
+            TextField("", text: $text, onEditingChanged: { (edit) in
                 isEditing = edit
             })
 
@@ -269,7 +269,7 @@ struct StepIndicator: View {
     var body: some View {
         ZStack(alignment: .center) {
             Circle()
-                .stroke(Color.primary_shade,lineWidth: 2)
+                .stroke(Color.primary_shade, lineWidth: 2)
                 .frame(width: 36, height: 36)
             Text(String(stepIndex))
                 .paragraphBold()

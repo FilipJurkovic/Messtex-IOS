@@ -136,6 +136,6 @@ struct MoreView: View {
 
 struct MoreView_Previews: PreviewProvider {
     static var previews: some View {
-        MoreView(viewModel: MainViewModel(),shouldShowOnboarding: .constant(false))
+        MoreView(viewModel: MainViewModel(), shouldShowOnboarding: .constant(false))
     }
 }

@@ -39,7 +39,7 @@ struct ContactDetailsView: View {
                         FloatingTextField(placeHolder: "EmailTextField", text: .constant(Date().formatDate()))
 
                         HStack {
-                            Toggle("",isOn: $viewModel.postModelData.sendCopy)
+                            Toggle("", isOn: $viewModel.postModelData.sendCopy)
                                 .labelsHidden()
                                 .toggleStyle(SwitchToggleStyle(tint: .primary_color))
                             Text(LocalizedStringKey("SendCopyText"))

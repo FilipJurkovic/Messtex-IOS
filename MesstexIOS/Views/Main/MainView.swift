@@ -42,7 +42,7 @@ struct MainView: View {
                                     .foregroundColor(Color.medium)
                                     .tiny()
                             }.offset(y: -1)
-                        }),alignment: .bottom)
+                        }), alignment: .bottom)
             .onAppear {
                 UITabBar.appearance().backgroundColor = .clear
                 UITabBar.appearance().isTranslucent = false

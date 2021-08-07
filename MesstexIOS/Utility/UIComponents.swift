@@ -23,25 +23,25 @@ struct LogoImage: View {
 struct CardButton: View {
     var cardName: String
     var body: some View {
-                    ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)){
-                    Rectangle()
-                        HStack(alignment:.top)
-                    {
-                            Text(LocalizedStringKey(cardName))
-                        .foregroundColor(.dark)
-                        .padding(.leading, 12)
-                        .padding(.top, 5)
-                            Spacer()
-                        Image(systemName: "chevron.right")
-                            .frame(width: 7.38, height: 12.92)
-                            .foregroundColor(.dark)
-                            .padding()
-                        }
-                }.frame(width: 351, height:54)
-                    .foregroundColor(.light)
-      
-        }
+        ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)){
+            Rectangle()
+            HStack(alignment:.top)
+            {
+                Text(LocalizedStringKey(cardName))
+                    .foregroundColor(.dark)
+                    .padding(.leading, 12)
+                    .padding(.top, 5)
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .frame(width: 7.38, height: 12.92)
+                    .foregroundColor(.dark)
+                    .padding()
+            }
+        }.frame(width: 351, height:54)
+        .foregroundColor(.light)
+
     }
+}
 
 
 struct FloatingTextField: View {
@@ -81,7 +81,7 @@ struct FloatingTextField: View {
                 .background(Color(UIColor.systemBackground))
                 .offset(x: 15.0, y: -17)
                 .scaleEffect(shouldPlaceHolderMove ? 0.857 : 1.0)
-            .animation(.linear)
+                .animation(.linear)
             
         }
     }
@@ -124,7 +124,7 @@ struct FloatingNumericTextField: View {
                 .background(Color(UIColor.systemBackground))
                 .offset(x: 15.0, y: -17)
                 .scaleEffect(shouldPlaceHolderMove ? 0.857 : 1.0)
-            .animation(.linear)
+                .animation(.linear)
             
         }
     }
@@ -156,7 +156,7 @@ struct FloatingTextEditor: View {
                 .paragraph()
                 .background(Color.light.opacity(0.0))
                 .animation(.linear)
-                
+
             
             Text(LocalizedStringKey(placeHolderText))
                 .paragraph()
@@ -197,76 +197,76 @@ struct PrimaryButtonStyle: View {
     var isEnabled: Bool = true
 
     var body: some View {
-            ZStack{
-                RoundedRectangle(cornerRadius: 28)
-                    .foregroundColor(.primary_color)
-                    .opacity(isEnabled ? 1.0 : 0.3)
-                Text(LocalizedStringKey(buttonLabel))
-                    .paragraphBold()
-                    .foregroundColor(.light)
-                
-            }.frame(width: 327, height: 49, alignment: .center)
-        }
+        ZStack{
+            RoundedRectangle(cornerRadius: 28)
+                .foregroundColor(.primary_color)
+                .opacity(isEnabled ? 1.0 : 0.3)
+            Text(LocalizedStringKey(buttonLabel))
+                .paragraphBold()
+                .foregroundColor(.light)
+
+        }.frame(width: 327, height: 49, alignment: .center)
+    }
 }
 
 struct ManualReadingButtonStyle: View {
     
     var body: some View {
-            ZStack{
-                RoundedRectangle(cornerRadius: 28)
-                    .foregroundColor(.primary_color)
-                    .opacity(0.3)
-                HStack
-                {
-                    Text(LocalizedStringKey("ManualButton"))
-                        .paragraphBold()
-                        .foregroundColor(.light)
-                        .padding(.trailing, 13)
-                    
-                  Image("manual_scan_icon")
+        ZStack{
+            RoundedRectangle(cornerRadius: 28)
+                .foregroundColor(.primary_color)
+                .opacity(0.3)
+            HStack
+            {
+                Text(LocalizedStringKey("ManualButton"))
+                    .paragraphBold()
+                    .foregroundColor(.light)
+                    .padding(.trailing, 13)
+
+                Image("manual_scan_icon")
                     .resizable()
                     .frame(width:16.25, height:12.51)
-                }
-                
-            }.frame(width: 289, height: 60, alignment: .center)
-        }
+            }
+
+        }.frame(width: 289, height: 60, alignment: .center)
+    }
 }
 struct OutlinedButtonStyle: View {
     var buttonLabel: String
     var body: some View {
-            ZStack{
-                RoundedRectangle(cornerRadius: 18)
-                    .stroke(Color.primary_tint, lineWidth: 1.6)
-                Text(LocalizedStringKey(buttonLabel))
-                    .tinyBold()
-                    .foregroundColor(.primary_tint)
-            }.frame(width: 142, height: 34, alignment: .center)
-        }
+        ZStack{
+            RoundedRectangle(cornerRadius: 18)
+                .stroke(Color.primary_tint, lineWidth: 1.6)
+            Text(LocalizedStringKey(buttonLabel))
+                .tinyBold()
+                .foregroundColor(.primary_tint)
+        }.frame(width: 142, height: 34, alignment: .center)
+    }
 }
 
 struct SubmitButtonStyle: View {
     var body: some View {
-            ZStack{ZStack{
-                RoundedRectangle(cornerRadius: 18)
-                    .stroke(Color.primary_shade, lineWidth: 2)
-                Text(LocalizedStringKey("Submit"))
-                    .tinyBold()
-                    .foregroundColor(.primary_shade)
-            }.frame(width: 76, height: 34)
+        ZStack{ZStack{
+            RoundedRectangle(cornerRadius: 18)
+                .stroke(Color.primary_shade, lineWidth: 2)
+            Text(LocalizedStringKey("Submit"))
+                .tinyBold()
+                .foregroundColor(.primary_shade)
+        }.frame(width: 76, height: 34)
 
         }
-}
+    }
 }
 
 struct ChangeButtonStyle: View {
     var body: some View {
-            ZStack{ZStack{
-                RoundedRectangle(cornerRadius: 18)
-                    .foregroundColor(.secondary)
-                Text(LocalizedStringKey("Change"))
-                    .tinyBold()
-                    .foregroundColor(.light)
-            }.frame(width: 76, height: 34)
+        ZStack{ZStack{
+            RoundedRectangle(cornerRadius: 18)
+                .foregroundColor(.secondary)
+            Text(LocalizedStringKey("Change"))
+                .tinyBold()
+                .foregroundColor(.light)
+        }.frame(width: 76, height: 34)
 
         }
     }
@@ -286,23 +286,23 @@ struct StepIndicator: View {
     }
 }
 
-    struct RoundButtonStyle: View {
-        var imageName: String
-        var backgroundColor : Color
-        var iconColor: Color
-        
-        var body: some View {
-            ZStack {
-                Circle()
-                    .frame(width: 40, height: 40)
-                    .foregroundColor(backgroundColor)
-                Image(systemName: imageName)
-                    .font(.body)
-                    .foregroundColor(iconColor)
-                    .padding()
+struct RoundButtonStyle: View {
+    var imageName: String
+    var backgroundColor : Color
+    var iconColor: Color
+
+    var body: some View {
+        ZStack {
+            Circle()
+                .frame(width: 40, height: 40)
+                .foregroundColor(backgroundColor)
+            Image(systemName: imageName)
+                .font(.body)
+                .foregroundColor(iconColor)
+                .padding()
         }
     }
-    }
+}
 
 struct LargeRoundButtonStyle: View {
     var imageName: String
@@ -318,16 +318,16 @@ struct LargeRoundButtonStyle: View {
                 .font(.body)
                 .foregroundColor(iconColor)
                 .padding()
+        }
     }
-}
 }
 
 extension Date {
-        func formatDate() -> String {
-                let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd.MM.yyyy"
-            return dateFormatter.string(from: self)
-        }
+    func formatDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        return dateFormatter.string(from: self)
+    }
 }
 
 struct RadioButton: View {
@@ -348,7 +348,7 @@ struct RadioButton: View {
         size: CGFloat = 20,
         color: Color = Color.primary_color,
         textSize: CGFloat = 14
-        ) {
+    ) {
         self.id = id
         self.size = size
         self.color = color
@@ -484,10 +484,10 @@ struct FinishedReadingWidget : View {
             .frame(width: 319, height: 138)
             
             NavigationLink(
-                        destination: AboutUsView(),
-                        label : {
-                            OutlinedButtonStyle(buttonLabel: "MoreButton")
-                        })
+                destination: AboutUsView(),
+                label : {
+                    OutlinedButtonStyle(buttonLabel: "MoreButton")
+                })
         }
     }
 }
@@ -502,21 +502,21 @@ struct Co2Widget : View {
                     .foregroundColor(.primary_color)
                 VStack{
                     Text(LocalizedStringKey("Co2Title"))
-                      .heading2()
-                      .foregroundColor(.light)
-                      .padding(.bottom, 13)
-                      .multilineTextAlignment(.center)
-                 Text(String(co2Level))
-                      .font(Font.custom("Roboto-Bold", size: 56))
-                      .foregroundColor(.light)
-                      .padding(.bottom, 16)
+                        .heading2()
+                        .foregroundColor(.light)
+                        .padding(.bottom, 13)
+                        .multilineTextAlignment(.center)
+                    Text(String(co2Level))
+                        .font(Font.custom("Roboto-Bold", size: 56))
+                        .foregroundColor(.light)
+                        .padding(.bottom, 16)
                     
                     Text(LocalizedStringKey("Co2Subtitle"))
-                      .paragraph()
-                      .foregroundColor(.light)
-                      .padding(.bottom, 34)
-                      .fixedSize(horizontal: false, vertical: true)
-                      .multilineTextAlignment(.center)
+                        .paragraph()
+                        .foregroundColor(.light)
+                        .padding(.bottom, 34)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .multilineTextAlignment(.center)
                 }.frame(alignment:.bottom)
             }.frame(height: 267)
             Image("earth_illustration")
@@ -540,9 +540,9 @@ struct FaqWidget : View {
                 DisclosureGroup(
                     isExpanded: $flags[index],
                     content: {
-                            Text(faq.faqs[index].answer)
-                                .paragraph()
-                             
+                        Text(faq.faqs[index].answer)
+                            .paragraph()
+
                         
                     },
                     label: {
@@ -561,7 +561,7 @@ struct FaqWidget : View {
                 .onTapGesture {
                     withAnimation(.easeOut, {flags[index].toggle()})
                 }
-              .animation(.easeIn)
+                .animation(.easeIn)
                 
                 if index != flags.count-1{
                     Divider()
@@ -585,15 +585,15 @@ struct ReadingFlowHeaderWidget : View {
                 .frame(width: 114, height: 95)
             
             Text(LocalizedStringKey(title))
-              .heading1()
-              .foregroundColor(.primary_color)
-              .padding(.bottom, 25)
-          
-          Text(LocalizedStringKey(description))
-            .paragraphBold()
-            .foregroundColor(.dark)
-            .multilineTextAlignment(.center)
-            .padding(.horizontal, 50)
+                .heading1()
+                .foregroundColor(.primary_color)
+                .padding(.bottom, 25)
+
+            Text(LocalizedStringKey(description))
+                .paragraphBold()
+                .foregroundColor(.dark)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 50)
         }
     }
 }
@@ -634,20 +634,20 @@ struct AboutUsCardWidget : View {
                 Rectangle()
                     .foregroundColor(.light.opacity(0.0))
                 NavigationLink(
-                            destination: AboutUsView(),
-                            label : {
-                                VStack
-                                {
-                                    ZStack{
-                                    Circle()
-                                        .foregroundColor(Color.primary_color)
-                                        .frame(width: 40, height:40)
-                                        .shadow(radius: 2)
-                                    Image(systemName: "chevron.right")
-                                        .foregroundColor(.light)
-                                    
-                                }}
-                            })
+                    destination: AboutUsView(),
+                    label : {
+                        VStack
+                        {
+                            ZStack{
+                                Circle()
+                                    .foregroundColor(Color.primary_color)
+                                    .frame(width: 40, height:40)
+                                    .shadow(radius: 2)
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.light)
+
+                            }}
+                    })
                     .padding(.init(top: 0, leading: 0, bottom: 19, trailing: 19))
             }.frame(width:327, height: 176)
             

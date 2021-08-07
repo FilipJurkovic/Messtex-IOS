@@ -15,29 +15,30 @@ struct ContactFormView: View {
     
     @State var isTapped = false
     
-    var btnBack : some View { Button(action: {
+    var btnBack : some View {
+        Button(action: {
             self.presentationMode.wrappedValue.dismiss()
-            }) {
-                HStack {
-                    Image(systemName: "arrow.backward")
-                        .font(.body)
-                        .foregroundColor(.dark)
-                        .padding()
-                }
+        }, label: {
+            HStack {
+                Image(systemName: "arrow.backward")
+                    .font(.body)
+                    .foregroundColor(.dark)
+                    .padding()
             }
-        }
+        })
+    }
     
     var body: some View {
         ScrollView(showsIndicators: false){ 
             VStack(alignment: .leading, spacing: 0){
-                    Text(LocalizedStringKey("ContactFormTitle"))
+                Text(LocalizedStringKey("ContactFormTitle"))
                     .heading2()
                     .foregroundColor(.primary_color)
                     .padding(.bottom, 16)
-            
-                    Text(LocalizedStringKey("ContactFormParagraph"))
-                        .paragraph()
-                        .padding(.bottom, 19)
+
+                Text(LocalizedStringKey("ContactFormParagraph"))
+                    .paragraph()
+                    .padding(.bottom, 19)
                 
                 FloatingTextField(placeHolder: "FirstNameTextField", text: $viewModel.contactFormData.name)
                     .padding(.bottom, 7)
@@ -73,7 +74,7 @@ struct ContactFormView: View {
         
     }
     
-    }
+}
 
 struct ContactFormView_Previews: PreviewProvider {
     static var previews: some View {

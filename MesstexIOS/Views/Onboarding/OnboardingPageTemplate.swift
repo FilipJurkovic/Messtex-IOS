@@ -13,7 +13,6 @@ struct OnboardingPageTemplate: View {
     let description: String
     var body: some View {
         VStack{
-
             Image(image)
                 .resizable()
                 .frame(width: 311, height: 400)
@@ -33,7 +32,6 @@ struct OnboardingPageTemplate: View {
                 .foregroundColor(.dark)
             
             Spacer()
-            
         }.frame(width:UIScreen.main.bounds.size.width, alignment:.top)
     }
 }

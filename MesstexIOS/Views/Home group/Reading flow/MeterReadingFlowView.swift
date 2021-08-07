@@ -43,12 +43,12 @@ struct MeterReadingFlowView: View {
                         .tag(ReadingFlowEnum.readingStepsView)
                     
                     MeterReadingView(cameraView: CameraView(captureAction: { image, values in
-                       
+
                         viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue = viewModel.removePoint(value: values[0])
                         
                         viewModel.currentReadingView = ReadingFlowEnum.manualReadingView
                     }), index: viewModel.currentMeterIndex, viewModel: viewModel)
-                        .tag(ReadingFlowEnum.meterReadingView)
+                    .tag(ReadingFlowEnum.meterReadingView)
                     
                     ManualReadingView(viewModel: viewModel, index: viewModel.currentMeterIndex)
                         .tag(ReadingFlowEnum.manualReadingView)
@@ -73,13 +73,13 @@ struct MeterReadingFlowView: View {
                     UIPageControl.appearance().pageIndicatorTintColor = .clear
                 }
             }
-        
+
             if viewModel.isProgressBarActive{
                 ZStack{
-                Rectangle()
-                    .foregroundColor(.dark)
-                    .opacity(0.3)
-                Loader()
+                    Rectangle()
+                        .foregroundColor(.dark)
+                        .opacity(0.3)
+                    Loader()
                     
                 }
                 .ignoresSafeArea()

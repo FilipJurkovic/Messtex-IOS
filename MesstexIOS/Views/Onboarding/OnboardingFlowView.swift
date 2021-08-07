@@ -43,25 +43,25 @@ struct OnboardingFlowView: View {
             HStack{
                 Button(action: {
                     if(pageIndex < 2){
-                    pageIndex = pageIndex+1
+                        pageIndex = pageIndex+1
                     } else{
                         shouldShowOnboarding.toggle()
                     }
                 }, label: {
-                ZStack{
-                    Circle()
-                        .foregroundColor(.light)
-                        .frame(width: 48, height: 48)
-                        .shadow(color: .medium, radius: 2, x: 1, y: 1)
-                    Image(systemName: "chevron.right")
-                        .frame(width: 7.38, height: 12.92)
-                        .foregroundColor(.primary_shade)
-                        .padding()
-
-                }.frame(width: 48, height: 48, alignment: .center)
-            })
-        }.frame(width:UIScreen.main.bounds.size.width, alignment:.trailing)
-        .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 26))
+                    ZStack{
+                        Circle()
+                            .foregroundColor(.light)
+                            .frame(width: 48, height: 48)
+                            .shadow(color: .medium, radius: 2, x: 1, y: 1)
+                        Image(systemName: "chevron.right")
+                            .frame(width: 7.38, height: 12.92)
+                            .foregroundColor(.primary_shade)
+                            .padding()
+                        
+                    }.frame(width: 48, height: 48, alignment: .center)
+                })
+            }.frame(width:UIScreen.main.bounds.size.width, alignment:.trailing)
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 26))
             
         }
     }

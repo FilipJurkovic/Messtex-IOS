@@ -20,8 +20,7 @@ class MainViewModel: ObservableObject {
     
     @Published var faqFlagIndex: [Bool]
     @Published var readingStepsProgress: [Bool]
-    
-    
+
     //RANDOM PARAMS
     @Published var isProgressBarActive: Bool
     @Published var currentReadingView : ReadingFlowEnum
@@ -52,7 +51,6 @@ class MainViewModel: ObservableObject {
         self.isReadingFinished = false
     }
 
-    
     func toggleFaqFlagIndex(index: Int){
         self.faqFlagIndex[index] = !self.faqFlagIndex[index]
     }
@@ -95,45 +93,45 @@ class MainViewModel: ObservableObject {
     
     func getMeterTypeIcon(meterType: String) -> String{
         switch meterType{
-            case "WMZ":
-                return "heat_meter"
-                
-            case "WWZ":
-                return "water_meter"
-             
-            case "KMZ":
-                return "heat_meter"
-                    
-            case "KWZ":
-                return "water_meter"
-                
-            case "RWZ":
-                return "heat_alocator"
-              
-            default:
-                return "heat_meter"
+        case "WMZ":
+            return "heat_meter"
+
+        case "WWZ":
+            return "water_meter"
+
+        case "KMZ":
+            return "heat_meter"
+
+        case "KWZ":
+            return "water_meter"
+
+        case "RWZ":
+            return "heat_alocator"
+
+        default:
+            return "heat_meter"
         }
     }
     
     func getInfoViewIndex(meterType: String) -> Int{
         switch meterType{
-            case "WMZ":
-                return 1
-                
-            case "WWZ":
-                return 0
-             
-            case "KMZ":
-                return 1
-                    
-            case "KWZ":
-                return 0
-                
-            case "RWZ":
-                return 2
-              
-            default:
-                return 1
+        case "WMZ":
+            return 1
+
+        case "WWZ":
+            return 0
+
+        case "KMZ":
+            return 1
+
+        case "KWZ":
+            return 0
+
+        case "RWZ":
+            return 2
+
+        default:
+            return 1
         }
 
     }
@@ -208,7 +206,6 @@ class MainViewModel: ObservableObject {
     //API REQUESTS
     let url = URL(string: "https://api.ninoxdb.de/v1/teams/yCZezLbXfFAiwR6r3/databases/qmz4hgc0o1bh/query")
     
-    
     func getCO2Levels(){
         let jsonBody = try? JSONEncoder().encode(PostModel(query: "getCO2Level()"))
         var request = URLRequest(url: url!)
@@ -219,11 +216,11 @@ class MainViewModel: ObservableObject {
         
         DispatchQueue.main.async {
             URLSession.shared.dataTask(with: request){ (data, response, error) in
-            guard let data = data else {return}
-            let co2_value = try! JSONDecoder().decode(Double.self, from: data)
-            self.co2Level = CarbonDataModel(co2Level: co2_value)
-            print(data)
-        }.resume()}
+                guard let data = data else {return}
+                let co2_value = try! JSONDecoder().decode(Double.self, from: data)
+                self.co2Level = CarbonDataModel(co2Level: co2_value)
+                print(data)
+            }.resume()}
     }
     
     func getFAQs(){
@@ -238,16 +235,16 @@ class MainViewModel: ObservableObject {
         
         DispatchQueue.main.async {
             URLSession.shared.dataTask(with: request){ (data, response, error) in
-            guard let data = data else {return}
+                guard let data = data else {return}
 
-            self.faq = try! JSONDecoder().decode(Faq.self, from: data)
-            
-            var newBoolArray: [Bool] = []
-            for _ in 0...self.faq.faqs.count-1{
-                newBoolArray.append(false)
-            }
-            self.faqFlagIndex = newBoolArray
-        }.resume()
+                self.faq = try! JSONDecoder().decode(Faq.self, from: data)
+
+                var newBoolArray: [Bool] = []
+                for _ in 0...self.faq.faqs.count-1{
+                    newBoolArray.append(false)
+                }
+                self.faqFlagIndex = newBoolArray
+            }.resume()
             
         }
     }
@@ -266,37 +263,37 @@ class MainViewModel: ObservableObject {
         self.isProgressBarActive = true
         
         DispatchQueue.main.async {
-        URLSession.shared.dataTask(with: request){ (data, response, error) in
-            guard let data = data else {return}
-            
-            do{
-                try JSONDecoder().decode(UtilizationResponseModel.self, from: data)
-                self.userData = try! JSONDecoder().decode(UtilizationResponseModel.self, from: data)
-                self.verificationError = ErrorModel(message: "")
+            URLSession.shared.dataTask(with: request){ (data, response, error) in
+                guard let data = data else {return}
 
-                var newBoolArray: [Bool] = []
-                for _ in 0...self.userData.meters.count{
-                    newBoolArray.append(false)
+                do{
+                    try JSONDecoder().decode(UtilizationResponseModel.self, from: data)
+                    self.userData = try! JSONDecoder().decode(UtilizationResponseModel.self, from: data)
+                    self.verificationError = ErrorModel(message: "")
+
+                    var newBoolArray: [Bool] = []
+                    for _ in 0...self.userData.meters.count{
+                        newBoolArray.append(false)
+                    }
+
+                    for meter in self.userData.meters{
+                        self.postModelData.meterReadings.append(MeterReadingData(counterNumber: meter.counterNumber, counterType: meter.counterType, counterValue: "", userMessage: ""))
+                    }
+                    self.populatePostModelData(pin: pin)
+
+                    self.readingStepsProgress = newBoolArray
+                    self.readingStepsProgress[newBoolArray.endIndex-1] = self.areContactDetailsValid()
+                    self.isProgressBarActive = false
+                    if error == nil{
+                        self.currentReadingView = ReadingFlowEnum.readingStepsView
+                    }
+                } catch{
+                    self.verificationError = try! JSONDecoder().decode(ErrorModel.self, from: data)
+                    self.isProgressBarActive = false
                 }
-                
-                for meter in self.userData.meters{
-                    self.postModelData.meterReadings.append(MeterReadingData(counterNumber: meter.counterNumber, counterType: meter.counterType, counterValue: "", userMessage: ""))
-                }
-                self.populatePostModelData(pin: pin)
-                
-                self.readingStepsProgress = newBoolArray
-                self.readingStepsProgress[newBoolArray.endIndex-1] = self.areContactDetailsValid()
-                self.isProgressBarActive = false
-                if error == nil{
-                    self.currentReadingView = ReadingFlowEnum.readingStepsView
-                }
-            } catch{
-                self.verificationError = try! JSONDecoder().decode(ErrorModel.self, from: data)
-                self.isProgressBarActive = false
+
             }
-
-        }
-        .resume()}
+            .resume()}
     }
     
     func takeMeterReadings(){
@@ -313,16 +310,16 @@ class MainViewModel: ObservableObject {
         self.isProgressBarActive = true
         
         DispatchQueue.main.async {
-        URLSession.shared.dataTask(with: request){ (data, response, error) in
-            guard let data = data else {return}
-            self.co2Level = try! JSONDecoder().decode(CarbonDataModel.self, from: data)
-            
-            self.isProgressBarActive = false
-            if error == nil{
-                self.currentReadingView = ReadingFlowEnum.successView
-            }
-            
-        }.resume()
+            URLSession.shared.dataTask(with: request){ (data, response, error) in
+                guard let data = data else {return}
+                self.co2Level = try! JSONDecoder().decode(CarbonDataModel.self, from: data)
+
+                self.isProgressBarActive = false
+                if error == nil{
+                    self.currentReadingView = ReadingFlowEnum.successView
+                }
+
+            }.resume()
         }
     }
     
@@ -338,7 +335,7 @@ class MainViewModel: ObservableObject {
         request.setValue("Bearer eecf7fd0-cee9-11eb-b752-fde919688281", forHTTPHeaderField: "Authorization")
         
         DispatchQueue.main.async {
-        URLSession.shared.dataTask(with: request).resume()
+            URLSession.shared.dataTask(with: request).resume()
         }
     }
 

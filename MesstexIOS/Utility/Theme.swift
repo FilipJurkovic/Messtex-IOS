@@ -23,7 +23,6 @@ extension Color {
         return Color("Success")
     }
 
-
     static var dark: Color  {
         return Color("Dark")
     }
@@ -35,7 +34,6 @@ extension Color {
     static var medium: Color  {
         return Color("Medium")
     }
-
 
     static var primary_color: Color  {
         return Color("Primary")
@@ -53,7 +51,6 @@ extension Color {
         return Color("Primary_tint")
     }
 
-
     static var secondary: Color  {
         return Color("Secondary")
     }
@@ -69,7 +66,6 @@ extension Color {
     static var secondary_tint: Color  {
         return Color("Secondary_tint")
     }
-
 
     static var tetriary: Color  {
         return Color("Tetriary")
@@ -88,7 +84,6 @@ extension Color {
     }
 
 }
-
 
 extension UIColor {
 
@@ -179,16 +174,16 @@ struct Heading2: ViewModifier {
 
 extension View {
     func heading2() -> some View {
-         return self.modifier(Heading2())
+        return self.modifier(Heading2())
     }
 }
 
 
 extension Text {
     func pincodeFont() -> Text {
-         return self.font(Font.custom("Roboto-Bold", size: 56))
-                    .kerning(28.5)
-                    .foregroundColor(.primary_color)
+        return self.font(Font.custom("Roboto-Bold", size: 56))
+            .kerning(28.5)
+            .foregroundColor(.primary_color)
     }
 }
 
@@ -202,7 +197,7 @@ struct Heading1: ViewModifier {
 
 extension View {
     func heading1() -> some View {
-         return self.modifier(Heading1())
+        return self.modifier(Heading1())
     }
 }
 
@@ -215,7 +210,7 @@ struct Paragraph: ViewModifier {
 
 extension View {
     func paragraph() -> some View {
-         return self.modifier(Paragraph())
+        return self.modifier(Paragraph())
     }
 }
 
@@ -228,7 +223,7 @@ struct ParagraphBold: ViewModifier {
 
 extension View {
     func paragraphBold() -> some View {
-         return self.modifier(ParagraphBold())
+        return self.modifier(ParagraphBold())
     }
 }
 
@@ -241,7 +236,7 @@ struct Small: ViewModifier {
 
 extension View {
     func small() -> some View {
-         return self.modifier(Small())
+        return self.modifier(Small())
     }
 }
 
@@ -254,7 +249,7 @@ struct SmallBold: ViewModifier {
 
 extension View {
     func smallBold() -> some View {
-         return self.modifier(SmallBold())
+        return self.modifier(SmallBold())
     }
 }
 
@@ -267,7 +262,7 @@ struct Tiny: ViewModifier {
 
 extension View {
     func tiny() -> some View {
-         return self.modifier(Tiny())
+        return self.modifier(Tiny())
     }
 }
 
@@ -280,6 +275,6 @@ struct TinyBold: ViewModifier {
 
 extension View {
     func tinyBold() -> some View {
-         return self.modifier(TinyBold())
+        return self.modifier(TinyBold())
     }
 }

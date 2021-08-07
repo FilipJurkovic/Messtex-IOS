@@ -25,26 +25,26 @@ struct CameraHeaderView: View {
                 Spacer()
             }
             HStack {
-            Button(action : {
-                viewModel.currentReadingView = ReadingFlowEnum.readingStepsView
-            }){
-                RoundButtonStyle(imageName: "xmark", backgroundColor: .tetriary_tint, iconColor: .dark)
+                Button(action : {
+                    viewModel.currentReadingView = ReadingFlowEnum.readingStepsView
+                }){
+                    RoundButtonStyle(imageName: "xmark", backgroundColor: .tetriary_tint, iconColor: .dark)
+                }
+                .accentColor(.white)
+                .padding(.leading, 10)
+
+                Spacer()
             }
-            .accentColor(.white)
-            .padding(.leading, 10)
-            
-            Spacer()
-        }
-}        .padding(.top, safeAreaInset)
+        }        .padding(.top, safeAreaInset)
         .background(Color.clear)
         
     }
-   
+
 }
 
 struct MeterReadingView: View {
     
-   
+
     var cameraView: CameraView
     
     var index: Int = 0
@@ -79,7 +79,7 @@ struct MeterReadingView: View {
                                 viewModel.postModelData.meterReadings.append(MeterReadingData(counterNumber: meterModel.counterNumber, counterType: meterModel.counterType, counterValue:  "", userMessage: ""))
                             }
                         }
-            
+
                     
                     HStack{
                         Button(action: {cameraView.toggleFlash(state: !viewModel.isTorchOn)
@@ -93,7 +93,7 @@ struct MeterReadingView: View {
                                     .font(.body)
                                     .foregroundColor(.light)
                                     .padding()
-                        }
+                            }
                         }).padding(.trailing, 15)
                         Button(action: {
                             viewModel.isInfoSheetOpen = !viewModel.isInfoSheetOpen

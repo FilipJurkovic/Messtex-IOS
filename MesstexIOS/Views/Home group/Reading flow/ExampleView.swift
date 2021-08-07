@@ -18,7 +18,6 @@ struct ExampleView: View {
                     .resizable()
                     .frame(width: UIScreen.main.bounds.size.width, height: 535)
             }
-              
         }
         .ignoresSafeArea()
         .frame(width: UIScreen.main.bounds.size.width, alignment: .topLeading)

@@ -35,7 +35,7 @@ struct CameraView: UIViewRepresentable {
     var captureAction: (UIImage, [String]) -> Void
     
     var reader: PIXMeterReadingView = PIXMeterReadingView()
-        
+
     func toggleFlash(state: Bool) {
         self.reader.isTorchOn = state
     }
@@ -58,9 +58,9 @@ struct CameraView: UIViewRepresentable {
     
     func makeCoordinator() -> Coordinator {
         Coordinator(reader: reader, callback:   { results, image in
-                                                    let resultStrings = results.map {$0.cleanReadingString()}
-                                                    captureAction(image, resultStrings)
-                                                } )
+            let resultStrings = results.map {$0.cleanReadingString()}
+            captureAction(image, resultStrings)
+        } )
     }
     
     class Coordinator: NSObject, PIXMeterReadingViewDelegate {

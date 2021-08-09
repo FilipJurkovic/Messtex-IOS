@@ -5,19 +5,19 @@
 //  Created by Filip Jurković on 23.07.2021..
 //
 
+import AVFoundation
 import SwiftUI
 import UIKit
-import AVFoundation
 
 struct CameraHeaderView: View {
 
     var safeAreaInset: CGFloat = 0
-    
-    @ObservedObject var viewModel : MainViewModel
-    
+
+    @ObservedObject var viewModel: MainViewModel
+
     var body: some View {
-        ZStack{
-            HStack{
+        ZStack {
+            HStack {
                 Spacer()
                 Text("\(NSLocalizedString("ReadingDate", comment: "ReadingDate")) \(Date().formatDate())" as String)
                     .paragraph()
@@ -25,48 +25,47 @@ struct CameraHeaderView: View {
                 Spacer()
             }
             HStack {
-            Button(action : {
-                viewModel.currentReadingView = ReadingFlowEnum.readingStepsView
-            }){
-                RoundButtonStyle(imageName: "xmark", backgroundColor: .tetriary_tint, iconColor: .dark)
+                Button(action: {
+                    viewModel.currentReadingView = ReadingFlowEnum.readingStepsView
+                }, label: {
+                    RoundButtonStyle(imageName: "xmark", backgroundColor: .tetriary_tint, iconColor: .dark)
+                })
+                .accentColor(.white)
+                .padding(.leading, 10)
+
+                Spacer()
             }
-            .accentColor(.white)
-            .padding(.leading, 10)
-            
-            Spacer()
-        }
-}        .padding(.top, safeAreaInset)
+        }        .padding(.top, safeAreaInset)
         .background(Color.clear)
-        
+
     }
-   
+
 }
 
 struct MeterReadingView: View {
-    
-   
+
     var cameraView: CameraView
-    
+
     var index: Int = 0
-    
-    @ObservedObject var viewModel : MainViewModel
+
+    @ObservedObject var viewModel: MainViewModel
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { _ in
             ZStack {
                 cameraView
                 Image("overlay_image")
                     .resizable()
                     .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
-                VStack(spacing:0) {
+                VStack(spacing: 0) {
                     CameraHeaderView(safeAreaInset: 43, viewModel: viewModel)
                     Spacer()
                     Text("\(NSLocalizedString("ScanMessage", comment: "ScanMessage"))\nNr. \(viewModel.formatNumber(number: viewModel.userData.meters[index].counterNumber))" as String)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.light)
                         .padding(.bottom, 42)
-                    
+
                     Button(
-                        action: {viewModel.currentReadingView = ReadingFlowEnum.manualReadingView},
+                        action: { viewModel.currentReadingView = ReadingFlowEnum.manualReadingView },
                         label: {
                             ManualReadingButtonStyle()
                         })
@@ -74,17 +73,16 @@ struct MeterReadingView: View {
                         .onTapGesture {
                             let meterModel: MeterReceivingData = viewModel.userData.meters[index]
                             if !viewModel.postModelData.meterReadings.isEmpty && viewModel.postModelData.meterReadings.endIndex-1 < index {
-                                viewModel.postModelData.meterReadings[index] = MeterReadingData(counterNumber: meterModel.counterNumber, counterType: meterModel.counterType, counterValue:  "", userMessage: "")
-                            }else{
-                                viewModel.postModelData.meterReadings.append(MeterReadingData(counterNumber: meterModel.counterNumber, counterType: meterModel.counterType, counterValue:  "", userMessage: ""))
+                                viewModel.postModelData.meterReadings[index] = MeterReadingData(counterNumber: meterModel.counterNumber, counterType: meterModel.counterType, counterValue: "", userMessage: "")
+                            } else {
+                                viewModel.postModelData.meterReadings.append(MeterReadingData(counterNumber: meterModel.counterNumber, counterType: meterModel.counterType, counterValue: "", userMessage: ""))
                             }
                         }
-            
-                    
-                    HStack{
+
+                    HStack {
                         Button(action: {cameraView.toggleFlash(state: !viewModel.isTorchOn)
-                            viewModel.isTorchOn = !viewModel.isTorchOn
-                        } , label: {
+                            viewModel.isTorchOn.toggle()
+                        }, label: {
                             ZStack {
                                 Circle()
                                     .frame(width: 48, height: 48)
@@ -93,15 +91,14 @@ struct MeterReadingView: View {
                                     .font(.body)
                                     .foregroundColor(.light)
                                     .padding()
-                        }
+                            }
                         }).padding(.trailing, 15)
                         Button(action: {
-                            viewModel.isInfoSheetOpen = !viewModel.isInfoSheetOpen
-                            
+                            viewModel.isInfoSheetOpen.toggle()
                         }, label: {
                             LargeRoundButtonStyle(imageName: "info", backgroundColor: .primary_color, iconColor: .light)
                         })
-                        
+
                     }.padding(.bottom, 50)
                 }
             }
@@ -110,14 +107,14 @@ struct MeterReadingView: View {
         .navigationTitle("")
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
-        .sheet(isPresented: $viewModel.isInfoSheetOpen){
+        .sheet(isPresented: $viewModel.isInfoSheetOpen) {
             InfoView(viewModel: viewModel, index: viewModel.getInfoViewIndex(meterType: viewModel.userData.meters[index].counterType))
         }
     }
 
 }
 
-//struct MeterReadingView_Previews: PreviewProvider {
+// struct MeterReadingView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        Group {
 //            MeterReadingView(isManualCaptureAllowed: true, captureAction: {image, values in})
@@ -126,4 +123,4 @@ struct MeterReadingView: View {
 //            MeterReadingView(isManualCaptureAllowed: false, captureAction: {image, values in})
 //        }
 //    }
-//}
+// }

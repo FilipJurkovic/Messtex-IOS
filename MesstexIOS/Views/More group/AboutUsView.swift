@@ -9,44 +9,43 @@ import SwiftUI
 
 struct AboutUsView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
-    var btnBack : some View { Button(action: {
+
+    var btnBack : some View {
+        Button(action: {
             self.presentationMode.wrappedValue.dismiss()
-            }) {
-                HStack {
-                    Image(systemName: "arrow.backward")
-                        .font(.body)
-                        .foregroundColor(.dark)
-                        .padding()
-                }
+        }, label: {
+            HStack {
+                Image(systemName: "arrow.backward")
+                    .font(.body)
+                    .foregroundColor(.dark)
+                    .padding()
             }
-        }
-    
+        })
+    }
+
     var body: some View {
-        ScrollView(showsIndicators: false){
+        ScrollView(showsIndicators: false) {
             Image("about_top")
                 .resizable()
-                .frame(width:UIScreen.main.bounds.size.width)
-            VStack(alignment:.leading){
-                Group{
+                .frame(width: UIScreen.main.bounds.size.width)
+            VStack(alignment: .leading) {
+                Group {
                     Text(LocalizedStringKey("AboutTitle"))
-                    .heading2()
-                    .foregroundColor(.primary_color)
-                    .padding(.bottom, 16)
-            
+                        .heading2()
+                        .foregroundColor(.primary_color)
+                        .padding(.bottom, 16)
+
                     Text(LocalizedStringKey("AboutParagraphOne"))
                         .paragraph()
                         .padding(.bottom, 23)
-                
+
                     Text(LocalizedStringKey("AboutSubtitleOne"))
                         .paragraphBold()
                         .foregroundColor(.primary_color)
                         .padding(.bottom, 16)
-                
-                
-                
-                    VStack{
-                        HStack{
+
+                    VStack {
+                        HStack {
                             Image("bullet_point")
                                 .padding(.trailing, 17)
                             Text(LocalizedStringKey("AboutBulletpointOne"))
@@ -55,8 +54,8 @@ struct AboutUsView: View {
                             Spacer()
                         }
                         .padding(.bottom, 22)
-                        
-                        HStack{
+
+                        HStack {
                             Image("bullet_point")
                                 .padding(.trailing, 17)
                             Text(LocalizedStringKey("AboutBulletpointTwo"))
@@ -64,8 +63,8 @@ struct AboutUsView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                             Spacer()
                         }.padding(.bottom, 22)
-                        
-                        HStack{
+
+                        HStack {
                             Image("bullet_point")
                                 .padding(.trailing, 17)
                             Text(LocalizedStringKey("AboutBulletpointThree"))
@@ -73,8 +72,8 @@ struct AboutUsView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                             Spacer()
                         }.padding(.bottom, 22)
-                        
-                        HStack{
+
+                        HStack {
                             Image("bullet_point")
                                 .padding(.trailing, 17)
                             Text(LocalizedStringKey("AboutBulletpointFour"))
@@ -82,8 +81,8 @@ struct AboutUsView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                             Spacer()
                         }.padding(.bottom, 22)
-                        
-                        HStack{
+
+                        HStack {
                             Image("bullet_point")
                                 .padding(.trailing, 17)
                             Text(LocalizedStringKey("AboutBulletpointFive"))
@@ -91,30 +90,28 @@ struct AboutUsView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                             Spacer()
                         }.padding(.bottom, 22)
-                        
+
                     }.lineLimit(10)
-                
-                Text(LocalizedStringKey("AboutParagraphTwo"))
-                    .paragraph()
-                    .padding(.bottom, 65)
+
+                    Text(LocalizedStringKey("AboutParagraphTwo"))
+                        .paragraph()
+                        .padding(.bottom, 65)
                 }
-                
-                                        
-                    Spacer()
+
+                Spacer()
             }
             .padding(.init(top: 25, leading: 24, bottom: 0, trailing: 24))
             .frame(width: UIScreen.main.bounds.size.width, alignment: .topLeading)
             .navigationBarBackButtonHidden(true)
             .navigationBarTitle(LocalizedStringKey("About"), displayMode: .inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading)
-                {
+                ToolbarItem(placement: .navigationBarLeading) {
                     btnBack
                         .foregroundColor(.dark)
                 }
             }
-            
-            ZStack{
+
+            ZStack {
                 Rectangle()
                     .foregroundColor(.primary_color)
                 Text(LocalizedStringKey("AboutCardText"))
@@ -122,21 +119,21 @@ struct AboutUsView: View {
                     .foregroundColor(.light)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 33.5)
-                
+
             }
-            .frame(width: UIScreen.main.bounds.size.width, height: 250, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            .frame(width: UIScreen.main.bounds.size.width, height: 250, alignment: .center/*@END_MENU_TOKEN@*/)
             .padding(.bottom, 66)
-            
-            VStack(alignment:.leading){
+
+            VStack(alignment: .leading) {
                 Text(LocalizedStringKey("AboutPrinciplesTitle"))
-                .heading2()
-                .foregroundColor(.primary_color)
-                .padding(.bottom, 16)
-        
+                    .heading2()
+                    .foregroundColor(.primary_color)
+                    .padding(.bottom, 16)
+
                 Text(LocalizedStringKey("AboutPrinciplesParagraph"))
                     .paragraph()
                     .padding(.bottom, 23)
-                Group{
+                Group {
                     StepIndicator(stepIndex: 1)
                         .padding(.bottom, 7)
                     Text(LocalizedStringKey("AboutPrinciplesSubtitleOne"))
@@ -147,7 +144,7 @@ struct AboutUsView: View {
                         .paragraph()
                         .fixedSize(horizontal: false, vertical: true)
                         .padding(.bottom, 32)
-        
+
                     StepIndicator(stepIndex: 2)
                         .padding(.bottom, 7)
                     Text(LocalizedStringKey("AboutPrinciplesSubtitleTwo"))
@@ -158,8 +155,7 @@ struct AboutUsView: View {
                         .paragraph()
                         .fixedSize(horizontal: false, vertical: true)
                         .padding(.bottom, 32)
-                    
-              
+
                     StepIndicator(stepIndex: 3)
                         .padding(.bottom, 7)
                     Text(LocalizedStringKey("AboutPrinciplesSubtitleThree"))

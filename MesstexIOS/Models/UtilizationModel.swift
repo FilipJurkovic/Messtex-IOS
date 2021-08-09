@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct UtilizationModel: Codable{
+struct UtilizationModel: Codable {
     var verificationCode: String
 }

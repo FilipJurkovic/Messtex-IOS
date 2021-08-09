@@ -8,5 +8,5 @@
 import Foundation
 
 struct Faq: Codable {
-    var faqs: Array<FaqItem>
+    var faqs: [FaqItem]
 }

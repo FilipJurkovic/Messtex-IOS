@@ -8,23 +8,22 @@
 import SwiftUI
 
 struct MeterReadingFlowView: View {
-    @ObservedObject var viewModel : MainViewModel
+    @ObservedObject var viewModel: MainViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
-    
+
     var body: some View {
-        ZStack{
-            VStack(spacing: 0){
-                if viewModel.currentReadingView != ReadingFlowEnum.meterReadingView && viewModel.currentReadingView != ReadingFlowEnum.successView{
-                    HStack{
-                        Button(action : {
-                            if viewModel.currentReadingView == ReadingFlowEnum.codeReadingView{
+        ZStack {
+            VStack(spacing: 0) {
+                if viewModel.currentReadingView != ReadingFlowEnum.meterReadingView && viewModel.currentReadingView != ReadingFlowEnum.successView {
+                    HStack {
+                        Button(action: {
+                            if viewModel.currentReadingView == ReadingFlowEnum.codeReadingView {
                                 self.presentationMode.wrappedValue.dismiss()
                             } else {
                                 viewModel.getPreviousTabView()
                             }
-                            
-                        }, label:{
+
+                        }, label: {
                             Image(systemName: "arrow.left")
                                 .foregroundColor(.dark)
                         }).padding(.leading, 24)
@@ -35,30 +34,30 @@ struct MeterReadingFlowView: View {
                             .padding(EdgeInsets(top: 18.2, leading: 0, bottom: 0, trailing: 30.1))
                     }.background(Color.clear)
                 }
-                TabView(selection: $viewModel.currentReadingView){
+                TabView(selection: $viewModel.currentReadingView) {
                     CodeReadingView(viewModel: viewModel)
                         .tag(ReadingFlowEnum.codeReadingView)
-                    
+
                     ReadingStepsView(viewModel: viewModel)
                         .tag(ReadingFlowEnum.readingStepsView)
-                    
-                    MeterReadingView(cameraView: CameraView(captureAction: { image, values in
-                       
+
+                    MeterReadingView(cameraView: CameraView(captureAction: { _, values in
+
                         viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue = viewModel.removePoint(value: values[0])
-                        
+
                         viewModel.currentReadingView = ReadingFlowEnum.manualReadingView
                     }), index: viewModel.currentMeterIndex, viewModel: viewModel)
-                        .tag(ReadingFlowEnum.meterReadingView)
-                    
+                    .tag(ReadingFlowEnum.meterReadingView)
+
                     ManualReadingView(viewModel: viewModel, index: viewModel.currentMeterIndex)
                         .tag(ReadingFlowEnum.manualReadingView)
-                    
+
                     ContactDetailsView(viewModel: viewModel)
                         .tag(ReadingFlowEnum.contactDetailsView)
-                    
+
                     ConfirmationView(viewModel: viewModel)
                         .tag(ReadingFlowEnum.confirmationView)
-                    
+
                     SuccessVIew(viewModel: viewModel)
                         .tag(ReadingFlowEnum.successView)
                 }
@@ -68,19 +67,19 @@ struct MeterReadingFlowView: View {
                 .transition(.slide)
                 .navigationTitle("")
                 .navigationBarHidden(true)
-                .onAppear(){
+                .onAppear {
                     UIPageControl.appearance().currentPageIndicatorTintColor = .clear
                     UIPageControl.appearance().pageIndicatorTintColor = .clear
                 }
             }
-        
-            if viewModel.isProgressBarActive{
-                ZStack{
-                Rectangle()
-                    .foregroundColor(.dark)
-                    .opacity(0.3)
-                Loader()
-                    
+
+            if viewModel.isProgressBarActive {
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(.dark)
+                        .opacity(0.3)
+                    Loader()
+
                 }
                 .ignoresSafeArea()
                 .navigationBarBackButtonHidden(true)

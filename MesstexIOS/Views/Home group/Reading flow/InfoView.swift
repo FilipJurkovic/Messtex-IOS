@@ -8,61 +8,63 @@
 import SwiftUI
 
 struct InfoView: View {
-    
-    @ObservedObject var viewModel : MainViewModel
-    
-    var index : Int
-    
-    var nameArray: [LocalizedStringKey] = [LocalizedStringKey("WaterInfoTitle"),LocalizedStringKey("HeaterInfoTitle"),LocalizedStringKey("ElectricityInfoTitle")]
-    var imageArray = ["watermeter_illustration","gasmeter_illustration","electricity_illustration"]
-    var numberExplanationArray: [LocalizedStringKey] = [LocalizedStringKey("WaterInfoMeterNumber"),LocalizedStringKey("HeaterInfoMeterNumber"),LocalizedStringKey("ElectricityInfoMeterNumber")]
-    var readingExplanationArray: [LocalizedStringKey] = [LocalizedStringKey("WaterInfoMeterReading"),LocalizedStringKey("HeaterInfoMeterReading"),LocalizedStringKey("ElectricityInfoMeterReading")]
+
+    @ObservedObject var viewModel: MainViewModel
+
+    var index: Int
+
+    var nameArray: [LocalizedStringKey] = [LocalizedStringKey("WaterInfoTitle"), LocalizedStringKey("HeaterInfoTitle"), LocalizedStringKey("ElectricityInfoTitle")]
+    var imageArray = ["watermeter_illustration", "gasmeter_illustration", "electricity_illustration"]
+    var numberExplanationArray: [LocalizedStringKey] = [LocalizedStringKey("WaterInfoMeterNumber"), LocalizedStringKey("HeaterInfoMeterNumber"), LocalizedStringKey("ElectricityInfoMeterNumber")]
+    var readingExplanationArray: [LocalizedStringKey] = [LocalizedStringKey("WaterInfoMeterReading"), LocalizedStringKey("HeaterInfoMeterReading"), LocalizedStringKey("ElectricityInfoMeterReading")]
     var body: some View {
-        VStack(spacing:0){
-            HStack{
+        VStack(spacing: 0) {
+            HStack {
                 Spacer()
-                Button(action : {viewModel.isInfoSheetOpen = false}){
+                Button(action: {
+                    viewModel.isInfoSheetOpen = false
+                }, label: {
                     RoundButtonStyle(imageName: "xmark", backgroundColor: .tetriary_tint, iconColor: .dark)
-                }
+                })
             }
             .padding(.bottom, 25)
             .padding(.top, 20)
-            
+
             Text(nameArray[index])
                 .heading1()
                 .multilineTextAlignment(.center)
                 .foregroundColor(.primary_color)
                 .padding(.bottom, 36.4)
-            
+
             Image(imageArray[index])
                 .resizable()
                 .frame(width: 287.32, height: 240.68)
                 .padding(.bottom, 33)
-            
-            HStack{
+
+            HStack {
                 Text(LocalizedStringKey("MeterNumber"))
                     .paragraphBold()
                     .foregroundColor(.primary_color)
                 Spacer()
             }.padding(.bottom, 10)
-            
+
             Text(numberExplanationArray[index])
                 .paragraph()
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.bottom, 24)
-            
-            HStack{
+
+            HStack {
                 Text(LocalizedStringKey("MeterReading"))
                     .paragraphBold()
                     .foregroundColor(.primary_color)
                 Spacer()
             }.padding(.bottom, 10)
-            
+
             Text(readingExplanationArray[index])
                 .paragraph()
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.bottom, 24)
-            
+
         }.padding(.horizontal, 23)
     }
 }

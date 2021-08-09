@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct MeterReadingData: Codable{
+struct MeterReadingData: Codable {
     var counterNumber: Int
     var counterType: String
     var counterValue: String
     var userMessage: String
 }
 
-struct MeterReceivingData: Codable{
+struct MeterReceivingData: Codable {
     var counterNumber: Int
     var counterType: String
     var counterRoom: String

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UtilizationResponseModel: Codable{
+struct UtilizationResponseModel: Codable {
     var firstName: String
     var lastName: String
     var email: String
@@ -18,5 +18,5 @@ struct UtilizationResponseModel: Codable{
     var city: String
     var floor: String
     var readingReason: String
-    var meters: Array<MeterReceivingData>
+    var meters: [MeterReceivingData]
 }

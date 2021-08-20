@@ -23,6 +23,7 @@ struct ConfirmationView: View {
                     }.padding(.horizontal, 24)
                     
                 }
+                .padding(.top, 100)
                 ZStack(){
                     Image("reading_paper")
                         .resizable()
@@ -38,7 +39,7 @@ struct ConfirmationView: View {
                                             Image(viewModel.getMeterTypeIcon(meterType: viewModel.postModelData.meterReadings[index].counterType))
                                                 .resizable()
                                                 .frame(width: 18, height: 18)
-                                            
+                                                .padding(.top, 17)
                                                 
                                             Text(viewModel.userData.meters[index].counterTypeName)
                                               .paragraphBold()
@@ -46,7 +47,7 @@ struct ConfirmationView: View {
                                               .padding(.trailing, 9)
                                             Spacer()
                                         }.padding(.bottom, 4)
-                                        Text("Nr. \(viewModel.formatNumber(number: viewModel.userData.meters[index].counterNumber))")
+                                        Text("Nr. \(viewModel.userData.meters[index].counterNumber)")
                                           .small()
                                           .foregroundColor(.tetriary)
                                           .padding(.bottom, 8)
@@ -54,6 +55,7 @@ struct ConfirmationView: View {
                                         Text(viewModel.postModelData.meterReadings[index].counterValue)
                                           .paragraphBold()
                                           .foregroundColor(.dark)
+                                          .padding(.bottom, 17)
                                             
                                         Divider()
                                             .foregroundColor(.tetriary)
@@ -68,6 +70,7 @@ struct ConfirmationView: View {
                                               .padding(.trailing, 9)
                                             Spacer()
                                         }.padding(.bottom, 4)
+                                        .padding(.top, 17)
                                         Text("\(viewModel.userData.firstName) \(viewModel.userData.lastName)")
                                           .paragraph()
                                           .foregroundColor(.dark)
@@ -81,6 +84,7 @@ struct ConfirmationView: View {
                                         Text("\(viewModel.userData.street) \(viewModel.userData.houseNumber)")
                                           .paragraph()
                                           .foregroundColor(.dark)
+                                          .padding(.bottom, 17)
                                             
                                         Divider()
                                             .foregroundColor(.tetriary)
@@ -89,22 +93,6 @@ struct ConfirmationView: View {
                                 }
                             }
                                 
-                                HStack{
-                                    
-                                    Text(LocalizedStringKey("ReasonOfReading"))
-                                      .paragraphBold()
-                                      .foregroundColor(.primary_color)
-                                      .padding(.trailing, 9)
-                                    Spacer()
-                                }.padding(.bottom, 4)
-                                Text(viewModel.userData.readingReason)
-                                  .paragraph()
-                                  .foregroundColor(.tetriary)
-                                  .padding(.bottom, 8)
-
-                                Divider()
-                                    .foregroundColor(.tetriary)
-                                    .frame(height:1)
 
                         }.padding(.horizontal, 23)
                         }.frame(width: 300, height: 450)
@@ -112,14 +100,18 @@ struct ConfirmationView: View {
                 }.frame(width: 353.3, height: 527.4)
                 Button(action: {viewModel.takeMeterReadings()}, label: {
                     PrimaryButtonStyle(buttonLabel: "Send")
-                }).padding(.bottom, 75)
+                }).padding(.bottom, 30)
+                .padding(.top, 38)
 
-    
+                NavigationLink(destination: SuccessVIew(viewModel: viewModel)
+                                .tag(ReadingFlowEnum.successView)
+                                .simultaneousGesture(DragGesture()), tag: ReadingFlowEnum.successView, selection: $viewModel.currentReadingView) { EmptyView() }
             }
         }
         .navigationBarBackButtonHidden(true)
         .navigationTitle("")
         .navigationBarHidden(true)
+        .frame(height: UIScreen.main.bounds.size.height)
     }
 }
 

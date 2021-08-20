@@ -2,18 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../File.swift">
-   </FileRef>
-   <FileRef
-      location = "group:../MesstexIOS/Localizable.strings">
-   </FileRef>
-   <FileRef
-      location = "group:../../pixometer-sdk-3.5.2-4439-evaluation/ios/MeterReading.framework/MeterReading">
-   </FileRef>
-   <FileRef
-      location = "group:../../pixometer-sdk-3.5.2-4439-evaluation/ios/MeterReading.framework">
-   </FileRef>
-   <FileRef
       location = "self:">
    </FileRef>
 </Workspace>

@@ -12,6 +12,8 @@ struct ManualReadingView: View {
     @ObservedObject var viewModel : MainViewModel
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
+    @Binding var popToReadingSteps: Bool
+    
     var index : Int
     
     var body: some View {
@@ -20,6 +22,7 @@ struct ManualReadingView: View {
             Image("reading_graphics")
                 .resizable()
                 .frame(width: 114, height: 95)
+                .padding(.top, 10)
             
             Text(LocalizedStringKey("ManualInputTitle"))
               .heading1()
@@ -32,15 +35,15 @@ struct ManualReadingView: View {
             .multilineTextAlignment(.center)
             .padding(.bottom, 28)
             VStack(spacing:0){
-                FloatingNumericTextField(placeHolder: "CounterNumberTextField", text: $viewModel.userData.meters[index].counterNumber)
+                FloatingTextField(placeHolder: "CounterTypeTextField", text: $viewModel.userData.meters[index].counterNumber, isRequired: false)
                     .frame(width: 325)
                     .padding(.bottom, 7)
                     .disabled(true)
-                FloatingTextField(placeHolder: "CounterTypeTextField", text: $viewModel.userData.meters[index].counterType)
+                FloatingTextField(placeHolder: "CounterTypeTextField", text: $viewModel.userData.meters[index].counterType, isRequired: false)
                     .frame(width: 325)
                     .padding(.bottom, 7)
                     .disabled(true)
-                FloatingTextField(placeHolder: "ReadingDateTextField", text: .constant(Date().formatDate()))
+                FloatingTextField(placeHolder: "ReadingDateTextField", text: .constant(Date().formatDate()), isRequired: false)
                     .frame(width: 325)
                     .padding(.bottom, 32)
                     .disabled(true)
@@ -60,7 +63,7 @@ struct ManualReadingView: View {
                     
                     pinDots
                     backgroundField
-                }
+                }.padding(.bottom, 31)
                 
                 HStack{
                     Text(LocalizedStringKey("MessageTitle"))
@@ -70,7 +73,7 @@ struct ManualReadingView: View {
                     Spacer()
                 }
                 
-                FloatingTextEditor(placeHolder: "Message", text: $viewModel.postModelData.meterReadings[index].userMessage)
+                FloatingTextEditor(placeHolder: "Message", text: $viewModel.postModelData.meterReadings[index].userMessage, isRequired: false)
                     .frame(width: 325)
                 
             }
@@ -81,10 +84,12 @@ struct ManualReadingView: View {
                     viewModel.currentReadingView = ReadingFlowEnum.readingStepsView
                     viewModel.postModelData.meterReadings[index].counterValue = viewModel.addComma(value: viewModel.postModelData.meterReadings[index].counterValue)
                     viewModel.readingStepsProgress[index] = true
+                    popToReadingSteps.toggle()
                 },
                 label: {
-                   PrimaryButtonStyle(buttonLabel: "Next", isEnabled: true)
-                }).disabled(false)
+                   PrimaryButtonStyle(buttonLabel: "Next", isEnabled: viewModel.postModelData.meterReadings[index].counterValue != "")
+                }).disabled(viewModel.postModelData.meterReadings[index].counterValue == "")
+                .padding(.bottom, 30)
             Spacer()
         }
         .frame(width: 327)
@@ -128,7 +133,7 @@ struct ManualReadingView: View {
 
 struct ManualReadingView_Previews: PreviewProvider {
     static var previews: some View {
-        ManualReadingView(viewModel: MainViewModel(), index: 0)
+        ManualReadingView(viewModel: MainViewModel(), popToReadingSteps: .constant(false), index: 0)
     }
 }
 

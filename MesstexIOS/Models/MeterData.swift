@@ -8,15 +8,17 @@
 import Foundation
 
 struct MeterReadingData: Codable{
-    var counterNumber: Int
+    var counterNumber: String
     var counterType: String
     var counterValue: String
     var userMessage: String
 }
 
 struct MeterReceivingData: Codable{
-    var counterNumber: Int
+    var counterNumber: String
     var counterType: String
     var counterRoom: String
     var counterTypeName: String
+    var counterDescriptionText: String
+    var counterDescriptionImage: String
 }

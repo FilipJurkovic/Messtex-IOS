@@ -15,18 +15,29 @@ struct CameraHeaderView: View {
     
     @ObservedObject var viewModel : MainViewModel
     
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    
+    @Binding var popToReadingSteps: Bool
+    
     var body: some View {
-        ZStack{
+        ZStack(alignment: .center){
             HStack{
                 Spacer()
-                Text("\(NSLocalizedString("ReadingDate", comment: "ReadingDate")) \(Date().formatDate())" as String)
-                    .paragraph()
-                    .foregroundColor(.light)
+                HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 4){
+                    Text(LocalizedStringKey("ReadingDate"))
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.light)
+                   
+                    Text(Date().formatDate() as String)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.light)
+                        
+                }
                 Spacer()
             }
-            HStack {
+            HStack(alignment:.center) {
             Button(action : {
-                viewModel.currentReadingView = ReadingFlowEnum.readingStepsView
+                popToReadingSteps.toggle()
             }){
                 RoundButtonStyle(imageName: "xmark", backgroundColor: .tetriary_tint, iconColor: .dark)
             }
@@ -49,21 +60,43 @@ struct MeterReadingView: View {
     
     var index: Int = 0
     
+    @Binding var popToReadingSteps: Bool
+    
     @ObservedObject var viewModel : MainViewModel
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 cameraView
+                if UIScreen.main.bounds.size.height < 812{
                 Image("overlay_image")
                     .resizable()
+                    .scaledToFill()
+                    .offset(y:-(812-UIScreen.main.bounds.size.height)/2)
                     .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
-                VStack(spacing:0) {
-                    CameraHeaderView(safeAreaInset: 43, viewModel: viewModel)
+                    .clipped()
+                    
+                }
+                else{
+                    Image("overlay_image")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+                        .clipped()
+                }
+                VStack() {
+                    CameraHeaderView(safeAreaInset: 18, viewModel: viewModel, popToReadingSteps: $popToReadingSteps)
+                    
                     Spacer()
-                    Text("\(NSLocalizedString("ScanMessage", comment: "ScanMessage"))\nNr. \(viewModel.formatNumber(number: viewModel.userData.meters[index].counterNumber))" as String)
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(.light)
-                        .padding(.bottom, 42)
+                    VStack(spacing:0){
+                        Text(LocalizedStringKey("ScanMessage"))
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(.light)
+                       
+                        Text("Nr. \(viewModel.userData.meters[index].counterNumber)")
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(.light)
+                            
+                    }.padding(.bottom, 42)
                     
                     Button(
                         action: {viewModel.currentReadingView = ReadingFlowEnum.manualReadingView},
@@ -79,6 +112,8 @@ struct MeterReadingView: View {
                                 viewModel.postModelData.meterReadings.append(MeterReadingData(counterNumber: meterModel.counterNumber, counterType: meterModel.counterType, counterValue:  "", userMessage: ""))
                             }
                         }
+                    
+                    NavigationLink(destination: ManualReadingView(viewModel: viewModel, popToReadingSteps: $popToReadingSteps, index: viewModel.currentMeterIndex), tag: ReadingFlowEnum.manualReadingView, selection: $viewModel.currentReadingView) { EmptyView() }
             
                     
                     HStack{

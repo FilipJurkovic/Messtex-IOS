@@ -15,4 +15,5 @@ enum ReadingFlowEnum: CaseIterable {
     case contactDetailsView
     case confirmationView
     case successView
+    case homeView
 }

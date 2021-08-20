@@ -39,14 +39,15 @@ struct ContactFormView: View {
                         .paragraph()
                         .padding(.bottom, 19)
                 
-                FloatingTextField(placeHolder: "FirstNameTextField", text: $viewModel.contactFormData.name)
+                
+                FloatingTextField(placeHolder: "Name", text: $viewModel.contactFormData.name, isRequired: true)
                     .padding(.bottom, 7)
-                FloatingTextField(placeHolder: "EmailTextField", text: $viewModel.contactFormData.email)
+                FloatingTextField(placeHolder: "EmailTextField", text: $viewModel.contactFormData.email, isRequired: true)
                     .padding(.bottom, 7)
-                FloatingTextField(placeHolder: "Subject", text: $viewModel.contactFormData.subject)
+                FloatingTextField(placeHolder: "Subject", text: $viewModel.contactFormData.subject, isRequired: false)
                     .padding(.bottom, 7)
                 
-                FloatingTextEditor(placeHolder: "Message", text: $viewModel.contactFormData.message)
+                FloatingTextEditor(placeHolder: "Message", text: $viewModel.contactFormData.message, isRequired: true)
                 
                 Text(LocalizedStringKey("RequiredFields"))
                     .small()
@@ -69,6 +70,7 @@ struct ContactFormView: View {
                 viewModel.takeContactForm()
                 self.presentationMode.wrappedValue.dismiss()
             }, buttonLabel: "Send", isEnabled: viewModel.isContactFormValid())
+            .padding(.bottom, 30)
         }
         
     }

@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import LanguageManagerSwiftUI
 
 struct LogoImage: View {
     var body: some View {
@@ -25,12 +26,11 @@ struct CardButton: View {
     var body: some View {
                     ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)){
                     Rectangle()
-                        HStack(alignment:.top)
-                    {
+                        HStack{
                             Text(LocalizedStringKey(cardName))
                         .foregroundColor(.dark)
                         .padding(.leading, 12)
-                        .padding(.top, 5)
+                        
                             Spacer()
                         Image(systemName: "chevron.right")
                             .frame(width: 7.38, height: 12.92)
@@ -43,17 +43,54 @@ struct CardButton: View {
         }
     }
 
+struct LanguageSelector: View {
+    var cardName: String
+    var language: String
+
+    var body: some View {
+                ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)){
+                Rectangle()
+                    HStack(alignment:.top)
+                {
+                        Text(LocalizedStringKey(cardName))
+                    .foregroundColor(.dark)
+                    .padding(.leading, 12)
+                    .padding(.top, 5)
+                        
+                        Spacer()
+                        
+                        Text(language)
+                            .paragraph()
+                            .foregroundColor(.dark)
+                            .padding(.trailing, 13)
+                            .padding(.vertical)
+
+                    
+                    Image(systemName: "chevron.down")
+                        .frame(width: 7.38, height: 12.92)
+                        .foregroundColor(.dark)
+                        .padding()
+                    }
+            }.frame(width: 351, height:54)
+                .foregroundColor(.light)
+  
+    }
+}
 
 struct FloatingTextField: View {
     let textFieldHeight: CGFloat = 57
     private let placeHolderText: String
+    var isRequired: Bool = false
+
     @Binding var text: String
     @State private var isEditing = false
     var error: Bool = false
     public init(placeHolder: String,
-                text: Binding<String>) {
+                text: Binding<String>,
+                isRequired: Bool) {
         self._text = text
         self.placeHolderText = placeHolder
+        self.isRequired = isRequired
     }
     var shouldPlaceHolderMove: Bool {
         isEditing || (text.count != 0)
@@ -75,12 +112,20 @@ struct FloatingTextField: View {
             .animation(.linear)
             .offset(y:8)
             ///Floating Placeholder
+            HStack(spacing: 1){
             Text(LocalizedStringKey(placeHolderText))
                 .paragraph()
                 .foregroundColor(Color.medium)
                 .background(Color(UIColor.systemBackground))
-                .offset(x: 15.0, y: -17)
-                .scaleEffect(shouldPlaceHolderMove ? 0.857 : 1.0)
+                
+                if isRequired{
+                    Text("*")
+                        .paragraph()
+                        .foregroundColor(Color.medium)
+                        .background(Color(UIColor.systemBackground))
+                }
+            }.offset(x: 15.0, y: -17)
+            .scaleEffect(shouldPlaceHolderMove ? 0.857 : 1.0)
             .animation(.linear)
             
         }
@@ -90,13 +135,17 @@ struct FloatingTextField: View {
 struct FloatingNumericTextField: View {
     let textFieldHeight: CGFloat = 57
     private let placeHolderText: String
+    
+    var isRequired: Bool = false
     @Binding var text: Int
     @State private var isEditing = false
     var error: Bool = false
     public init(placeHolder: String,
-                text: Binding<Int>) {
+                text: Binding<Int>,
+                isRequired: Bool) {
         self._text = text
         self.placeHolderText = placeHolder
+        self.isRequired = isRequired
     }
     var shouldPlaceHolderMove: Bool {
         isEditing || (String(text).count != 0)
@@ -117,13 +166,20 @@ struct FloatingNumericTextField: View {
             .animation(.linear)
             .offset(y:8)
             
-            ///Floating Placeholder
+            HStack(spacing: 1){
             Text(LocalizedStringKey(placeHolderText))
                 .paragraph()
                 .foregroundColor(Color.medium)
                 .background(Color(UIColor.systemBackground))
-                .offset(x: 15.0, y: -17)
-                .scaleEffect(shouldPlaceHolderMove ? 0.857 : 1.0)
+                
+                if isRequired{
+                    Text("*")
+                        .paragraph()
+                        .foregroundColor(Color.medium)
+                        .background(Color(UIColor.systemBackground))
+                }
+            }.offset(x: 15.0, y: -17)
+            .scaleEffect(shouldPlaceHolderMove ? 0.857 : 1.0)
             .animation(.linear)
             
         }
@@ -134,13 +190,17 @@ struct FloatingNumericTextField: View {
 struct FloatingTextEditor: View {
     let textFieldHeight: CGFloat = 168
     private let placeHolderText: String
+    
+    var isRequired: Bool = false
     @Binding var text: String
     @State private var isEditing = false
     var error: Bool = false
     public init(placeHolder: String,
-                text: Binding<String>) {
+                text: Binding<String>,
+                isRequired: Bool) {
         self._text = text
         self.placeHolderText = placeHolder
+        self.isRequired = isRequired
     }
     var shouldPlaceHolderMove: Bool {
         text.count != 0
@@ -158,13 +218,21 @@ struct FloatingTextEditor: View {
                 .animation(.linear)
                 
             
+            HStack(alignment:.center, spacing: 1){
             Text(LocalizedStringKey(placeHolderText))
                 .paragraph()
                 .foregroundColor(Color.medium)
                 .background(Color(UIColor.systemBackground))
-                .offset(x: 15.0, y: shouldPlaceHolderMove ? 9 : 16)
-                .scaleEffect(shouldPlaceHolderMove ? 0.857 : 1.0)
-                .animation(.linear)
+                
+                if isRequired{
+                    Text("*")
+                        .paragraph()
+                        .foregroundColor(Color.medium)
+                        .background(Color(UIColor.systemBackground))
+                }
+            }.offset(x: 15.0, y: 5)
+            .scaleEffect(shouldPlaceHolderMove ? 0.857 : 1.0)
+            .animation(.linear)
         }
     }
 }
@@ -214,7 +282,7 @@ struct ManualReadingButtonStyle: View {
     var body: some View {
             ZStack{
                 RoundedRectangle(cornerRadius: 28)
-                    .foregroundColor(.primary_color)
+                    .foregroundColor(.primary_shade)
                     .opacity(0.3)
                 HStack
                 {
@@ -236,10 +304,10 @@ struct OutlinedButtonStyle: View {
     var body: some View {
             ZStack{
                 RoundedRectangle(cornerRadius: 18)
-                    .stroke(Color.primary_tint, lineWidth: 1.6)
+                    .stroke(Color.primary_shade, lineWidth: 1.6)
                 Text(LocalizedStringKey(buttonLabel))
                     .tinyBold()
-                    .foregroundColor(.primary_tint)
+                    .foregroundColor(.primary_shade)
             }.frame(width: 142, height: 34, alignment: .center)
         }
 }
@@ -466,11 +534,12 @@ struct FinishedReadingWidget : View {
                 RoundedRectangle(cornerRadius: 4)
                     .foregroundColor(.primary_color)
                 HStack{
-                    Image("successful_read")
+                    Image("success_widget")
                         .resizable()
                         .frame(width: 61, height: 78)
-                        .padding(.trailing, 29)
+                        .padding(.horizontal, 29)
                     VStack(alignment:.leading){
+                        Spacer()
                         Text(LocalizedStringKey("SuccessCardTitle"))
                             .heading2()
                             .foregroundColor(.light)
@@ -478,10 +547,12 @@ struct FinishedReadingWidget : View {
                         Text(LocalizedStringKey("SuccessCardSubtitle"))
                             .paragraph()
                             .foregroundColor(.light)
-                    }
+                        Spacer()
+                    }.padding(.trailing, 38)
                 }
             }
             .frame(width: 319, height: 138)
+            .padding(.bottom, 22)
             
             NavigationLink(
                         destination: AboutUsView(),
@@ -542,6 +613,7 @@ struct FaqWidget : View {
                     content: {
                             Text(faq.faqs[index].answer)
                                 .paragraph()
+                                .padding(.top, 22)
                              
                         
                     },
@@ -655,9 +727,86 @@ struct AboutUsCardWidget : View {
     }
 }
 
-//struct FinishedReadingWidget : View {
-//
-//    var body: some View{
-//
-//    }
-//}
+struct RoundedCorners: View {
+    var color: Color = .blue
+    var tl: CGFloat = 0.0
+    var tr: CGFloat = 0.0
+    var bl: CGFloat = 0.0
+    var br: CGFloat = 0.0
+
+    var body: some View {
+        GeometryReader { geometry in
+            Path { path in
+
+                let w = geometry.size.width
+                let h = geometry.size.height
+
+                // Make sure we do not exceed the size of the rectangle
+                let tr = min(min(self.tr, h/2), w/2)
+                let tl = min(min(self.tl, h/2), w/2)
+                let bl = min(min(self.bl, h/2), w/2)
+                let br = min(min(self.br, h/2), w/2)
+
+                path.move(to: CGPoint(x: w / 2.0, y: 0))
+                path.addLine(to: CGPoint(x: w - tr, y: 0))
+                path.addArc(center: CGPoint(x: w - tr, y: tr), radius: tr, startAngle: Angle(degrees: -90), endAngle: Angle(degrees: 0), clockwise: false)
+                path.addLine(to: CGPoint(x: w, y: h - br))
+                path.addArc(center: CGPoint(x: w - br, y: h - br), radius: br, startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 90), clockwise: false)
+                path.addLine(to: CGPoint(x: bl, y: h))
+                path.addArc(center: CGPoint(x: bl, y: h - bl), radius: bl, startAngle: Angle(degrees: 90), endAngle: Angle(degrees: 180), clockwise: false)
+                path.addLine(to: CGPoint(x: 0, y: tl))
+                path.addArc(center: CGPoint(x: tl, y: tl), radius: tl, startAngle: Angle(degrees: 180), endAngle: Angle(degrees: 270), clockwise: false)
+            }
+            .fill(self.color)
+        }
+    }
+}
+
+
+struct LanguagePicker: View {
+    @Binding var selection: String
+    @Binding var isShowing: Bool
+    @EnvironmentObject var languageSettings: LanguageSettings
+    
+    var onSelected : (String) -> Void
+
+    var body: some View {
+        GeometryReader { gr in
+            VStack {
+                VStack {
+                    Picker(selection: $selection, label: Text("")) {
+                        ForEach(["English", "Deutsch"], id: \.self) {
+                            Text("\($0)")
+                                .tag($0)
+                        }
+                    .labelsHidden()
+                        
+                    }
+                }
+                .frame(maxWidth: gr.size.width  - 90)
+                .background(RoundedRectangle(cornerRadius: 10)
+                .foregroundColor(Color.white).shadow(radius: 1))
+                
+                VStack {
+                    Button(action: {
+                        self.isShowing = false
+                        print(selection)
+                        self.onSelected(selection)
+                    }) {
+                        Text("Done").fontWeight(Font.Weight.bold)
+                   }.padding()
+                    .frame(maxWidth: gr.size.width  - 90)
+                    .background(RoundedRectangle(cornerRadius: 10)
+                    .foregroundColor(Color.white).shadow(radius: 1))
+                    .onTapGesture {
+                        self.isShowing = false
+                        print(selection)
+                        self.onSelected(selection)
+                    }
+
+                }
+            }.position(x: gr.size.width / 2 ,y: gr.size.height - 200)
+        }
+    }
+}
+

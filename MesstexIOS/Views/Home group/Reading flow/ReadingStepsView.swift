@@ -11,15 +11,15 @@ struct ReadingStepsView: View {
     @ObservedObject var viewModel : MainViewModel
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     var body: some View {
-        
+        ZStack{
             ScrollView(showsIndicators: false){
                 VStack{
                     
                 ReadingFlowHeaderWidget(title: "ReadingStepsTitle", description: "ReadingStepsSubTitle")
                         .padding(.bottom, 41)
+                        .padding(.top, 50)
                 
-                
-                
+
                 VStack(spacing: 0){
                     ForEach(0...viewModel.userData.meters.count, id: \.self) { index in
                         
@@ -47,6 +47,7 @@ struct ReadingStepsView: View {
                             Spacer()
                             Button(
                                 action: {
+                                    viewModel.getCounterImage(index: index)
                                     viewModel.currentMeterIndex = index
                                     viewModel.currentReadingView = ReadingFlowEnum.meterReadingView
                                 },
@@ -57,7 +58,7 @@ struct ReadingStepsView: View {
                                         SubmitButtonStyle()
                                     }
                                 })
-                        
+                            NavigationLink(destination: ) { EmptyView() }
                             
                         } else{
                             if viewModel.readingStepsProgress.last!{
@@ -84,6 +85,8 @@ struct ReadingStepsView: View {
                                             SubmitButtonStyle()
                                         }
                                     })
+                            
+                            NavigationLink(destination: ContactDetailsView(viewModel: viewModel), tag: ReadingFlowEnum.contactDetailsView, selection: $viewModel.currentReadingView) { EmptyView() }
                         }
                        }
                        
@@ -96,15 +99,29 @@ struct ReadingStepsView: View {
                     .padding(.bottom, 43)
                 
                 Button(
-                    action: { viewModel.currentReadingView = ReadingFlowEnum.confirmationView },
+                    action: {
+                        if(viewModel.checkReadingStepStatus()){
+                        viewModel.currentReadingView = ReadingFlowEnum.confirmationView
+                        }
+                    },
                     label: {
                         PrimaryButtonStyle(buttonLabel: "SubmitReadings", isEnabled: viewModel.checkReadingStepStatus())
-                    })
+                    }).padding(.bottom, 30)
+                    
+                NavigationLink(destination: ReadingStepsView(viewModel: viewModel), tag: ReadingFlowEnum.confirmationView, selection: $viewModel.currentReadingView) { EmptyView() }
                 Spacer()
             }
                 .padding(.top, 12)
                 .navigationTitle("")
                 .navigationBarHidden(true)
+        }
+            HStack{
+                Button(action : { mode.wrappedValue.dismiss() }, label:{
+                        RoundButtonStyle(imageName: "arrow.left", backgroundColor: Color.white, iconColor: Color.dark)
+                    }).padding(.leading, 24)
+                    .padding(.top, 10)
+                Spacer()
+            }.background(Color.light.opacity(0.0))
         }
     }
 }

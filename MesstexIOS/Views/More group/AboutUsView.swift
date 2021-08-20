@@ -96,6 +96,7 @@ struct AboutUsView: View {
                 
                 Text(LocalizedStringKey("AboutParagraphTwo"))
                     .paragraph()
+                    .fixedSize(horizontal: false, vertical: true)
                     .padding(.bottom, 65)
                 }
                 

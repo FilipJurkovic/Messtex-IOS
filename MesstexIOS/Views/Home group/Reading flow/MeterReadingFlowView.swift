@@ -11,56 +11,45 @@ struct MeterReadingFlowView: View {
     @ObservedObject var viewModel : MainViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    @State var popBacktoReadingSteps: Bool = false
+    
     
     var body: some View {
-        ZStack{
-            VStack(spacing: 0){
-                if viewModel.currentReadingView != ReadingFlowEnum.meterReadingView && viewModel.currentReadingView != ReadingFlowEnum.successView{
-                    HStack{
-                        Button(action : {
-                            if viewModel.currentReadingView == ReadingFlowEnum.codeReadingView{
-                                self.presentationMode.wrappedValue.dismiss()
-                            } else {
-                                viewModel.getPreviousTabView()
-                            }
-                            
-                        }, label:{
-                            Image(systemName: "arrow.left")
-                                .foregroundColor(.dark)
-                        }).padding(.leading, 24)
-                        Spacer()
-                        Image("logo")
-                            .resizable()
-                            .frame(width: 71.56, height: 46)
-                            .padding(EdgeInsets(top: 18.2, leading: 0, bottom: 0, trailing: 30.1))
-                    }.background(Color.clear)
-                }
+        ZStack(alignment: .topLeading){
+                
                 TabView(selection: $viewModel.currentReadingView){
-                    CodeReadingView(viewModel: viewModel)
-                        .tag(ReadingFlowEnum.codeReadingView)
-                    
-                    ReadingStepsView(viewModel: viewModel)
-                        .tag(ReadingFlowEnum.readingStepsView)
+//                    CodeReadingView(viewModel: viewModel)
+//                        .tag(ReadingFlowEnum.codeReadingView)
+//                        .simultaneousGesture(DragGesture())
+//
+//                    ReadingStepsView(viewModel: viewModel)
+//                        .tag(ReadingFlowEnum.readingStepsView)
+//                        .simultaneousGesture(DragGesture())
                     
                     MeterReadingView(cameraView: CameraView(captureAction: { image, values in
                        
                         viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue = viewModel.removePoint(value: values[0])
                         
                         viewModel.currentReadingView = ReadingFlowEnum.manualReadingView
-                    }), index: viewModel.currentMeterIndex, viewModel: viewModel)
+                    }), index: viewModel.currentMeterIndex, popToReadingSteps: $popBacktoReadingSteps, viewModel: viewModel)
                         .tag(ReadingFlowEnum.meterReadingView)
+                        .simultaneousGesture(DragGesture())
                     
-                    ManualReadingView(viewModel: viewModel, index: viewModel.currentMeterIndex)
+                    ManualReadingView(viewModel: viewModel, popToReadingSteps: $popBacktoReadingSteps, index: viewModel.currentMeterIndex)
                         .tag(ReadingFlowEnum.manualReadingView)
+                        .simultaneousGesture(DragGesture())
                     
-                    ContactDetailsView(viewModel: viewModel)
-                        .tag(ReadingFlowEnum.contactDetailsView)
-                    
-                    ConfirmationView(viewModel: viewModel)
-                        .tag(ReadingFlowEnum.confirmationView)
-                    
-                    SuccessVIew(viewModel: viewModel)
-                        .tag(ReadingFlowEnum.successView)
+//                    ContactDetailsView(viewModel: viewModel)
+//                        .tag(ReadingFlowEnum.contactDetailsView)
+//                        .simultaneousGesture(DragGesture())
+//
+//                    ConfirmationView(viewModel: viewModel)
+//                        .tag(ReadingFlowEnum.confirmationView)
+//                        .simultaneousGesture(DragGesture())
+//
+//                    SuccessVIew(viewModel: viewModel)
+//                        .tag(ReadingFlowEnum.successView)
+//                        .simultaneousGesture(DragGesture())
                 }
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
@@ -71,8 +60,21 @@ struct MeterReadingFlowView: View {
                 .onAppear(){
                     UIPageControl.appearance().currentPageIndicatorTintColor = .clear
                     UIPageControl.appearance().pageIndicatorTintColor = .clear
+                    UITabBar.appearance().isHidden = true
                 }
+            
+            if viewModel.currentReadingView == ReadingFlowEnum.manualReadingView{
+                HStack{
+                    Button(action : { viewModel.currentReadingView = ReadingFlowEnum.meterReadingView }, label:{
+                        RoundButtonStyle(imageName: "arrow.left", backgroundColor: Color.white, iconColor: Color.dark)
+                    }).padding(.leading, 24)
+                    .padding(.top, 10)
+                    Spacer()
+                }.background(Color.light.opacity(0.0))
             }
+            
+        
+            
         
             if viewModel.isProgressBarActive{
                 ZStack{
@@ -87,7 +89,9 @@ struct MeterReadingFlowView: View {
                 .navigationTitle("")
                 .navigationBarHidden(true)
             }
-        }
+        }.navigationTitle("")
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
 }
 

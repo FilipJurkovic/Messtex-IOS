@@ -26,8 +26,10 @@ public struct CodeReadingView: View {
         ZStack{
             ScrollView(showsIndicators: false){
             VStack{
+                
             ReadingFlowHeaderWidget(title: "CodeReadingTitle", description: "CodeReadingSubtitle")
-            .padding(.bottom, 35)
+                .padding(.bottom, 35)
+                .padding(.top, 10)
 
             ZStack {
                 pinDots
@@ -68,7 +70,7 @@ public struct CodeReadingView: View {
             .padding(.bottom, 38)
             
             NavigationLink(
-                destination: Text(pin),
+                destination: VideoView(),
                         label : {
                             Text(LocalizedStringKey("Link"))
                                 .underline()
@@ -76,9 +78,13 @@ public struct CodeReadingView: View {
                                 .foregroundColor(.primary_color)
                                 .padding(.bottom, 47)
                         })
+                
+                
                 Button(action: {viewModel.getUtilizationUnitData(pin: pin)}, label: {
                     PrimaryButtonStyle(buttonLabel: "Next")
-                })
+                }).padding(.bottom, 30)
+                
+                NavigationLink(destination: ReadingStepsView(viewModel: viewModel), tag: ReadingFlowEnum.readingStepsView, selection: $viewModel.currentReadingView) { EmptyView() }
 
         }
             .ignoresSafeArea()
@@ -86,6 +92,14 @@ public struct CodeReadingView: View {
             .navigationBarHidden(true)
         
             }
+            
+            HStack{
+                Button(action : { mode.wrappedValue.dismiss() }, label:{
+                        RoundButtonStyle(imageName: "arrow.left", backgroundColor: Color.white, iconColor: Color.dark)
+                    }).padding(.leading, 24)
+                    .padding(.top, 10)
+                Spacer()
+            }.background(Color.light.opacity(0.0))
             
         }
             
@@ -107,7 +121,7 @@ public struct CodeReadingView: View {
                         .stroke(viewModel.verificationError.message.isEmpty ? Color.primary_shade : Color.danger, lineWidth: 1.6)
                         
                         Text(self.pin[String.Index(encodedOffset: index)...String.Index(encodedOffset: index)])
-                        .font(Font.custom("Roboto-Bold", size: 56))
+                        .font(Font.custom("Roboto-Bold", size: 46))
                         .foregroundColor(.primary_color)
                 }.frame(width: 52, height: 70)}
                 Spacer()

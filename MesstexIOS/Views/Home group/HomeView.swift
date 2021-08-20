@@ -42,11 +42,11 @@ struct HomeView: View {
                       .paragraphBold()
                       .foregroundColor(.primary_color)
                       .multilineTextAlignment(.center)
-                        .padding(!viewModel.isReadingFinished ? EdgeInsets(top: 0, leading: 0, bottom: 83, trailing: 0) :
-                                    EdgeInsets(top: 0, leading: 0, bottom: 41, trailing: 0))
+                        .padding(!viewModel.isReadingFinished ? EdgeInsets(top: 0, leading: 60, bottom: 83, trailing: 60) :
+                                    EdgeInsets(top: 0, leading: 60, bottom: 41, trailing: 60))
                         if !viewModel.isReadingFinished{
                         NavigationLink(
-                            destination: MeterReadingFlowView(viewModel: viewModel),
+                            destination: CodeReadingView(viewModel: viewModel),
                                     label : {
                                         PrimaryButtonStyle(buttonLabel: "ReadingButton")
                                     })
@@ -81,9 +81,15 @@ struct HomeView: View {
                              .foregroundColor(.primary_color)
                              .multilineTextAlignment(.center)
                              .padding(.bottom, 38)
-                           
-                FaqWidget(questionCount: faq_home.faqs.count, flags: $flags, faq: faq_home)
-                           .padding(.bottom, 21)
+                            .padding(.horizontal, 56)
+                
+                if(viewModel.faq.faqs.isEmpty){
+                    FaqWidget(questionCount: faq_home.faqs.count, flags: $flags, faq: faq_home)
+                               .padding(.bottom, 21)
+                }else{
+                    FaqWidget(questionCount: 3, flags: $flags, faq: viewModel.faq)
+                               .padding(.bottom, 21)
+                }
                            
                             NavigationLink(
                                 destination: FaqView(viewModel: viewModel),
@@ -115,6 +121,8 @@ struct HomeView: View {
                            .frame(width: 102, height: 66)
                            .padding(.bottom, 154)
 
+        }.onAppear(){
+            UITabBar.appearance().isHidden = false
         }
     }
 }

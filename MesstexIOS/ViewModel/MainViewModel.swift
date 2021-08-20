@@ -7,6 +7,7 @@
 
 import Foundation
 import AVFoundation
+import LanguageManagerSwiftUI
 
 class MainViewModel: ObservableObject {
     
@@ -24,19 +25,24 @@ class MainViewModel: ObservableObject {
     
     //RANDOM PARAMS
     @Published var isProgressBarActive: Bool
-    @Published var currentReadingView : ReadingFlowEnum
+    @Published var currentReadingView : ReadingFlowEnum?
     @Published var currentMeterIndex: Int
     @Published var isTorchOn: Bool
     @Published var isInfoSheetOpen: Bool
     @Published var dismissReadingFlow: Bool
     @Published var isReadingFinished : Bool
+    @Published var isLanguagePickerShowing : Bool
+    @Published var language : String
+    @Published var counterImage : Data?
+    
+    
     
     //VIEWMODEL INITIALIZATION
     init() {
         self.co2Level = CarbonDataModel(co2Level: 0.0)
         self.faq = Faq(faqs: [])
         self.userData = UtilizationResponseModel(firstName: "", lastName: "", email: "", phone: "", street: "", houseNumber: "", postcode: "", city: "", floor: "", readingReason: "", meters: [])
-        self.postModelData = PostModelRecord(verificationCode: "", meterReadings: [], firstName: "", secondName: "", email: "", phone: "", sendCopy: false)
+        self.postModelData = PostModelRecord(verificationCode: "", language: "en",meterReadings: [], firstName: "", secondName: "", email: "", phone: "", sendCopy: false)
         self.contactFormData = ContactFormData(name: "", email: "", subject: "", message: "")
         self.verificationError = ErrorModel(message: "")
         
@@ -50,6 +56,9 @@ class MainViewModel: ObservableObject {
         self.currentMeterIndex = 0
         self.dismissReadingFlow = false
         self.isReadingFinished = false
+        self.isLanguagePickerShowing = false
+        self.language = "English"
+        
     }
 
     
@@ -92,6 +101,7 @@ class MainViewModel: ObservableObject {
         let isPhoneValid: Bool = self.userData.phone != ""
         return isFirstNameValid &&  isLastNameValid && isEmailValid && isPhoneValid
     }
+    
     
     func getMeterTypeIcon(meterType: String) -> String{
         switch meterType{
@@ -138,26 +148,18 @@ class MainViewModel: ObservableObject {
 
     }
     
-    func getPreviousTabView(){
-        switch self.currentReadingView {
-        case ReadingFlowEnum.readingStepsView:
-            self.currentReadingView = ReadingFlowEnum.codeReadingView
-            
-        case ReadingFlowEnum.meterReadingView:
-            self.currentReadingView = ReadingFlowEnum.readingStepsView
-            
-        case ReadingFlowEnum.manualReadingView:
-            self.currentReadingView = ReadingFlowEnum.readingStepsView
-            
-        case ReadingFlowEnum.contactDetailsView:
-            self.currentReadingView = ReadingFlowEnum.readingStepsView
-            
-        case ReadingFlowEnum.confirmationView:
-            self.currentReadingView = ReadingFlowEnum.readingStepsView
+    func getLanguageCode() -> String{
+        switch self.language {
+        case "English":
+            return "en"
+        case "Deutsch":
+            return "de"
         default:
-            return
+            return ""
         }
     }
+    
+
     
     func toggleTorch() {
         guard let device = AVCaptureDevice.default(for: .video) else { return }
@@ -227,7 +229,7 @@ class MainViewModel: ObservableObject {
     }
     
     func getFAQs(){
-        let jsonBody = try? JSONEncoder().encode(PostModel(query: "getFAQs()"))
+        let jsonBody = try? JSONEncoder().encode(PostModel(query: "getFAQs(\"{\"\"language\"\":\"\"\(getLanguageCode())\"\"}\")"))
         
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"
@@ -236,24 +238,31 @@ class MainViewModel: ObservableObject {
         request.setValue("Bearer eecf7fd0-cee9-11eb-b752-fde919688281", forHTTPHeaderField: "Authorization")
         
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             URLSession.shared.dataTask(with: request){ (data, response, error) in
             guard let data = data else {return}
-
-            self.faq = try! JSONDecoder().decode(Faq.self, from: data)
+                
+                do{
+                    let response = try JSONDecoder().decode(Faq.self, from: data)
+                    self.faq = response
+                    
+                    var newBoolArray: [Bool] = []
+                    for _ in 0...self.faq.faqs.count-1{
+                        newBoolArray.append(false)
+                    }
+                    self.faqFlagIndex = newBoolArray
+                }catch{
+                    print(error)
+                }
             
-            var newBoolArray: [Bool] = []
-            for _ in 0...self.faq.faqs.count-1{
-                newBoolArray.append(false)
-            }
-            self.faqFlagIndex = newBoolArray
+            
         }.resume()
             
         }
     }
     
     func getUtilizationUnitData(pin : String){
-        let body = try? JSONEncoder().encode(UtilizationModel(verificationCode: pin))
+        let body = try? JSONEncoder().encode(UtilizationModel(verificationCode: pin, language: getLanguageCode()))
         let json: String = String(data: body!, encoding: String.Encoding.utf8) ?? " "
         let jsonBody = try? JSONEncoder().encode(PostModel(query: "getUtilizationUnitData(\"\(json.replacingOccurrences(of: "\"", with: "\"\""))\")"))
         
@@ -291,6 +300,7 @@ class MainViewModel: ObservableObject {
                     self.currentReadingView = ReadingFlowEnum.readingStepsView
                 }
             } catch{
+                print(error)
                 self.verificationError = try! JSONDecoder().decode(ErrorModel.self, from: data)
                 self.isProgressBarActive = false
             }
@@ -337,8 +347,33 @@ class MainViewModel: ObservableObject {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer eecf7fd0-cee9-11eb-b752-fde919688281", forHTTPHeaderField: "Authorization")
         
+        self.isProgressBarActive = true
+        
         DispatchQueue.main.async {
-        URLSession.shared.dataTask(with: request).resume()
+        URLSession.shared.dataTask(with: request){ (data, response, error) in
+            guard let data = data else {return}
+            self.counterImage = data
+            
+        }.resume()
+        }
+    }
+    
+    func getCounterImage(index : Int){
+        if self.userData.meters[index].counterDescriptionImage == "" {
+            self.counterImage = nil
+        }else   {
+            var request = URLRequest(url: URL(string: self.userData.meters[index].counterDescriptionImage)!)
+            request.httpMethod = "GET"
+            //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue("Bearer eecf7fd0-cee9-11eb-b752-fde919688281", forHTTPHeaderField: "Authorization")
+            
+            DispatchQueue.main.async {
+                URLSession.shared.dataTask(with: request){ (data, response, error) in
+                    guard let data = data else {return}
+                    self.counterImage = data
+                    
+                }.resume()
+            }
         }
     }
 

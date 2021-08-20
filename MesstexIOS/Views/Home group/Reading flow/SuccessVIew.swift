@@ -19,18 +19,19 @@ struct SuccessVIew: View {
                 .resizable()
                 .frame(width: 205, height: 171)
                 .padding(EdgeInsets(top: 105, leading: 0, bottom: 32, trailing: 0))
-            
-            Text(LocalizedStringKey("SuccessTitle"))
-              .heading1()
-              .foregroundColor(.primary_color)
-              .multilineTextAlignment(.center)
-              .padding(.bottom, 15)
+
+                Text(LocalizedStringKey("SuccessTitle"))
+                  .heading1()
+                  .foregroundColor(.primary_color)
+                  .multilineTextAlignment(.center)
+                  .padding(.bottom, 15)
           
-                Text(LocalizedStringKey("SuccessSubtitle"))
-            .paragraph()
-            .foregroundColor(.dark)
-            .multilineTextAlignment(.center)
-            .padding(.bottom, 65)
+                Text(LocalizedStringKey("SuccessSubtitle \(viewModel.userData.firstName)"))
+                    .paragraph()
+                    .foregroundColor(.dark)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, 65)
+                    .padding(.horizontal, 20)
                 
                 Co2Widget(co2Level: viewModel.co2Level.co2Level)
                 .padding(.bottom, 19)
@@ -43,15 +44,20 @@ struct SuccessVIew: View {
                 Button(
                     action: {
                         viewModel.currentReadingView = ReadingFlowEnum.codeReadingView
-                        viewModel.isReadingFinished = true
                         self.presentationMode.wrappedValue.dismiss()
                     } ,
                             label : {
                                 PrimaryButtonStyle(buttonLabel: "Next")
-                            })
+                            }).padding(.bottom, 30)
+                
+                NavigationLink(destination: ConfirmationView(viewModel: viewModel), tag: ReadingFlowEnum.homeView, selection: $viewModel.currentReadingView) { EmptyView() }
                    
             }
         }
+        .navigationTitle("")
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
+        .frame(height: UIScreen.main.bounds.size.height)
     }
 }
 

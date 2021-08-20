@@ -1,114 +1,120 @@
 
-
 //ONBOARDING
-"OnboardingTitleOne" = "";
-"OnobardingTextOne" = "";
-"OnboardingTitleTwo" = "";
-"OnobardingTextTwo" = "";
-"OnboardingTitleThree" = "";
-"OnobardingTextThree" = "";
+"OnboardingTitleOne" = "Digitale Erfassung";
+"OnobardingTextOne" = "Tragen Sie Ihre Wasser- und Heizkostenstände ganz bequem digital von zuhause aus ein.";
+"OnboardingTitleTwo" = "Ohne Termin mit der Messtex-App";
+"OnobardingTextTwo" = "Und das ohne Wartezeiten, ohne förmliche Aufräumaktionen und ohne fremdes Eindringen in Ihre Privatssphäre.";
+"OnboardingTitleThree" = "Kostengünstig für unsere Umwelt";
+"OnobardingTextThree" = "Zusammen schützen wir so unsere Umwelt, übernehmen Verantwortung und Sie schonen obendrein Ihren Geldbeutel.";
+"Skip" = "Skip";
+
+//TAB BAR
+"Home" = "Home";
+"Scan" = "Scan";
+"More" = "More";
 
 //HOME
-"Title" = "";
-"Subtitle" = "";
-"ReadingButton" = "";
-"SuccessCardTitle" = "";
-"SuccessCardSubtitle" = "";
-"MoreButton" = "";
-"Co2Title" = "";
-"Co2Subtitle" = "";
-"TipsTitle" = "";
-"TipsSubtitle" = "";
-"ShowMore" = "";
-"ContactTitle" = "";
-"ShareButton" = "";
+"Title" = "Willkommen bei Messtex";
+"Subtitle" = "Erfassen Sie Ihre Zählerstände. Einfach, schnell und ohne Termin.";
+"ReadingButton" = "Zählerstände erfassen";
+"SuccessCardTitle" = "Vielen Dank, alles ist erledigt!";
+"SuccessCardSubtitle" = "Werfen Sie einen Blick auf unsere Tipps & Tricks und entdecken Sie mehr von der Messtex-Welt";
+"MoreButton" = "Erfahren Sie mehr";
+"Co2Title" = "Helfen Sie uns die Umwelt zu schützen.";
+"Co2Subtitle" = "kg of CO₂ haben wir zusammen schon eingespart";
+"TipsTitle" = "Tipps und Tricks";
+"TipsSubtitle" = "Hier finden Sie hilfreiche Tipps für Ihren Alltag.";
+"ShowMore" = "Mehr anzeigen";
+"ContactTitle" = "Treten Sie mit uns in Kontakt";
+"ShareButton" = "App teilen";
 
 //CODE READING
-"CodeReadingTitle" = "";
-"CodeReadingSubtitle" = "";
-"Link" = "";
-"Next" = "";
+"CodeReadingTitle" = "Ablese-Code";
+"CodeReadingSubtitle" = "Bitte tragen Sie den achtstelligen Ablese-Code aus Ihrem Brief ein.";
+"Link" = "Wo finde ich den Alesecode? Klicken Sie hier.";
+"Next" = "Nächster Schritt";
 
 //READING STEPS
-"ReadingStepsTitle" = "";
-"ReadingStepsSubTitle" = "";
-"Submit" = "";
-"Change" = "";
-"SubmitReadings" = "";
+"ReadingStepsTitle" = "Ablesung starten";
+"ReadingStepsSubTitle" = "Sie haben 3 Zähler abzulesen. Bitte lesen Sie die folgenden 3 Zählerstände ein:";
+"ContactData" = "Contact and contract data";
+"Submit" = "Ablesen";
+"Change" = "Ändern";
+"SubmitReadings" = "Zählerstände übermitteln";
 
 //METER READING
-"ReadingDate" = "";
-"ScanMessage" = "";
-"WaterInfoTitle" = "";
-"HeaterInfoTitle" = "";
-"ElectricityInfoTitle" = "";
-"InfoBoxText" = "";
-"MeterNumber" = "";
-"MeterReading" = "";
-"WaterInfoMeterNumber" = "";
-"WaterInfoMeterReading" = "";
-"HeaterInfoMeterNumber" = "";
-"HeaterInfoMeterReading" = "";
-"ElectricityInfoMeterNumber" = "";
-"ElectricityInfoMeterReading" = "";
+"ReadingDate" = "Ablesedatum:";
+"ScanMessage" = "Bitte scannen Sie den Zähler:";
+"ManualButton" = "Manuell eingeben";
+"WaterInfoTitle" = "How to read the water meter?";
+"HeaterInfoTitle" = "How to read the heat meter?";
+"ElectricityInfoTitle" = "How to read the electricity meter?";
+"InfoBoxText" = "To check the correct meter reading, pay attention to this symbol in the lower left of the display.";
+"MeterNumber" = "Meter number:";
+"MeterReading" = "Meter reading:";
+"WaterInfoMeterNumber" = "Please enter your meter number first. It is usually located at the top of your counter and usually consists of 9 numbers (no letters). On your notification card you will find the last 4 digits and the respective room in which the meter is located as a little help";
+"WaterInfoMeterReading" = "Then enter your meter reading in the corresponding field. Please enter both the numbers in front of the comma (here in the gray area) and the numbers after they come (here in the red area). The counter reading in this example is: 00984.562";
+"HeaterInfoMeterNumber" = "Please enter your meter number first. It is usually located above or below the display and consists of 9 numbers (no letters). On your notification card you will find the last 4 digits and the respective room in which the meter is located as a small aid.";
+"HeaterInfoMeterReading" = "To be able to read the counter reading, press the button on your counter. Your meter reading will now appear on the display. Please enter this in the corresponding field on the homepage. The counter reading in this example is: 14652";
+"ElectricityInfoMeterNumber" = "Please enter your meter number first. It is usually located above or below the display and usually consists of 9 numbers
+(no letters). On your notification card you will find the last 4 digits and the respective room in which the meter is located as a small aid.";
+"ElectricityInfoMeterReading" = "To be able to read the counter reading, press the button on your counter. Your meter reading will now appear on the display. Please enter this in the corresponding field on the homepage. The counter reading in this example is: 14562.";
+
+//IFORMATIONAL SCREEN
+"InfoTitle" = "Counter reading explanation";
 
 //MANUAL INPUT
-"ManualInputTitle" = "";
-"ManualInputSubtitle" = "";
-"CounterNumberTextField" = "";
-"CounterTypeTextField" = "";
-"ReadingDateTextField" = "";
-"MessageTitle" = "";
-"Message" = "";
+"ManualInputTitle" = "Manuelle Eingabe";
+"ManualInputSubtitle" = "Tragen Sie nun den Zählerstand Ihres Zählers mit 2 Nachkommastellen ein:";
+"CounterNumberTextField" = "Zählernummer";
+"CounterTypeTextField" = "Zählerart:";
+"ReadingDateTextField" = "Ablesedatum:";
+"MessageTitle" = "Falls Ihr Gerät defekt ist, tragen Sie dies bitte hier ein";
+"Message" = "Nachricht";
 
 //CONTACT DETAILS
-"FirstNameTextField" = "";
-"LastNameTextField" = "";
-"EmailTextField" = "";
-"SendCopyText" = "";
-"PhoneTextField" = "";
-"Address" = "";
-"StreetTextField" = "";
-"HouseNumberTextField" = "";
-"PostcodeTextField" = "";
-"CityTextField" = "";
-"FloorTextField" = "";
-"RequiredFields" = "";
-"ReasonOfReading" = "";
-"AnualBilling" = "";
-"ChangeOfSUpplier" = "";
-"ControlReading" = "";
+"ContactDetailsTitle" = "Kontaktdaten";
+"ContactDetailsSubtitle" = "Damit wir Ihre Ablesung richtig zuordnen können, benötigen wir Ihre Kontaktdaten:";
+"FirstNameTextField" = "Vorname";
+"LastNameTextField" = "Nachname";
+"EmailTextField" = "E-Mail";
+"SendCopyText" = "Bitte senden Sie mir die Ablese-Übersicht als E-Mail zu";
+"PhoneTextField" = "Handy- oder Telefonnummer";
+"Address" = "Adresse";
+"StreetTextField" = "Straße";
+"HouseNumberTextField" = "Hausnummer";
+"PostcodeTextField" = "PLZ";
+"CityTextField" = "Stadt";
+"FloorTextField" = "Stockwerk (optional)";
+"RequiredFields" = "*Pflichtfelder";
+
 
 
 //CONFIRMATION SCREEN
-"Contact" = "";
-"Send" = "";
+"YourCopy" = "Ihre Übersicht";
+"Contact" = "Kontaktdaten";
+"Send" = "Senden";
 
 //SUCCESS SCREEN
-"SuccessTitle" = "";
-"SuccessSubtitle" = "";
-"LearnMore" = "";
+"SuccessTitle" = "Ihre Zählerstände wurden erfolgreich übermittelt";
+"SuccessSubtitle %@" = "Danke %@ für Ihre Ablesung! Ihre Daten wurden erfolgreich übermittelt. Mit Ihrer Hilfe haben wir der Umwelt etwas Gutes getan und CO₂ eingespart.";
+"LearnMore" = "Erfahren Sie mehr";
 
 //MORE SCREEN
-"AboutCardTitle" = "";
-"AboutCardSubtitle" = "";
-"Language" = "";
-"Faq" = "";
-"Contact" = "";
-"ContactForm" = "";
-"Privacy" = "";
-"Imprint" = "";
-"RestartOnboarding" = "";
-"ShareApp" = "";
+"AboutCardTitle" = "Erfahren Sie mehr über Messtex";
+"AboutCardSubtitle" = "Unser Ziel ist es, alle Ablesungen in Deutschland zu digitalisieren!";
+"Language" = "Sprache";
+"Faq" = "FAQ";
+"ContactForm" = "Kontaktformular";
+"Privacy" = "Datenschutz";
+"Imprint" = "Impressum";
+"RestartOnboarding" = "Onboarding neu starten";
+"ShareApp" = "App teilen";
 
 //CONTACT PAGE
-"ContactTitle" = "";
-"ContactEmailSubtitle" = "";
-"EmailLink" = "";
-"ContactAddress" = "";
+"ContactTitle" = "Treten Sie mit uns in Kontakt";
 
 //PRIVACY
-"Privacy" = "";
 "PrivacyTitleOne" = "";
 "PrivacyParagraphOne" = "";
 "PrivacyTitleTwo" = "";
@@ -116,38 +122,37 @@
 
 
 //IMPRINT
-"Imprint" = "";
-"ImprintInformation" = "";
-"ImprintRepresentedBy" = "";
-"ImprintSalesTaxTitle" = "";
-"ImprintSalesTaxText" = "";
-"ImprintResponsibilityTitle" = "";
-"ImprintResponsibilityText" = "";
-"ImprintDisclamerTitle" = "";
-"ImprintDisclamerText" = "";
+"ImprintInformation" = "Information according to § 5 TMG";
+"ImprintRepresentedBy" = "Represented by:";
+"ImprintSalesTaxTitle" = "Sales tax ID:";
+"ImprintSalesTaxText" = "Sales tax identification number according to §27a Umsatzsteuergesetz: DE337739004.";
+"ImprintResponsibilityTitle" = "Responsible for the content according to § 55 Abs. 2 RStV:";
+"ImprintResponsibilityText" = "BRIGHTDOCK Llc, Croatia, Rijeka (City of Rijeka) Nikole Tesle 9";
+"ImprintDisclamerTitle" = "Disclaimer";
+"ImprintDisclamerText" = "Despite careful control of the content, we do not assume any liability for the content of external links. The operators of the linked pages are solely responsible for their content.";
 
 //ABOUT SCREEN
-"About" = "";
-"AboutTitle" = "";
-"AboutParagraphOne" = "";
-"AboutParagraphTwo" = "";
-"AboutSubtitleOne" = "";
-"AboutBulletpointOne" = "";
-"AboutBulletpointTwo" = "";
-"AboutBulletpointThree" = "";
-"AboutBulletpointFour" = "";
-"AboutBulletpointFive" = "";
-"AboutCardText" = "";
-"AboutPrinciplesTitle" = "";
-"AboutPrinciplesParagraph" = "";
-"AboutPrinciplesSubtitleOne" = "";
-"AboutPrinciplesParagraphOne" = "";
-"AboutPrinciplesSubtitleTwo" = "";
-"AboutPrinciplesParagraphTwo" = "";
-"AboutPrinciplesSubtitleThree" = "";
-"AboutPrinciplesParagraphThree" = "";
+"About" = "Über uns";
+"AboutTitle" = "Wir sind der Ansprechpartner, dem Sie vertrauen können. Wir sind immer für Sie da.";
+"AboutParagraphOne" = "Wir von Messtex haben es uns zur Aufgabe gemacht den Ablese-Sektor zu modernisieren und gemeinsam mit unseren Partnern und Kunden den Markt zu reformieren. Das 21. Jahrhundert hat uns bereits vieles gebracht: die Digitalisierung überholt und verbessert fortlaufend bestehende Alt-Systeme und gibt diesen einen neuen Schwung.";
+"AboutParagraphTwo" = "Mit Hilfe unserer Partner haben wir ein einzigartiges System entwickelt mit dem Sie einfach, zeit- und kosteneffizient Ihre eigene Ablesung durchführen können. In der Konzeption unserer App haben wir größten Wert auf einen leichten und intuitiven Umgang mit dieser gelegt, so dass wirklich jeder von unserer Erneuerung profitieren kann.";
+"AboutSubtitleOne" = "Wir steigen auf diesen Zug der Innovation auf und machen uns die Vision der Revolutionierung des Ablesesektors zur Aufgabe! Dafür haben wir uns strikte Prinzipien gesetzt, nach denen wir tagtäglich leben und handeln:";
+"AboutBulletpointOne" = "Durch die Ablesung mit der Messtex-App müssen Sie keine Urlaubstage mehr für manuelle Ablesungen durch Service-Techniker verschwenden";
+"AboutBulletpointTwo" = "Das Warten auf die Service-Techniker wird überflüssig";
+"AboutBulletpointThree" = "Das Betreten Ihrer Wohnung durch fremde Service-Techniker, die viel Kontakt zu anderen Personen und Haushalten haben wird überflüssig – besonders in diesen Zeiten, in den wir mit COVID-19 leben";
+"AboutBulletpointFour" = "Wir schützen gemeinsam unsere Umwelt, denn die vielen Fahrten für Erst- und Zeittermine, manchmal sogar Dritttermine werden hinfällig";
+"AboutBulletpointFive" = "Wir sparen eine Menge Postverkehr und Papier ein, wenn Sie sich für unseren digitalen Erinnerungsservice zur Ablesung entscheiden";
+"AboutCardText" = "Wir sind der Ansprechpartner, dem Sie vertrauen können.";
+"AboutPrinciplesTitle" = "Was macht uns zur besten Wahl?";
+"AboutPrinciplesParagraph" = "At Messtex, we have made it our mission to modernize the meter reading sector and to reform the market together with our partners and customers. The 21st century has already brought us many things: digitization is continuously overhauling and improving existing legacy systems and giving them a new lease of life. We are getting on this bandwagon of innovation and making the vision of revolutionizing the meter reading sector! To do this, we have set ourselves strict principles by which we live and act every day:";
+"AboutPrinciplesSubtitleOne" = "Nachhaltigkeit leben.";
+"AboutPrinciplesParagraphOne" = "Durch den Digitalisierungsprozess der Heiz- und Wasserkostenerfassung leisten wir einen wertvollen Beitrag für die Umwelt. So verringern wir unseren ökologischen Fußabdruck und übernehmen Verantwortung.";
+"AboutPrinciplesSubtitleTwo" = "Innovativ kann jeder.";
+"AboutPrinciplesParagraphTwo" = "Innovation bedeutet Fortschritt. Wir möchten diesen Fortschritt so gestalten, dass jeder diesen von zu Hause aus mitgehen kann.";
+"AboutPrinciplesSubtitleThree" = "Einfach nur Einfach.";
+"AboutPrinciplesParagraphThree" = "Wir möchten die Erfassung der Heiz- und Wasserkosten für Sie so einfach und bequem wie nur möglich machen. Ohne Wartezeiten auf den Servicetechniker, ohne förmliche Aufräumaktionen und ohne ein Eindringen in Ihre Privatsphäre.";
 
 //CONTACT FORM
-"ContactForm" = "";
-"ContactFormTitle" = "";
-"ContactFormParagraph" = "";
+"ContactFormTitle" = "Treten Sie mit uns in Kontakt";
+"ContactFormParagraph" = "Beschreiben Sie uns Ihr Anliegen.";
+"Name" = "Name";

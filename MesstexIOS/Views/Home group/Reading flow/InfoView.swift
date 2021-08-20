@@ -12,11 +12,6 @@ struct InfoView: View {
     @ObservedObject var viewModel : MainViewModel
     
     var index : Int
-    
-    var nameArray: [LocalizedStringKey] = [LocalizedStringKey("WaterInfoTitle"),LocalizedStringKey("HeaterInfoTitle"),LocalizedStringKey("ElectricityInfoTitle")]
-    var imageArray = ["watermeter_illustration","gasmeter_illustration","electricity_illustration"]
-    var numberExplanationArray: [LocalizedStringKey] = [LocalizedStringKey("WaterInfoMeterNumber"),LocalizedStringKey("HeaterInfoMeterNumber"),LocalizedStringKey("ElectricityInfoMeterNumber")]
-    var readingExplanationArray: [LocalizedStringKey] = [LocalizedStringKey("WaterInfoMeterReading"),LocalizedStringKey("HeaterInfoMeterReading"),LocalizedStringKey("ElectricityInfoMeterReading")]
     var body: some View {
         VStack(spacing:0){
             HStack{
@@ -28,16 +23,24 @@ struct InfoView: View {
             .padding(.bottom, 25)
             .padding(.top, 20)
             
-            Text(nameArray[index])
+            Text(LocalizedStringKey("InfoTitle"))
                 .heading1()
                 .multilineTextAlignment(.center)
                 .foregroundColor(.primary_color)
                 .padding(.bottom, 36.4)
             
-            Image(imageArray[index])
+            if viewModel.counterImage != nil{
+            
+                Image(uiImage: UIImage(data: viewModel.counterImage!)!)
                 .resizable()
                 .frame(width: 287.32, height: 240.68)
-                .padding(.bottom, 33)
+                .padding(.bottom, 33)}
+            else{
+                Image("watermeter_illustration")
+                    .resizable()
+                    .frame(width: 287.32, height: 240.68)
+                    .padding(.bottom, 33)
+            }
             
             HStack{
                 Text(LocalizedStringKey("MeterNumber"))
@@ -46,23 +49,12 @@ struct InfoView: View {
                 Spacer()
             }.padding(.bottom, 10)
             
-            Text(numberExplanationArray[index])
+            Text(viewModel.userData.meters[viewModel.currentMeterIndex].counterDescriptionText)
                 .paragraph()
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.bottom, 24)
             
-            HStack{
-                Text(LocalizedStringKey("MeterReading"))
-                    .paragraphBold()
-                    .foregroundColor(.primary_color)
-                Spacer()
-            }.padding(.bottom, 10)
-            
-            Text(readingExplanationArray[index])
-                .paragraph()
-                .fixedSize(horizontal: false, vertical: true)
-                .padding(.bottom, 24)
-            
+            Spacer()
         }.padding(.horizontal, 23)
     }
 }

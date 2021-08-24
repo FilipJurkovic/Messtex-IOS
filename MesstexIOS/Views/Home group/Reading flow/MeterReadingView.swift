@@ -10,14 +10,7 @@ import UIKit
 import AVFoundation
 
 struct CameraHeaderView: View {
-
-    var safeAreaInset: CGFloat = 0
-    
     @ObservedObject var viewModel : MainViewModel
-    
-    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    
-    @Binding var popToReadingSteps: Bool
     
     var body: some View {
         ZStack(alignment: .center){
@@ -37,16 +30,18 @@ struct CameraHeaderView: View {
             }
             HStack(alignment:.center) {
             Button(action : {
-                popToReadingSteps.toggle()
+                withAnimation(.easeInOut){
+                 viewModel.currentReadingView = viewModel.previousReadingView
+                }
             }){
-                RoundButtonStyle(imageName: "xmark", backgroundColor: .tetriary_tint, iconColor: .dark)
+                ExitButtonStyle()
             }
             .accentColor(.white)
-            .padding(.leading, 10)
+            .padding(.leading, 24)
             
             Spacer()
         }
-}        .padding(.top, safeAreaInset)
+}        .padding(.top, 13)
         .background(Color.clear)
         
     }
@@ -59,8 +54,6 @@ struct MeterReadingView: View {
     var cameraView: CameraView
     
     var index: Int = 0
-    
-    @Binding var popToReadingSteps: Bool
     
     @ObservedObject var viewModel : MainViewModel
     var body: some View {
@@ -84,7 +77,7 @@ struct MeterReadingView: View {
                         .clipped()
                 }
                 VStack() {
-                    CameraHeaderView(safeAreaInset: 18, viewModel: viewModel, popToReadingSteps: $popToReadingSteps)
+                    CameraHeaderView(viewModel: viewModel)
                     
                     Spacer()
                     VStack(spacing:0){
@@ -99,7 +92,9 @@ struct MeterReadingView: View {
                     }.padding(.bottom, 42)
                     
                     Button(
-                        action: {viewModel.currentReadingView = ReadingFlowEnum.manualReadingView},
+                        action: {
+                            viewModel.currentReadingView = ReadingFlowEnum.manualReadingView
+                        },
                         label: {
                             ManualReadingButtonStyle()
                         })
@@ -112,9 +107,7 @@ struct MeterReadingView: View {
                                 viewModel.postModelData.meterReadings.append(MeterReadingData(counterNumber: meterModel.counterNumber, counterType: meterModel.counterType, counterValue:  "", userMessage: ""))
                             }
                         }
-                    
-                    NavigationLink(destination: ManualReadingView(viewModel: viewModel, popToReadingSteps: $popToReadingSteps, index: viewModel.currentMeterIndex), tag: ReadingFlowEnum.manualReadingView, selection: $viewModel.currentReadingView) { EmptyView() }
-            
+       
                     
                     HStack{
                         Button(action: {cameraView.toggleFlash(state: !viewModel.isTorchOn)
@@ -134,14 +127,21 @@ struct MeterReadingView: View {
                             viewModel.isInfoSheetOpen = !viewModel.isInfoSheetOpen
                             
                         }, label: {
-                            LargeRoundButtonStyle(imageName: "info", backgroundColor: .primary_color, iconColor: .light)
-                        })
+                            ZStack {
+                                Circle()
+                                    .frame(width: 48, height: 48)
+                                    .foregroundColor(.primary_color)
+                                Image("info")
+                                    .font(.body)
+                                    .foregroundColor(.light)
+                                    .padding()
+                            }
+                            })
                         
                     }.padding(.bottom, 50)
                 }
             }
         }
-        .ignoresSafeArea()
         .navigationTitle("")
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)

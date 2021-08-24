@@ -10,7 +10,6 @@ import SwiftUI
 struct SuccessVIew: View {
     
     @ObservedObject var viewModel : MainViewModel
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
         ScrollView(showsIndicators: false){
@@ -18,7 +17,7 @@ struct SuccessVIew: View {
                 Image("successful_read")
                 .resizable()
                 .frame(width: 205, height: 171)
-                .padding(EdgeInsets(top: 105, leading: 0, bottom: 32, trailing: 0))
+                .padding(EdgeInsets(top: 62, leading: 0, bottom: 32, trailing: 0))
 
                 Text(LocalizedStringKey("SuccessTitle"))
                   .heading1()
@@ -35,22 +34,25 @@ struct SuccessVIew: View {
                 
                 Co2Widget(co2Level: viewModel.co2Level.co2Level)
                 .padding(.bottom, 19)
-                NavigationLink(
-                            destination: AboutUsView(),
-                            label : {
-                                OutlinedButtonStyle(buttonLabel: "LearnMore")
-                            })
-                    .padding(.bottom, 210)
                 Button(
                     action: {
+                        viewModel.isReadingFinished.toggle()
+                        viewModel.dismissReadingFlow.toggle()
+                        viewModel.showAboutPage.toggle()
                         viewModel.currentReadingView = ReadingFlowEnum.codeReadingView
-                        self.presentationMode.wrappedValue.dismiss()
-                    } ,
-                            label : {
-                                PrimaryButtonStyle(buttonLabel: "Next")
-                            }).padding(.bottom, 30)
+                    },
+                    label : {
+                        OutlinedButtonStyle(buttonLabel: "LearnMore")
+                    })
+                    .padding(.bottom, 210)
                 
-                NavigationLink(destination: ConfirmationView(viewModel: viewModel), tag: ReadingFlowEnum.homeView, selection: $viewModel.currentReadingView) { EmptyView() }
+                PrimaryButton(handler: {
+                    viewModel.isReadingFinished.toggle()
+                    viewModel.dismissReadingFlow.toggle()
+                    viewModel.currentReadingView = ReadingFlowEnum.codeReadingView
+                }, buttonLabel: "Next")
+                .padding(.bottom, 30)
+                .padding(.horizontal, 24)
                    
             }
         }

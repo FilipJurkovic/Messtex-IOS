@@ -24,7 +24,7 @@ struct LogoImage: View {
 struct CardButton: View {
     var cardName: String
     var body: some View {
-                    ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)){
+                    ZStack(alignment: Alignment(horizontal: .leading, vertical: .center)){
                     Rectangle()
                         HStack{
                             Text(LocalizedStringKey(cardName))
@@ -35,7 +35,6 @@ struct CardButton: View {
                         Image(systemName: "chevron.right")
                             .frame(width: 7.38, height: 12.92)
                             .foregroundColor(.dark)
-                            .padding()
                         }
                 }.frame(width: 351, height:54)
                     .foregroundColor(.light)
@@ -48,22 +47,19 @@ struct LanguageSelector: View {
     var language: String
 
     var body: some View {
-                ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)){
+                ZStack(alignment: Alignment(horizontal: .leading, vertical: .center)){
                 Rectangle()
-                    HStack(alignment:.top)
+                    HStack(alignment:.center)
                 {
                         Text(LocalizedStringKey(cardName))
                     .foregroundColor(.dark)
                     .padding(.leading, 12)
-                    .padding(.top, 5)
                         
                         Spacer()
                         
                         Text(language)
-                            .paragraph()
                             .foregroundColor(.dark)
                             .padding(.trailing, 13)
-                            .padding(.vertical)
 
                     
                     Image(systemName: "chevron.down")
@@ -104,10 +100,10 @@ struct FloatingTextField: View {
             TextField("", text: $text,onEditingChanged: { (edit) in
                 isEditing = edit
             })
-            
             .paragraph()
             .offset(x: 15)
             .foregroundColor(self.error ? Color.danger : Color.dark)
+            .frame(width: 300, height: textFieldHeight)
             .accentColor(Color.medium)
             .animation(.linear)
             .offset(y:8)
@@ -124,7 +120,7 @@ struct FloatingTextField: View {
                         .foregroundColor(Color.medium)
                         .background(Color(UIColor.systemBackground))
                 }
-            }.offset(x: 15.0, y: -17)
+            }.offset(x: shouldPlaceHolderMove ? 13.0: 15.0, y: -17)
             .scaleEffect(shouldPlaceHolderMove ? 0.857 : 1.0)
             .animation(.linear)
             
@@ -161,6 +157,7 @@ struct FloatingNumericTextField: View {
             })
             .paragraph()
             .offset(x: 15)
+            .frame(height: textFieldHeight)
             .foregroundColor(self.error ? Color.danger : Color.dark)
             .accentColor(Color.medium)
             .animation(.linear)
@@ -178,7 +175,7 @@ struct FloatingNumericTextField: View {
                         .foregroundColor(Color.medium)
                         .background(Color(UIColor.systemBackground))
                 }
-            }.offset(x: 15.0, y: -17)
+            }.offset(x: shouldPlaceHolderMove ? 13.0: 15.0, y: -17)
             .scaleEffect(shouldPlaceHolderMove ? 0.857 : 1.0)
             .animation(.linear)
             
@@ -209,14 +206,6 @@ struct FloatingTextEditor: View {
         ZStack(alignment: .topLeading) {
             RoundedRectangle(cornerRadius: 4)
                 .stroke(self.error ? Color.danger : text.count != 0 ? Color.dark : Color.medium, lineWidth: 1)
-            TextEditor(text: $text)
-                .offset(x: 13, y: 21)
-                .padding(.init(top: 0, leading: 0, bottom: 25, trailing: 20))
-                .frame(height: textFieldHeight)
-                .paragraph()
-                .background(Color.light.opacity(0.0))
-                .animation(.linear)
-                
             
             HStack(alignment:.center, spacing: 1){
             Text(LocalizedStringKey(placeHolderText))
@@ -230,9 +219,21 @@ struct FloatingTextEditor: View {
                         .foregroundColor(Color.medium)
                         .background(Color(UIColor.systemBackground))
                 }
-            }.offset(x: 15.0, y: 5)
+            }.offset(x: 15.0, y: shouldPlaceHolderMove ? 8 : 21)
             .scaleEffect(shouldPlaceHolderMove ? 0.857 : 1.0)
             .animation(.linear)
+            
+            TextEditor(text: $text)
+                .offset(x: 13, y: 24)
+                .padding(.init(top: 0, leading: 0, bottom: 25, trailing: 20))
+                .frame(height: textFieldHeight)
+                .paragraph()
+                .background(Color.light.opacity(0.0))
+                .opacity(shouldPlaceHolderMove ? 1 : 0.1)
+                .animation(.linear)
+                
+            
+            
         }
     }
 }
@@ -249,11 +250,11 @@ struct PrimaryButton: View {
                 RoundedRectangle(cornerRadius: 28)
                     .foregroundColor(.primary_color)
                     .opacity(isEnabled ? 1.0 : 0.3)
-                Text(buttonLabel)
+                Text(LocalizedStringKey(buttonLabel))
                     .paragraphBold()
                     .foregroundColor(.light)
                 
-            }.frame(width: 327, height: 49, alignment: .center)
+            }.frame(height: 49, alignment: .center)
         })
         .disabled(!isEnabled)
 
@@ -334,7 +335,7 @@ struct ChangeButtonStyle: View {
                 Text(LocalizedStringKey("Change"))
                     .tinyBold()
                     .foregroundColor(.light)
-            }.frame(width: 76, height: 34)
+            }.frame(width: 78, height: 36)
 
         }
     }
@@ -372,6 +373,20 @@ struct StepIndicator: View {
     }
     }
 
+struct ExitButtonStyle: View {
+    var body: some View {
+        ZStack {
+            Circle()
+                .frame(width: 40, height: 40)
+                .foregroundColor(.tetriary_tint)
+            Image(systemName: "xmark")
+                .resizable()
+                .frame(width: 10.46, height: 10.46)
+                .foregroundColor(.primary_tint)
+    }
+}
+}
+
 struct LargeRoundButtonStyle: View {
     var imageName: String
     var backgroundColor : Color
@@ -380,7 +395,7 @@ struct LargeRoundButtonStyle: View {
     var body: some View {
         ZStack {
             Circle()
-                .frame(width: 48, height: 48)
+                .frame(width: 44, height: 44)
                 .foregroundColor(backgroundColor)
             Image(systemName: imageName)
                 .font(.body)
@@ -628,7 +643,7 @@ struct FaqWidget : View {
                     }
                 )
                 .padding(.vertical, 10)
-                .padding(.horizontal, 10)
+                .padding(.horizontal, 12)
                 .accentColor(.dark)
                 .onTapGesture {
                     withAnimation(.easeOut, {flags[index].toggle()})
@@ -642,7 +657,7 @@ struct FaqWidget : View {
                 }
             }
             //Spacer()
-        }.padding(.horizontal, 26)
+        }.padding(.horizontal, 12)
     }
 }
 
@@ -662,7 +677,7 @@ struct ReadingFlowHeaderWidget : View {
               .padding(.bottom, 25)
           
           Text(LocalizedStringKey(description))
-            .paragraphBold()
+            .paragraph()
             .foregroundColor(.dark)
             .multilineTextAlignment(.center)
             .padding(.horizontal, 50)
@@ -714,7 +729,7 @@ struct AboutUsCardWidget : View {
                                     Circle()
                                         .foregroundColor(Color.primary_color)
                                         .frame(width: 40, height:40)
-                                        .shadow(radius: 2)
+                                        
                                     Image(systemName: "chevron.right")
                                         .foregroundColor(.light)
                                     

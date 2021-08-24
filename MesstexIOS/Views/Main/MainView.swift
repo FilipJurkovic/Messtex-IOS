@@ -28,28 +28,28 @@ struct MainView: View {
             .animation(.easeInOut)
             .transition(.slide)
             .accentColor(.primary_color)
-            .overlay(NavigationLink(
-                        destination: CodeReadingView(viewModel: viewModel),
-                        label : {
-                            VStack
-                            {
-                                ZStack{
-                                Circle()
-                                    .foregroundColor(Color.primary_30)
-                                    .frame(width: 56, height:56)
-                                    .shadow(radius: 2)
-                                Image("scan_button")
-                                    .resizable()
-                                    .frame(width: 56, height:56)
-                                Image("scan_icon")
-                                    .resizable()
-                                    .frame(width: 22, height:17)
-                            }
-                                Text("Scan")
-                                    .foregroundColor(Color.medium)
-                                    .tiny()
-                            }.offset(y: -1)
-                        }),alignment: .bottom)
+                .overlay(Button(
+                            action: {viewModel.dismissReadingFlow.toggle()},
+                            label : {
+                                VStack
+                                {
+                                    ZStack{
+                                    Circle()
+                                        .foregroundColor(Color.primary_30)
+                                        .frame(width: 56, height:56)
+                                        .shadow(radius: 2)
+                                    Image("scan_button")
+                                        .resizable()
+                                        .frame(width: 56, height:56)
+                                    Image("scan_icon")
+                                        .resizable()
+                                        .frame(width: 22, height:17)
+                                }
+                                    Text("Scan")
+                                        .foregroundColor(Color.medium)
+                                        .tiny()
+                                }.offset(y: -1)
+                            }),alignment: .bottom)
                 .onAppear{
                     UITabBar.appearance().backgroundColor = .clear
                     UITabBar.appearance().isTranslucent = false
@@ -60,12 +60,16 @@ struct MainView: View {
                     UINavigationBar.appearance().barTintColor = .light
 
                 }
+                
                 .navigationBarTitle("")
                 .navigationBarHidden(true)
                 
             }
             .fullScreenCover(isPresented: $shouldShowOnboarding, content: {
                 OnboardingFlowView(shouldShowOnboarding: $shouldShowOnboarding)
+            })
+            .fullScreenCover(isPresented: $viewModel.dismissReadingFlow, content: {
+                MeterReadingFlowView(viewModel: viewModel)
             })
             .blur(radius: viewModel.isLanguagePickerShowing ? 1 : 0)
             .overlay(viewModel.isLanguagePickerShowing ? Color.black.opacity(0.6) : nil)

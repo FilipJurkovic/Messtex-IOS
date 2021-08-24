@@ -12,8 +12,6 @@ struct ManualReadingView: View {
     @ObservedObject var viewModel : MainViewModel
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
-    @Binding var popToReadingSteps: Bool
-    
     var index : Int
     
     var body: some View {
@@ -22,7 +20,7 @@ struct ManualReadingView: View {
             Image("reading_graphics")
                 .resizable()
                 .frame(width: 114, height: 95)
-                .padding(.top, 10)
+                .padding(.top, 50)
             
             Text(LocalizedStringKey("ManualInputTitle"))
               .heading1()
@@ -30,40 +28,39 @@ struct ManualReadingView: View {
               .padding(.bottom, 25)
           
           Text(LocalizedStringKey("ManualInputSubtitle"))
-            .paragraphBold()
+            .paragraph()
             .foregroundColor(.dark)
             .multilineTextAlignment(.center)
             .padding(.bottom, 28)
             VStack(spacing:0){
                 FloatingTextField(placeHolder: "CounterTypeTextField", text: $viewModel.userData.meters[index].counterNumber, isRequired: false)
-                    .frame(width: 325)
                     .padding(.bottom, 7)
                     .disabled(true)
                 FloatingTextField(placeHolder: "CounterTypeTextField", text: $viewModel.userData.meters[index].counterType, isRequired: false)
-                    .frame(width: 325)
                     .padding(.bottom, 7)
                     .disabled(true)
                 FloatingTextField(placeHolder: "ReadingDateTextField", text: .constant(Date().formatDate()), isRequired: false)
-                    .frame(width: 325)
-                    .padding(.bottom, 32)
+                    .padding(.bottom, 35)
                     .disabled(true)
                 
                 HStack{
                     Text(viewModel.userData.meters[index].counterTypeName)
-                      .heading2()
+                      .paragraphBold()
                       .foregroundColor(.primary_color)
-                      .padding(.bottom, 25)
+                      .padding(.bottom, 15)
                     Spacer()
                 }
                 
-                ZStack{
-                    Image("manual_reading_shape")
-                        .resizable()
-                        .frame(width:327, height:57)
-                    
-                    pinDots
-                    backgroundField
-                }.padding(.bottom, 31)
+                HStack{
+                    ZStack{
+                        Image("manual_reading_shape")
+                            .resizable()
+                            .frame(height:57)
+                        
+                        pinDots
+                        backgroundField
+                }.frame(height:57)
+                }.padding(.bottom, 24)
                 
                 HStack{
                     Text(LocalizedStringKey("MessageTitle"))
@@ -74,25 +71,22 @@ struct ManualReadingView: View {
                 }
                 
                 FloatingTextEditor(placeHolder: "Message", text: $viewModel.postModelData.meterReadings[index].userMessage, isRequired: false)
-                    .frame(width: 325)
                 
             }
             .padding(.bottom, 80)
             
-            Button(
-                action: {
+            PrimaryButton(handler: {
+                withAnimation(.easeInOut){
                     viewModel.currentReadingView = ReadingFlowEnum.readingStepsView
-                    viewModel.postModelData.meterReadings[index].counterValue = viewModel.addComma(value: viewModel.postModelData.meterReadings[index].counterValue)
-                    viewModel.readingStepsProgress[index] = true
-                    popToReadingSteps.toggle()
-                },
-                label: {
-                   PrimaryButtonStyle(buttonLabel: "Next", isEnabled: viewModel.postModelData.meterReadings[index].counterValue != "")
-                }).disabled(viewModel.postModelData.meterReadings[index].counterValue == "")
-                .padding(.bottom, 30)
+                }
+                viewModel.postModelData.meterReadings[index].counterValue = viewModel.addComma(value: viewModel.postModelData.meterReadings[index].counterValue)
+                viewModel.readingStepsProgress[index] = true
+                
+            }, buttonLabel: "Next")
+            .padding(.bottom, 30)
             Spacer()
         }
-        .frame(width: 327)
+        .padding(.horizontal, 24)
         .padding(.top, 12)
         .navigationTitle("")
         .navigationBarHidden(true)
@@ -133,7 +127,7 @@ struct ManualReadingView: View {
 
 struct ManualReadingView_Previews: PreviewProvider {
     static var previews: some View {
-        ManualReadingView(viewModel: MainViewModel(), popToReadingSteps: .constant(false), index: 0)
+        ManualReadingView(viewModel: MainViewModel(), index: 0)
     }
 }
 

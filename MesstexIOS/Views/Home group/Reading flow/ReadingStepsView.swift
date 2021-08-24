@@ -49,7 +49,10 @@ struct ReadingStepsView: View {
                                 action: {
                                     viewModel.getCounterImage(index: index)
                                     viewModel.currentMeterIndex = index
-                                    viewModel.currentReadingView = ReadingFlowEnum.meterReadingView
+                                    viewModel.previousReadingView = viewModel.currentReadingView
+                                    withAnimation(.easeInOut){
+                                        viewModel.currentReadingView = ReadingFlowEnum.meterReadingView
+                                    }
                                 },
                                 label: {
                                     if viewModel.readingStepsProgress[index]{
@@ -58,7 +61,6 @@ struct ReadingStepsView: View {
                                         SubmitButtonStyle()
                                     }
                                 })
-                            NavigationLink(destination: ) { EmptyView() }
                             
                         } else{
                             if viewModel.readingStepsProgress.last!{
@@ -77,7 +79,12 @@ struct ReadingStepsView: View {
                                   .padding(.leading, 9)
                                 Spacer()
                                 Button(
-                                    action: {viewModel.currentReadingView = ReadingFlowEnum.contactDetailsView},
+                                    action: {
+                                        viewModel.previousReadingView = viewModel.currentReadingView
+                                        withAnimation(.easeInOut){
+                                            viewModel.currentReadingView = ReadingFlowEnum.contactDetailsView
+                                        }
+                                    },
                                     label: {
                                         if viewModel.readingStepsProgress.last!{
                                             ChangeButtonStyle()
@@ -85,8 +92,6 @@ struct ReadingStepsView: View {
                                             SubmitButtonStyle()
                                         }
                                     })
-                            
-                            NavigationLink(destination: ContactDetailsView(viewModel: viewModel), tag: ReadingFlowEnum.contactDetailsView, selection: $viewModel.currentReadingView) { EmptyView() }
                         }
                        }
                        
@@ -97,31 +102,23 @@ struct ReadingStepsView: View {
                        .frame(width: UIScreen.main.bounds.size.width)
                     }}
                     .padding(.bottom, 43)
-                
-                Button(
-                    action: {
-                        if(viewModel.checkReadingStepStatus()){
-                        viewModel.currentReadingView = ReadingFlowEnum.confirmationView
-                        }
-                    },
-                    label: {
-                        PrimaryButtonStyle(buttonLabel: "SubmitReadings", isEnabled: viewModel.checkReadingStepStatus())
-                    }).padding(.bottom, 30)
                     
-                NavigationLink(destination: ReadingStepsView(viewModel: viewModel), tag: ReadingFlowEnum.confirmationView, selection: $viewModel.currentReadingView) { EmptyView() }
+                    PrimaryButton(handler: {
+                        if(viewModel.checkReadingStepStatus()){
+                            viewModel.previousReadingView = viewModel.currentReadingView
+                            viewModel.currentReadingView = ReadingFlowEnum.confirmationView
+                        }
+                    }, buttonLabel: "SubmitReadings", isEnabled: viewModel.checkReadingStepStatus())
+                    .padding(.bottom, 30)
+                    .padding(.horizontal, 24)
+                    
+             
                 Spacer()
             }
                 .padding(.top, 12)
                 .navigationTitle("")
                 .navigationBarHidden(true)
         }
-            HStack{
-                Button(action : { mode.wrappedValue.dismiss() }, label:{
-                        RoundButtonStyle(imageName: "arrow.left", backgroundColor: Color.white, iconColor: Color.dark)
-                    }).padding(.leading, 24)
-                    .padding(.top, 10)
-                Spacer()
-            }.background(Color.light.opacity(0.0))
         }
     }
 }

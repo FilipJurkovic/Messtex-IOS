@@ -90,20 +90,21 @@ struct MoreView: View {
                     
                     Rectangle()
                         .frame(height:32)
-                        .foregroundColor(.primary_30)
+                        .foregroundColor(.primary_shade)
+                        .opacity(0.1)
                     
                     Group{
                         Button(
                             action: {shouldShowOnboarding.toggle()},
                             label: {
-                                ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)){
+                                ZStack(alignment: Alignment(horizontal: .leading, vertical: .center)){
                                 Rectangle()
-                                    HStack(alignment:.top)
+                                    HStack(alignment:.center)
                                 {
                                         Text("RestartOnboarding")
                                     .foregroundColor(.dark)
                                     .padding(.leading, 12)
-                                    .padding(.top, 5)
+                                   
                                         Spacer()
                                     Image(systemName: "arrow.clockwise")
                                         .frame(width: 14.08, height: 17.12)
@@ -119,14 +120,13 @@ struct MoreView: View {
                         Button(
                             action: openShareSheet,
                             label: {
-                                ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)){
+                                ZStack(alignment: Alignment(horizontal: .leading, vertical: .center)){
                                 Rectangle()
-                                    HStack(alignment:.top)
+                                    HStack(alignment:.center)
                                 {
                                         Text(LocalizedStringKey("ShareApp"))
                                     .foregroundColor(.dark)
                                     .padding(.leading, 12)
-                                    .padding(.top, 5)
                                         Spacer()
                                     Image("social_icon")
                                         .frame(width: 15.36, height: 16.64)
@@ -140,6 +140,9 @@ struct MoreView: View {
                    
                 }.edgesIgnoringSafeArea(.all)
                 .padding(.bottom, 40)
+                    
+                NavigationLink(destination: AboutUsView(), isActive: $viewModel.showAboutPage, label: { EmptyView() })
+                    
             }.onAppear(){
                     UITabBar.appearance().isHidden = false
                 }

@@ -16,4 +16,6 @@ struct PostModelRecord: Codable{
     var email: String
     var phone: String
     var sendCopy: Bool
+    var getMeterReadingLetterByEmail: Bool
+    var subscribeNewsletter: Bool
 }

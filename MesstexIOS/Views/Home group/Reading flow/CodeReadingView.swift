@@ -29,7 +29,7 @@ public struct CodeReadingView: View {
                 
             ReadingFlowHeaderWidget(title: "CodeReadingTitle", description: "CodeReadingSubtitle")
                 .padding(.bottom, 35)
-                .padding(.top, 10)
+                .padding(.top, 62)
 
             ZStack {
                 pinDots
@@ -61,45 +61,47 @@ public struct CodeReadingView: View {
                 }
                 
                 
-                NavigationLink(
-                    destination: ExampleView(),
-                            label : {
-                                RoundButtonStyle(imageName: "magnifyingglass", backgroundColor: .primary_color, iconColor: .light)
-                            }).offset(x: 10)
+                Button(
+                    action: {
+                        viewModel.previousReadingView = viewModel.currentReadingView
+                        withAnimation(.easeInOut){
+                            viewModel.currentReadingView = ReadingFlowEnum.exampleView
+                        }
+                    },
+                    label : {
+                        RoundButtonStyle(imageName: "magnifyingglass", backgroundColor: .primary_color, iconColor: .light)
+                    }).offset(x: 10)
             }.frame(width: 178.31, height: 236.31)
             .padding(.bottom, 38)
             
-            NavigationLink(
-                destination: VideoView(),
-                        label : {
-                            Text(LocalizedStringKey("Link"))
-                                .underline()
-                                .paragraph()
-                                .foregroundColor(.primary_color)
-                                .padding(.bottom, 47)
-                        })
+                Button(
+                    action: {
+                        viewModel.previousReadingView = viewModel.currentReadingView
+                        withAnimation(.easeInOut){
+                            viewModel.currentReadingView = ReadingFlowEnum.videoView
+                        }
+                    },
+                    label : {
+                        Text(LocalizedStringKey("Link"))
+                            .underline()
+                            .paragraph()
+                            .foregroundColor(.primary_color)
+                            .padding(.bottom, 47)
+                    })
                 
-                
-                Button(action: {viewModel.getUtilizationUnitData(pin: pin)}, label: {
-                    PrimaryButtonStyle(buttonLabel: "Next")
-                }).padding(.bottom, 30)
-                
-                NavigationLink(destination: ReadingStepsView(viewModel: viewModel), tag: ReadingFlowEnum.readingStepsView, selection: $viewModel.currentReadingView) { EmptyView() }
-
+                PrimaryButton(handler: {
+                    withAnimation(.easeInOut){
+                        viewModel.getUtilizationUnitData(pin: pin)
+                    }
+                }, buttonLabel: "Next")
+                .padding(.bottom, 30)
+                .padding(.horizontal, 24)
         }
-            .ignoresSafeArea()
             .navigationTitle("")
             .navigationBarHidden(true)
         
             }
             
-            HStack{
-                Button(action : { mode.wrappedValue.dismiss() }, label:{
-                        RoundButtonStyle(imageName: "arrow.left", backgroundColor: Color.white, iconColor: Color.dark)
-                    }).padding(.leading, 24)
-                    .padding(.top, 10)
-                Spacer()
-            }.background(Color.light.opacity(0.0))
             
         }
             

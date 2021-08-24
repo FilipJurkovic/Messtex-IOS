@@ -36,7 +36,7 @@ struct HomeView: View {
                       Text(LocalizedStringKey("Title"))
                         .heading2()
                         .foregroundColor(.dark)
-                        .padding(.bottom, 25)
+                        .padding(.bottom, 16)
                     
                     Text(LocalizedStringKey("Subtitle"))
                       .paragraphBold()
@@ -45,11 +45,11 @@ struct HomeView: View {
                         .padding(!viewModel.isReadingFinished ? EdgeInsets(top: 0, leading: 60, bottom: 83, trailing: 60) :
                                     EdgeInsets(top: 0, leading: 60, bottom: 41, trailing: 60))
                         if !viewModel.isReadingFinished{
-                        NavigationLink(
-                            destination: CodeReadingView(viewModel: viewModel),
-                                    label : {
-                                        PrimaryButtonStyle(buttonLabel: "ReadingButton")
-                                    })
+                        Button(
+                            action: {viewModel.dismissReadingFlow.toggle()},
+                            label : {
+                                PrimaryButtonStyle(buttonLabel: "ReadingButton")
+                            })
                             }
                         else{
                             FinishedReadingWidget()
@@ -71,24 +71,25 @@ struct HomeView: View {
                            Text(LocalizedStringKey("TipsTitle"))
                              .heading2()
                              .foregroundColor(.dark)
-                             .padding(.bottom, 30)
+                             .padding(.bottom, 31)
                            
                            Image("tips_graphics")
-                               .padding(.bottom, 30)
+                               .padding(.bottom, 28)
                            
                            Text(LocalizedStringKey("TipsSubtitle"))
                              .heading2()
                              .foregroundColor(.primary_color)
                              .multilineTextAlignment(.center)
-                             .padding(.bottom, 38)
-                            .padding(.horizontal, 56)
+                             .fixedSize(horizontal: false, vertical: true)
+                             .padding(.bottom, 36)
+                             .padding(.horizontal, 56)
                 
                 if(viewModel.faq.faqs.isEmpty){
                     FaqWidget(questionCount: faq_home.faqs.count, flags: $flags, faq: faq_home)
-                               .padding(.bottom, 21)
+                               .padding(.bottom, 25)
                 }else{
                     FaqWidget(questionCount: 3, flags: $flags, faq: viewModel.faq)
-                               .padding(.bottom, 21)
+                               .padding(.bottom, 25)
                 }
                            
                             NavigationLink(
@@ -120,6 +121,8 @@ struct HomeView: View {
                        Image("logo")
                            .frame(width: 102, height: 66)
                            .padding(.bottom, 154)
+            
+            NavigationLink(destination: AboutUsView(), isActive: $viewModel.showAboutPage, label: { EmptyView() })
 
         }.onAppear(){
             UITabBar.appearance().isHidden = false

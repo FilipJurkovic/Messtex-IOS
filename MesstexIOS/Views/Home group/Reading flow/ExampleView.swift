@@ -8,31 +8,39 @@
 import SwiftUI
 
 struct ExampleView: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @ObservedObject var viewModel : MainViewModel
     
     var body: some View {
         ZStack{
             Color.dark
-            ZStack{
-                Image("example_brief")
-                    .resizable()
-                    .frame(width: UIScreen.main.bounds.size.width, height: 535)
-            }
+        
+            Image("example_brief")
+                .resizable()
+                .frame(width: UIScreen.main.bounds.size.width, height: 535)
+            
+            VStack{
+                HStack{
+                    Button(action : {
+                    withAnimation(.easeInOut){
+                        viewModel.currentReadingView = viewModel.previousReadingView
+                    }}){ ExitButtonStyle() }
+                    Spacer()
+                }
+                Spacer()
+            }.padding(.top, 13)
+                .padding(.leading, 24)
               
         }
-        .ignoresSafeArea()
         .frame(width: UIScreen.main.bounds.size.width, alignment: .topLeading)
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: Button(action : {
-            self.presentationMode.wrappedValue.dismiss()
-        }){
-            RoundButtonStyle(imageName: "xmark", backgroundColor: .tetriary_tint, iconColor: .dark)
-        })
+        .navigationTitle("")
+        .navigationBarHidden(true)
+        .statusBar(hidden: true)
     }
 }
 
 struct ExampleView_Previews: PreviewProvider {
     static var previews: some View {
-        ExampleView()
+        ExampleView(viewModel: MainViewModel())
     }
 }

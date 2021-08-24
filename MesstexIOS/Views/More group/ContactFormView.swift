@@ -20,9 +20,7 @@ struct ContactFormView: View {
             }) {
                 HStack {
                     Image(systemName: "arrow.backward")
-                        .font(.body)
                         .foregroundColor(.dark)
-                        .padding()
                 }
             }
         }
@@ -30,6 +28,23 @@ struct ContactFormView: View {
     var body: some View {
         ScrollView(showsIndicators: false){ 
             VStack(alignment: .leading, spacing: 0){
+                    ZStack{
+                        HStack{
+                            btnBack
+                                .frame(width: 44, height: 44)
+                                .offset(x:-10)
+                            
+                            Spacer()
+                        }
+                        HStack{
+                            Spacer()
+                            Text(LocalizedStringKey("ContactForm"))
+                                .heading2()
+                                .foregroundColor(.primary_color)
+                            Spacer()
+                        }
+                    }.padding(.bottom, 26)
+                
                     Text(LocalizedStringKey("ContactFormTitle"))
                     .heading2()
                     .foregroundColor(.primary_color)
@@ -57,20 +72,16 @@ struct ContactFormView: View {
             }
             .padding(.init(top: 25, leading: 24, bottom: 54, trailing: 24))
             .navigationBarBackButtonHidden(true)
-            .navigationBarTitle(LocalizedStringKey("ContactForm"), displayMode: .inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading)
-                {
-                    btnBack
-                        .foregroundColor(.dark)
-                }
-            }
+            .navigationBarBackButtonHidden(true)
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
             
             PrimaryButton(handler: {
                 viewModel.takeContactForm()
                 self.presentationMode.wrappedValue.dismiss()
             }, buttonLabel: "Send", isEnabled: viewModel.isContactFormValid())
             .padding(.bottom, 30)
+            .padding(.horizontal, 24)
         }
         
     }

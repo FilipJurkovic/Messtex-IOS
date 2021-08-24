@@ -17,7 +17,7 @@ struct InfoView: View {
             HStack{
                 Spacer()
                 Button(action : {viewModel.isInfoSheetOpen = false}){
-                    RoundButtonStyle(imageName: "xmark", backgroundColor: .tetriary_tint, iconColor: .dark)
+                    ExitButtonStyle()
                 }
             }
             .padding(.bottom, 25)

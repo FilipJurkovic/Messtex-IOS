@@ -15,9 +15,7 @@ struct PrivacyView: View {
             }) {
                 HStack {
                     Image(systemName: "arrow.backward")
-                        .font(.body)
                         .foregroundColor(.dark)
-                        .padding()
                 }
             }
         }
@@ -25,6 +23,24 @@ struct PrivacyView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment:.leading){
+                
+                ZStack{
+                    HStack{
+                        btnBack
+                            .frame(width: 44, height: 44)
+                            .offset(x:-10)
+                        
+                        Spacer()
+                    }
+                    HStack{
+                        Spacer()
+                        Text(LocalizedStringKey("Privacy"))
+                            .heading2()
+                            .foregroundColor(.primary_color)
+                        Spacer()
+                    }
+                }.padding(.bottom, 26)
+                
                 Text("Headline")
                     .heading2()
                     .foregroundColor(.primary_color)
@@ -46,14 +62,8 @@ struct PrivacyView: View {
         .padding(.init(top: 25, leading: 24, bottom: 0, trailing: 24))
             .frame(width: UIScreen.main.bounds.size.width, alignment: .topLeading)
             .navigationBarBackButtonHidden(true)
-            .navigationBarTitle("Privacy", displayMode: .inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading)
-                {
-                    btnBack
-                        .foregroundColor(.dark)
-                }
-            }
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
     }
 }
 }

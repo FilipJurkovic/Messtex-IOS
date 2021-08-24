@@ -85,7 +85,7 @@
 "HouseNumberTextField" = "House number";
 "PostcodeTextField" = "PLZ";
 "CityTextField" = "City";
-"FloorTextField" = "Floor (optinal)";
+"FloorTextField" = "Floor (optional)";
 "RequiredFields" = "*Required fields";
 "ReasonOfReading" = "Reason for reading";
 "AnualBilling" = "Annual billing";
@@ -126,10 +126,10 @@
 
 //IMPRINT
 "ImprintInformation" = "Information according to § 5 TMG";
-"ImprintRepresentedBy" = "Represented by:";
-"ImprintSalesTaxTitle" = "Sales tax ID:";
+"ImprintRepresentedBy" = "Represented by";
+"ImprintSalesTaxTitle" = "Sales tax ID";
 "ImprintSalesTaxText" = "Sales tax identification number according to §27a Umsatzsteuergesetz: DE337739004.";
-"ImprintResponsibilityTitle" = "Responsible for the content according to § 55 Abs. 2 RStV:";
+"ImprintResponsibilityTitle" = "Responsible for the content according to § 55 Abs. 2 RStV";
 "ImprintResponsibilityText" = "BRIGHTDOCK Llc, Croatia, Rijeka (City of Rijeka) Nikole Tesle 9";
 "ImprintDisclamerTitle" = "Disclaimer";
 "ImprintDisclamerText" = "Despite careful control of the content, we do not assume any liability for the content of external links. The operators of the linked pages are solely responsible for their content.";

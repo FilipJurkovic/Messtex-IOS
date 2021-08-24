@@ -8,31 +8,37 @@
 import SwiftUI
 
 struct VideoView: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @ObservedObject var viewModel : MainViewModel
     
     var body: some View {
         ZStack{
             Color.dark
-            ZStack{
-                Image("video_image")
-                    .resizable()
-                    .frame(width: UIScreen.main.bounds.size.width, height: 211)
-            }
-              
-        }
-        .ignoresSafeArea()
-        .frame(width: UIScreen.main.bounds.size.width, alignment: .topLeading)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: Button(action : {
-            self.presentationMode.wrappedValue.dismiss()
-        }){
-            RoundButtonStyle(imageName: "xmark", backgroundColor: .tetriary_tint, iconColor: .dark)
-        })
+            
+            Image("video_image")
+                .resizable()
+                .frame(width: UIScreen.main.bounds.size.width, height: 211)
+            
+            VStack{
+                HStack{
+                    Button(action : {
+                    withAnimation(.easeInOut){
+                        viewModel.currentReadingView = viewModel.previousReadingView
+                    }}){ ExitButtonStyle() }
+                    Spacer()
+                }
+                Spacer()
+            }.padding(.top, 13)
+             .padding(.leading, 24)
+
+        }.frame(width: UIScreen.main.bounds.size.width, alignment: .topLeading)
+         .navigationBarBackButtonHidden(true)
+         .navigationTitle("")
+         .navigationBarHidden(true)
     }
 }
 
 struct VideoView_Previews: PreviewProvider {
     static var previews: some View {
-        VideoView()
+        VideoView(viewModel: MainViewModel())
     }
 }

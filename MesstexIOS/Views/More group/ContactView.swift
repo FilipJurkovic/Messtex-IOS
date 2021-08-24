@@ -15,18 +15,32 @@ struct ContactView: View {
             }) {
                 HStack {
                     Image(systemName: "arrow.backward")
-                        .resizable()
-                        .frame(width: 9.23, height: 8.62)
                         .foregroundColor(.dark)
-                        .padding()
                 }
             }
         }
     
     var body: some View {
-        VStack(alignment:.leading){
+            VStack(alignment:.leading){
+                ZStack{
+                    HStack{
+                        btnBack
+                            .frame(width: 44, height: 44)
+                            .offset(x:-10)
+                        
+                        Spacer()
+                    }
+                    HStack{
+                        Spacer()
+                        Text(LocalizedStringKey("Contact"))
+                            .heading2()
+                            .foregroundColor(.primary_color)
+                        Spacer()
+                    }
+                }.padding(.bottom, 26)
+                
                 Text(LocalizedStringKey("ContactTitle"))
-                    .heading1()
+                    .heading2()
                     .foregroundColor(.primary_color)
                     .padding(.bottom, 24)
                 Text("Email")
@@ -57,16 +71,11 @@ struct ContactView: View {
             
             Spacer()
             }
-            .padding(.init(top: 25, leading: 24, bottom: 0, trailing: 0))
+            .padding(.init(top: 25, leading: 24, bottom: 0, trailing: 24))
             .frame(width: UIScreen.main.bounds.size.width, alignment: .topLeading)
             .navigationBarBackButtonHidden(true)
-            .navigationBarTitle("Contact", displayMode: .inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading)
-                {
-                    btnBack
-                }
-            }
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
     }
     
 }

@@ -26,6 +26,7 @@ class MainViewModel: ObservableObject {
     //RANDOM PARAMS
     @Published var isProgressBarActive: Bool
     @Published var currentReadingView : ReadingFlowEnum?
+    @Published var previousReadingView : ReadingFlowEnum?
     @Published var currentMeterIndex: Int
     @Published var isTorchOn: Bool
     @Published var isInfoSheetOpen: Bool
@@ -34,6 +35,7 @@ class MainViewModel: ObservableObject {
     @Published var isLanguagePickerShowing : Bool
     @Published var language : String
     @Published var counterImage : Data?
+    @Published var showAboutPage : Bool
     
     
     
@@ -41,8 +43,8 @@ class MainViewModel: ObservableObject {
     init() {
         self.co2Level = CarbonDataModel(co2Level: 0.0)
         self.faq = Faq(faqs: [])
-        self.userData = UtilizationResponseModel(firstName: "", lastName: "", email: "", phone: "", street: "", houseNumber: "", postcode: "", city: "", floor: "", readingReason: "", meters: [])
-        self.postModelData = PostModelRecord(verificationCode: "", language: "en",meterReadings: [], firstName: "", secondName: "", email: "", phone: "", sendCopy: false)
+        self.userData = UtilizationResponseModel(firstName: "", lastName: "", email: "", phone: "", street: "", houseNumber: "", postcode: "", city: "", floor: "", readingReason: "", meters: [], askForSubscribeNewsletter: false)
+        self.postModelData = PostModelRecord(verificationCode: "", language: "en",meterReadings: [], firstName: "", secondName: "", email: "", phone: "", sendCopy: false, getMeterReadingLetterByEmail: false, subscribeNewsletter: false)
         self.contactFormData = ContactFormData(name: "", email: "", subject: "", message: "")
         self.verificationError = ErrorModel(message: "")
         
@@ -58,6 +60,7 @@ class MainViewModel: ObservableObject {
         self.isReadingFinished = false
         self.isLanguagePickerShowing = false
         self.language = "English"
+        self.showAboutPage = false
         
     }
 
@@ -208,7 +211,7 @@ class MainViewModel: ObservableObject {
     }
     
     //API REQUESTS
-    let url = URL(string: "https://api.ninoxdb.de/v1/teams/yCZezLbXfFAiwR6r3/databases/qmz4hgc0o1bh/query")
+    let url = URL(string: "https://api.ninoxdb.de/v1/teams/yCZezLbXfFAiwR6r3/databases/bp5lebrgr570/query")
     
     
     func getCO2Levels(){
@@ -297,6 +300,7 @@ class MainViewModel: ObservableObject {
                 self.readingStepsProgress[newBoolArray.endIndex-1] = self.areContactDetailsValid()
                 self.isProgressBarActive = false
                 if error == nil{
+                    self.previousReadingView = ReadingFlowEnum.codeReadingView
                     self.currentReadingView = ReadingFlowEnum.readingStepsView
                 }
             } catch{

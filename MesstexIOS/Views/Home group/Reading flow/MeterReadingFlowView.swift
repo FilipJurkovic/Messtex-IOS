@@ -10,79 +10,90 @@ import SwiftUI
 struct MeterReadingFlowView: View {
     @ObservedObject var viewModel : MainViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
-    @State var popBacktoReadingSteps: Bool = false
-    
-    
+
     var body: some View {
         ZStack(alignment: .topLeading){
-                
-                TabView(selection: $viewModel.currentReadingView){
-//                    CodeReadingView(viewModel: viewModel)
-//                        .tag(ReadingFlowEnum.codeReadingView)
-//                        .simultaneousGesture(DragGesture())
-//
-//                    ReadingStepsView(viewModel: viewModel)
-//                        .tag(ReadingFlowEnum.readingStepsView)
-//                        .simultaneousGesture(DragGesture())
+
+            switch viewModel.currentReadingView{
+                case .codeReadingView :
+                    CodeReadingView(viewModel: viewModel)
+                        .transition(.opacity)
                     
+                case .readingStepsView :
+                    ReadingStepsView(viewModel: viewModel)
+                        .transition(.opacity)
+
+                case .meterReadingView :
                     MeterReadingView(cameraView: CameraView(captureAction: { image, values in
-                       
-                        viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue = viewModel.removePoint(value: values[0])
-                        
-                        viewModel.currentReadingView = ReadingFlowEnum.manualReadingView
-                    }), index: viewModel.currentMeterIndex, popToReadingSteps: $popBacktoReadingSteps, viewModel: viewModel)
-                        .tag(ReadingFlowEnum.meterReadingView)
-                        .simultaneousGesture(DragGesture())
+
+                            viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue = viewModel.removePoint(value: values[0])
+
+                            viewModel.currentReadingView = ReadingFlowEnum.manualReadingView
+                        }), index: viewModel.currentMeterIndex, viewModel: viewModel)
+                    .transition(.opacity)
+
+                case .manualReadingView :
+                    HStack{
+                        Spacer()
+                        ManualReadingView(viewModel: viewModel, index: viewModel.currentMeterIndex)
+                            .transition(.opacity)
+                        Spacer()
+                    }
                     
-                    ManualReadingView(viewModel: viewModel, popToReadingSteps: $popBacktoReadingSteps, index: viewModel.currentMeterIndex)
-                        .tag(ReadingFlowEnum.manualReadingView)
-                        .simultaneousGesture(DragGesture())
+
+                case .contactDetailsView :
+                    ContactDetailsView(viewModel: viewModel)
+                        .transition(.opacity)
+
+                case .confirmationView :
+                    ConfirmationView(viewModel: viewModel)
+                        .transition(.opacity)
+
+                case .successView :
+                    SuccessVIew(viewModel: viewModel)
+                        .transition(.opacity)
                     
-//                    ContactDetailsView(viewModel: viewModel)
-//                        .tag(ReadingFlowEnum.contactDetailsView)
-//                        .simultaneousGesture(DragGesture())
-//
-//                    ConfirmationView(viewModel: viewModel)
-//                        .tag(ReadingFlowEnum.confirmationView)
-//                        .simultaneousGesture(DragGesture())
-//
-//                    SuccessVIew(viewModel: viewModel)
-//                        .tag(ReadingFlowEnum.successView)
-//                        .simultaneousGesture(DragGesture())
-                }
-                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                .animation(.easeInOut)
-                .transition(.slide)
-                .navigationTitle("")
-                .navigationBarHidden(true)
-                .onAppear(){
-                    UIPageControl.appearance().currentPageIndicatorTintColor = .clear
-                    UIPageControl.appearance().pageIndicatorTintColor = .clear
-                    UITabBar.appearance().isHidden = true
-                }
-            
-            if viewModel.currentReadingView == ReadingFlowEnum.manualReadingView{
+                case .exampleView :
+                    ExampleView(viewModel: viewModel)
+                        .transition(.opacity)
+
+                case .videoView :
+                    VideoView(viewModel: viewModel)
+                        .transition(.opacity)
+                    
+                default:
+                    CodeReadingView(viewModel: viewModel)
+                        .transition(.opacity)
+            }
+
+            if(viewModel.currentReadingView != .exampleView && viewModel.currentReadingView != .videoView && viewModel.currentReadingView != .meterReadingView && viewModel.currentReadingView != .successView){
                 HStack{
-                    Button(action : { viewModel.currentReadingView = ReadingFlowEnum.meterReadingView }, label:{
-                        RoundButtonStyle(imageName: "arrow.left", backgroundColor: Color.white, iconColor: Color.dark)
-                    }).padding(.leading, 24)
-                    .padding(.top, 10)
+                    Button(action : {
+                        if(viewModel.currentReadingView == .codeReadingView){
+                            viewModel.dismissReadingFlow.toggle()
+                        }else{
+                            withAnimation(.easeInOut){
+                                viewModel.currentReadingView = viewModel.previousReadingView
+                            }
+                        }
+                    }, label:{
+                        RoundButtonStyle(imageName: "arrow.left", backgroundColor: Color.light, iconColor: Color.dark)
+                    })
                     Spacer()
                 }.background(Color.light.opacity(0.0))
+                .padding(.top, 10)
+                .padding(.leading, 19)
             }
+                 
             
-        
-            
-        
+
             if viewModel.isProgressBarActive{
                 ZStack{
                 Rectangle()
                     .foregroundColor(.dark)
                     .opacity(0.3)
                 Loader()
-                    
+
                 }
                 .ignoresSafeArea()
                 .navigationBarBackButtonHidden(true)

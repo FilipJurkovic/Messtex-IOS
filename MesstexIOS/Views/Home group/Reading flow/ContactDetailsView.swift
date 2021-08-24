@@ -30,7 +30,6 @@ struct ContactDetailsView: View {
                               .padding(.bottom, 19)
                             Spacer()
                         }
-                        .padding(.top, 15)
                         
                   
                        Group{
@@ -38,7 +37,7 @@ struct ContactDetailsView: View {
                             .padding(.bottom, 7)
                         FloatingTextField(placeHolder: "LastNameTextField", text: $viewModel.userData.lastName, isRequired: true)
                             .padding(.bottom, 7)
-                        FloatingTextField(placeHolder: "EmailTextField", text: .constant(Date().formatDate()), isRequired: false)
+                        FloatingTextField(placeHolder: "EmailTextField", text: $viewModel.userData.email, isRequired: false)
                         
                         HStack{
                             Toggle("",isOn: $viewModel.postModelData.sendCopy)
@@ -77,20 +76,20 @@ struct ContactDetailsView: View {
                             .disabled(true)
                             .padding(.bottom, 7)
                      }
-                    }.frame(width:327)
+                    }.padding(.horizontal, 24)
                      .padding(.bottom, 58)
-                    
-                        Button(
-                            action: {
+                        
+                        PrimaryButton(handler: {
+                            withAnimation(.easeInOut){
                                 viewModel.currentReadingView = ReadingFlowEnum.readingStepsView
-                            },
-                            label: {
-                               PrimaryButtonStyle(buttonLabel: "Next", isEnabled: viewModel.areContactDetailsValid())
-                            }).disabled(!viewModel.areContactDetailsValid())
+                            }
+                        }, buttonLabel: "Next")
+                        .padding(.bottom, 30)
+                        .padding(.horizontal, 24)
 
                     Spacer()
                 }
-                .padding(.top, 50)
+                .padding(.top, 62)
             }
                 .navigationTitle("")
                 .navigationBarHidden(true)

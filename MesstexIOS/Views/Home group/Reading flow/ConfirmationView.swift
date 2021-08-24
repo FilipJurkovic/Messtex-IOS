@@ -23,7 +23,7 @@ struct ConfirmationView: View {
                     }.padding(.horizontal, 24)
                     
                 }
-                .padding(.top, 100)
+                .padding(.top, 62)
                 ZStack(){
                     Image("reading_paper")
                         .resizable()
@@ -34,12 +34,11 @@ struct ConfirmationView: View {
                                 ForEach(0...viewModel.postModelData.meterReadings.count, id: \.self){ index in
                                     VStack(alignment:.leading, spacing:0){
                                         if index != viewModel.postModelData.meterReadings.count {
-                                        HStack{
+                                            HStack(alignment:.center){
                                    
                                             Image(viewModel.getMeterTypeIcon(meterType: viewModel.postModelData.meterReadings[index].counterType))
                                                 .resizable()
                                                 .frame(width: 18, height: 18)
-                                                .padding(.top, 17)
                                                 
                                             Text(viewModel.userData.meters[index].counterTypeName)
                                               .paragraphBold()
@@ -47,6 +46,8 @@ struct ConfirmationView: View {
                                               .padding(.trailing, 9)
                                             Spacer()
                                         }.padding(.bottom, 4)
+                                         .padding(.top, 13)
+                                            
                                         Text("Nr. \(viewModel.userData.meters[index].counterNumber)")
                                           .small()
                                           .foregroundColor(.tetriary)
@@ -86,9 +87,6 @@ struct ConfirmationView: View {
                                           .foregroundColor(.dark)
                                           .padding(.bottom, 17)
                                             
-                                        Divider()
-                                            .foregroundColor(.tetriary)
-                                            .frame(height:1)
                                     }
                                 }
                             }
@@ -98,14 +96,16 @@ struct ConfirmationView: View {
                         }.frame(width: 300, height: 450)
                         
                 }.frame(width: 353.3, height: 527.4)
-                Button(action: {viewModel.takeMeterReadings()}, label: {
-                    PrimaryButtonStyle(buttonLabel: "Send")
-                }).padding(.bottom, 30)
+                
+                PrimaryButton(handler: {
+                    withAnimation(.easeInOut){
+                        viewModel.takeMeterReadings()
+                    }
+                }, buttonLabel: "Send")
+                .padding(.bottom, 30)
                 .padding(.top, 38)
+                .padding(.horizontal, 24)
 
-                NavigationLink(destination: SuccessVIew(viewModel: viewModel)
-                                .tag(ReadingFlowEnum.successView)
-                                .simultaneousGesture(DragGesture()), tag: ReadingFlowEnum.successView, selection: $viewModel.currentReadingView) { EmptyView() }
             }
         }
         .navigationBarBackButtonHidden(true)

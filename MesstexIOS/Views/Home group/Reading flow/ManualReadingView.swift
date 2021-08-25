@@ -82,7 +82,7 @@ struct ManualReadingView: View {
                 viewModel.postModelData.meterReadings[index].counterValue = viewModel.addComma(value: viewModel.postModelData.meterReadings[index].counterValue)
                 viewModel.readingStepsProgress[index] = true
                 
-            }, buttonLabel: "Next")
+            }, buttonLabel: "Next", isEnabled: viewModel.postModelData.meterReadings[index].counterValue != "")
             .padding(.bottom, 30)
             Spacer()
         }
@@ -90,6 +90,9 @@ struct ManualReadingView: View {
         .padding(.top, 12)
         .navigationTitle("")
         .navigationBarHidden(true)
+        .onAppear(){
+            
+        }
     }
     }
     

@@ -49,12 +49,14 @@ struct InfoView: View {
                 Spacer()
             }.padding(.bottom, 10)
             
+            HStack{
             Text(viewModel.userData.meters[viewModel.currentMeterIndex].counterDescriptionText)
                 .paragraph()
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.bottom, 24)
             
             Spacer()
+            }
         }.padding(.horizontal, 23)
     }
 }

@@ -89,7 +89,7 @@ struct MeterReadingView: View {
                             .multilineTextAlignment(.center)
                             .foregroundColor(.light)
                             
-                    }.padding(.bottom, 42)
+                    }.padding(.bottom, 30)
                     
                     Button(
                         action: {
@@ -98,7 +98,7 @@ struct MeterReadingView: View {
                         label: {
                             ManualReadingButtonStyle()
                         })
-                        .padding(.bottom, 46)
+                        .padding(.bottom, 30)
                         .onTapGesture {
                             let meterModel: MeterReceivingData = viewModel.userData.meters[index]
                             if !viewModel.postModelData.meterReadings.isEmpty && viewModel.postModelData.meterReadings.endIndex-1 < index {
@@ -131,7 +131,7 @@ struct MeterReadingView: View {
                                 Circle()
                                     .frame(width: 48, height: 48)
                                     .foregroundColor(.primary_color)
-                                Image("info")
+                                Image(systemName: "info")
                                     .font(.body)
                                     .foregroundColor(.light)
                                     .padding()

@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "LanguageManagerSwiftUI",
+        "repositoryURL": "https://github.com/Abedalkareem/LanguageManager-SwiftUI.git",
+        "state": {
+          "branch": null,
+          "revision": "ebb7493a76653852f96e906aa908b1455e40c6ce",
+          "version": "0.0.5"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

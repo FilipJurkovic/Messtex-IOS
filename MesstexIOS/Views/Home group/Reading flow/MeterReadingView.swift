@@ -10,32 +10,38 @@ import SwiftUI
 import UIKit
 
 struct CameraHeaderView: View {
-
-    var safeAreaInset: CGFloat = 0
-
-    @ObservedObject var viewModel: MainViewModel
-
+    @ObservedObject var viewModel : MainViewModel
+    
     var body: some View {
-        ZStack {
-            HStack {
+        ZStack(alignment: .center){
+            HStack{
                 Spacer()
-                Text("\(NSLocalizedString("ReadingDate", comment: "ReadingDate")) \(Date().formatDate())" as String)
-                    .paragraph()
-                    .foregroundColor(.light)
-                Spacer()
-            }
-            HStack {
-                Button(action: {
-                    viewModel.currentReadingView = ReadingFlowEnum.readingStepsView
-                }, label: {
-                    RoundButtonStyle(imageName: "xmark", backgroundColor: .tetriary_tint, iconColor: .dark)
-                })
-                .accentColor(.white)
-                .padding(.leading, 10)
-
+                HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 4){
+                    Text(LocalizedStringKey("ReadingDate"))
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.light)
+                   
+                    Text(Date().formatDate() as String)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.light)
+                        
+                }
                 Spacer()
             }
-        }        .padding(.top, safeAreaInset)
+            HStack(alignment:.center) {
+            Button(action : {
+                withAnimation(.easeInOut){
+                 viewModel.currentReadingView = viewModel.previousReadingView
+                }
+            }){
+                ExitButtonStyle()
+            }
+            .accentColor(.white)
+            .padding(.leading, 24)
+            
+            Spacer()
+        }
+}        .padding(.top, 13)
         .background(Color.clear)
 
     }
@@ -53,23 +59,45 @@ struct MeterReadingView: View {
         GeometryReader { _ in
             ZStack {
                 cameraView
+                if UIScreen.main.bounds.size.height < 812{
                 Image("overlay_image")
                     .resizable()
+                    .scaledToFill()
+                    .offset(y:-(812-UIScreen.main.bounds.size.height)/2)
                     .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
-                VStack(spacing: 0) {
-                    CameraHeaderView(safeAreaInset: 43, viewModel: viewModel)
+                    .clipped()
+                    
+                }
+                else{
+                    Image("overlay_image")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+                        .clipped()
+                }
+                VStack() {
+                    CameraHeaderView(viewModel: viewModel)
+                    
                     Spacer()
-                    Text("\(NSLocalizedString("ScanMessage", comment: "ScanMessage"))\nNr. \(viewModel.formatNumber(number: viewModel.userData.meters[index].counterNumber))" as String)
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(.light)
-                        .padding(.bottom, 42)
-
+                    VStack(spacing:0){
+                        Text(LocalizedStringKey("ScanMessage"))
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(.light)
+                       
+                        Text("Nr. \(viewModel.userData.meters[index].counterNumber)")
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(.light)
+                            
+                    }.padding(.bottom, 30)
+                    
                     Button(
-                        action: { viewModel.currentReadingView = ReadingFlowEnum.manualReadingView },
+                        action: {
+                            viewModel.currentReadingView = ReadingFlowEnum.manualReadingView
+                        },
                         label: {
                             ManualReadingButtonStyle()
                         })
-                        .padding(.bottom, 46)
+                        .padding(.bottom, 30)
                         .onTapGesture {
                             let meterModel: MeterReceivingData = viewModel.userData.meters[index]
                             if !viewModel.postModelData.meterReadings.isEmpty && viewModel.postModelData.meterReadings.endIndex-1 < index {
@@ -78,8 +106,9 @@ struct MeterReadingView: View {
                                 viewModel.postModelData.meterReadings.append(MeterReadingData(counterNumber: meterModel.counterNumber, counterType: meterModel.counterType, counterValue: "", userMessage: ""))
                             }
                         }
-
-                    HStack {
+       
+                    
+                    HStack{
                         Button(action: {cameraView.toggleFlash(state: !viewModel.isTorchOn)
                             viewModel.isTorchOn.toggle()
                         }, label: {
@@ -96,14 +125,21 @@ struct MeterReadingView: View {
                         Button(action: {
                             viewModel.isInfoSheetOpen.toggle()
                         }, label: {
-                            LargeRoundButtonStyle(imageName: "info", backgroundColor: .primary_color, iconColor: .light)
-                        })
-
+                            ZStack {
+                                Circle()
+                                    .frame(width: 48, height: 48)
+                                    .foregroundColor(.primary_color)
+                                Image(systemName: "info")
+                                    .font(.body)
+                                    .foregroundColor(.light)
+                                    .padding()
+                            }
+                            })
+                        
                     }.padding(.bottom, 50)
                 }
             }
         }
-        .ignoresSafeArea()
         .navigationTitle("")
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)

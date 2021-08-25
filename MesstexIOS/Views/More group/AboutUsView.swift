@@ -13,18 +13,28 @@ struct AboutUsView: View {
     var btnBack : some View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
-        }, label: {
-            HStack {
-                Image(systemName: "arrow.backward")
-                    .font(.body)
-                    .foregroundColor(.dark)
-                    .padding()
+            }) {
+                RoundButtonStyle(imageName: "arrow.left", backgroundColor: Color.light, iconColor: Color.dark)
             }
         })
     }
 
     var body: some View {
-        ScrollView(showsIndicators: false) {
+        ZStack(alignment: .top){
+            
+        ScrollView(showsIndicators: false){
+            VStack(alignment:.leading){
+                ZStack{
+                    HStack{
+                        Spacer()
+                        Text(LocalizedStringKey("About"))
+                            .heading2()
+                            .foregroundColor(.primary_color).padding(.vertical, 12)
+                        Spacer()
+                    }
+                }
+                .padding(.horizontal, 24)
+                
             Image("about_top")
                 .resizable()
                 .frame(width: UIScreen.main.bounds.size.width)
@@ -43,9 +53,11 @@ struct AboutUsView: View {
                         .paragraphBold()
                         .foregroundColor(.primary_color)
                         .padding(.bottom, 16)
-
-                    VStack {
-                        HStack {
+                
+                
+                
+                    VStack{
+                        HStack(alignment: .top){
                             Image("bullet_point")
                                 .padding(.trailing, 17)
                             Text(LocalizedStringKey("AboutBulletpointOne"))
@@ -54,8 +66,8 @@ struct AboutUsView: View {
                             Spacer()
                         }
                         .padding(.bottom, 22)
-
-                        HStack {
+                        
+                        HStack(alignment: .top){
                             Image("bullet_point")
                                 .padding(.trailing, 17)
                             Text(LocalizedStringKey("AboutBulletpointTwo"))
@@ -63,8 +75,8 @@ struct AboutUsView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                             Spacer()
                         }.padding(.bottom, 22)
-
-                        HStack {
+                        
+                        HStack(alignment: .top){
                             Image("bullet_point")
                                 .padding(.trailing, 17)
                             Text(LocalizedStringKey("AboutBulletpointThree"))
@@ -72,8 +84,8 @@ struct AboutUsView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                             Spacer()
                         }.padding(.bottom, 22)
-
-                        HStack {
+                        
+                        HStack(alignment: .top){
                             Image("bullet_point")
                                 .padding(.trailing, 17)
                             Text(LocalizedStringKey("AboutBulletpointFour"))
@@ -81,8 +93,8 @@ struct AboutUsView: View {
                                 .fixedSize(horizontal: false, vertical: true)
                             Spacer()
                         }.padding(.bottom, 22)
-
-                        HStack {
+                        
+                        HStack(alignment: .top){
                             Image("bullet_point")
                                 .padding(.trailing, 17)
                             Text(LocalizedStringKey("AboutBulletpointFive"))
@@ -92,10 +104,11 @@ struct AboutUsView: View {
                         }.padding(.bottom, 22)
 
                     }.lineLimit(10)
-
-                    Text(LocalizedStringKey("AboutParagraphTwo"))
-                        .paragraph()
-                        .padding(.bottom, 65)
+                
+                Text(LocalizedStringKey("AboutParagraphTwo"))
+                    .paragraph()
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.bottom, 65)
                 }
 
                 Spacer()
@@ -103,15 +116,10 @@ struct AboutUsView: View {
             .padding(.init(top: 25, leading: 24, bottom: 0, trailing: 24))
             .frame(width: UIScreen.main.bounds.size.width, alignment: .topLeading)
             .navigationBarBackButtonHidden(true)
-            .navigationBarTitle(LocalizedStringKey("About"), displayMode: .inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    btnBack
-                        .foregroundColor(.dark)
-                }
-            }
-
-            ZStack {
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
+            
+            ZStack{
                 Rectangle()
                     .foregroundColor(.primary_color)
                 Text(LocalizedStringKey("AboutCardText"))
@@ -121,10 +129,10 @@ struct AboutUsView: View {
                     .padding(.horizontal, 33.5)
 
             }
-            .frame(width: UIScreen.main.bounds.size.width, height: 250, alignment: .center/*@END_MENU_TOKEN@*/)
-            .padding(.bottom, 66)
-
-            VStack(alignment: .leading) {
+            .frame(width: UIScreen.main.bounds.size.width, height: 250, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            .padding(.bottom, 40)
+            
+            VStack(alignment:.leading){
                 Text(LocalizedStringKey("AboutPrinciplesTitle"))
                     .heading2()
                     .foregroundColor(.primary_color)
@@ -132,8 +140,10 @@ struct AboutUsView: View {
 
                 Text(LocalizedStringKey("AboutPrinciplesParagraph"))
                     .paragraph()
-                    .padding(.bottom, 23)
-                Group {
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.bottom, 42)
+                
+                Group{
                     StepIndicator(stepIndex: 1)
                         .padding(.bottom, 7)
                     Text(LocalizedStringKey("AboutPrinciplesSubtitleOne"))
@@ -143,8 +153,8 @@ struct AboutUsView: View {
                     Text(LocalizedStringKey("AboutPrinciplesParagraphOne"))
                         .paragraph()
                         .fixedSize(horizontal: false, vertical: true)
-                        .padding(.bottom, 32)
-
+                        .padding(.bottom, 42)
+        
                     StepIndicator(stepIndex: 2)
                         .padding(.bottom, 7)
                     Text(LocalizedStringKey("AboutPrinciplesSubtitleTwo"))
@@ -154,8 +164,9 @@ struct AboutUsView: View {
                     Text(LocalizedStringKey("AboutPrinciplesParagraphTwo"))
                         .paragraph()
                         .fixedSize(horizontal: false, vertical: true)
-                        .padding(.bottom, 32)
-
+                        .padding(.bottom, 42)
+                    
+              
                     StepIndicator(stepIndex: 3)
                         .padding(.bottom, 7)
                     Text(LocalizedStringKey("AboutPrinciplesSubtitleThree"))
@@ -165,12 +176,22 @@ struct AboutUsView: View {
                     Text(LocalizedStringKey("AboutPrinciplesParagraphThree"))
                         .paragraph()
                         .fixedSize(horizontal: false, vertical: true)
+                        .padding(.bottom, 42)
                 }
             }
             .padding(.init(top: 25, leading: 24, bottom: 0, trailing: 24))
             .frame(width: UIScreen.main.bounds.size.width, alignment: .topLeading)
         }
     }
+            
+            HStack{
+                btnBack
+                    .padding(.leading, 7)
+                
+                Spacer()
+            }
+        }
+}
 }
 
 struct AboutUsView_Previews: PreviewProvider {

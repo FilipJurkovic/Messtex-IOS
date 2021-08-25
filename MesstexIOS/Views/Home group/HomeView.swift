@@ -39,22 +39,27 @@ struct HomeView: View {
                     Text(LocalizedStringKey("Title"))
                         .heading2()
                         .foregroundColor(.dark)
-                        .padding(.bottom, 25)
-
+                        .padding(.bottom, 16)
+                    
                     Text(LocalizedStringKey("Subtitle"))
-                        .paragraphBold()
-                        .foregroundColor(.primary_color)
-                        .multilineTextAlignment(.center)
-                        .padding(!viewModel.isReadingFinished ? EdgeInsets(top: 0, leading: 0, bottom: 83, trailing: 0) :
-                                    EdgeInsets(top: 0, leading: 0, bottom: 41, trailing: 0))
-                    if !viewModel.isReadingFinished {
-                        NavigationLink(
-                            destination: MeterReadingFlowView(viewModel: viewModel),
-                            label: {
+                      .paragraphBold()
+                      .foregroundColor(.primary_color)
+                      .multilineTextAlignment(.center)
+                        .padding(!viewModel.isReadingFinished ? EdgeInsets(top: 0, leading: 60, bottom: 83, trailing: 60) :
+                                    EdgeInsets(top: 0, leading: 60, bottom: 41, trailing: 60))
+                        if !viewModel.isReadingFinished{
+                        Button(
+                            action: {viewModel.dismissReadingFlow.toggle()},
+                            label : {
                                 PrimaryButtonStyle(buttonLabel: "ReadingButton")
                             })
-                    } else {
-                        FinishedReadingWidget()
+                            }
+                        else{
+                            FinishedReadingWidget()
+                        }
+                            
+                        }
+                    
                     }
 
                 }
@@ -64,59 +69,70 @@ struct HomeView: View {
                         EdgeInsets(top: 0, leading: 0, bottom: 60, trailing: 0))
 
             Co2Widget(co2Level: viewModel.co2Level.co2Level)
-                .edgesIgnoringSafeArea(.all)
-                .navigationBarTitle("")
-                .navigationBarHidden(true)
-                .padding(.bottom, 45)
+                   .edgesIgnoringSafeArea(.all)
+                   .navigationBarTitle("")
+                   .navigationBarHidden(true)
+                   .padding(.bottom, 45)
+                       
+            VStack{
+                           Text(LocalizedStringKey("TipsTitle"))
+                             .heading2()
+                             .foregroundColor(.dark)
+                             .padding(.bottom, 31)
+                           
+                           Image("tips_graphics")
+                               .padding(.bottom, 28)
+                           
+                           Text(LocalizedStringKey("TipsSubtitle"))
+                             .heading2()
+                             .foregroundColor(.primary_color)
+                             .multilineTextAlignment(.center)
+                             .fixedSize(horizontal: false, vertical: true)
+                             .padding(.bottom, 36)
+                             .padding(.horizontal, 56)
+                
+                if(viewModel.faq.faqs.isEmpty){
+                    FaqWidget(questionCount: faq_home.faqs.count, flags: $flags, faq: faq_home)
+                               .padding(.bottom, 25)
+                }else{
+                    FaqWidget(questionCount: 3, flags: $flags, faq: viewModel.faq)
+                               .padding(.bottom, 25)
+                }
+                           
+                            NavigationLink(
+                                destination: FaqView(viewModel: viewModel),
+                                        label : {
+                                            OutlinedButtonStyle(buttonLabel: "ShowMore")
+                                        })
+                       }
+                       .padding(.bottom, 154)
+                       
+                       VStack{
+                           Text(LocalizedStringKey("ContactTitle"))
+                             .heading2()
+                             .foregroundColor(.dark)
+                             .padding(.bottom, 27)
+                           
+                           Image("contact_graphics")
+                               .frame(width: 199, height: 167)
+                               .padding(.bottom, 20)
+                           
+                            NavigationLink(
+                                        destination: ContactFormView(viewModel: viewModel),
+                                        label : {
+                                            OutlinedButtonStyle(buttonLabel: "ShareButton")
+                                        })
+                       }
+                       .padding(.bottom, 140)
+                       
+                       Image("logo")
+                           .frame(width: 102, height: 66)
+                           .padding(.bottom, 154)
+            
+            NavigationLink(destination: AboutUsView(), isActive: $viewModel.showAboutPage, label: { EmptyView() })
 
-            VStack {
-                Text(LocalizedStringKey("TipsTitle"))
-                    .heading2()
-                    .foregroundColor(.dark)
-                    .padding(.bottom, 30)
-
-                Image("tips_graphics")
-                    .padding(.bottom, 30)
-
-                Text(LocalizedStringKey("TipsSubtitle"))
-                    .heading2()
-                    .foregroundColor(.primary_color)
-                    .multilineTextAlignment(.center)
-                    .padding(.bottom, 38)
-
-                FaqWidget(questionCount: faq_home.faqs.count, flags: $flags, faq: faq_home)
-                    .padding(.bottom, 21)
-
-                NavigationLink(
-                    destination: FaqView(viewModel: viewModel),
-                    label: {
-                        OutlinedButtonStyle(buttonLabel: "ShowMore")
-                    })
-            }
-            .padding(.bottom, 154)
-
-            VStack {
-                Text(LocalizedStringKey("ContactTitle"))
-                    .heading2()
-                    .foregroundColor(.dark)
-                    .padding(.bottom, 27)
-
-                Image("contact_graphics")
-                    .frame(width: 199, height: 167)
-                    .padding(.bottom, 20)
-
-                NavigationLink(
-                    destination: ContactFormView(viewModel: viewModel),
-                    label: {
-                        OutlinedButtonStyle(buttonLabel: "ShareButton")
-                    })
-            }
-            .padding(.bottom, 140)
-
-            Image("logo")
-                .frame(width: 102, height: 66)
-                .padding(.bottom, 154)
-
+        }.onAppear(){
+            UITabBar.appearance().isHidden = false
         }
     }
 }

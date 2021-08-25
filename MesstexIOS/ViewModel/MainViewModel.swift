@@ -6,7 +6,7 @@
 //
 
 import AVFoundation
-import Foundation
+import LanguageManagerSwiftUI
 
 class MainViewModel: ObservableObject {
 
@@ -23,19 +23,26 @@ class MainViewModel: ObservableObject {
 
     // RANDOM PARAMS
     @Published var isProgressBarActive: Bool
-    @Published var currentReadingView: ReadingFlowEnum
+    @Published var currentReadingView : ReadingFlowEnum?
+    @Published var previousReadingView : ReadingFlowEnum?
     @Published var currentMeterIndex: Int
     @Published var isTorchOn: Bool
     @Published var isInfoSheetOpen: Bool
     @Published var dismissReadingFlow: Bool
-    @Published var isReadingFinished: Bool
-
-    // VIEWMODEL INITIALIZATION
+    @Published var isReadingFinished : Bool
+    @Published var isLanguagePickerShowing : Bool
+    @Published var language : String
+    @Published var counterImage : Data?
+    @Published var showAboutPage : Bool
+    
+    
+    
+    //VIEWMODEL INITIALIZATION
     init() {
         self.co2Level = CarbonDataModel(co2Level: 0.0)
         self.faq = Faq(faqs: [])
-        self.userData = UtilizationResponseModel(firstName: "", lastName: "", email: "", phone: "", street: "", houseNumber: "", postcode: "", city: "", floor: "", readingReason: "", meters: [])
-        self.postModelData = PostModelRecord(verificationCode: "", meterReadings: [], firstName: "", secondName: "", email: "", phone: "", sendCopy: false)
+        self.userData = UtilizationResponseModel(firstName: "", lastName: "", email: "", phone: "", street: "", houseNumber: "", postcode: "", city: "", floor: "", readingReason: "", meters: [], askForSubscribeNewsletter: false)
+        self.postModelData = PostModelRecord(verificationCode: "", language: "en",meterReadings: [], firstName: "", secondName: "", email: "", phone: "", sendCopy: false, getMeterReadingLetterByEmail: false, subscribeNewsletter: false)
         self.contactFormData = ContactFormData(name: "", email: "", subject: "", message: "")
         self.verificationError = ErrorModel(message: "")
 
@@ -49,6 +56,10 @@ class MainViewModel: ObservableObject {
         self.currentMeterIndex = 0
         self.dismissReadingFlow = false
         self.isReadingFinished = false
+        self.isLanguagePickerShowing = false
+        self.language = "English"
+        self.showAboutPage = false
+        
     }
 
     func toggleFaqFlagIndex(index: Int) {
@@ -90,26 +101,27 @@ class MainViewModel: ObservableObject {
         let isPhoneValid: Bool = self.userData.phone != ""
         return isFirstNameValid &&  isLastNameValid && isEmailValid && isPhoneValid
     }
-
-    func getMeterTypeIcon(meterType: String) -> String {
-        switch meterType {
-        case "WMZ":
-            return "heat_meter"
-
-        case "WWZ":
-            return "water_meter"
-
-        case "KMZ":
-            return "heat_meter"
-
-        case "KWZ":
-            return "water_meter"
-
-        case "RWZ":
-            return "heat_alocator"
-
-        default:
-            return "heat_meter"
+    
+    
+    func getMeterTypeIcon(meterType: String) -> String{
+        switch meterType{
+            case "WMZ":
+                return "heat_meter"
+                
+            case "WWZ":
+                return "water_meter"
+             
+            case "KMZ":
+                return "heat_meter"
+                    
+            case "KWZ":
+                return "water_meter"
+                
+            case "RWZ":
+                return "heat_alocator"
+              
+            default:
+                return "heat_meter"
         }
     }
 
@@ -135,28 +147,20 @@ class MainViewModel: ObservableObject {
         }
 
     }
-
-    func getPreviousTabView() {
-        switch self.currentReadingView {
-        case ReadingFlowEnum.readingStepsView:
-            self.currentReadingView = ReadingFlowEnum.codeReadingView
-
-        case ReadingFlowEnum.meterReadingView:
-            self.currentReadingView = ReadingFlowEnum.readingStepsView
-
-        case ReadingFlowEnum.manualReadingView:
-            self.currentReadingView = ReadingFlowEnum.readingStepsView
-
-        case ReadingFlowEnum.contactDetailsView:
-            self.currentReadingView = ReadingFlowEnum.readingStepsView
-
-        case ReadingFlowEnum.confirmationView:
-            self.currentReadingView = ReadingFlowEnum.readingStepsView
+    
+    func getLanguageCode() -> String{
+        switch self.language {
+        case "English":
+            return "en"
+        case "Deutsch":
+            return "de"
         default:
-            return
+            return ""
         }
     }
+    
 
+    
     func toggleTorch() {
         guard let device = AVCaptureDevice.default(for: .video) else { return }
 
@@ -198,11 +202,12 @@ class MainViewModel: ObservableObject {
     func checkReadingStepStatus() -> Bool {
         !readingStepsProgress.contains(false)
     }
-
-    // API REQUESTS
-    let url = URL(string: "https://api.ninoxdb.de/v1/teams/yCZezLbXfFAiwR6r3/databases/qmz4hgc0o1bh/query")
-
-    func getCO2Levels() {
+    
+    //API REQUESTS
+    let url = URL(string: "https://api.ninoxdb.de/v1/teams/yCZezLbXfFAiwR6r3/databases/bp5lebrgr570/query")
+    
+    
+    func getCO2Levels(){
         let jsonBody = try? JSONEncoder().encode(PostModel(query: "getCO2Level()"))
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"
@@ -219,35 +224,43 @@ class MainViewModel: ObservableObject {
             }.resume()
         }
     }
-
-    func getFAQs() {
-        let jsonBody = try? JSONEncoder().encode(PostModel(query: "getFAQs()"))
-
+    
+    func getFAQs(){
+        let jsonBody = try? JSONEncoder().encode(PostModel(query: "getFAQs(\"{\"\"language\"\":\"\"\(getLanguageCode())\"\"}\")"))
+        
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"
         request.httpBody = jsonBody
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer eecf7fd0-cee9-11eb-b752-fde919688281", forHTTPHeaderField: "Authorization")
-
-        DispatchQueue.main.async {
-            URLSession.shared.dataTask(with: request) { data, _, _ in
-                guard let data = data else { return }
-
-                self.faq = try! JSONDecoder().decode(Faq.self, from: data)
-
-                var newBoolArray: [Bool] = []
-                for _ in 0...self.faq.faqs.count-1 {
-                    newBoolArray.append(false)
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            URLSession.shared.dataTask(with: request){ (data, response, error) in
+            guard let data = data else {return}
+                
+                do{
+                    let response = try JSONDecoder().decode(Faq.self, from: data)
+                    self.faq = response
+                    
+                    var newBoolArray: [Bool] = []
+                    for _ in 0...self.faq.faqs.count-1{
+                        newBoolArray.append(false)
+                    }
+                    self.faqFlagIndex = newBoolArray
+                }catch{
+                    print(error)
                 }
-                self.faqFlagIndex = newBoolArray
-            }.resume()
-
+            
+            
+        }.resume()
+            
         }
     }
-
-    func getUtilizationUnitData(pin: String) {
-        let body = try? JSONEncoder().encode(UtilizationModel(verificationCode: pin))
-        let json = String(data: body!, encoding: String.Encoding.utf8) ?? " "
+    
+    func getUtilizationUnitData(pin : String){
+        let body = try? JSONEncoder().encode(UtilizationModel(verificationCode: pin, language: getLanguageCode()))
+        let json: String = String(data: body!, encoding: String.Encoding.utf8) ?? " "
         let jsonBody = try? JSONEncoder().encode(PostModel(query: "getUtilizationUnitData(\"\(json.replacingOccurrences(of: "\"", with: "\"\""))\")"))
 
         var request = URLRequest(url: url!)
@@ -262,31 +275,28 @@ class MainViewModel: ObservableObject {
             URLSession.shared.dataTask(with: request) { data, _, error in
                 guard let data = data else { return }
 
-                do {
-                    try JSONDecoder().decode(UtilizationResponseModel.self, from: data)
-                    self.userData = try! JSONDecoder().decode(UtilizationResponseModel.self, from: data)
-                    self.verificationError = ErrorModel(message: "")
-
-                    var newBoolArray: [Bool] = []
-                    for _ in 0...self.userData.meters.count {
-                        newBoolArray.append(false)
-                    }
-
-                    for meter in self.userData.meters {
-                        self.postModelData.meterReadings.append(MeterReadingData(counterNumber: meter.counterNumber, counterType: meter.counterType, counterValue: "", userMessage: ""))
-                    }
-                    self.populatePostModelData(pin: pin)
-
-                    self.readingStepsProgress = newBoolArray
-                    self.readingStepsProgress[newBoolArray.endIndex-1] = self.areContactDetailsValid()
-                    self.isProgressBarActive = false
-                    if error == nil {
-                        self.currentReadingView = ReadingFlowEnum.readingStepsView
-                    }
-                } catch {
-                    self.verificationError = try! JSONDecoder().decode(ErrorModel.self, from: data)
-                    self.isProgressBarActive = false
+                var newBoolArray: [Bool] = []
+                for _ in 0...self.userData.meters.count{
+                    newBoolArray.append(false)
                 }
+                
+                for meter in self.userData.meters{
+                    self.postModelData.meterReadings.append(MeterReadingData(counterNumber: meter.counterNumber, counterType: meter.counterType, counterValue: "", userMessage: ""))
+                }
+                self.populatePostModelData(pin: pin)
+                
+                self.readingStepsProgress = newBoolArray
+                self.readingStepsProgress[newBoolArray.endIndex-1] = self.areContactDetailsValid()
+                self.isProgressBarActive = false
+                if error == nil{
+                    self.previousReadingView = ReadingFlowEnum.codeReadingView
+                    self.currentReadingView = ReadingFlowEnum.readingStepsView
+                }
+            } catch{
+                print(error)
+                self.verificationError = try! JSONDecoder().decode(ErrorModel.self, from: data)
+                self.isProgressBarActive = false
+            }
 
             }
             .resume()
@@ -330,9 +340,34 @@ class MainViewModel: ObservableObject {
         request.httpBody = jsonBody
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer eecf7fd0-cee9-11eb-b752-fde919688281", forHTTPHeaderField: "Authorization")
-
+        
+        self.isProgressBarActive = true
+        
         DispatchQueue.main.async {
-            URLSession.shared.dataTask(with: request).resume()
+        URLSession.shared.dataTask(with: request){ (data, response, error) in
+            guard let data = data else {return}
+            self.counterImage = data
+            
+        }.resume()
+        }
+    }
+    
+    func getCounterImage(index : Int){
+        if self.userData.meters[index].counterDescriptionImage == "" {
+            self.counterImage = nil
+        }else   {
+            var request = URLRequest(url: URL(string: self.userData.meters[index].counterDescriptionImage)!)
+            request.httpMethod = "GET"
+            //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue("Bearer eecf7fd0-cee9-11eb-b752-fde919688281", forHTTPHeaderField: "Authorization")
+            
+            DispatchQueue.main.async {
+                URLSession.shared.dataTask(with: request){ (data, response, error) in
+                    guard let data = data else {return}
+                    self.counterImage = data
+                    
+                }.resume()
+            }
         }
     }
 

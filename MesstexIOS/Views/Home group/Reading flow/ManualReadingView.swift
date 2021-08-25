@@ -15,83 +15,85 @@ struct ManualReadingView: View {
     var index: Int
 
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack {
-                Image("reading_graphics")
-                    .resizable()
-                    .frame(width: 114, height: 95)
-
-                Text(LocalizedStringKey("ManualInputTitle"))
-                    .heading1()
-                    .foregroundColor(.primary_color)
-                    .padding(.bottom, 25)
-
-                Text(LocalizedStringKey("ManualInputSubtitle"))
-                    .paragraphBold()
-                    .foregroundColor(.dark)
-                    .multilineTextAlignment(.center)
-                    .padding(.bottom, 28)
-                VStack(spacing: 0) {
-                    FloatingNumericTextField(placeHolder: "CounterNumberTextField", text: $viewModel.userData.meters[index].counterNumber)
-                        .frame(width: 325)
-                        .padding(.bottom, 7)
-                        .disabled(true)
-                    FloatingTextField(placeHolder: "CounterTypeTextField", text: $viewModel.userData.meters[index].counterType)
-                        .frame(width: 325)
-                        .padding(.bottom, 7)
-                        .disabled(true)
-                    FloatingTextField(placeHolder: "ReadingDateTextField", text: .constant(Date().formatDate()))
-                        .frame(width: 325)
-                        .padding(.bottom, 32)
-                        .disabled(true)
-
-                    HStack {
-                        Text(viewModel.userData.meters[index].counterTypeName)
-                            .heading2()
-                            .foregroundColor(.primary_color)
-                            .padding(.bottom, 25)
-                        Spacer()
-                    }
-
-                    ZStack {
+        ScrollView(showsIndicators: false){
+        VStack{
+            Image("reading_graphics")
+                .resizable()
+                .frame(width: 114, height: 95)
+                .padding(.top, 50)
+            
+            Text(LocalizedStringKey("ManualInputTitle"))
+              .heading1()
+              .foregroundColor(.primary_color)
+              .padding(.bottom, 25)
+          
+          Text(LocalizedStringKey("ManualInputSubtitle"))
+            .paragraph()
+            .foregroundColor(.dark)
+            .multilineTextAlignment(.center)
+            .padding(.bottom, 28)
+            VStack(spacing:0){
+                FloatingTextField(placeHolder: "CounterTypeTextField", text: $viewModel.userData.meters[index].counterNumber, isRequired: false)
+                    .padding(.bottom, 7)
+                    .disabled(true)
+                FloatingTextField(placeHolder: "CounterTypeTextField", text: $viewModel.userData.meters[index].counterType, isRequired: false)
+                    .padding(.bottom, 7)
+                    .disabled(true)
+                FloatingTextField(placeHolder: "ReadingDateTextField", text: .constant(Date().formatDate()), isRequired: false)
+                    .padding(.bottom, 35)
+                    .disabled(true)
+                
+                HStack{
+                    Text(viewModel.userData.meters[index].counterTypeName)
+                      .paragraphBold()
+                      .foregroundColor(.primary_color)
+                      .padding(.bottom, 15)
+                    Spacer()
+                }
+                
+                HStack{
+                    ZStack{
                         Image("manual_reading_shape")
                             .resizable()
-                            .frame(width: 327, height: 57)
-
+                            .frame(height:57)
+                        
                         pinDots
                         backgroundField
-                    }
-
-                    HStack {
-                        Text(LocalizedStringKey("MessageTitle"))
-                            .paragraphBold()
-                            .foregroundColor(.primary_color)
-                            .padding(.bottom, 25)
-                        Spacer()
-                    }
-
-                    FloatingTextEditor(placeHolder: "Message", text: $viewModel.postModelData.meterReadings[index].userMessage)
-                        .frame(width: 325)
-
+                }.frame(height:57)
+                }.padding(.bottom, 24)
+                
+                HStack{
+                    Text(LocalizedStringKey("MessageTitle"))
+                      .paragraphBold()
+                      .foregroundColor(.primary_color)
+                      .padding(.bottom, 25)
+                    Spacer()
                 }
-                .padding(.bottom, 80)
-
-                Button(
-                    action: {
-                        viewModel.currentReadingView = ReadingFlowEnum.readingStepsView
-                        viewModel.postModelData.meterReadings[index].counterValue = viewModel.addComma(value: viewModel.postModelData.meterReadings[index].counterValue)
-                        viewModel.readingStepsProgress[index] = true
-                    },
-                    label: {
-                        PrimaryButtonStyle(buttonLabel: "Next", isEnabled: true)
-                    }).disabled(false)
-                Spacer()
+                
+                FloatingTextEditor(placeHolder: "Message", text: $viewModel.postModelData.meterReadings[index].userMessage, isRequired: false)
+                
             }
-            .frame(width: 327)
-            .padding(.top, 12)
-            .navigationTitle("")
-            .navigationBarHidden(true)
+            .padding(.bottom, 80)
+            
+            PrimaryButton(handler: {
+                withAnimation(.easeInOut){
+                    viewModel.currentReadingView = ReadingFlowEnum.readingStepsView
+                }
+                viewModel.postModelData.meterReadings[index].counterValue = viewModel.addComma(value: viewModel.postModelData.meterReadings[index].counterValue)
+                viewModel.readingStepsProgress[index] = true
+                
+            }, buttonLabel: "Next", isEnabled: viewModel.postModelData.meterReadings[index].counterValue != "")
+            .padding(.bottom, 30)
+            Spacer()
         }
+        .padding(.horizontal, 24)
+        .padding(.top, 12)
+        .navigationTitle("")
+        .navigationBarHidden(true)
+        .onAppear(){
+            
+        }
+    }
     }
 
     private var pinDots: some View {

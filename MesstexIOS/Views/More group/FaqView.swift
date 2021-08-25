@@ -15,27 +15,40 @@ struct FaqView: View {
     var btnBack : some View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
-        }, label: {
-            HStack {
-                Image(systemName: "arrow.backward")
-                    .resizable()
-                    .frame(width: 9.23, height: 8.62)
-                    .foregroundColor(.dark)
-                    .padding()
+            }) {
+                HStack {
+                    Image(systemName: "arrow.backward")
+                        .foregroundColor(.dark)
+                        
+                }
             }
         })
     }
 
     var body: some View {
-        VStack {
+        VStack{
+            ZStack{
+                HStack{
+                    btnBack
+                        .frame(width: 44, height: 44)
+                        .offset(x:-10)
+                    
+                    Spacer()
+                }
+                HStack{
+                    Spacer()
+                    Text(LocalizedStringKey("Faq"))
+                        .heading2()
+                        .foregroundColor(.primary_color)
+                    Spacer()
+                }
+            }
+            .padding(.horizontal, 24)
             FaqWidget(questionCount: viewModel.faq.faqs.count, flags: $viewModel.faqFlagIndex, faq: viewModel.faq)
                 .navigationBarBackButtonHidden(true)
-                .navigationBarTitle(LocalizedStringKey("Faq"), displayMode: .inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        btnBack
-                    }
-                }
+                .navigationBarTitle("")
+                .navigationBarHidden(true)
+         
             Spacer()
         }
     }

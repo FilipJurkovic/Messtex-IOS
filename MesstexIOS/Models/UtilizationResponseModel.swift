@@ -18,5 +18,6 @@ struct UtilizationResponseModel: Codable {
     var city: String
     var floor: String
     var readingReason: String
-    var meters: [MeterReceivingData]
+    var meters: Array<MeterReceivingData>
+    var askForSubscribeNewsletter: Bool
 }

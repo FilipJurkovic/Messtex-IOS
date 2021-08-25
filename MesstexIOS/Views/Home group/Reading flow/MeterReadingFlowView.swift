@@ -12,73 +12,87 @@ struct MeterReadingFlowView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var body: some View {
-        ZStack {
-            VStack(spacing: 0) {
-                if viewModel.currentReadingView != ReadingFlowEnum.meterReadingView && viewModel.currentReadingView != ReadingFlowEnum.successView {
-                    HStack {
-                        Button(action: {
-                            if viewModel.currentReadingView == ReadingFlowEnum.codeReadingView {
-                                self.presentationMode.wrappedValue.dismiss()
-                            } else {
-                                viewModel.getPreviousTabView()
-                            }
+        ZStack(alignment: .topLeading){
 
-                        }, label: {
-                            Image(systemName: "arrow.left")
-                                .foregroundColor(.dark)
-                        }).padding(.leading, 24)
-                        Spacer()
-                        Image("logo")
-                            .resizable()
-                            .frame(width: 71.56, height: 46)
-                            .padding(EdgeInsets(top: 18.2, leading: 0, bottom: 0, trailing: 30.1))
-                    }.background(Color.clear)
-                }
-                TabView(selection: $viewModel.currentReadingView) {
+            switch viewModel.currentReadingView{
+                case .codeReadingView :
                     CodeReadingView(viewModel: viewModel)
-                        .tag(ReadingFlowEnum.codeReadingView)
-
+                        .transition(.opacity)
+                    
+                case .readingStepsView :
                     ReadingStepsView(viewModel: viewModel)
-                        .tag(ReadingFlowEnum.readingStepsView)
+                        .transition(.opacity)
 
-                    MeterReadingView(cameraView: CameraView(captureAction: { _, values in
+                case .meterReadingView :
+                    MeterReadingView(cameraView: CameraView(captureAction: { image, values in
 
-                        viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue = viewModel.removePoint(value: values[0])
+                            viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue = viewModel.removePoint(value: values[0])
 
-                        viewModel.currentReadingView = ReadingFlowEnum.manualReadingView
-                    }), index: viewModel.currentMeterIndex, viewModel: viewModel)
-                    .tag(ReadingFlowEnum.meterReadingView)
+                            viewModel.currentReadingView = ReadingFlowEnum.manualReadingView
+                        }), index: viewModel.currentMeterIndex, viewModel: viewModel)
+                    .transition(.opacity)
 
-                    ManualReadingView(viewModel: viewModel, index: viewModel.currentMeterIndex)
-                        .tag(ReadingFlowEnum.manualReadingView)
+                case .manualReadingView :
+                    HStack{
+                        Spacer()
+                        ManualReadingView(viewModel: viewModel, index: viewModel.currentMeterIndex)
+                            .transition(.opacity)
+                        Spacer()
+                    }
+                    
 
+                case .contactDetailsView :
                     ContactDetailsView(viewModel: viewModel)
-                        .tag(ReadingFlowEnum.contactDetailsView)
+                        .transition(.opacity)
 
+                case .confirmationView :
                     ConfirmationView(viewModel: viewModel)
-                        .tag(ReadingFlowEnum.confirmationView)
+                        .transition(.opacity)
 
+                case .successView :
                     SuccessVIew(viewModel: viewModel)
-                        .tag(ReadingFlowEnum.successView)
-                }
-                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                .animation(.easeInOut)
-                .transition(.slide)
-                .navigationTitle("")
-                .navigationBarHidden(true)
-                .onAppear {
-                    UIPageControl.appearance().currentPageIndicatorTintColor = .clear
-                    UIPageControl.appearance().pageIndicatorTintColor = .clear
-                }
+                        .transition(.opacity)
+                    
+                case .exampleView :
+                    ExampleView(viewModel: viewModel)
+                        .transition(.opacity)
+
+                case .videoView :
+                    VideoView(viewModel: viewModel)
+                        .transition(.opacity)
+                    
+                default:
+                    CodeReadingView(viewModel: viewModel)
+                        .transition(.opacity)
             }
 
-            if viewModel.isProgressBarActive {
-                ZStack {
-                    Rectangle()
-                        .foregroundColor(.dark)
-                        .opacity(0.3)
-                    Loader()
+            if(viewModel.currentReadingView != .exampleView && viewModel.currentReadingView != .videoView && viewModel.currentReadingView != .meterReadingView && viewModel.currentReadingView != .successView){
+                HStack{
+                    Button(action : {
+                        if(viewModel.currentReadingView == .codeReadingView){
+                            viewModel.dismissReadingFlow.toggle()
+                        }else{
+                            withAnimation(.easeInOut){
+                                viewModel.currentReadingView = viewModel.previousReadingView
+                            }
+                        }
+                    }, label:{
+                        RoundButtonStyle(imageName: "arrow.left", backgroundColor: Color.light, iconColor: Color.dark)
+                    })
+                    Spacer()
+                }.background(Color.light.opacity(0.0))
+                .padding(.top, 10)
+                .padding(.leading, 19)
+            }
+                 
+            
+
+            if viewModel.isProgressBarActive{
+                ZStack{
+                Rectangle()
+                    .foregroundColor(.dark)
+                    .opacity(0.3)
+                Loader()
 
                 }
                 .ignoresSafeArea()
@@ -86,7 +100,9 @@ struct MeterReadingFlowView: View {
                 .navigationTitle("")
                 .navigationBarHidden(true)
             }
-        }
+        }.navigationTitle("")
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
 }
 

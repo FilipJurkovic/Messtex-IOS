@@ -9,10 +9,13 @@ import Foundation
 
 struct PostModelRecord: Codable {
     var verificationCode: String
-    var meterReadings: [MeterReadingData]
+    var language: String
+    var meterReadings: Array<MeterReadingData>
     var firstName: String
     var secondName: String
     var email: String
     var phone: String
     var sendCopy: Bool
+    var getMeterReadingLetterByEmail: Bool
+    var subscribeNewsletter: Bool
 }

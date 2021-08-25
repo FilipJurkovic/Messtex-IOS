@@ -22,70 +22,87 @@ public struct CodeReadingView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
 
     public var body: some View {
+        
+        ZStack{
+            ScrollView(showsIndicators: false){
+            VStack{
+                
+            ReadingFlowHeaderWidget(title: "CodeReadingTitle", description: "CodeReadingSubtitle")
+                .padding(.bottom, 35)
+                .padding(.top, 62)
 
-        ZStack {
-            ScrollView(showsIndicators: false) {
-                VStack {
-                    ReadingFlowHeaderWidget(title: "CodeReadingTitle", description: "CodeReadingSubtitle")
-                        .padding(.bottom, 35)
-
-                    ZStack {
-                        pinDots
-                        backgroundField
-                    }
-                    .padding(.bottom, viewModel.verificationError.message != "" ? 11 : 54)
-                    .padding(.horizontal, 15)
-
-                    if viewModel.verificationError.message != ""{
-                        Text(viewModel.verificationError.message)
-                            .paragraph()
-                            .foregroundColor(.danger)
-                            .padding(.bottom, 22.7)
-                    }
-
-                    ZStack(alignment: .topTrailing) {
-                        VStack {
-                            Spacer()
-                            HStack {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color.tetriary_30, lineWidth: 1)
-                                    Image("example_brief")
-                                        .resizable()
-                                        .frame(width: 132, height: 186)
-                                }.frame(width: 172, height: 215)
-                                Spacer()
-                            }
-                        }
-
-                        NavigationLink(
-                            destination: ExampleView(),
-                            label: {
-                                RoundButtonStyle(imageName: "magnifyingglass", backgroundColor: .primary_color, iconColor: .light)
-                            }).offset(x: 10)
-                    }.frame(width: 178.31, height: 236.31)
-                    .padding(.bottom, 38)
-
-                    NavigationLink(
-                        destination: Text(pin),
-                        label: {
-                            Text(LocalizedStringKey("Link"))
-                                .underline()
-                                .paragraph()
-                                .foregroundColor(.primary_color)
-                                .padding(.bottom, 47)
-                        })
-                    Button(action: { viewModel.getUtilizationUnitData(pin: pin) }, label: {
-                        PrimaryButtonStyle(buttonLabel: "Next")
-                    })
-
-                }
-                .ignoresSafeArea()
-                .navigationTitle("")
-                .navigationBarHidden(true)
-
+            ZStack {
+                pinDots
+                backgroundField
             }
-
+            .padding(.bottom, viewModel.verificationError.message != "" ? 11 : 54)
+            .padding(.horizontal, 15)
+                
+                if viewModel.verificationError.message != ""{
+                    Text(viewModel.verificationError.message)
+                        .paragraph()
+                        .foregroundColor(.danger)
+                        .padding(.bottom, 22.7)
+                }
+            
+            ZStack(alignment:.topTrailing){
+                VStack{
+                    Spacer()
+                    HStack{
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.tetriary_30, lineWidth: 1)
+                            Image("example_brief")
+                                .resizable()
+                                .frame(width: 132, height: 186)
+                        }.frame(width: 172, height: 215)
+                        Spacer()
+                    }
+                }
+                
+                
+                Button(
+                    action: {
+                        viewModel.previousReadingView = viewModel.currentReadingView
+                        withAnimation(.easeInOut){
+                            viewModel.currentReadingView = ReadingFlowEnum.exampleView
+                        }
+                    },
+                    label : {
+                        RoundButtonStyle(imageName: "magnifyingglass", backgroundColor: .primary_color, iconColor: .light)
+                    }).offset(x: 10)
+            }.frame(width: 178.31, height: 236.31)
+            .padding(.bottom, 38)
+            
+                Button(
+                    action: {
+                        viewModel.previousReadingView = viewModel.currentReadingView
+                        withAnimation(.easeInOut){
+                            viewModel.currentReadingView = ReadingFlowEnum.videoView
+                        }
+                    },
+                    label : {
+                        Text(LocalizedStringKey("Link"))
+                            .underline()
+                            .paragraph()
+                            .foregroundColor(.primary_color)
+                            .padding(.bottom, 47)
+                    })
+                
+                PrimaryButton(handler: {
+                    withAnimation(.easeInOut){
+                        viewModel.getUtilizationUnitData(pin: pin)
+                    }
+                }, buttonLabel: "Next")
+                .padding(.bottom, 30)
+                .padding(.horizontal, 24)
+        }
+            .navigationTitle("")
+            .navigationBarHidden(true)
+        
+            }
+            
+            
         }
 
     }
@@ -104,9 +121,9 @@ public struct CodeReadingView: View {
                             .stroke(viewModel.verificationError.message.isEmpty ? Color.primary_shade : Color.danger, lineWidth: 1.6)
 
                         Text(self.pin[String.Index(encodedOffset: index)...String.Index(encodedOffset: index)])
-                            .font(Font.custom("Roboto-Bold", size: 56))
-                            .foregroundColor(.primary_color)
-                    }.frame(width: 52, height: 70)}
+                        .font(Font.custom("Roboto-Bold", size: 46))
+                        .foregroundColor(.primary_color)
+                }.frame(width: 52, height: 70)}
                 Spacer()
             }
         }

@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import LanguageManagerSwiftUI
 
 struct LogoImage: View {
     var body: some View {
@@ -21,35 +22,69 @@ struct LogoImage: View {
 struct CardButton: View {
     var cardName: String
     var body: some View {
-        ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
-            Rectangle()
-            HStack(alignment: .top) {
-                Text(LocalizedStringKey(cardName))
+                    ZStack(alignment: Alignment(horizontal: .leading, vertical: .center)){
+                    Rectangle()
+                        HStack{
+                            Text(LocalizedStringKey(cardName))
+                        .foregroundColor(.dark)
+                        .padding(.leading, 12)
+                        
+                            Spacer()
+                        Image(systemName: "chevron.right")
+                            .frame(width: 7.38, height: 12.92)
+                            .foregroundColor(.dark)
+                        }
+                }.frame(width: 351, height:54)
+                    .foregroundColor(.light)
+      
+        }
+    }
+
+struct LanguageSelector: View {
+    var cardName: String
+    var language: String
+
+    var body: some View {
+                ZStack(alignment: Alignment(horizontal: .leading, vertical: .center)){
+                Rectangle()
+                    HStack(alignment:.center)
+                {
+                        Text(LocalizedStringKey(cardName))
                     .foregroundColor(.dark)
                     .padding(.leading, 12)
-                    .padding(.top, 5)
-                Spacer()
-                Image(systemName: "chevron.right")
-                    .frame(width: 7.38, height: 12.92)
-                    .foregroundColor(.dark)
-                    .padding()
-            }
-        }.frame(width: 351, height: 54)
-        .foregroundColor(.light)
+                        
+                        Spacer()
+                        
+                        Text(language)
+                            .foregroundColor(.dark)
+                            .padding(.trailing, 13)
 
+                    
+                    Image(systemName: "chevron.down")
+                        .frame(width: 7.38, height: 12.92)
+                        .foregroundColor(.dark)
+                        .padding()
+                    }
+            }.frame(width: 351, height:54)
+                .foregroundColor(.light)
+  
     }
 }
 
 struct FloatingTextField: View {
     let textFieldHeight: CGFloat = 57
     private let placeHolderText: String
+    var isRequired: Bool = false
+
     @Binding var text: String
     @State private var isEditing = false
     var error = false
     public init(placeHolder: String,
-                text: Binding<String>) {
+                text: Binding<String>,
+                isRequired: Bool) {
         self._text = text
         self.placeHolderText = placeHolder
+        self.isRequired = isRequired
     }
     var shouldPlaceHolderMove: Bool {
         isEditing || !text.isEmpty
@@ -63,23 +98,30 @@ struct FloatingTextField: View {
             TextField("", text: $text, onEditingChanged: { edit in
                 isEditing = edit
             })
-
             .paragraph()
             .offset(x: 15)
             .foregroundColor(self.error ? Color.danger : Color.dark)
+            .frame(width: 300, height: textFieldHeight)
             .accentColor(Color.medium)
             .animation(.linear)
-            .offset(y: 8)
-
-            // Floating Placeholder
+            .offset(y:8)
+            ///Floating Placeholder
+            HStack(spacing: 1){
             Text(LocalizedStringKey(placeHolderText))
                 .paragraph()
                 .foregroundColor(Color.medium)
                 .background(Color(UIColor.systemBackground))
-                .offset(x: 15.0, y: -17)
-                .scaleEffect(shouldPlaceHolderMove ? 0.857 : 1.0)
-                .animation(.linear)
-
+                
+                if isRequired{
+                    Text("*")
+                        .paragraph()
+                        .foregroundColor(Color.medium)
+                        .background(Color(UIColor.systemBackground))
+                }
+            }.offset(x: shouldPlaceHolderMove ? 13.0: 15.0, y: -17)
+            .scaleEffect(shouldPlaceHolderMove ? 0.857 : 1.0)
+            .animation(.linear)
+            
         }
     }
 }
@@ -87,13 +129,17 @@ struct FloatingTextField: View {
 struct FloatingNumericTextField: View {
     let textFieldHeight: CGFloat = 57
     private let placeHolderText: String
+    
+    var isRequired: Bool = false
     @Binding var text: Int
     @State private var isEditing = false
     var error = false
     public init(placeHolder: String,
-                text: Binding<Int>) {
+                text: Binding<Int>,
+                isRequired: Bool) {
         self._text = text
         self.placeHolderText = placeHolder
+        self.isRequired = isRequired
     }
     var shouldPlaceHolderMove: Bool {
         isEditing || !String(text).isEmpty
@@ -109,20 +155,28 @@ struct FloatingNumericTextField: View {
             })
             .paragraph()
             .offset(x: 15)
+            .frame(height: textFieldHeight)
             .foregroundColor(self.error ? Color.danger : Color.dark)
             .accentColor(Color.medium)
             .animation(.linear)
-            .offset(y: 8)
-
-            // Floating Placeholder
+            .offset(y:8)
+            
+            HStack(spacing: 1){
             Text(LocalizedStringKey(placeHolderText))
                 .paragraph()
                 .foregroundColor(Color.medium)
                 .background(Color(UIColor.systemBackground))
-                .offset(x: 15.0, y: -17)
-                .scaleEffect(shouldPlaceHolderMove ? 0.857 : 1.0)
-                .animation(.linear)
-
+                
+                if isRequired{
+                    Text("*")
+                        .paragraph()
+                        .foregroundColor(Color.medium)
+                        .background(Color(UIColor.systemBackground))
+                }
+            }.offset(x: shouldPlaceHolderMove ? 13.0: 15.0, y: -17)
+            .scaleEffect(shouldPlaceHolderMove ? 0.857 : 1.0)
+            .animation(.linear)
+            
         }
     }
 }
@@ -130,13 +184,17 @@ struct FloatingNumericTextField: View {
 struct FloatingTextEditor: View {
     let textFieldHeight: CGFloat = 168
     private let placeHolderText: String
+    
+    var isRequired: Bool = false
     @Binding var text: String
     @State private var isEditing = false
     var error = false
     public init(placeHolder: String,
-                text: Binding<String>) {
+                text: Binding<String>,
+                isRequired: Bool) {
         self._text = text
         self.placeHolderText = placeHolder
+        self.isRequired = isRequired
     }
     var shouldPlaceHolderMove: Bool {
         !text.isEmpty
@@ -144,22 +202,35 @@ struct FloatingTextEditor: View {
     var body: some View {
         ZStack(alignment: .topLeading) {
             RoundedRectangle(cornerRadius: 4)
-                .stroke(self.error ? Color.danger : !text.isEmpty ? Color.dark : Color.medium, lineWidth: 1)
-            TextEditor(text: $text)
-                .offset(x: 13, y: 21)
-                .padding(.init(top: 0, leading: 0, bottom: 25, trailing: 20))
-                .frame(height: textFieldHeight)
-                .paragraph()
-                .background(Color.light.opacity(0.0))
-                .animation(.linear)
-
+                .stroke(self.error ? Color.danger : text.count != 0 ? Color.dark : Color.medium, lineWidth: 1)
+            
+            HStack(alignment:.center, spacing: 1){
             Text(LocalizedStringKey(placeHolderText))
                 .paragraph()
                 .foregroundColor(Color.medium)
                 .background(Color(UIColor.systemBackground))
-                .offset(x: 15.0, y: shouldPlaceHolderMove ? 9 : 16)
-                .scaleEffect(shouldPlaceHolderMove ? 0.857 : 1.0)
+                
+                if isRequired{
+                    Text("*")
+                        .paragraph()
+                        .foregroundColor(Color.medium)
+                        .background(Color(UIColor.systemBackground))
+                }
+            }.offset(x: 15.0, y: shouldPlaceHolderMove ? 8 : 21)
+            .scaleEffect(shouldPlaceHolderMove ? 0.857 : 1.0)
+            .animation(.linear)
+            
+            TextEditor(text: $text)
+                .offset(x: 13, y: 24)
+                .padding(.init(top: 0, leading: 0, bottom: 25, trailing: 20))
+                .frame(height: textFieldHeight)
+                .paragraph()
+                .background(Color.light.opacity(0.0))
+                .opacity(shouldPlaceHolderMove ? 1 : 0.1)
                 .animation(.linear)
+                
+            
+            
         }
     }
 }
@@ -175,11 +246,11 @@ struct PrimaryButton: View {
                 RoundedRectangle(cornerRadius: 28)
                     .foregroundColor(.primary_color)
                     .opacity(isEnabled ? 1.0 : 0.3)
-                Text(buttonLabel)
+                Text(LocalizedStringKey(buttonLabel))
                     .paragraphBold()
                     .foregroundColor(.light)
-
-            }.frame(width: 327, height: 49, alignment: .center)
+                
+            }.frame(height: 49, alignment: .center)
         })
         .disabled(!isEnabled)
 
@@ -206,17 +277,18 @@ struct PrimaryButtonStyle: View {
 struct ManualReadingButtonStyle: View {
 
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 28)
-                .foregroundColor(.primary_color)
-                .opacity(0.3)
-            HStack {
-                Text(LocalizedStringKey("ManualButton"))
-                    .paragraphBold()
-                    .foregroundColor(.light)
-                    .padding(.trailing, 13)
-
-                Image("manual_scan_icon")
+            ZStack{
+                RoundedRectangle(cornerRadius: 28)
+                    .foregroundColor(.primary_shade)
+                    .opacity(0.3)
+                HStack
+                {
+                    Text(LocalizedStringKey("ManualButton"))
+                        .paragraphBold()
+                        .foregroundColor(.light)
+                        .padding(.trailing, 13)
+                    
+                  Image("manual_scan_icon")
                     .resizable()
                     .frame(width: 16.25, height: 12.51)
             }
@@ -227,14 +299,14 @@ struct ManualReadingButtonStyle: View {
 struct OutlinedButtonStyle: View {
     var buttonLabel: String
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 18)
-                .stroke(Color.primary_tint, lineWidth: 1.6)
-            Text(LocalizedStringKey(buttonLabel))
-                .tinyBold()
-                .foregroundColor(.primary_tint)
-        }.frame(width: 142, height: 34, alignment: .center)
-    }
+            ZStack{
+                RoundedRectangle(cornerRadius: 18)
+                    .stroke(Color.primary_shade, lineWidth: 1.6)
+                Text(LocalizedStringKey(buttonLabel))
+                    .tinyBold()
+                    .foregroundColor(.primary_shade)
+            }.frame(width: 142, height: 34, alignment: .center)
+        }
 }
 
 struct SubmitButtonStyle: View {
@@ -253,13 +325,13 @@ struct SubmitButtonStyle: View {
 
 struct ChangeButtonStyle: View {
     var body: some View {
-        ZStack {ZStack {
-            RoundedRectangle(cornerRadius: 18)
-                .foregroundColor(.secondary)
-            Text(LocalizedStringKey("Change"))
-                .tinyBold()
-                .foregroundColor(.light)
-        }.frame(width: 76, height: 34)
+            ZStack{ZStack{
+                RoundedRectangle(cornerRadius: 18)
+                    .foregroundColor(.secondary)
+                Text(LocalizedStringKey("Change"))
+                    .tinyBold()
+                    .foregroundColor(.light)
+            }.frame(width: 78, height: 36)
 
         }
     }
@@ -296,6 +368,20 @@ struct RoundButtonStyle: View {
     }
 }
 
+struct ExitButtonStyle: View {
+    var body: some View {
+        ZStack {
+            Circle()
+                .frame(width: 40, height: 40)
+                .foregroundColor(.tetriary_tint)
+            Image(systemName: "xmark")
+                .resizable()
+                .frame(width: 10.46, height: 10.46)
+                .foregroundColor(.primary_tint)
+    }
+}
+}
+
 struct LargeRoundButtonStyle: View {
     var imageName: String
     var backgroundColor: Color
@@ -304,7 +390,7 @@ struct LargeRoundButtonStyle: View {
     var body: some View {
         ZStack {
             Circle()
-                .frame(width: 48, height: 48)
+                .frame(width: 44, height: 44)
                 .foregroundColor(backgroundColor)
             Image(systemName: imageName)
                 .font(.body)
@@ -457,12 +543,13 @@ struct FinishedReadingWidget: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 4)
                     .foregroundColor(.primary_color)
-                HStack {
-                    Image("successful_read")
+                HStack{
+                    Image("success_widget")
                         .resizable()
                         .frame(width: 61, height: 78)
-                        .padding(.trailing, 29)
-                    VStack(alignment: .leading) {
+                        .padding(.horizontal, 29)
+                    VStack(alignment:.leading){
+                        Spacer()
                         Text(LocalizedStringKey("SuccessCardTitle"))
                             .heading2()
                             .foregroundColor(.light)
@@ -470,11 +557,13 @@ struct FinishedReadingWidget: View {
                         Text(LocalizedStringKey("SuccessCardSubtitle"))
                             .paragraph()
                             .foregroundColor(.light)
-                    }
+                        Spacer()
+                    }.padding(.trailing, 38)
                 }
             }
             .frame(width: 319, height: 138)
-
+            .padding(.bottom, 22)
+            
             NavigationLink(
                 destination: AboutUsView(),
                 label: {
@@ -531,9 +620,11 @@ struct FaqWidget: View {
                 DisclosureGroup(
                     isExpanded: $flags[index],
                     content: {
-                        Text(faq.faqs[index].answer)
-                            .paragraph()
-
+                            Text(faq.faqs[index].answer)
+                                .paragraph()
+                                .padding(.top, 22)
+                             
+                        
                     },
                     label: {
                         if flags[index] {
@@ -546,7 +637,7 @@ struct FaqWidget: View {
                     }
                 )
                 .padding(.vertical, 10)
-                .padding(.horizontal, 10)
+                .padding(.horizontal, 12)
                 .accentColor(.dark)
                 .onTapGesture {
                     withAnimation(.easeOut, { flags[index].toggle() })
@@ -559,8 +650,8 @@ struct FaqWidget: View {
                         .foregroundColor(.medium)
                 }
             }
-            // Spacer()
-        }.padding(.horizontal, 26)
+            //Spacer()
+        }.padding(.horizontal, 12)
     }
 }
 
@@ -575,15 +666,15 @@ struct ReadingFlowHeaderWidget: View {
                 .frame(width: 114, height: 95)
 
             Text(LocalizedStringKey(title))
-                .heading1()
-                .foregroundColor(.primary_color)
-                .padding(.bottom, 25)
-
-            Text(LocalizedStringKey(description))
-                .paragraphBold()
-                .foregroundColor(.dark)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 50)
+              .heading1()
+              .foregroundColor(.primary_color)
+              .padding(.bottom, 25)
+          
+          Text(LocalizedStringKey(description))
+            .paragraph()
+            .foregroundColor(.dark)
+            .multilineTextAlignment(.center)
+            .padding(.horizontal, 50)
         }
     }
 }
@@ -623,20 +714,20 @@ struct AboutUsCardWidget: View {
                 Rectangle()
                     .foregroundColor(.light.opacity(0.0))
                 NavigationLink(
-                    destination: AboutUsView(),
-                    label: {
-                        VStack {
-                            ZStack {
-                                Circle()
-                                    .foregroundColor(Color.primary_color)
-                                    .frame(width: 40, height: 40)
-                                    .shadow(radius: 2)
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(.light)
-
-                            }
-                        }
-                    })
+                            destination: AboutUsView(),
+                            label : {
+                                VStack
+                                {
+                                    ZStack{
+                                    Circle()
+                                        .foregroundColor(Color.primary_color)
+                                        .frame(width: 40, height:40)
+                                        
+                                    Image(systemName: "chevron.right")
+                                        .foregroundColor(.light)
+                                    
+                                }}
+                            })
                     .padding(.init(top: 0, leading: 0, bottom: 19, trailing: 19))
             }.frame(width: 327, height: 176)
 
@@ -644,9 +735,86 @@ struct AboutUsCardWidget: View {
     }
 }
 
-// struct FinishedReadingWidget : View {
-//
-//    var body: some View{
-//
-//    }
-// }
+struct RoundedCorners: View {
+    var color: Color = .blue
+    var tl: CGFloat = 0.0
+    var tr: CGFloat = 0.0
+    var bl: CGFloat = 0.0
+    var br: CGFloat = 0.0
+
+    var body: some View {
+        GeometryReader { geometry in
+            Path { path in
+
+                let w = geometry.size.width
+                let h = geometry.size.height
+
+                // Make sure we do not exceed the size of the rectangle
+                let tr = min(min(self.tr, h/2), w/2)
+                let tl = min(min(self.tl, h/2), w/2)
+                let bl = min(min(self.bl, h/2), w/2)
+                let br = min(min(self.br, h/2), w/2)
+
+                path.move(to: CGPoint(x: w / 2.0, y: 0))
+                path.addLine(to: CGPoint(x: w - tr, y: 0))
+                path.addArc(center: CGPoint(x: w - tr, y: tr), radius: tr, startAngle: Angle(degrees: -90), endAngle: Angle(degrees: 0), clockwise: false)
+                path.addLine(to: CGPoint(x: w, y: h - br))
+                path.addArc(center: CGPoint(x: w - br, y: h - br), radius: br, startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 90), clockwise: false)
+                path.addLine(to: CGPoint(x: bl, y: h))
+                path.addArc(center: CGPoint(x: bl, y: h - bl), radius: bl, startAngle: Angle(degrees: 90), endAngle: Angle(degrees: 180), clockwise: false)
+                path.addLine(to: CGPoint(x: 0, y: tl))
+                path.addArc(center: CGPoint(x: tl, y: tl), radius: tl, startAngle: Angle(degrees: 180), endAngle: Angle(degrees: 270), clockwise: false)
+            }
+            .fill(self.color)
+        }
+    }
+}
+
+
+struct LanguagePicker: View {
+    @Binding var selection: String
+    @Binding var isShowing: Bool
+    @EnvironmentObject var languageSettings: LanguageSettings
+    
+    var onSelected : (String) -> Void
+
+    var body: some View {
+        GeometryReader { gr in
+            VStack {
+                VStack {
+                    Picker(selection: $selection, label: Text("")) {
+                        ForEach(["English", "Deutsch"], id: \.self) {
+                            Text("\($0)")
+                                .tag($0)
+                        }
+                    .labelsHidden()
+                        
+                    }
+                }
+                .frame(maxWidth: gr.size.width  - 90)
+                .background(RoundedRectangle(cornerRadius: 10)
+                .foregroundColor(Color.white).shadow(radius: 1))
+                
+                VStack {
+                    Button(action: {
+                        self.isShowing = false
+                        print(selection)
+                        self.onSelected(selection)
+                    }) {
+                        Text("Done").fontWeight(Font.Weight.bold)
+                   }.padding()
+                    .frame(maxWidth: gr.size.width  - 90)
+                    .background(RoundedRectangle(cornerRadius: 10)
+                    .foregroundColor(Color.white).shadow(radius: 1))
+                    .onTapGesture {
+                        self.isShowing = false
+                        print(selection)
+                        self.onSelected(selection)
+                    }
+
+                }
+            }.position(x: gr.size.width / 2 ,y: gr.size.height - 200)
+        }
+    }
+}
+

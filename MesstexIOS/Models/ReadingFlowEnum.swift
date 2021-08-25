@@ -15,4 +15,22 @@ enum ReadingFlowEnum: CaseIterable {
     case contactDetailsView
     case confirmationView
     case successView
+    case exampleView
+    case videoView
+    
+    static func index(of aStatus: ReadingFlowEnum) -> Int {
+        let elements = [ReadingFlowEnum.codeReadingView, ReadingFlowEnum.readingStepsView, ReadingFlowEnum.meterReadingView, ReadingFlowEnum.manualReadingView, ReadingFlowEnum.contactDetailsView, ReadingFlowEnum.confirmationView, ReadingFlowEnum.successView, ReadingFlowEnum.exampleView, ReadingFlowEnum.videoView]
+
+            return elements.index(of: aStatus)!
+        }
+
+        static func element(at index: Int) -> ReadingFlowEnum? {
+            let elements = [ReadingFlowEnum.codeReadingView, ReadingFlowEnum.readingStepsView, ReadingFlowEnum.meterReadingView, ReadingFlowEnum.manualReadingView, ReadingFlowEnum.contactDetailsView, ReadingFlowEnum.confirmationView, ReadingFlowEnum.successView, ReadingFlowEnum.exampleView, ReadingFlowEnum.videoView]
+
+            if index >= 0 && index < elements.count {
+                return elements[index]
+            } else {
+                return nil
+            }
+        }
 }

@@ -63,7 +63,12 @@ struct OnboardingFlowView: View {
             }.frame(width: UIScreen.main.bounds.size.width, alignment: .trailing)
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 26))
 
-        }
+                }.frame(width: 48, height: 48, alignment: .center)
+            })
+        }.frame(width:UIScreen.main.bounds.size.width, alignment:.trailing)
+        .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 26))
+            
+        }.background(Color.light)
     }
 }
 

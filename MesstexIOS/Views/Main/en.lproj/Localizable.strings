@@ -1,14 +1,17 @@
 
 //ONBOARDING
-"OnboardingTitleOne" = "Record meter reading";
-"OnobardingTextOne" = "Enter the readings of your water and heating meters conveniently online.";
-"OnboardingTitleTwo" = "Without appointment, via the app";
-"OnobardingTextTwo" = "Measure your meter reading from the comfort of your own home, without waiting, without formal clean-ups and without intruding into your privacy.";
-"OnboardingTitleThree" = "Submit your data conveniently via the app";
-"OnobardingTextThree" = "Together we protect our environment and take responsibility.";
+"OnboardingTitleOne" = "Digital Reading";
+"OnobardingTextOne" = "Enter your water and heating cost recordings digitally & comfortly from home";
+"OnboardingTitleTwo" = "Without appoinment with the Messtex-App";
+"OnobardingTextTwo" = "All this without waiting, without formal cleanup and without foreign intrusion into your privacy";
+"OnboardingTitleThree" = "Cost effective for our environment";
+"OnobardingTextThree" = "Together we protect our environment, take responsibility and you save money.";
 "Skip" = "Skip";
 
 //TAB BAR
+"Home" = "Home";
+"Scan" = "Scan";
+"More" = "More";
 
 //HOME
 "Title" = "Welcome to Messtex";
@@ -18,7 +21,7 @@
 "SuccessCardSubtitle" = "Check out our tips and tricks discover more from the Messtex world";
 "MoreButton" = "learn more about";
 "Co2Title" = "Help us protect the environment.";
-"Co2Subtitle" = "kilograms of CO₂ we have already saved together!";
+"Co2Subtitle" = "kilograms of CO₂ have already been saved together";
 "TipsTitle" = "Tips and Tricks";
 "TipsSubtitle" = "Here you will find useful tips for your everyday life.";
 "ShowMore" = "Show more";
@@ -27,8 +30,8 @@
 
 //CODE READING
 "CodeReadingTitle" = "Reading code";
-"CodeReadingSubtitle" = "Please enter the five digit code from the reading certificate.";
-"Link" = "Where can I find the reading code? Click here";
+"CodeReadingSubtitle" = "Please enter the six digit code from your informational letter";
+"Link" = "Where do I find the reading code? Click here";
 "Next" = "Next";
 
 //READING STEPS
@@ -57,6 +60,9 @@
 (no letters). On your notification card you will find the last 4 digits and the respective room in which the meter is located as a small aid.";
 "ElectricityInfoMeterReading" = "To be able to read the counter reading, press the button on your counter. Your meter reading will now appear on the display. Please enter this in the corresponding field on the homepage. The counter reading in this example is: 14562.";
 
+//IFORMATIONAL SCREEN
+"InfoTitle" = "Counter reading explanation";
+
 //MANUAL INPUT
 "ManualInputTitle" = "Manual input";
 "ManualInputSubtitle" = "Now enter the meter reading of your meter manually without any decimal places:";
@@ -79,7 +85,7 @@
 "HouseNumberTextField" = "House number";
 "PostcodeTextField" = "PLZ";
 "CityTextField" = "City";
-"FloorTextField" = "Floor (optinal)";
+"FloorTextField" = "Floor (optional)";
 "RequiredFields" = "*Required fields";
 "ReasonOfReading" = "Reason for reading";
 "AnualBilling" = "Annual billing";
@@ -94,7 +100,7 @@
 
 //SUCCESS SCREEN
 "SuccessTitle" = "Meter readings successfully transmitted";
-"SuccessSubtitle" = "Thank you {NAME} for your contribution. Your data has been successfully transmitted. With your help we were able to save 3g of CO₂.";
+"SuccessSubtitle %@" = "Thank you %@ for your contribution. Your data has been successfully transmitted. With your help we did something good for our environment and saved CO₂";
 "LearnMore" = "Learn more";
 
 //MORE SCREEN
@@ -120,17 +126,17 @@
 
 //IMPRINT
 "ImprintInformation" = "Information according to § 5 TMG";
-"ImprintRepresentedBy" = "Represented by:";
-"ImprintSalesTaxTitle" = "Sales tax ID:";
+"ImprintRepresentedBy" = "Represented by";
+"ImprintSalesTaxTitle" = "Sales tax ID";
 "ImprintSalesTaxText" = "Sales tax identification number according to §27a Umsatzsteuergesetz: DE337739004.";
-"ImprintResponsibilityTitle" = "Responsible for the content according to § 55 Abs. 2 RStV:";
+"ImprintResponsibilityTitle" = "Responsible for the content according to § 55 Abs. 2 RStV";
 "ImprintResponsibilityText" = "BRIGHTDOCK Llc, Croatia, Rijeka (City of Rijeka) Nikole Tesle 9";
 "ImprintDisclamerTitle" = "Disclaimer";
 "ImprintDisclamerText" = "Despite careful control of the content, we do not assume any liability for the content of external links. The operators of the linked pages are solely responsible for their content.";
 
 //ABOUT SCREEN
 "About" = "About Us";
-"AboutTitle" = "We are a young company with a big goal.";
+"AboutTitle" = "We are a contact you can trust. We are at your side in all situations and are always available for you.";
 "AboutParagraphOne" = "We want to digitize every manual reading in Germany! And thus make reading as easy and convenient as possible for everyone involved. Especially in times of digitization and the permanent lack of time, it is essential that we simplify things in this industry as well.";
 "AboutParagraphTwo" = "With the help of our partners, we have developed a unique system with which you can easily, time- and cost-efficiently perform your own meter reading. In designing our app, we placed great emphasis on making it easy and intuitive to use, so that truly everyone can benefit from our renewal.";
 "AboutSubtitleOne" = "The digital meter reading input, which you can easily record yourself with messtex, saves you a lot of time. The advantages are clear";
@@ -152,3 +158,4 @@
 //CONTACT FORM
 "ContactFormTitle" = "Get in contact with us";
 "ContactFormParagraph" = "Get in touch with us and describe your concern.";
+"Name" = "Name";

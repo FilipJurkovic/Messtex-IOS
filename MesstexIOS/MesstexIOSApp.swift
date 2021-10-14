@@ -11,28 +11,21 @@ import OSLog
 import LanguageManagerSwiftUI
 @main
 struct MesstexIOSApp: App {
-     
-    
     private var viewModel = MainViewModel()
-    @AppStorage("currentLocale") var currentLocale: String = "English"
-    
+    @AppStorage("currentLocale") var currentLocale: String = "Deutsch"
+
     init() {
         viewModel.language = currentLocale
-        
+
         viewModel.getCO2Levels()
         viewModel.getFAQs()
     }
-    
-    let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
-    
+
     var body: some Scene {
         WindowGroup {
-            LanguageManagerView(.deviceLanguage) {
+            LanguageManagerView(.de) {
                 MainView(viewModel: viewModel, language: $currentLocale)
-                        .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
-                        .onReceive(timer){ time in
-                            viewModel.getCO2Levels()
-                    }
+                    .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
             }
         }
     }

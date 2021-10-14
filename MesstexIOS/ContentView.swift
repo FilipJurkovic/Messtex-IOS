@@ -32,7 +32,7 @@ struct ContentView_Previews: PreviewProvider {
             ContentView()
             ContentView2()
             ContentView3()
-        
+
         }
     }
 }

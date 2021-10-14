@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum Page {
     case pageUserInfo
     case pageMeterInfo

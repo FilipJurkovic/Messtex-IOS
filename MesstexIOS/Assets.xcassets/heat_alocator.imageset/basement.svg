@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="51px" height="42px" viewBox="0 0 51 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon/basement</title>
+    <defs>
+        <filter id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.023529 0 0 0 0 0.615686 0 0 0 0 0.745098 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Styleguide" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/basement" transform="translate(-312.000000, -366.000000)" filter="url(#filter-1)">
+            <g transform="translate(312.000000, 366.000000)">
+                <path d="M51,0 L51,42 L-7.10542736e-15,42 L-7.10542736e-15,0 L51,0 Z M18.0292969,3 L2.98828125,3 L2.98828125,39 L48.0117188,39 L48.0117188,3 L32.9707031,3 L32.9707031,23.1214844 L28.4882812,18.6214844 L25.5,21.6214844 L22.5117187,18.6214844 L18.0292969,23.1214844 L18.0292969,3 Z M15.0410156,33 L15.0410156,36 L5.9765625,36 L5.9765625,33 L15.0410156,33 Z M29.9824219,3 L21.0175781,3 L21.0175781,15.8785156 L22.5117188,14.3785156 L25.5,17.3785156 L28.4882813,14.3785156 L29.9824219,15.8785156 L29.9824219,3 Z" id="Combined-Shape" fill="#000000" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

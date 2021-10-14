@@ -8,51 +8,51 @@
 import SwiftUI
 
 struct FaqView: View {
-    
-    @ObservedObject var viewModel : MainViewModel
+
+    @ObservedObject var viewModel: MainViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
+
     var btnBack : some View { Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
-            }) {
-                HStack {
-                    Image(systemName: "arrow.backward")
-                        .foregroundColor(.dark)
-                        
-                }
-            }
-        }
+        self.presentationMode.wrappedValue.dismiss()
+    }) {
+        RoundButtonStyle(imageName: "arrow.left", backgroundColor: Color.light, iconColor: Color.dark)
+    }
+    }
 
     var body: some View {
-        VStack{
-            ZStack{
-                HStack{
-                    btnBack
-                        .frame(width: 44, height: 44)
-                        .offset(x:-10)
-                    
-                    Spacer()
-                }
-                HStack{
-                    Spacer()
-                    Text(LocalizedStringKey("Faq"))
-                        .heading2()
-                        .foregroundColor(.primary_color)
+        ZStack(alignment: .topLeading) {
+            ScrollView(showsIndicators: false) {
+                VStack {
+                    ZStack {
+
+                        HStack {
+                            Spacer()
+                            Text(LocalizedStringKey("Faq"))
+                                .heading2()
+                                .foregroundColor(.primary_color)
+                            Spacer()
+                        }
+                    }
+                    .padding(.horizontal, 24)
+                    FaqWidget(questionCount: viewModel.faq.faqs.count, flags: $viewModel.faqFlagIndex, faq: viewModel.faq)
+                        .navigationBarBackButtonHidden(true)
+                        .navigationBarTitle("")
+                        .navigationBarHidden(true)
+
                     Spacer()
                 }
             }
-            .padding(.horizontal, 24)
-            FaqWidget(questionCount: viewModel.faq.faqs.count, flags: $viewModel.faqFlagIndex, faq: viewModel.faq)
-                .navigationBarBackButtonHidden(true)
-                .navigationBarTitle("")
-                .navigationBarHidden(true)
-         
-            Spacer()
+            HStack {
+                btnBack
+                    .padding(.leading, 7)
+
+                Spacer()
             }
         }
     }
-//struct FaqView_Previews: PreviewProvider {
+}
+// struct FaqView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        FaqView(viewModel: MainViewModel())
 //    }
-//}
+// }

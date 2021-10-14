@@ -6,7 +6,7 @@
 "OnobardingTextTwo" = "Und das ohne Wartezeiten, ohne förmliche Aufräumaktionen und ohne fremdes Eindringen in Ihre Privatssphäre.";
 "OnboardingTitleThree" = "Kostengünstig für unsere Umwelt";
 "OnobardingTextThree" = "Zusammen schützen wir so unsere Umwelt, übernehmen Verantwortung und Sie schonen obendrein Ihren Geldbeutel.";
-"Skip" = "Skip";
+"Skip" = "Überspringen";
 
 //TAB BAR
 "Home" = "Home";
@@ -26,21 +26,25 @@
 "TipsSubtitle" = "Hier finden Sie hilfreiche Tipps für Ihren Alltag.";
 "ShowMore" = "Mehr anzeigen";
 "ContactTitle" = "Treten Sie mit uns in Kontakt";
-"ShareButton" = "App teilen";
+"ContactButton" = "Kontaktieren Sie uns";
+"WaterTip" = "Wasser sparen";
+"HeatTip" = "Heizkosten sparen";
+"EnvironmentTip" = "Messtex & Umweltschutz";
 
 //CODE READING
 "CodeReadingTitle" = "Ablese-Code";
 "CodeReadingSubtitle" = "Bitte tragen Sie den achtstelligen Ablese-Code aus Ihrem Brief ein.";
-"Link" = "Wo finde ich den Alesecode? Klicken Sie hier.";
+"Link" = "Wo finde ich den Ablesecode? Klicken Sie hier.";
 "Next" = "Nächster Schritt";
 
 //READING STEPS
 "ReadingStepsTitle" = "Ablesung starten";
-"ReadingStepsSubTitle" = "Sie haben 3 Zähler abzulesen. Bitte lesen Sie die folgenden 3 Zählerstände ein:";
-"ContactData" = "Contact and contract data";
+"ReadingStepsSubTitle" = "Bitte lesen Sie die folgenden 3 Zählerstände ein:";
+"ContactData" = "Kontakt und Vertragsdaten";
 "Submit" = "Ablesen";
 "Change" = "Ändern";
 "SubmitReadings" = "Zählerstände übermitteln";
+"MeterTypePopupText" = "Please choose your meter type?";
 
 //METER READING
 "ReadingDate" = "Ablesedatum:";
@@ -50,7 +54,7 @@
 "HeaterInfoTitle" = "How to read the heat meter?";
 "ElectricityInfoTitle" = "How to read the electricity meter?";
 "InfoBoxText" = "To check the correct meter reading, pay attention to this symbol in the lower left of the display.";
-"MeterNumber" = "Meter number:";
+"MeterNumber" = "Anleitung zum Ablesen:";
 "MeterReading" = "Meter reading:";
 "WaterInfoMeterNumber" = "Please enter your meter number first. It is usually located at the top of your counter and usually consists of 9 numbers (no letters). On your notification card you will find the last 4 digits and the respective room in which the meter is located as a little help";
 "WaterInfoMeterReading" = "Then enter your meter reading in the corresponding field. Please enter both the numbers in front of the comma (here in the gray area) and the numbers after they come (here in the red area). The counter reading in this example is: 00984.562";
@@ -61,7 +65,7 @@
 "ElectricityInfoMeterReading" = "To be able to read the counter reading, press the button on your counter. Your meter reading will now appear on the display. Please enter this in the corresponding field on the homepage. The counter reading in this example is: 14562.";
 
 //IFORMATIONAL SCREEN
-"InfoTitle" = "Counter reading explanation";
+"InfoTitle" = "Erklärung zum Zählerstand";
 
 //MANUAL INPUT
 "ManualInputTitle" = "Manuelle Eingabe";
@@ -92,7 +96,7 @@
 
 //CONFIRMATION SCREEN
 "YourCopy" = "Ihre Übersicht";
-"Contact" = "Kontaktdaten";
+"Contact" = "Kontakt:";
 "Send" = "Senden";
 
 //SUCCESS SCREEN
@@ -122,14 +126,20 @@
 
 
 //IMPRINT
-"ImprintInformation" = "Information according to § 5 TMG";
-"ImprintRepresentedBy" = "Represented by";
-"ImprintSalesTaxTitle" = "Sales tax ID";
-"ImprintSalesTaxText" = "Sales tax identification number according to §27a Umsatzsteuergesetz: DE337739004.";
-"ImprintResponsibilityTitle" = "Responsible for the content according to § 55 Abs. 2 RStV";
+"ImprintInformation" = "Angaben gemäß § 5 TMG";
+"ImprintRepresentedBy" = "Vertreten durch:";
+"ImprintSalesTaxTitle" = "Umsatzsteuer-ID:";
+"ImprintSalesTaxText" = "Umsatzsteuer-Identifikationsnummer gemäß §27a Umsatzsteuergesetz: DE337739004";
+"ImprintResponsibilityTitle" = "Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:";
 "ImprintResponsibilityText" = "BRIGHTDOCK Llc, Croatia, Rijeka (City of Rijeka) Nikole Tesle 9";
-"ImprintDisclamerTitle" = "Disclaimer";
-"ImprintDisclamerText" = "Despite careful control of the content, we do not assume any liability for the content of external links. The operators of the linked pages are solely responsible for their content.";
+"ImprintDisclamerTitle" = "Haftungshinweis";
+"ImprintDisclamerText" = "Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.";
+
+//LEGAL
+"Legal" = "Allgemeine Nutzungsbedingungen";
+"Loader" = "Wird geprüft...";
+"LoaderSend" = "Wird gesendet...";
+"ConfirmationText" = "Möchten Sie die Daten absenden? Änderungen sind danach nicht mehr möglich.";
 
 //ABOUT SCREEN
 "About" = "Über uns";
@@ -144,7 +154,7 @@
 "AboutBulletpointFive" = "Wir sparen eine Menge Postverkehr und Papier ein, wenn Sie sich für unseren digitalen Erinnerungsservice zur Ablesung entscheiden";
 "AboutCardText" = "Wir sind der Ansprechpartner, dem Sie vertrauen können.";
 "AboutPrinciplesTitle" = "Was macht uns zur besten Wahl?";
-"AboutPrinciplesParagraph" = "At Messtex, we have made it our mission to modernize the meter reading sector and to reform the market together with our partners and customers. The 21st century has already brought us many things: digitization is continuously overhauling and improving existing legacy systems and giving them a new lease of life. We are getting on this bandwagon of innovation and making the vision of revolutionizing the meter reading sector! To do this, we have set ourselves strict principles by which we live and act every day:";
+"AboutPrinciplesParagraph" = "Wir von Messtex haben es uns zur Aufgabe gemacht den Ablese-Sektor zu modernisieren und gemeinsam mit unseren Partnern und Kunden den Markt zu reformieren. Das 21. Jahrhundert hat uns bereits vieles gebracht: die Digitalisierung überholt und verbessert fortlaufend bestehende Alt-Systeme und gibt diesen einen neuen Schwung. Wir steigen auf diesen Zug der Innovation auf und machen uns die Vision der Revolutionierung des Ablesesektors zur Aufgabe! Dafür haben wir uns strikte Prinzipien gesetzt, nach denen wir tagtäglich leben und handeln:";
 "AboutPrinciplesSubtitleOne" = "Nachhaltigkeit leben.";
 "AboutPrinciplesParagraphOne" = "Durch den Digitalisierungsprozess der Heiz- und Wasserkostenerfassung leisten wir einen wertvollen Beitrag für die Umwelt. So verringern wir unseren ökologischen Fußabdruck und übernehmen Verantwortung.";
 "AboutPrinciplesSubtitleTwo" = "Innovativ kann jeder.";
@@ -156,3 +166,74 @@
 "ContactFormTitle" = "Treten Sie mit uns in Kontakt";
 "ContactFormParagraph" = "Beschreiben Sie uns Ihr Anliegen.";
 "Name" = "Name";
+"Subject" = "Betreff";
+
+//DATA CONFIRMATION
+"Cancel" = "Abbrechen";
+"Confirm" = "Bestätigen";
+
+//WATER TIP
+
+"WaterTipTitle" = "Wasser sparen";
+"WaterTipReadingTime" = "(Lesezeit 3 Minuten)";
+"WaterTipParagraph" = "Auch Wasser ist ein sehr kostbares Gut, welches wir nachhaltig nutzen sollten. Im Folgenden zeigen wir Ihnen ein paar Tipps mit denen Sie schnell und effektiv Ihren Wasserverbrauch reduzieren können.";
+
+"WaterTipSubtitleOne" = "Im Bad und bei der Wäsche:";
+"WaterTipBuletpointOneOneTitle" = "Duschen Sie etwas kürzer:";
+"WaterTipBuletpointOneOne" = "Ihre morgendliche Dusche ist ein guter Ausgangspunkt für mehr Nachhaltigkeit, da sie zwischen 6 und 45 Liter Wasser pro Minute verbrauchen kann. Versuchen Sie, den Verbrauch auf weniger als 5 Minuten pro Dusche zu reduzieren. So können Sie Ihren Wasserverbrauch um bis zu 20 Prozent reduzieren.";
+"WaterTipBuletpointOneTwoTitle" = "Installieren Sie Duschköpfe mit niedrigem Durchfluss:";
+"WaterTipBuletpointOneTwo" = "Wenn kurze Duschen für Sie nicht in Frage kommen, wechseln Sie zu einem sparsamen Duschkopf. Ein Standard-Duschkopf verbraucht 15 bis 25 Liter Wasser pro Minute. Wenn Sie auf einen energieeffizienten Duschkopf mit drei Sternen umsteigen, können Sie Ihren Warmwasserverbrauch um etwa 40 Prozent senken. Denken Sie daran, vor dem Kauf die Eigenschaften und Vorteile zu prüfen, um herauszufinden, wie viele Liter Wasser pro Minute das Modell verbraucht.";
+"WaterTipBuletpointOneThreeTitle" = "Setzen Sie eine wassersparende Toilettenspülung ein:";
+"WaterTipBuletpointOneThree" = "Dadurch wird der Wasserverbrauch pro Spülung reduziert. Eine einfache Selbstbaulösung besteht darin, zwei Plastikflaschen mit Kieselsteinen oder Sand zu beschweren, die Flaschen mit Wasser zu füllen, die Deckel aufzuschrauben und sie sicher in Ihrem Toilettentank zu platzieren, weit weg von den Bedienelementen.";
+"WaterTipBuletpointOneFourTitle" = "Überprüfen Sie Ihre Toilette auf undichte Stellen:";
+"WaterTipBuletpointOneFour" = "Geben Sie etwas Lebensmittelfarbe in den Tank. Wenn die Farbe ohne Spülung innerhalb einer halben Stunde in der Schüssel zu erscheinen beginnt, haben Sie ein Leck, das sofort repariert werden sollte.";
+"WaterTipBuletpointOneFiveTitle" = "Waschen Sie Ihre Kleidung mit kälterem Wasser:";
+"WaterTipBuletpointOneFive" = "Da 90 Prozent des Stromverbrauchs Ihrer Waschmaschine auf die Erwärmung des Wassers entfallen, können Sie sparen, wenn Sie kälteres Wasser verwenden.";
+
+"WaterTipSubtitleTwo" = "In der Küche:";
+"WaterTipBuletpointTwoOneTitle" = "Reparieren Sie undichte Stellen:";
+"WaterTipBuletpointTwoOne" = "Sie können Ihren Wasserverbrauch erheblich reduzieren, indem Sie Lecks in Bad und Küche reparieren. Ein tropfender Wasserhahn, bei dem nur ein Tropfen pro Sekunde fällt, verschwendet jedes Jahr über 6000 Liter Wasser, also reparieren Sie diese Lecks und beginnen Sie noch heute zu sparen!";
+"WaterTipBuletpointTwoTwoTitle" = "Lassen Sie das Wasser nicht laufen, wenn Sie das Geschirr von Hand spülen:";
+"WaterTipBuletpointTwoTwo" = "Wenn Sie zwei Waschbecken haben, füllen Sie eines mit Seifenwasser und das andere mit Spülwasser. Wenn Sie nur eine Spüle haben, stellen Sie das gespülte Geschirr auf ein Geschirrregal und spülen Sie es mit einer Sprühvorrichtung oder einem Topf voll heißem Wasser.";
+"WaterTipBuletpointTwoThreeTitle" = "Füllen Sie Ihren Geschirrspüler immer auf:";
+"WaterTipBuletpointTwoThree" = "Sie verbrauchen weniger heißes Wasser, indem Sie Ihren Geschirrspüler nur dann laufen lassen, wenn er auch wirklich voll ist und indem Sie kürzere, sparsame Spülgänge wählen. Wenn Sie befürchten, dass die kürzeren Zyklen Ihr Geschirr nicht sauber genug machen, können Sie es auch mit kaltem Wasser abspülen, bevor Sie es in die Maschine stellen.";
+
+"WaterTipSubtitleThree" = "Im Garten:";
+"WaterTipBuletpointThreeOneTitle" = "Zeitschaltuhren und Wasserhaushalt im Garten:";
+"WaterTipBuletpointThreeOne" = "Kaufen Sie Zeitschaltuhren für Ihre Bewässerungssysteme und achten sie darauf nicht zu viel zu gießen. Dies kann nicht nur Ihrem Wasserverbrauch, sondern auch Ihren Pflanzen helfen. Sobald sich Ihre Pflanzen an viel Wasser gewöhnen, wurzeln sie nicht mehr so tief und werden dadurch schwächer sein.";
+"WaterTipBuletpointThreeTwoTitle" = "Verwenden Sie Regenwasser zum Gießen und für Gartenarbeiten:";
+"WaterTipBuletpointThreeTwo" = "Mit einer Regentonne können Sie einfach und effektiv Ihren Wasserverbrauch verringern.";
+
+"WaterTipParagraphTwo" = "Wir hoffen, dass wir Ihnen mit ein paar unserer Tipps helfen konnten! Es gibt selbstverständlich noch unzählige weitere Möglichkeiten Wasser einzusparen, aber mit diesen Tipps machen Sie einen guten Anfang.";
+
+
+// HEATING TIP
+"HeaterTipTitle" = "Heizkosten sparen";
+"HeaterTipReadingTime" = "(Lesezeit 2 1/2 Minuten)";
+"HeaterTipParagraph" = "Hier finden Sie einige Tipps, mit denen Sie ganz einfach Energie und damit Geld sparen können.";
+
+"HeaterTipBuletpointOneTitle" = "Nutzen Sie die Wärme der Sonne:";
+"HeaterTipBuletpointOne" = "Öffnen Sie tagsüber die Vorhänge an Ihren nach Süden ausgerichteten Fenstern, damit das Sonnenlicht Ihr Haus oder Ihre Wohnung auf natürliche Weise aufheizen kann. Wenn Sie zusätzlich Laubbäume auf der Südseite Ihres Hauses pflanzen, lassen die Bäume im Winter Licht und Wärme in Ihre Fenster und im Sommer werfen sie Schatten.";
+"HeaterTipBuletpointTwoTitle" = "Decken Sie alte Fenster ab:";
+"HeaterTipBuletpointTwo" = "Bringen Sie dicht schließende, isolierende Vorhänge oder Jalousien an Fenstern an, die sich nach der Witterungsanpassung kalt anfühlen. Informieren Sie sich über andere Fensterbehandlungen und -verkleidungen, die die Energieeffizienz verbessern können.";
+"HeaterTipBuletpointThreeTitle" = "Passen Sie die Temperatur an:";
+"HeaterTipBuletpointThree" = "Regeln Sie die Temperatur mit Ihrem Thermostat auf eine angenehme, aber eher niedrigere Temperatur. Wenn Sie nachts schlafen oder nicht im Haus sind, ist es empfehlenswert Ihr Thermostat möglichst niedrig einzustellen. Auf diese Weise können Sie bis zu 10% an Heiz- und / oder Kühlkosten sparen. Wenn Sie eine Wärmepumpe haben, sollten Sie eine moderate Einstellung beibehalten oder ein programmierbares Thermostat verwenden, das speziell für den Einsatz mit Wärmepumpen entwickelt wurde.";
+"HeaterTipBuletpointFourTitle" = "Lecks finden und abdichten:";
+"HeaterTipBuletpointFour" = "Dichten Sie Luftlecks in der Nähe von Durchbrüchen für Rohrleitungen sowie Lücken um Schornsteine und Einbauleuchten in isolierten Decken ab. Fügen Sie Dichtungsmasse oder Dichtungsstreifen hinzu, um Luftlecks an undichten Türen und Fenstern abzudichten.";
+"HeaterTipBuletpointFiveTitle" = "Planen Sie Wartungsarbeiten für Ihr Heizsystem ein:";
+"HeaterTipBuletpointFiveA" = "Für Öfen und Wärmepumpen:\nTauschen Sie Ihren Filter einmal im Monat oder nach Bedarf aus";
+"HeaterTipBuletpointFiveB" = "Holz- und Pellet-Heizungen:\nReinigen Sie den Rauchabzug regelmäßig und säubern Sie das Innere des Geräts regelmäßig mit einer Drahtbürste, um sicherzustellen, dass Ihr Haus effizient beheizt wird.";
+"HeaterTipBuletpointSixTitle" = "Reduzieren Sie den Wärmeverlust des Kamins:";
+"HeaterTipBuletpointSix" = "Halten Sie Ihre Kaminklappe geschlossen, wenn kein Feuer brennt. Wenn Sie die Klappe offenhalten, ist das so, als ob Sie im Winter ein Fenster weit öffnen würden, dadurch kann die warme Luft direkt in den Schornstein gelangen. Wenn Sie den Kamin benutzen, reduzieren Sie den Wärmeverlust, indem Sie die Klappen am Boden des Feuerraums öffnen (falls vorhanden) oder das nächstgelegene Fenster leicht öffnen - etwa einen Zentimeter - und die in den Raum führenden Türen schließen. Falls Sie Ihren Kamin nie benutzen, verstopfen und versiegeln Sie den Schornsteinzug.";
+"HeaterTipBuletpointSevenTitle" = "Senken Sie Ihre Wasserheizkosten:";
+"HeaterTipBuletpointSeven" = "Drehen Sie die Temperatur Ihres Warmwasserbereiters auf die warme Einstellung (120°F) herunter. So sparen Sie nicht nur Energie, sondern vermeiden auch, dass Sie sich die Hände verbrühen.";
+
+
+// ENVIRONMENT TIP
+"EnvironmentTipTitle" = "Messtex & Umweltschutz";
+"EnvironmentTipReadingTime" = "(Lesezeit 1 - 2 Minuten)";
+"EnvironmentTipParagraphOne" = "Bis zum heutigen Tage sind alle Service-Techniker täglich mit dem Auto unterwegs, um in allen Wohnungen Deutschlands die Jahresablesungen zu machen. Jede Wohnung muss dafür mindestens einmal angefahren werden. Wenn ein Bewohner zum Ersttermin nicht zuhause ist, muss der Techniker oft ein 2. Mal und manchmal sogar ein drittes Mal kommen.\nAn manchen Tagen legt ein einziger Techniker so mehrere hundert Kilometer zurück, um seine Aufträge aufzuführen. Diese Kilometer erhöhen nicht nur Ihre Nebenkosten in der finalen Abrechnung, sondern steigern auch die ausgestoßenen CO2-Werte ins Unermessliche.";
+"EnvironmentTipParagraphTwo" = "In der folgenden Beispielrechnung nehmen wir die Kilometerwerte aus dem Fahrtenbuch eines Service-Technikers im Januar 2021 und berechnen wie viel CO2 mit der Ablesung über unsere Messtex-App hätte eingespart werden können:";
+"EnvironmentTipParagraphThree" = "Der Techniker ist im Januar 2.835 Kilometer gefahren, um in seiner zuständigen Region Zählerstände einzulesen. In unserer Rechnung nehmen wir die Verbrauchswerte eines neuen Benziners. Damit liegen wir bei 559,6 kg CO2 im Monat Januar. Nehmen wir an, der Techniker fährt in 11 von 12 Monaten die gleiche Strecke. Damit liegt der CO2-Verbrauch bei unglaublichen 6.155,6 kg.";
+"EnvironmentTipParagraphFour" = "Um Ihnen einen Vergleich zu geben: der durchschnittliche Pro-Kopf-CO2-Verbrauch in Deutschland beläuft sich auf 7.900 kg im Jahr. Dies hätte der Service-Techniker damit schon fast allein durch seine Arbeitsfahrten erreicht und treibt damit den Durchschnittsverbrauch enorm nach oben.";
+"EnvironmentTipParagraphFive" = "Durch die Ablesung mit der Messtex-App werden all diese Fahrten gespart und gemeinsam mit Ihnen schützen wir so unsere Umwelt und übernehmen Verantwortung!";

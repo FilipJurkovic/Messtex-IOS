@@ -11,164 +11,154 @@ import CoreGraphics
 
 extension Color {
 
-    static var danger: Color  {
+    static var danger: Color {
         return Color("Danger")
     }
 
-    static var warning: Color  {
+    static var warning: Color {
         return Color("Warning")
     }
 
-    static var success: Color  {
+    static var success: Color {
         return Color("Success")
     }
 
-
-    static var dark: Color  {
+    static var dark: Color {
         return Color("Dark")
     }
 
-    static var light: Color  {
+    static var light: Color {
         return Color("Light")
     }
 
-    static var medium: Color  {
+    static var medium: Color {
         return Color("Medium")
     }
 
-
-    static var primary_color: Color  {
+    static var primary_color: Color {
         return Color("Primary")
     }
 
-    static var primary_30: Color  {
+    static var primary_30: Color {
         return Color("Primary_30")
     }
 
-    static var primary_shade: Color  {
+    static var primary_shade: Color {
         return Color("Primary_shade")
     }
 
-    static var primary_tint: Color  {
+    static var primary_tint: Color {
         return Color("Primary_tint")
     }
 
-
-    static var secondary: Color  {
+    static var secondary: Color {
         return Color("Secondary")
     }
 
-    static var secondary_30: Color  {
+    static var secondary_30: Color {
         return Color("Secondary_30")
     }
 
-    static var secondary_shade: Color  {
+    static var secondary_shade: Color {
         return Color("Secondary_shade")
     }
 
-    static var secondary_tint: Color  {
+    static var secondary_tint: Color {
         return Color("Secondary_tint")
     }
 
-
-    static var tetriary: Color  {
+    static var tetriary: Color {
         return Color("Tetriary")
     }
 
-    static var tetriary_30: Color  {
+    static var tetriary_30: Color {
         return Color("Tetriary_30")
     }
 
-    static var tetriary_shade: Color  {
+    static var tetriary_shade: Color {
         return Color("Tetriary_shade")
     }
 
-    static var tetriary_tint: Color  {
+    static var tetriary_tint: Color {
         return Color("Tetriary_tint")
     }
 
 }
 
-
 extension UIColor {
 
-    static var danger: UIColor  {
+    static var danger: UIColor {
         return UIColor(named: "Danger")!
     }
-    
-    static var warning: UIColor  {
+
+    static var warning: UIColor {
         return UIColor(named: "Warning")!
     }
-    
-    static var success: UIColor  {
+
+    static var success: UIColor {
         return UIColor(named: "Success")!
     }
-    
-    
-    static var dark: UIColor  {
+
+    static var dark: UIColor {
         return UIColor(named: "Dark")!
     }
-    
-    static var light: UIColor  {
+
+    static var light: UIColor {
         return UIColor(named: "Light")!
     }
-    
-    static var medium:UIColor  {
+
+    static var medium: UIColor {
         return UIColor(named: "Medium")!
     }
-    
-    
-    static var primary: UIColor  {
+
+    static var primary: UIColor {
         return UIColor(named: "Primary")!
     }
-    
-    static var primary_30: UIColor  {
+
+    static var primary_30: UIColor {
         return UIColor(named: "Primary_30")!
     }
-    
-    static var primary_shade: UIColor  {
+
+    static var primary_shade: UIColor {
         return UIColor(named: "Primary_shade")!
     }
-    
-    static var primary_tint: UIColor  {
+
+    static var primary_tint: UIColor {
         return UIColor(named: "Primary_tint")!
     }
-    
-    
-    static var secondary: UIColor  {
+
+    static var secondary: UIColor {
         return UIColor(named: "Secondary")!
     }
-    
-    static var secondary_30: UIColor  {
+
+    static var secondary_30: UIColor {
         return UIColor(named: "Secondary_30")!
     }
-    
-    static var secondary_shade: UIColor  {
+
+    static var secondary_shade: UIColor {
         return UIColor(named: "Secondary_shade")!
     }
-    
-    static var secondary_tint: UIColor  {
+
+    static var secondary_tint: UIColor {
         return UIColor(named: "Secondary_tint")!
     }
-    
-    
-    static var tetriary: UIColor  {
+
+    static var tetriary: UIColor {
         return UIColor(named: "Tetriary")!
     }
-    
-    static var tetriary_30: UIColor  {
+
+    static var tetriary_30: UIColor {
         return UIColor(named: "Tetriary_30")!
     }
-    
-    static var tetriary_shade: UIColor  {
+
+    static var tetriary_shade: UIColor {
         return UIColor(named: "Tetriary_shade")!
     }
-    
-    static var tetriary_tint: UIColor  {
+
+    static var tetriary_tint: UIColor {
         return UIColor(named: "Tetriary_tint")!
     }
 }
-
 
 struct Heading2: ViewModifier {
     func body(content: Content) -> some View {
@@ -183,7 +173,6 @@ extension View {
     }
 }
 
-
 extension Text {
     func pincodeFont() -> Text {
          return self.font(Font.custom("Roboto-Bold", size: 56))
@@ -195,7 +184,7 @@ extension Text {
 struct Heading1: ViewModifier {
     func body(content: Content) -> some View {
         content
-            
+
             .font(Font.custom("Roboto-Medium", size: 24))
     }
 }

@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct PostModel: Codable{
+struct PostModel: Codable {
     var query: String
 }

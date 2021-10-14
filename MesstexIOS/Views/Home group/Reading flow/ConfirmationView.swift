@@ -8,98 +8,107 @@
 import SwiftUI
 
 struct ConfirmationView: View {
-    
-    @ObservedObject var viewModel : MainViewModel
+
+    @ObservedObject var viewModel: MainViewModel
     var length = 8
     var body: some View {
-        ZStack{
-            ScrollView(showsIndicators: false){
-                VStack{
-                    HStack{
+        ZStack {
+            ScrollView(showsIndicators: false) {
+                VStack {
+                    HStack {
                         Text(LocalizedStringKey("YourCopy"))
                             .heading2()
                             .foregroundColor(.primary_color)
                         Spacer()
                     }.padding(.horizontal, 24)
-                    
+
                 }
                 .padding(.top, 62)
-                ZStack(){
+                ZStack {
                     Image("reading_paper")
                         .resizable()
                         .frame(width: 353.3, height: 527.4)
                         .padding(EdgeInsets(top: 24, leading: 0, bottom: 38, trailing: 0))
-                        ScrollView(showsIndicators: false){
-                            VStack(alignment:.leading){
-                                ForEach(0...viewModel.postModelData.meterReadings.count, id: \.self){ index in
-                                    VStack(alignment:.leading, spacing:0){
-                                        if index != viewModel.postModelData.meterReadings.count {
-                                            HStack(alignment:.center){
-                                   
+                    ScrollView(showsIndicators: false) {
+                        VStack(alignment: .leading) {
+                            ForEach(0...viewModel.postModelData.meterReadings.count, id: \.self) { index in
+                                VStack(alignment: .leading, spacing: 0) {
+                                    if index < viewModel.postModelData.meterReadings.count {
+
+                                        HStack(alignment: .center) {
+
                                             Image(viewModel.getMeterTypeIcon(meterType: viewModel.postModelData.meterReadings[index].counterType))
                                                 .resizable()
                                                 .frame(width: 18, height: 18)
-                                                
+                                                .foregroundColor(.primary_color)
+
                                             Text(viewModel.userData.meters[index].counterTypeName)
-                                              .paragraphBold()
-                                              .foregroundColor(.primary_color)
-                                              .padding(.trailing, 9)
+                                                .paragraphBold()
+                                                .foregroundColor(.primary_color)
+                                                .padding(.trailing, 9)
                                             Spacer()
                                         }.padding(.bottom, 4)
-                                         .padding(.top, 13)
-                                            
+                                        .padding(.top, 13)
+
                                         Text("Nr. \(viewModel.userData.meters[index].counterNumber)")
-                                          .small()
-                                          .foregroundColor(.tetriary)
-                                          .padding(.bottom, 8)
+                                            .small()
+                                            .foregroundColor(.tetriary)
+                                            .padding(.bottom, 8)
 
                                         Text(viewModel.postModelData.meterReadings[index].counterValue)
-                                          .paragraphBold()
-                                          .foregroundColor(.dark)
-                                          .padding(.bottom, 17)
-                                            
+                                            .paragraphBold()
+                                            .foregroundColor(.dark)
+                                            .padding(.bottom, 17)
+
                                         Divider()
                                             .foregroundColor(.tetriary)
-                                            .frame(height:1)
-                                    }
-                                    
-                                    else{
-                                        HStack{
+                                            .frame(height: 1)
+                                    } else {
+                                        HStack {
                                             Text(LocalizedStringKey("Contact"))
-                                              .paragraphBold()
-                                              .foregroundColor(.primary_color)
-                                              .padding(.trailing, 9)
+                                                .paragraphBold()
+                                                .foregroundColor(.primary_color)
+                                                .padding(.trailing, 9)
                                             Spacer()
-                                        }.padding(.bottom, 4)
+                                        }.padding(.bottom, 16)
                                         .padding(.top, 17)
                                         Text("\(viewModel.userData.firstName) \(viewModel.userData.lastName)")
-                                          .paragraph()
-                                          .foregroundColor(.dark)
-                                          .padding(.bottom, 8)
-
-                                        Text("\(viewModel.userData.email)")
-                                          .paragraph()
-                                          .foregroundColor(.dark)
-                                          .padding(.bottom, 8)
+                                            .paragraph()
+                                            .foregroundColor(.dark)
+                                            .padding(.bottom, 8)
 
                                         Text("\(viewModel.userData.street) \(viewModel.userData.houseNumber)")
-                                          .paragraph()
-                                          .foregroundColor(.dark)
-                                          .padding(.bottom, 17)
-                                            
+                                            .paragraph()
+                                            .foregroundColor(.dark)
+                                            .padding(.bottom, 8)
+
+                                        Text("\(viewModel.userData.postcode) \(viewModel.userData.city)")
+                                            .paragraph()
+                                            .foregroundColor(.dark)
+                                            .padding(.bottom, 8)
+
+                                        Text("\(viewModel.userData.email)")
+                                            .paragraph()
+                                            .foregroundColor(.dark)
+                                            .padding(.bottom, 8)
+
+                                        Text("\(viewModel.userData.phone)")
+                                            .paragraph()
+                                            .foregroundColor(.dark)
+                                            .padding(.bottom, 17)
+
                                     }
                                 }
                             }
-                                
 
                         }.padding(.horizontal, 23)
-                        }.frame(width: 300, height: 450)
-                        
+                    }.frame(width: 300, height: 450)
+
                 }.frame(width: 353.3, height: 527.4)
-                
+
                 PrimaryButton(handler: {
-                    withAnimation(.easeInOut){
-                        viewModel.takeMeterReadings()
+                    withAnimation(.easeInOut) {
+                        viewModel.isConfrimationWidgetVsible.toggle()
                     }
                 }, buttonLabel: "Send")
                 .padding(.bottom, 30)

@@ -26,57 +26,88 @@
 //
 import SwiftUI
 import MeterReading
-
+import AVKit
 
 // adapted from https://stackoverflow.com/a/57295284
 struct CameraView: UIViewRepresentable {
 
     // results are delivered on capture
-    var captureAction: (UIImage, [String]) -> Void
-    
+    var captureAction: (UIImage, [String], [String], [PIXMeterReadingResultStatus]) -> Void
+
+    var viewModel: MainViewModel
+
     var reader: PIXMeterReadingView = PIXMeterReadingView()
-        
-    func toggleFlash(state: Bool) {
-        self.reader.isTorchOn = state
+
+    var isFlashOn: Binding<Bool> {
+        return Binding(
+            get: {
+                self.reader.isTorchOn
+            }, set: {
+                print("flash is binded")
+                self.reader.isTorchOn = $0
+            }
+        )
     }
-    
+
     func manualCapture() {
         reader.initiateManualCapture()
     }
+    
+    func stopProcessing(){
+        reader.stopProcessing()
+    }
+    
+    func startProcessing(){
+        reader.startProcessing()  
+    }
 
     func makeUIView(context: Context) -> PIXCameraView {
+        print("HasTorch: \(reader.hasTorch)")
+
+        let configuration = viewModel.currentReadingView == .testingView ? viewModel.testMeterConfiguration : viewModel.userData.meters[viewModel.currentMeterIndex].configuration
         reader.zoom = 1.3
-        reader.fractionDigits = PIXAutomatic
-        reader.integerDigits = PIXAutomatic
-        reader.numberOfCounters = PIXAutomatic
-        
+        reader.meterAppearance = viewModel.getCounterType(type: configuration.meterAppearance)
+        reader.fractionDigits = configuration.fractionDigitsAuto ? PIXAutomatic : configuration.fractionDigits!
+        reader.integerDigits = configuration.integerDigitsAuto ? PIXAutomatic : configuration.integerDigits!
+        reader.numberOfCounters = configuration.numberOfCountersAuto ? PIXAutomatic : configuration.numberOfCounters!
+//        reader.isTorchOn = true
+
         return reader
     }
-    
+
     func updateUIView(_ uiView: PIXCameraView, context: Context) {
     }
-    
+
     func makeCoordinator() -> Coordinator {
-        Coordinator(reader: reader, callback:   { results, image in
-                                                    let resultStrings = results.map {$0.cleanReadingString()}
-                                                    captureAction(image, resultStrings)
-                                                } )
+        Coordinator(reader: reader, callback: { results, image in
+            let resultStrings = results.map {$0.cleanReadingString()}
+            let rawStrings = results.map {$0.rawReadingString()}
+            let resultCodes = results.map {($0.status())}
+            captureAction(image, resultStrings, rawStrings, resultCodes)
+        }, viewModel: viewModel)
     }
-    
+
     class Coordinator: NSObject, PIXMeterReadingViewDelegate {
         var callback: ([PIXMeterReadingResult], UIImage) -> Void
+        
+        var viewModel: MainViewModel
 
         func meterReadingView(_ meterReadingView: PIXMeterReadingView, didScanReadings readingResults: [PIXMeterReadingResult], in image: UIImage, metadata: PIXMetadata) {
             meterReadingView.stopProcessing()
             self.callback(readingResults, image)
         }
-        
+
         func cameraView(_ cameraView: PIXCameraView, didScanBarcodes barcodeResults: [PIXBarcodeReadingResult], in image: UIImage, metadata: PIXMetadata) {
             // TODO: handle barcode scanning result
         }
         
-        init(reader : PIXMeterReadingView, callback: @escaping ([PIXMeterReadingResult], UIImage) -> Void){
+        func startProcessing() {
+            self.startProcessing()
+        }
+        
+        init(reader: PIXMeterReadingView, callback: @escaping ([PIXMeterReadingResult], UIImage) -> Void, viewModel: MainViewModel) {
             self.callback = callback
+            self.viewModel = viewModel
             super.init()
             reader.delegate = self
         }

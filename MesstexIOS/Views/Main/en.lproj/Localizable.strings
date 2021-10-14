@@ -26,7 +26,10 @@
 "TipsSubtitle" = "Here you will find useful tips for your everyday life.";
 "ShowMore" = "Show more";
 "ContactTitle" = "Get in contact with us";
-"ShareButton" = "Share the App";
+"ContactButton" = "Contact us";
+"WaterTip" = "Save water";
+"HeatTip" = "Save heating costs";
+"EnvironmentTip" = "Messtex & Environment";
 
 //CODE READING
 "CodeReadingTitle" = "Reading code";
@@ -36,11 +39,12 @@
 
 //READING STEPS
 "ReadingStepsTitle" = "Start reading";
-"ReadingStepsSubTitle" = "You have 3 counters to be read from. Please send us the following three meter readings:";
+"ReadingStepsSubTitle" = "Please send us the following three meter readings:";
 "ContactData" = "Contact and contract data";
 "Submit" = "Submit";
 "Change" = "Change";
 "SubmitReadings" = "Submit meter readings";
+"MeterTypePopupText" = "Please choose your meter type?";
 
 //METER READING
 "ReadingDate" = "Reading date:";
@@ -50,7 +54,7 @@
 "HeaterInfoTitle" = "How to read the heat meter?";
 "ElectricityInfoTitle" = "How to read the electricity meter?";
 "InfoBoxText" = "To check the correct meter reading, pay attention to this symbol in the lower left of the display.";
-"MeterNumber" = "Meter number:";
+"MeterNumber" = "Instructions for reading:";
 "MeterReading" = "Meter reading:";
 "WaterInfoMeterNumber" = "Please enter your meter number first. It is usually located at the top of your counter and usually consists of 9 numbers (no letters). On your notification card you will find the last 4 digits and the respective room in which the meter is located as a little help";
 "WaterInfoMeterReading" = "Then enter your meter reading in the corresponding field. Please enter both the numbers in front of the comma (here in the gray area) and the numbers after they come (here in the red area). The counter reading in this example is: 00984.562";
@@ -95,7 +99,7 @@
 
 //CONFIRMATION SCREEN
 "YourCopy" = "Your copy";
-"Contact" = "Contact";
+"Contact" = "Contact:";
 "Send" = "Send";
 
 //SUCCESS SCREEN
@@ -119,20 +123,27 @@
 
 //PRIVACY
 "PrivacyTitleOne" = "";
-"PrivacyParagraphOne" = "";
+"PrivacyParagraphOne" = "Insofar as we decide either alone or jointly with others on the purposes and means of data processing, this includes above all the obligation to inform you transparently about the nature, scope, purpose, duration and legal basis of the processing (cf. Art. 13 and Art. 14 DS-GVO). With this declaration (hereinafter: &quot;data protection information&quot;), we inform you about the manner in which your personal data is processed by us.";
 "PrivacyTitleTwo" = "";
 "PrivacyParagraphTwo " = "";
 
 
 //IMPRINT
 "ImprintInformation" = "Information according to § 5 TMG";
-"ImprintRepresentedBy" = "Represented by";
-"ImprintSalesTaxTitle" = "Sales tax ID";
+"ImprintRepresentedBy" = "Represented by:";
+"ImprintSalesTaxTitle" = "Sales tax ID:";
 "ImprintSalesTaxText" = "Sales tax identification number according to §27a Umsatzsteuergesetz: DE337739004.";
-"ImprintResponsibilityTitle" = "Responsible for the content according to § 55 Abs. 2 RStV";
+"ImprintResponsibilityTitle" = "Responsible for the content according to § 55 Abs. 2 RStV:Contact";
 "ImprintResponsibilityText" = "BRIGHTDOCK Llc, Croatia, Rijeka (City of Rijeka) Nikole Tesle 9";
 "ImprintDisclamerTitle" = "Disclaimer";
 "ImprintDisclamerText" = "Despite careful control of the content, we do not assume any liability for the content of external links. The operators of the linked pages are solely responsible for their content.";
+
+//LEGAL
+"Legal" = "General terms of use";
+"Loader" = "Will be checked...";
+"LoaderSend" = "Will be sent...";
+"ConfirmationText" = "Do you want to send your data? Changes are not possible after sending.";
+
 
 //ABOUT SCREEN
 "About" = "About Us";
@@ -159,3 +170,74 @@
 "ContactFormTitle" = "Get in contact with us";
 "ContactFormParagraph" = "Get in touch with us and describe your concern.";
 "Name" = "Name";
+"Subject" = "Subject";
+
+//DATA CONFIRMATION
+"Cancel" = "Cancel";
+"Confirm" = "Confirm";
+
+//WATER TIP
+
+"WaterTipTitle" = "Saving water";
+"WaterTipReadingTime" = "(Reading time 3 minutes)";
+"WaterTipParagraph" = "Water is a very precious commodity that we should use sustainably. In the following, we will show you a few tips with which you can quickly and effectively reduce your water consumption.";
+
+"WaterTipSubtitleOne" = "In the bathroom and in the laundry:";
+"WaterTipBuletpointOneOneTitle" = "Shower a little shorter:";
+"WaterTipBuletpointOneOne" = "Your morning shower is a good place to start for more sustainability, as it usually consumes between 6 and 45 gallons of water per minute. Try to reduce consumption to less than 5 minutes per shower. This can reduce your water use by up to 20 percent.";
+"WaterTipBuletpointOneTwoTitle" = "Install low-flow showerheads:";
+"WaterTipBuletpointOneTwo" = "If short showers are not an option for you, switch to an economical showerhead. A standard showerhead uses 15 to 25 gallons of water per minute. If you switch to a three-star energy-efficient showerhead, you can reduce your water consumption by about 40 percent. Before you buy one model, remember to check out the features and benefits to find out how many gallons of water per minute it uses.";
+"WaterTipBuletpointOneThreeTitle" = "Put in a water-efficient toilet flush:";
+"WaterTipBuletpointOneThree" = "This will reduce the amount of water used per flush. A simple DIY solution is to weigh down two plastic bottles with pebbles or sand, fill the bottles with water, screw on the lids, and place them securely in your toilet tank, away from the controls.";
+"WaterTipBuletpointOneFourTitle" = "Check your toilet for leaks:";
+"WaterTipBuletpointOneFour" = "Put some food coloring in the tank. If the color begins to appear in the bowl without flushing within half an hour, you have a leak that should be repaired immediately.";
+"WaterTipBuletpointOneFiveTitle" = "Wash your clothes with colder water:";
+"WaterTipBuletpointOneFive" = "Since 90 percent of your washing machine's electricity consumption goes to heating the water you can save by using colder water.";
+
+"WaterTipSubtitleTwo" = "In the kitchen:";
+"WaterTipBuletpointTwoOneTitle" = "Fix leaks:";
+"WaterTipBuletpointTwoOne" = "You can significantly reduce your water consumption by repairing leaks in the bathroom and kitchen. A dripping faucet with only one drop per second wastes over 6000 gallons of water every year. So, fix those leaks and start saving today!";
+"WaterTipBuletpointTwoTwoTitle" = "Don't leave the water running when you wash dishes by hand:";
+"WaterTipBuletpointTwoTwo" = "If you have two sinks, fill one with soapy water and the other with rinse water. If you have only one sink, place the washed dishes on a dish rack and rinse them with a sprayer or a pot full of hot water.";
+"WaterTipBuletpointTwoThreeTitle" = "Always fill up your dishwasher:";
+"WaterTipBuletpointTwoThree" = "You'll use less hot water by running your dishwasher only when it's actually full and by choosing shorter, economical rinse cycles. If you're worried that the shorter cycles won't get your dishes clean enough, you can also rinse them with cold water before putting them in the machine.";
+
+"WaterTipSubtitleThree" = "In the garden:";
+"WaterTipBuletpointThreeOneTitle" = "Timers and water balance in the garden:";
+"WaterTipBuletpointThreeOne" = "Purchase timers for your watering systems and be careful not to over water. This can help not only your water consumption, but also your plants. Once your plants get used to a lot of water, they won't root as deeply and will be weaker as a result.";
+"WaterTipBuletpointThreeTwoTitle" = "Use rainwater for watering and gardening:";
+"WaterTipBuletpointThreeTwo" = "With a rain barrel, you can easily and effectively reduce your water consumption.";
+
+"WaterTipParagraphTwo" = "We hope we were able to help you with a few of our tips! There are of course countless other ways to save water, but with these tips you are making a good start.";
+
+
+// HEATING TIP
+"HeaterTipTitle" = "Saving heating costs";
+"HeaterTipReadingTime" = "(Reading time 2 1/2 minutes)";
+"HeaterTipParagraph" = "Here are some tips that can easily save energy and therefore money.";
+
+"HeaterTipBuletpointOneTitle" = "Take advantage of the warmth of the sun:";
+"HeaterTipBuletpointOne" = "During the day, open the curtains on your south-facing windows to let the sunlight can heat up your house or apartment naturally. Additionally, if you plant deciduous trees on the south side of your home, the trees will allow light and warmth into your windows in the winter and cast shade in the summer.";
+"HeaterTipBuletpointTwoTitle" = "Cover old windows:";
+"HeaterTipBuletpointTwo" = "Install tight-fitting, insulating curtains or blinds on windows that feel cold after weather adjustment. Find out about other window treatments and coverings that can improve energy efficiency.";
+"HeaterTipBuletpointThreeTitle" = "Adjust the temperature:";
+"HeaterTipBuletpointThree" = "Use your thermostat to regulate the temperature to a comfortable, but rather lower temperature. If you sleep at night or are not in the house, it is recommended to set your thermostat as low as possible. Doing so can save you up to 10% on heating and/or cooling costs. If you have a heat pump, you should maintain a moderate setting or use a programmable thermostat that has been specifically designed.";
+"HeaterTipBuletpointFourTitle" = "Find and seal leaks:";
+"HeaterTipBuletpointFour" = "Seal air leaks near penetrations for ductwork (&quot;pipe penetrations&quot;) and gaps around chimneys and recessed lights in insulated ceilings. Add sealant or caulk to seal air leaks at leaking doors and windows.";
+"HeaterTipBuletpointFiveTitle" = "Reduce heat loss from the flue:";
+"HeaterTipBuletpointFiveA" = "For furnaces and heat pumps:\nReplace your filter once a month or as needed.";
+"HeaterTipBuletpointFiveB" = "Wood and pellet heaters:\nClean the flue regularly and clean the inside of the unit regularly with a wire brush to ensure your home is heated efficiently.";
+"HeaterTipBuletpointSixTitle" = "Lower your water heating costs:";
+"HeaterTipBuletpointSix" = "Turn down the temperature of your water heater to the warm setting (120°F). Not only will you save energy, but you\'ll also avoid scalding your hands.";
+"HeaterTipBuletpointSevenTitle" = "Shower a little shorter:";
+"HeaterTipBuletpointSeven" = "Your morning shower is a good place to start for more sustainability, as it usually consumes between 6 and 45 gallons of water per minute. Try to reduce consumption to less than 5 minutes per shower. This can reduce your water use by up to 20 percent.";
+
+
+// ENVIRONMENT TIP
+"EnvironmentTipTitle" = "Messtex & environment";
+"EnvironmentTipReadingTime" = "(Reading time 1 - 2 minutes)";
+"EnvironmentTipParagraphOne" = "To this day, all service technicians are on the road every day by car to take the annual readings in all apartments in Germany. Each apartment must be visited at least once. If a resident is not at home at the first appointment, the technician often has to come a second time and sometimes even a third time.\nOn some days, a single technician thus travels several hundred kilometers to perform his assignments. These kilometers not only increase your additional costs in the final bill, but also increase the CO2 emissions immeasurably.";
+"EnvironmentTipParagraphTwo" = "In the following example calculation, we take the mileage values from the logbook of a service technician in January 2021 and calculate how much CO2 could have been saved with a reading via our Messtex app:";
+"EnvironmentTipParagraphThree" = "The technician drove 2,835 kilometers in January to read meters in his region of responsibility. meter readings. In our calculation, we take the consumption values of a new gasoline engine. This puts us at 559.6 kg of CO2 in the month of January. Let's assume that the technician drives the same route in 11 out of 12 months. This puts the CO2 consumption at an incredible 6,155.6 kg.";
+"EnvironmentTipParagraphFour" = "To give you a comparison, the average per capita CO2 consumption in Germany is 7,900 kg per year. The service technician would have achieved this almost through his work trips alone, thus driving up the average consumption enormously.";
+"EnvironmentTipParagraphFive" = "By reading with the Messtex app, all these trips are saved and together with you we protect our environment and take responsibility!";

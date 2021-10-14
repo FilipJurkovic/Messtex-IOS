@@ -8,32 +8,32 @@
 import SwiftUI
 
 struct VideoView: View {
-    @ObservedObject var viewModel : MainViewModel
-    
+    @ObservedObject var viewModel: MainViewModel
+
     var body: some View {
-        ZStack{
+        ZStack {
             Color.dark
-            
+
             Image("video_image")
                 .resizable()
                 .frame(width: UIScreen.main.bounds.size.width, height: 211)
-            
-            VStack{
-                HStack{
-                    Button(action : {
-                    withAnimation(.easeInOut){
-                        viewModel.currentReadingView = viewModel.previousReadingView
-                    }}){ ExitButtonStyle() }
+
+            VStack {
+                HStack {
+                    Button(action: {
+                            withAnimation(.easeInOut) {
+                                viewModel.currentReadingView = viewModel.previousReadingView
+                            }}) { ExitButtonStyle() }
                     Spacer()
                 }
                 Spacer()
             }.padding(.top, 13)
-             .padding(.leading, 24)
+            .padding(.leading, 24)
 
         }.frame(width: UIScreen.main.bounds.size.width, alignment: .topLeading)
-         .navigationBarBackButtonHidden(true)
-         .navigationTitle("")
-         .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
+        .navigationTitle("")
+        .navigationBarHidden(true)
     }
 }
 

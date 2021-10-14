@@ -11,6 +11,8 @@
 		4846476B265BE55F0055C317 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846476A265BE55F0055C317 /* MainView.swift */; };
 		4846476D265BE5610055C317 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4846476C265BE5610055C317 /* Assets.xcassets */; };
 		48464770265BE5610055C317 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4846476F265BE5610055C317 /* Preview Assets.xcassets */; };
+		F827C5102715BE6D00F9191A /* TestingMeterPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827C50F2715BE6D00F9191A /* TestingMeterPopupView.swift */; };
+		F827C5122715C10F00F9191A /* TestingFinalPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F827C5112715C10F00F9191A /* TestingFinalPopupView.swift */; };
 		F83908FB26AAC142002FFCCA /* MeterReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83908FA26AAC142002FFCCA /* MeterReadingView.swift */; };
 		F83908FD26AAC192002FFCCA /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83908FC26AAC192002FFCCA /* CameraView.swift */; };
 		F83E195326B7EEA50092C675 /* ReadingFlowEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E195226B7EEA50092C675 /* ReadingFlowEnum.swift */; };
@@ -45,15 +47,26 @@
 		F8C21FAA26A1736C00B9C34D /* CodeReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C21FA926A1736C00B9C34D /* CodeReadingView.swift */; };
 		F8C21FAC26A1B6E600B9C34D /* UIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C21FAB26A1B6E500B9C34D /* UIComponents.swift */; };
 		F8C21FAE26A1B88300B9C34D /* FaqView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C21FAD26A1B88300B9C34D /* FaqView.swift */; };
-		F8C21FB026A1B89000B9C34D /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C21FAF26A1B89000B9C34D /* ContactView.swift */; };
 		F8C21FB226A1B89D00B9C34D /* ContactFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C21FB126A1B89D00B9C34D /* ContactFormView.swift */; };
 		F8C21FB426A1B8A900B9C34D /* PrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C21FB326A1B8A900B9C34D /* PrivacyView.swift */; };
 		F8C21FB626A1B8CC00B9C34D /* ImprintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C21FB526A1B8CC00B9C34D /* ImprintView.swift */; };
 		F8C21FB826A1C8B400B9C34D /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C21FB726A1C8B400B9C34D /* AboutUsView.swift */; };
 		F8C21FBA26A56F2D00B9C34D /* EmailHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C21FB926A56F2D00B9C34D /* EmailHelper.swift */; };
+		F8C37515270E3ADE00ABBCFD /* HeatTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C37512270E3ADE00ABBCFD /* HeatTipView.swift */; };
+		F8C37516270E3ADE00ABBCFD /* WaterTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C37513270E3ADE00ABBCFD /* WaterTipView.swift */; };
+		F8C37517270E3ADE00ABBCFD /* EnvironmentTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C37514270E3ADE00ABBCFD /* EnvironmentTipView.swift */; };
+		F8C3751B270E3BCF00ABBCFD /* MeterInitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C3751A270E3BCF00ABBCFD /* MeterInitModel.swift */; };
+		F8C3751D270E3C9500ABBCFD /* MeterConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C3751C270E3C9500ABBCFD /* MeterConfiguration.swift */; };
+		F8C3751F270E3CCC00ABBCFD /* PDFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C3751E270E3CCC00ABBCFD /* PDFileView.swift */; };
 		F8C839A126CBA8B9005EEF23 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C839A026CBA8B9005EEF23 /* VideoView.swift */; };
 		F8D911CE26B2918600F0467E /* PushedScreenEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D911CD26B2918600F0467E /* PushedScreenEnum.swift */; };
 		F8DD632A26CA4CE20018D01F /* LanguageManagerSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F8DD632926CA4CE20018D01F /* LanguageManagerSwiftUI */; };
+		F8F3984D271372CB000A39EA /* Privacy_DE.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F8F39849271372CA000A39EA /* Privacy_DE.pdf */; };
+		F8F3984E271372CB000A39EA /* Legal_DE.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F8F3984A271372CA000A39EA /* Legal_DE.pdf */; };
+		F8F3984F271372CB000A39EA /* Legal_EN.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F8F3984B271372CA000A39EA /* Legal_EN.pdf */; };
+		F8F39850271372CB000A39EA /* Privacy_EN.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F8F3984C271372CB000A39EA /* Privacy_EN.pdf */; };
+		F8F398522713738A000A39EA /* TestingSuiteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F398512713738A000A39EA /* TestingSuiteView.swift */; };
+		F8F39854271468B6000A39EA /* TestMeterResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F39853271468B6000A39EA /* TestMeterResults.swift */; };
 		F8F6666F26BBE0B900C0F924 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8F6667126BBE0B900C0F924 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +77,8 @@
 		4846476C265BE5610055C317 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4846476F265BE5610055C317 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		48464771265BE5610055C317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F827C50F2715BE6D00F9191A /* TestingMeterPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingMeterPopupView.swift; sourceTree = "<group>"; };
+		F827C5112715C10F00F9191A /* TestingFinalPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingFinalPopupView.swift; sourceTree = "<group>"; };
 		F83908FA26AAC142002FFCCA /* MeterReadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterReadingView.swift; sourceTree = "<group>"; };
 		F83908FC26AAC192002FFCCA /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		F83E195226B7EEA50092C675 /* ReadingFlowEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingFlowEnum.swift; sourceTree = "<group>"; };
@@ -98,14 +113,25 @@
 		F8C21FA926A1736C00B9C34D /* CodeReadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeReadingView.swift; sourceTree = "<group>"; };
 		F8C21FAB26A1B6E500B9C34D /* UIComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIComponents.swift; sourceTree = "<group>"; };
 		F8C21FAD26A1B88300B9C34D /* FaqView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqView.swift; sourceTree = "<group>"; };
-		F8C21FAF26A1B89000B9C34D /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
 		F8C21FB126A1B89D00B9C34D /* ContactFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormView.swift; sourceTree = "<group>"; };
 		F8C21FB326A1B8A900B9C34D /* PrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyView.swift; sourceTree = "<group>"; };
 		F8C21FB526A1B8CC00B9C34D /* ImprintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImprintView.swift; sourceTree = "<group>"; };
 		F8C21FB726A1C8B400B9C34D /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
 		F8C21FB926A56F2D00B9C34D /* EmailHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailHelper.swift; sourceTree = "<group>"; };
+		F8C37512270E3ADE00ABBCFD /* HeatTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatTipView.swift; sourceTree = "<group>"; };
+		F8C37513270E3ADE00ABBCFD /* WaterTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterTipView.swift; sourceTree = "<group>"; };
+		F8C37514270E3ADE00ABBCFD /* EnvironmentTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentTipView.swift; sourceTree = "<group>"; };
+		F8C3751A270E3BCF00ABBCFD /* MeterInitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterInitModel.swift; sourceTree = "<group>"; };
+		F8C3751C270E3C9500ABBCFD /* MeterConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterConfiguration.swift; sourceTree = "<group>"; };
+		F8C3751E270E3CCC00ABBCFD /* PDFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFileView.swift; sourceTree = "<group>"; };
 		F8C839A026CBA8B9005EEF23 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		F8D911CD26B2918600F0467E /* PushedScreenEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushedScreenEnum.swift; sourceTree = "<group>"; };
+		F8F39849271372CA000A39EA /* Privacy_DE.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Privacy_DE.pdf; sourceTree = "<group>"; };
+		F8F3984A271372CA000A39EA /* Legal_DE.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Legal_DE.pdf; sourceTree = "<group>"; };
+		F8F3984B271372CA000A39EA /* Legal_EN.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Legal_EN.pdf; sourceTree = "<group>"; };
+		F8F3984C271372CB000A39EA /* Privacy_EN.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Privacy_EN.pdf; sourceTree = "<group>"; };
+		F8F398512713738A000A39EA /* TestingSuiteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingSuiteView.swift; sourceTree = "<group>"; };
+		F8F39853271468B6000A39EA /* TestMeterResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMeterResults.swift; sourceTree = "<group>"; };
 		F8F6667026BBE0B900C0F924 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F8F6667226BBE0BA00C0F924 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,6 +162,7 @@
 		4846475C265BE55F0055C317 = {
 			isa = PBXGroup;
 			children = (
+				F8F39848271372AF000A39EA /* PDF */,
 				48464767265BE55F0055C317 /* MesstexIOS */,
 				48464766265BE55F0055C317 /* Products */,
 				087254A9DA031D4B131FF25E /* Frameworks */,
@@ -177,8 +204,8 @@
 		48464778265C06DA0055C317 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F83E195626B809BF0092C675 /* More group */,
 				F83E195526B809760092C675 /* Home group */,
+				F83E195626B809BF0092C675 /* More group */,
 				F8C21FBB26A70CEC00B9C34D /* Onboarding */,
 				4846477F265D11400055C317 /* Main */,
 				F8C16A4326A80E000039295B /* LaunchScreen.storyboard */,
@@ -208,6 +235,7 @@
 		F83E195526B809760092C675 /* Home group */ = {
 			isa = PBXGroup;
 			children = (
+				F8C37519270E3B0B00ABBCFD /* Tips&Tricks */,
 				F8C21FA526A167FB00B9C34D /* HomeView.swift */,
 				F87BBCD126B7EB450033D270 /* Reading flow */,
 			);
@@ -217,9 +245,9 @@
 		F83E195626B809BF0092C675 /* More group */ = {
 			isa = PBXGroup;
 			children = (
+				F8C3751E270E3CCC00ABBCFD /* PDFileView.swift */,
 				F8C21FA726A1681000B9C34D /* MoreView.swift */,
 				F8C21FAD26A1B88300B9C34D /* FaqView.swift */,
-				F8C21FAF26A1B89000B9C34D /* ContactView.swift */,
 				F8C21FB126A1B89D00B9C34D /* ContactFormView.swift */,
 				F8C21FB326A1B8A900B9C34D /* PrivacyView.swift */,
 				F8C21FB526A1B8CC00B9C34D /* ImprintView.swift */,
@@ -243,6 +271,9 @@
 				F89B43E026AE9F07000308BA /* ConfirmationView.swift */,
 				F89B43E226AEA6C4000308BA /* SuccessVIew.swift */,
 				F8C839A026CBA8B9005EEF23 /* VideoView.swift */,
+				F8F398512713738A000A39EA /* TestingSuiteView.swift */,
+				F827C50F2715BE6D00F9191A /* TestingMeterPopupView.swift */,
+				F827C5112715C10F00F9191A /* TestingFinalPopupView.swift */,
 			);
 			path = "Reading flow";
 			sourceTree = "<group>";
@@ -250,6 +281,8 @@
 		F89B43E426AEAC57000308BA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F8C3751A270E3BCF00ABBCFD /* MeterInitModel.swift */,
+				F8C3751C270E3C9500ABBCFD /* MeterConfiguration.swift */,
 				F89B43EE26AEB837000308BA /* Faq.swift */,
 				F89B43F026AEB993000308BA /* FaqItem.swift */,
 				F8BFCB4026B025E900922479 /* ContactFormData.swift */,
@@ -262,6 +295,7 @@
 				F8D911CD26B2918600F0467E /* PushedScreenEnum.swift */,
 				F87BBCCF26B41D500033D270 /* ErrorModel.swift */,
 				F83E195226B7EEA50092C675 /* ReadingFlowEnum.swift */,
+				F8F39853271468B6000A39EA /* TestMeterResults.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -281,6 +315,28 @@
 				F8A62AB026B9435100368756 /* OnboardingPageTemplate.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		F8C37519270E3B0B00ABBCFD /* Tips&Tricks */ = {
+			isa = PBXGroup;
+			children = (
+				F8C37514270E3ADE00ABBCFD /* EnvironmentTipView.swift */,
+				F8C37512270E3ADE00ABBCFD /* HeatTipView.swift */,
+				F8C37513270E3ADE00ABBCFD /* WaterTipView.swift */,
+			);
+			name = "Tips&Tricks";
+			path = "../Tips&Tricks";
+			sourceTree = "<group>";
+		};
+		F8F39848271372AF000A39EA /* PDF */ = {
+			isa = PBXGroup;
+			children = (
+				F8F3984A271372CA000A39EA /* Legal_DE.pdf */,
+				F8F3984B271372CA000A39EA /* Legal_EN.pdf */,
+				F8F39849271372CA000A39EA /* Privacy_DE.pdf */,
+				F8F3984C271372CB000A39EA /* Privacy_EN.pdf */,
+			);
+			path = PDF;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,10 +403,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8F3984E271372CB000A39EA /* Legal_DE.pdf in Resources */,
 				F8F6666F26BBE0B900C0F924 /* Localizable.strings in Resources */,
+				F8F39850271372CB000A39EA /* Privacy_EN.pdf in Resources */,
 				48464770265BE5610055C317 /* Preview Assets.xcassets in Resources */,
+				F8F3984F271372CB000A39EA /* Legal_EN.pdf in Resources */,
 				F8C16A4426A80E000039295B /* LaunchScreen.storyboard in Resources */,
 				F8C21FA426A0530400B9C34D /* roboto in Resources */,
+				F8F3984D271372CB000A39EA /* Privacy_DE.pdf in Resources */,
 				4846476D265BE5610055C317 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,10 +422,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F827C5102715BE6D00F9191A /* TestingMeterPopupView.swift in Sources */,
+				F8C3751F270E3CCC00ABBCFD /* PDFileView.swift in Sources */,
+				F8C3751D270E3C9500ABBCFD /* MeterConfiguration.swift in Sources */,
+				F8C3751B270E3BCF00ABBCFD /* MeterInitModel.swift in Sources */,
+				F8C37515270E3ADE00ABBCFD /* HeatTipView.swift in Sources */,
+				F8C37516270E3ADE00ABBCFD /* WaterTipView.swift in Sources */,
+				F8C37517270E3ADE00ABBCFD /* EnvironmentTipView.swift in Sources */,
 				F8C21FAA26A1736C00B9C34D /* CodeReadingView.swift in Sources */,
+				F8F39854271468B6000A39EA /* TestMeterResults.swift in Sources */,
 				F87BBCD326B7EB660033D270 /* MeterReadingFlowView.swift in Sources */,
 				F89B43E126AE9F07000308BA /* ConfirmationView.swift in Sources */,
 				4846476B265BE55F0055C317 /* MainView.swift in Sources */,
+				F827C5122715C10F00F9191A /* TestingFinalPopupView.swift in Sources */,
 				F8C21FA626A167FB00B9C34D /* HomeView.swift in Sources */,
 				F8C16A4226A8014C0039295B /* OnboardingFlowView.swift in Sources */,
 				F89B43DD26AC12B5000308BA /* ManualReadingView.swift in Sources */,
@@ -377,7 +446,6 @@
 				F89B43E326AEA6C4000308BA /* SuccessVIew.swift in Sources */,
 				F87BBCD026B41D500033D270 /* ErrorModel.swift in Sources */,
 				F8BFCB4126B025E900922479 /* ContactFormData.swift in Sources */,
-				F8C21FB026A1B89000B9C34D /* ContactView.swift in Sources */,
 				F83E195326B7EEA50092C675 /* ReadingFlowEnum.swift in Sources */,
 				F8C21FB626A1B8CC00B9C34D /* ImprintView.swift in Sources */,
 				48464769265BE55F0055C317 /* MesstexIOSApp.swift in Sources */,
@@ -397,6 +465,7 @@
 				F8A62AB126B9435100368756 /* OnboardingPageTemplate.swift in Sources */,
 				F8C21FA826A1681000B9C34D /* MoreView.swift in Sources */,
 				F89B43EF26AEB837000308BA /* Faq.swift in Sources */,
+				F8F398522713738A000A39EA /* TestingSuiteView.swift in Sources */,
 				F8D911CE26B2918600F0467E /* PushedScreenEnum.swift in Sources */,
 				F8C839A126CBA8B9005EEF23 /* VideoView.swift in Sources */,
 				F8C21FB826A1C8B400B9C34D /* AboutUsView.swift in Sources */,
@@ -545,7 +614,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"MesstexIOS/Preview Content\"";
 				DEVELOPMENT_TEAM = BB2TX7YC42;
 				ENABLE_PREVIEWS = YES;
@@ -575,7 +644,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"MesstexIOS/Preview Content\"";
 				DEVELOPMENT_TEAM = BB2TX7YC42;
 				ENABLE_PREVIEWS = YES;

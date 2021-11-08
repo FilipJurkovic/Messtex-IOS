@@ -25,21 +25,7 @@ struct MeterReadingFlowView: View {
                 ReadingStepsView(viewModel: viewModel)
                     .transition(.opacity)
 
-            case .meterReadingView :
-                MeterReadingView(index: viewModel.currentMeterIndex, viewModel: viewModel) { _, values, rawStrings, resultCodes in
-                    if !viewModel.postModelData.meterReadings.isEmpty && viewModel.postModelData.meterReadings.endIndex-1 >= viewModel.currentMeterIndex {
-                        viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue = viewModel.removePoint(value: values[0])
-                        viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].cleanReadingString = values[0]
-                        viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].rawReadingString = rawStrings[0]
-                        viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].readingResultStatus = viewModel.getResultCode(code: resultCodes[0].rawValue)
-                    } else {
-                        let meterModel: MeterReceivingData = viewModel.userData.meters[viewModel.currentMeterIndex]
-                        viewModel.postModelData.meterReadings.append(MeterReadingData(counterNumber: meterModel.counterNumber, counterType: meterModel.counterType, counterValue: viewModel.removePoint(value: values[0]), rawReadingString: rawStrings[0], cleanReadingString: values[0], readingResultStatus: viewModel.getResultCode(code: resultCodes[0].rawValue), userMessage: ""))
-                    }
-
-                    viewModel.currentReadingView = ReadingFlowEnum.manualReadingView
-                }
-                .transition(.opacity)
+            
 
             case .manualReadingView :
                 HStack {
@@ -70,17 +56,9 @@ struct MeterReadingFlowView: View {
                 VideoView(viewModel: viewModel)
                     .transition(.opacity)
                 
-            case .testingView :
-                TestSuiteView(viewModel: viewModel) { _, values, rawStrings, resultCodes in
-                    viewModel.testMeterResult.meterRawValue = rawStrings[0]
-                    viewModel.testMeterResult.meterResultCode = viewModel.getResultCode(code: resultCodes[0].rawValue)
-                    viewModel.testMeterResult.counterValue = Double(values[0]) ?? 0.0
-                    
-                    viewModel.previousReadingView = viewModel.currentReadingView
-                    viewModel.currentReadingView = ReadingFlowEnum.testMeterPopup
-                }
-                .transition(.opacity)
-            
+          
+
+       
             case .testMeterPopup:
                 TestingMeterPopupView(viewModel: viewModel)
                 
@@ -92,7 +70,7 @@ struct MeterReadingFlowView: View {
                     .transition(.opacity)
             }
 
-            if viewModel.currentReadingView != .exampleView && viewModel.currentReadingView != .videoView && viewModel.currentReadingView != .meterReadingView && viewModel.currentReadingView != .successView {
+            if viewModel.currentReadingView != .exampleView && viewModel.currentReadingView != .videoView && viewModel.currentReadingView != .meterReadingView {
                 HStack {
                     Button(action: {
 
@@ -102,6 +80,9 @@ struct MeterReadingFlowView: View {
 
                         case .readingStepsView:
                             viewModel.currentReadingView = .codeReadingView
+                            
+                        case .manualReadingView:
+                            viewModel.currentReadingView = viewModel.previousReadingView
 
                         default:
                             viewModel.currentReadingView = viewModel.previousReadingView
@@ -114,7 +95,7 @@ struct MeterReadingFlowView: View {
                 .padding(.top, 10)
                 .padding(.leading, 19)
             }
-
+       
             if viewModel.isProgressBarActive {
                 ZStack {
                     Rectangle()

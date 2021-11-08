@@ -12,7 +12,6 @@ struct ConfirmationView: View {
     @ObservedObject var viewModel: MainViewModel
     var length = 8
     var body: some View {
-        ZStack {
             ScrollView(showsIndicators: false) {
                 VStack {
                     HStack {
@@ -22,8 +21,7 @@ struct ConfirmationView: View {
                         Spacer()
                     }.padding(.horizontal, 24)
 
-                }
-                .padding(.top, 62)
+                
                 ZStack {
                     Image("reading_paper")
                         .resizable()
@@ -114,14 +112,12 @@ struct ConfirmationView: View {
                 .padding(.bottom, 30)
                 .padding(.top, 38)
                 .padding(.horizontal, 24)
-
+                }
+                .padding(.top, 62)
+                .navigationTitle("")
+                .navigationBarHidden(true)
             }
         }
-        .navigationBarBackButtonHidden(true)
-        .navigationTitle("")
-        .navigationBarHidden(true)
-        .frame(height: UIScreen.main.bounds.size.height)
-    }
 }
 
 struct ConfirmationView_Previews: PreviewProvider {

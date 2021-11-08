@@ -41,17 +41,17 @@ struct TestingFinalPopupView: View {
         switch viewModel.testMeterConfiguration.meterAppearance {
         case "AUTO_DE_WATER_HOME":
             for result in viewModel.testingMeterResults {
-                if(result == resultsWater[viewModel.testingMeterResults.firstIndex(of: result)!]){
-                    correctResults += 1
-                }
+//                if(result == resultsWater[viewModel.testingMeterResults.firstIndex(of: result)!]){
+//                    correctResults += 1
+//                }
             }
             
             
         default:
             for result in viewModel.testingMeterResults {
-                if(result == resultsHeat[viewModel.testingMeterResults.firstIndex(of: result)!]){
-                    correctResults += 1
-                }
+//                if(result == resultsHeat[viewModel.testingMeterResults.firstIndex(of: result)!]){
+//                    correctResults += 1
+//                }
             }
             
         }

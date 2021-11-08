@@ -12,7 +12,7 @@ struct PostModelRecord: Codable {
     var language: String
     var meterReadings: [MeterReadingData]
     var firstName: String
-    var secondName: String
+    var lastName: String
     var email: String
     var phone: String
     var sendCopy: Bool

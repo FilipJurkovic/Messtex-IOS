@@ -650,6 +650,7 @@ struct FinishedReadingWidget: View {
                         Text(LocalizedStringKey("SuccessCardTitle"))
                             .heading2()
                             .foregroundColor(.light)
+                            .fixedSize(horizontal: false, vertical: true)
                             .padding(.bottom, 5)
                         Text(LocalizedStringKey("SuccessCardSubtitle"))
                             .paragraph()
@@ -686,8 +687,9 @@ struct Co2Widget: View {
                         .foregroundColor(.light)
                         .padding(.bottom, 13)
                         .multilineTextAlignment(.center)
-                    Text(String(co2Level))
+                    Text("\(String(co2Level)) CO₂")
                         .font(Font.custom("Roboto-Bold", size: 56))
+                        .baselineOffset(5)
                         .foregroundColor(.light)
                         .padding(.bottom, 16)
 
@@ -717,35 +719,54 @@ struct FaqWidget: View {
     var body: some View {
         VStack {
             ForEach(0 ..< questionCount) { index in
-                DisclosureGroup(
-                    isExpanded: $flags[index],
-                    content: {
-                        Text(faq.faqs[index].answer)
-                            .paragraph()
-                            .padding(.top, 22)
-
-                    },
-                    label: {
-                        if flags[index] {
-                            Text(faq.faqs[index].question)
-                                .paragraphBold()
-                                .fixedSize(horizontal: false, vertical: true)
-                        } else {
-                            Text(faq.faqs[index].question)
-                                .paragraph()
-                                .fixedSize(horizontal: false, vertical: true)
-                        }
+                VStack{
+                    VStack{
+                        DisclosureGroup(
+                            isExpanded: $flags[index],
+                            content: {
+                                ZStack{
+                                    Text(faq.faqs[index].answer)
+                                        .paragraph()
+                                        .padding(.top, 22)
+                                    
+                                }
+                                
+                                
+                            },
+                            label: {
+                                if flags[index] {
+                                    Text(faq.faqs[index].question)
+                                        .paragraphBold()
+                                        .fixedSize(horizontal: false, vertical: true)
+                                } else {
+                                    Text(faq.faqs[index].question)
+                                        .paragraph()
+                                        .fixedSize(horizontal: false, vertical: true)
+                                }
+                            }
+                        ).disabled(true)
                     }
-                )
-                .padding(.vertical, 10)
-                .padding(.horizontal, 12)
-                .accentColor(.dark)
-                .onTapGesture {
-                    withAnimation(.easeOut) { flags[index].toggle() }
-                }
-                .animation(.easeIn)
-
-                if index != flags.count - 1 {
+                    .padding(.vertical, 10)
+                    .padding(.horizontal, 12)
+                    .accentColor(.dark)
+                    .onTapGesture {
+                        for i in 0...flags.count-1{
+                            if(i != index){
+                                flags[i] = false
+                            }
+                        }
+                        
+                        if flags[index] {
+                            flags[index].toggle()
+                        } else {
+                            withAnimation(.easeInOut){
+                                flags[index].toggle()
+                            }
+                        }
+                        
+                    }
+        
+                    
                     Divider()
                         .frame(height: 3)
                         .foregroundColor(.medium)
@@ -755,6 +776,8 @@ struct FaqWidget: View {
         }.padding(.horizontal, 12)
     }
 }
+
+
 
 struct ReadingFlowHeaderWidget: View {
     var title: String
@@ -951,21 +974,30 @@ struct TipsCard: View {
 
 struct PDFKitRepresentedView: UIViewRepresentable {
     let url: URL
-    init(_ url: URL) {
+    let width: Double
+    let height: Double
+    
+    init(_ url: URL, width: Double, height: Double) {
         self.url = url
+        self.width = width
+        self.height = height
     }
 
     func makeUIView(context _: UIViewRepresentableContext<PDFKitRepresentedView>) -> PDFKitRepresentedView.UIViewType {
-        let pdfView = PDFView()
-        pdfView.document = PDFDocument(url: url)
+        let pdfView = PDFView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         pdfView.autoScales = true
-        pdfView.minScaleFactor = 0.6
+        pdfView.document = PDFDocument(url: url)
+        pdfView.minScaleFactor = pdfView.scaleFactor
+        pdfView.maxScaleFactor = pdfView.scaleFactor
+
         return pdfView
     }
 
     func updateUIView(_: UIView, context _: UIViewRepresentableContext<PDFKitRepresentedView>) {
         // Update the view.
     }
+    
+
 }
 
 
@@ -1040,7 +1072,7 @@ struct TestingMeterPopUp: View {
     
     var meterRawValue : String
     var meterResultCode : String
-    var counterValue : Double
+    var counterValue : String
 
     var body: some View {
         ZStack {

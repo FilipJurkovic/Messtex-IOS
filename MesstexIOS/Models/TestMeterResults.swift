@@ -9,5 +9,5 @@ import Foundation
 struct TestMeterResults {
     var meterRawValue: String
     var meterResultCode: String
-    var counterValue: Double
+    var counterValue: String
 }

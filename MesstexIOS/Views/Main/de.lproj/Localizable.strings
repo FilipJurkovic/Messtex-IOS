@@ -10,8 +10,8 @@
 
 //TAB BAR
 "Home" = "Home";
-"Scan" = "Scan";
-"More" = "More";
+"Start" = "Starten";
+"More" = "Mehr";
 
 //HOME
 "Title" = "Willkommen bei Messtex";
@@ -21,7 +21,7 @@
 "SuccessCardSubtitle" = "Werfen Sie einen Blick auf unsere Tipps & Tricks und entdecken Sie mehr von der Messtex-Welt";
 "MoreButton" = "Erfahren Sie mehr";
 "Co2Title" = "Helfen Sie uns die Umwelt zu schützen.";
-"Co2Subtitle" = "kg of CO₂ haben wir zusammen schon eingespart";
+"Co2Subtitle" = "So viel Kilogramm an Co2 Emissionen\nhaben wir zusammen schon eingespart";
 "TipsTitle" = "Tipps und Tricks";
 "TipsSubtitle" = "Hier finden Sie hilfreiche Tipps für Ihren Alltag.";
 "ShowMore" = "Mehr anzeigen";
@@ -33,13 +33,13 @@
 
 //CODE READING
 "CodeReadingTitle" = "Ablese-Code";
-"CodeReadingSubtitle" = "Bitte tragen Sie den achtstelligen Ablese-Code aus Ihrem Brief ein.";
+"CodeReadingSubtitle" = "Bitte tragen Sie den sechsstelligen Ablese-Code aus Ihrem Brief ein.";
 "Link" = "Wo finde ich den Ablesecode? Klicken Sie hier.";
 "Next" = "Nächster Schritt";
 
 //READING STEPS
 "ReadingStepsTitle" = "Ablesung starten";
-"ReadingStepsSubTitle" = "Bitte lesen Sie die folgenden 3 Zählerstände ein:";
+"ReadingStepsSubTitle" = "Bitte lesen Sie die folgenden Zählerstände ab:";
 "ContactData" = "Kontakt und Vertragsdaten";
 "Submit" = "Ablesen";
 "Change" = "Ändern";
@@ -69,8 +69,8 @@
 
 //MANUAL INPUT
 "ManualInputTitle" = "Manuelle Eingabe";
-"ManualInputSubtitle" = "Tragen Sie nun den Zählerstand Ihres Zählers mit 2 Nachkommastellen ein:";
-"CounterNumberTextField" = "Zählernummer";
+"ManualInputSubtitle" = "Tragen Sie nun den Zählerstand Ihres Zählers ein:";
+"CounterNumberTextField" = "Zählernummer:";
 "CounterTypeTextField" = "Zählerart:";
 "ReadingDateTextField" = "Ablesedatum:";
 "MessageTitle" = "Falls Ihr Gerät defekt ist, tragen Sie dies bitte hier ein";
@@ -83,6 +83,8 @@
 "LastNameTextField" = "Nachname";
 "EmailTextField" = "E-Mail";
 "SendCopyText" = "Bitte senden Sie mir die Ablese-Übersicht als E-Mail zu";
+"RecieveViaEmailText" = "Dürfen wir Sie zukünftig per Mail statt per Post an Ihre Ablesung erinnern?";
+"RecieveNewsletterText" = "Dürfen wir Sie ab sofort einfach und schnell per E-Mail über Neuerungen informieren?";
 "PhoneTextField" = "Handy- oder Telefonnummer";
 "Address" = "Adresse";
 "StreetTextField" = "Straße";
@@ -143,7 +145,7 @@
 
 //ABOUT SCREEN
 "About" = "Über uns";
-"AboutTitle" = "Wir sind der Ansprechpartner, dem Sie vertrauen können. Wir sind immer für Sie da.";
+"AboutTitle" = "Durch jahrelange Erfahrung haben wir festgestellt, wie wichtig eine Modernisierung unseres Berufsfeldes ist. Für Sie als Mieter, für Sie als Eigentümer und für unser Land und unsere Erde.";
 "AboutParagraphOne" = "Wir von Messtex haben es uns zur Aufgabe gemacht den Ablese-Sektor zu modernisieren und gemeinsam mit unseren Partnern und Kunden den Markt zu reformieren. Das 21. Jahrhundert hat uns bereits vieles gebracht: die Digitalisierung überholt und verbessert fortlaufend bestehende Alt-Systeme und gibt diesen einen neuen Schwung.";
 "AboutParagraphTwo" = "Mit Hilfe unserer Partner haben wir ein einzigartiges System entwickelt mit dem Sie einfach, zeit- und kosteneffizient Ihre eigene Ablesung durchführen können. In der Konzeption unserer App haben wir größten Wert auf einen leichten und intuitiven Umgang mit dieser gelegt, so dass wirklich jeder von unserer Erneuerung profitieren kann.";
 "AboutSubtitleOne" = "Wir steigen auf diesen Zug der Innovation auf und machen uns die Vision der Revolutionierung des Ablesesektors zur Aufgabe! Dafür haben wir uns strikte Prinzipien gesetzt, nach denen wir tagtäglich leben und handeln:";

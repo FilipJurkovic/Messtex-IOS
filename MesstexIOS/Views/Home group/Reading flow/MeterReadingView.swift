@@ -74,6 +74,7 @@ struct CameraFooterView: View {
             .padding(.trailing, 15)
 
             Button(action: {
+                viewModel.getCounterImage(index: viewModel.currentMeterIndex)
                 viewModel.isInfoSheetOpen = !viewModel.isInfoSheetOpen
 
             }, label: {
@@ -88,24 +89,28 @@ struct CameraFooterView: View {
                 }
             })
 
-        }.padding(.bottom, 50)
+        }.padding(.bottom, UIScreen.main.bounds.size.height < 812 ? 50 : 100)
 
     }
 
 }
 
 struct MeterReadingView: View {
-
-    var index: Int = 0
-
     @ObservedObject var viewModel: MainViewModel
 
     private var cameraView: CameraView
 
-    init(index: Int, viewModel: MainViewModel, captureAction: @escaping (UIImage, [String], [String], [PIXMeterReadingResultStatus]) -> Void) {
-        self.index = index
+    init(viewModel: MainViewModel, captureAction: @escaping (UIImage, [String], [String], [PIXMeterReadingResultStatus]) -> Void) {
+//    init(viewModel: MainViewModel, captureAction: @escaping (UIImage, [String]) -> Void) {
+//        self.index = index
         self.viewModel = viewModel
-        self.cameraView = CameraView(captureAction: { image, values, rawStrings, resultCodes in captureAction(image, values, rawStrings, resultCodes)}, viewModel: viewModel)
+        self.cameraView = CameraView(
+            fractionConfig: viewModel.userData.meters[viewModel.currentMeterIndex].configuration.fractionDigitsAuto ? PIXAutomatic : viewModel.userData.meters[viewModel.currentMeterIndex].configuration.fractionDigits!,
+            integerConfig: viewModel.userData.meters[viewModel.currentMeterIndex].configuration.integerDigitsAuto ? PIXAutomatic : viewModel.userData.meters[viewModel.currentMeterIndex].configuration.integerDigits!,
+            numberOfCountersConfig: viewModel.userData.meters[viewModel.currentMeterIndex].configuration.numberOfCountersAuto ? PIXAutomatic : viewModel.userData.meters[viewModel.currentMeterIndex].configuration.numberOfCounters!,
+            meterAppearanceConfig: viewModel.getCounterType(type: viewModel.userData.meters[viewModel.currentMeterIndex].configuration.meterAppearance),
+            captureAction: { image, values, rawStrings, resultCodes in captureAction(image, values, rawStrings, resultCodes) })
+//        self.cameraView = CameraView(captureAction: { image, values in captureAction(image, values)})
 
     }
 
@@ -137,7 +142,7 @@ struct MeterReadingView: View {
                             .multilineTextAlignment(.center)
                             .foregroundColor(.light)
 
-                        Text("\(viewModel.userData.meters[index].counterRoom), \(viewModel.userData.meters[index].counterTypeName) Nr. \(viewModel.userData.meters[index].counterNumber)")
+                        Text("\(viewModel.userData.meters[viewModel.currentMeterIndex].counterRoom), \(viewModel.userData.meters[viewModel.currentMeterIndex].counterTypeName) Nr. \(viewModel.userData.meters[viewModel.currentMeterIndex].counterNumber)")
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 24)
                             .foregroundColor(.light)
@@ -146,9 +151,12 @@ struct MeterReadingView: View {
 
                     Button(
                         action: {
-                            let meterModel: MeterReceivingData = viewModel.userData.meters[index]
-                            if !viewModel.postModelData.meterReadings.isEmpty && viewModel.postModelData.meterReadings.endIndex-1 >= index {
-                                viewModel.postModelData.meterReadings[index] = MeterReadingData(counterNumber: meterModel.counterNumber, counterType: meterModel.counterType, counterValue: "", rawReadingString: "", cleanReadingString: "", readingResultStatus: "",  userMessage: "")
+                            let meterModel: MeterReceivingData = viewModel.userData.meters[viewModel.currentMeterIndex]
+                            if !viewModel.postModelData.meterReadings.isEmpty && viewModel.postModelData.meterReadings.endIndex-1 >= viewModel.currentMeterIndex{
+                                if viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue != ""{
+                                viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue = viewModel.removePoint(value: viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue)
+                            }
+                                
                             } else {
                                 viewModel.postModelData.meterReadings.append(MeterReadingData(counterNumber: meterModel.counterNumber, counterType: meterModel.counterType, counterValue: "", rawReadingString: "", cleanReadingString: "", readingResultStatus: "", userMessage: ""))
                             }
@@ -168,7 +176,7 @@ struct MeterReadingView: View {
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
         .sheet(isPresented: $viewModel.isInfoSheetOpen) {
-            InfoView(viewModel: viewModel, index: viewModel.getInfoViewIndex(meterType: viewModel.userData.meters[index].counterType))
+            InfoView(viewModel: viewModel, index: viewModel.getInfoViewIndex(meterType: viewModel.userData.meters[viewModel.currentMeterIndex].counterType))
         }
     }
 

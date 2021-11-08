@@ -50,7 +50,6 @@ struct ReadingStepsView: View {
                                         action: {
                                             viewModel.currentMeterIndex = index
                                             viewModel.previousReadingView = viewModel.currentReadingView
-                                            viewModel.getCounterImage(index: index)
 
                                             withAnimation(.easeInOut) {
                                                 viewModel.currentReadingView = ReadingFlowEnum.meterReadingView

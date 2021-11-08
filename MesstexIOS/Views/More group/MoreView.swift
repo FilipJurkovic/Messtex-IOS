@@ -78,7 +78,7 @@ struct MoreView: View {
 
                         NavigationLink(
 
-                            destination: PDFileView(url: Bundle.main.url(forResource: viewModel.language == "English" ? "Legal_EN": "Legal_DE", withExtension: "pdf")!, title: "Privacy"),
+                            destination: PDFileView(url: Bundle.main.url(forResource: viewModel.language == "English" ? "Legal_EN": "Legal_DE", withExtension: "pdf")!, title: "Legal"),
                             label: {
                                 CardButton(cardName: "Legal")
                                     .padding(.horizontal, 24)

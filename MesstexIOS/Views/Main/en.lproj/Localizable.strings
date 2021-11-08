@@ -10,7 +10,7 @@
 
 //TAB BAR
 "Home" = "Home";
-"Scan" = "Scan";
+"Start" = "Start";
 "More" = "More";
 
 //HOME
@@ -21,7 +21,7 @@
 "SuccessCardSubtitle" = "Check out our tips and tricks discover more from the Messtex world";
 "MoreButton" = "learn more about";
 "Co2Title" = "Help us protect the environment.";
-"Co2Subtitle" = "kilograms of CO₂ have already been saved together";
+"Co2Subtitle" = "kilograms of CO₂ have already\nbeen saved together";
 "TipsTitle" = "Tips and Tricks";
 "TipsSubtitle" = "Here you will find useful tips for your everyday life.";
 "ShowMore" = "Show more";
@@ -33,13 +33,13 @@
 
 //CODE READING
 "CodeReadingTitle" = "Reading code";
-"CodeReadingSubtitle" = "Please enter the six digit code from your informational letter";
+"CodeReadingSubtitle" = "Please enter the six digit code from your informational letter.";
 "Link" = "Where do I find the reading code? Click here";
 "Next" = "Next";
 
 //READING STEPS
 "ReadingStepsTitle" = "Start reading";
-"ReadingStepsSubTitle" = "Please send us the following three meter readings:";
+"ReadingStepsSubTitle" = "Please send us the following meter readings:";
 "ContactData" = "Contact and contract data";
 "Submit" = "Submit";
 "Change" = "Change";
@@ -69,7 +69,7 @@
 
 //MANUAL INPUT
 "ManualInputTitle" = "Manual input";
-"ManualInputSubtitle" = "Now enter the meter reading of your meter manually without any decimal places:";
+"ManualInputSubtitle" = "Now enter the reading of your meter:";
 "CounterNumberTextField" = "Counter number:";
 "CounterTypeTextField" = "Counter type:";
 "ReadingDateTextField" = "Reading date:";
@@ -83,6 +83,8 @@
 "LastNameTextField" = "Surname";
 "EmailTextField" = "Email";
 "SendCopyText" = "Please send me the overview as an email copy";
+"RecieveViaEmailText" = "May we remind you in the future per E-Mail instead of post letter about your meter reading?";
+"RecieveNewsletterText" = "May we inform you from now on simply and quickly by e-mail about news?";
 "PhoneTextField" = "Phone Number";
 "Address" = "Address";
 "StreetTextField" = "Street";
@@ -147,7 +149,7 @@
 
 //ABOUT SCREEN
 "About" = "About Us";
-"AboutTitle" = "We are a contact you can trust. We are at your side in all situations and are always available for you.";
+"AboutTitle" = "Through years of experience, we have determined the importance of modernizing our professional field. For you as a tenant, for you as a property owner, and for our country and our earth.";
 "AboutParagraphOne" = "We want to digitize every manual reading in Germany! And thus make reading as easy and convenient as possible for everyone involved. Especially in times of digitization and the permanent lack of time, it is essential that we simplify things in this industry as well.";
 "AboutParagraphTwo" = "With the help of our partners, we have developed a unique system with which you can easily, time- and cost-efficiently perform your own meter reading. In designing our app, we placed great emphasis on making it easy and intuitive to use, so that truly everyone can benefit from our renewal.";
 "AboutSubtitleOne" = "The digital meter reading input, which you can easily record yourself with messtex, saves you a lot of time. The advantages are clear";

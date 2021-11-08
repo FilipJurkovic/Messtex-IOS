@@ -12,11 +12,11 @@ struct ExampleView: View {
 
     var body: some View {
         ZStack {
-            Color.dark
+            Color.light
 
-            Image("example_brief")
+            Image(viewModel.language == "English" ? "example_ENG" : "example_DE")
                 .resizable()
-                .frame(width: UIScreen.main.bounds.size.width, height: 535)
+                .aspectRatio(contentMode: .fit)
 
             VStack {
                 HStack {

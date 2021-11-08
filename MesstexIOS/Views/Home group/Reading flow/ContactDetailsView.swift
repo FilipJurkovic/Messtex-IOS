@@ -47,6 +47,27 @@ struct ContactDetailsView: View {
                                 .foregroundColor(.dark)
                             Spacer()
                         }.frame(height: 64)
+                        
+                        HStack {
+                            Toggle("", isOn: $viewModel.postModelData.subscribeNewsletter)
+                                .labelsHidden()
+                                .toggleStyle(SwitchToggleStyle(tint: .primary_color))
+                            Text(LocalizedStringKey("RecieveNewsletterText"))
+                                .paragraph()
+                                .foregroundColor(.dark)
+                            Spacer()
+                        }.frame(height: 64)
+                        
+                        HStack {
+                            Toggle("", isOn: $viewModel.postModelData.getMeterReadingLetterByEmail)
+                                .labelsHidden()
+                                .toggleStyle(SwitchToggleStyle(tint: .primary_color))
+                            Text(LocalizedStringKey("RecieveViaEmailText"))
+                                .paragraph()
+                                .foregroundColor(.dark)
+                            Spacer()
+                        }.frame(height: 64)
+                        
                         FloatingTextField(placeHolder: "PhoneTextField", text: $viewModel.userData.phone, isRequired: false)
                             .padding(.bottom, 32)
                     }
@@ -81,6 +102,7 @@ struct ContactDetailsView: View {
                 PrimaryButton(handler: {
                     if textFieldValidatorEmail(viewModel.userData.email) {
                         viewModel.emailError = false
+                        viewModel.readingStepsProgress[viewModel.readingStepsProgress.endIndex-1] = true
                         withAnimation(.easeInOut) {
                             viewModel.currentReadingView = ReadingFlowEnum.readingStepsView
                         }

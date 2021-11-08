@@ -43,15 +43,7 @@ struct AboutUsView: View {
                                 .heading2()
                                 .foregroundColor(.primary_color)
                                 .padding(.bottom, 16)
-
-                            Text(LocalizedStringKey("AboutParagraphOne"))
-                                .paragraph()
-                                .padding(.bottom, 23)
-
-                            Text(LocalizedStringKey("AboutSubtitleOne"))
-                                .paragraphBold()
-                                .foregroundColor(.primary_color)
-                                .padding(.bottom, 16)
+                                .fixedSize(horizontal: false, vertical: true)
 
                             VStack {
                                 HStack(alignment: .top) {

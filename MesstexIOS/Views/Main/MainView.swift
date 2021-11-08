@@ -21,10 +21,10 @@ struct MainView: View {
             NavigationView {
                 TabView {
 
-                    HomeView(viewModel: viewModel).tabItem { Label("Home", systemImage: "house") }
+                    HomeView(viewModel: viewModel).tabItem { Label(LocalizedStringKey("Home"), systemImage: "house") }
 
                     MoreView(viewModel: viewModel, shouldShowOnboarding: $shouldShowOnboarding).tabItem { Image(uiImage: UIImage(systemName: "ellipsis")!.imageWithoutBaseline())
-                        Text("More")}
+                        Text(LocalizedStringKey("More"))}
                 }
                 .animation(.easeInOut)
                 .transition(.slide)
@@ -45,7 +45,7 @@ struct MainView: View {
                                             .resizable()
                                             .frame(width: 22, height: 17)
                                     }
-                                    Text("Scan")
+                                    Text(LocalizedStringKey("Start"))
                                         .foregroundColor(Color.medium)
                                         .tiny()
                                 }.offset(y: -1)
@@ -69,7 +69,36 @@ struct MainView: View {
                 OnboardingFlowView(shouldShowOnboarding: $shouldShowOnboarding)
             })
             .fullScreenCover(isPresented: $viewModel.dismissReadingFlow, content: {
-                MeterReadingFlowView(viewModel: viewModel)
+                switch viewModel.currentReadingView{
+                case .meterReadingView :
+                    MeterReadingView(viewModel: viewModel) { _, values, rawStrings, resultCodes in
+//                        if !viewModel.postModelData.meterReadings.isEmpty && viewModel.postModelData.meterReadings.endIndex-1 >= viewModel.currentMeterIndex {
+                            viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue = viewModel.removePoint(value: values[0])
+                            viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].cleanReadingString = values[0]
+                            viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].rawReadingString = rawStrings[0]
+                            viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].readingResultStatus = viewModel.getResultCode(code: resultCodes[0].rawValue)
+                        
+//                        } else {
+//                            let meterModel: MeterReceivingData = viewModel.userData.meters[viewModel.currentMeterIndex]
+//                            viewModel.postModelData.meterReadings.append(MeterReadingData(counterNumber: meterModel.counterNumber, counterType: meterModel.counterType, counterValue: viewModel.removePoint(value: values[0]), rawReadingString: rawStrings[0], cleanReadingString: values[0], readingResultStatus: viewModel.getResultCode(code: resultCodes[0].rawValue), userMessage: ""))
+//                        }
+
+                        viewModel.currentReadingView = ReadingFlowEnum.manualReadingView
+                    }
+                    .transition(.opacity)
+                
+                case .testingView :
+                      TestSuiteView(viewModel: viewModel) { _, values, rawStrings, resultCodes in
+                          viewModel.testMeterResult.meterRawValue = rawStrings[0]
+                          viewModel.testMeterResult.meterResultCode = viewModel.getResultCode(code: resultCodes[0].rawValue)
+                          viewModel.testMeterResult.counterValue = values[0]
+
+                          viewModel.previousReadingView = viewModel.currentReadingView
+                          viewModel.currentReadingView = ReadingFlowEnum.testMeterPopup
+                      }
+                      .transition(.opacity)
+                default:
+                    MeterReadingFlowView(viewModel: viewModel)}
             })
             .blur(radius: viewModel.isLanguagePickerShowing ? 1 : 0)
             .overlay(viewModel.isLanguagePickerShowing ? Color.black.opacity(0.6) : nil)

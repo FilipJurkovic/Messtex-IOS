@@ -33,7 +33,7 @@ struct ManualReadingView: View {
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 28)
                 VStack(spacing: 0) {
-                    FloatingTextField(placeHolder: "CounterTypeTextField", text: $viewModel.userData.meters[index].counterNumber, isRequired: false)
+                    FloatingTextField(placeHolder: "CounterNumberTextField", text: $viewModel.userData.meters[index].counterNumber, isRequired: false)
                         .padding(.bottom, 7)
                         .disabled(true)
                     FloatingTextField(placeHolder: "CounterTypeTextField", text: $viewModel.userData.meters[index].counterType, isRequired: false)
@@ -76,12 +76,13 @@ struct ManualReadingView: View {
                 .padding(.bottom, 80)
 
                 PrimaryButton(handler: {
+                    viewModel.postModelData.meterReadings[index].counterValue = viewModel.addComma(value: viewModel.postModelData.meterReadings[index].counterValue)
+                    viewModel.readingStepsProgress[index] = true
+                    
                     withAnimation(.easeInOut) {
                         viewModel.currentReadingView = ReadingFlowEnum.readingStepsView
                     }
-                    viewModel.postModelData.meterReadings[index].counterValue = viewModel.addComma(value: viewModel.postModelData.meterReadings[index].counterValue)
-                    viewModel.readingStepsProgress[index] = true
-
+                    
                 }, buttonLabel: "Next", isEnabled: viewModel.postModelData.meterReadings[index].counterValue != "")
                 .padding(.bottom, 30)
                 Spacer()

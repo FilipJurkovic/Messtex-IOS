@@ -50,7 +50,7 @@ class MainViewModel: ObservableObject {
     @Published var testMeterConfiguration: MeterConfiguration
     
     @Published var testingMeterIndex: Int
-    @Published var testingMeterResults: [Double]
+    @Published var testingMeterResults: [String]
 
 
     // VIEWMODEL INITIALIZATION
@@ -58,7 +58,7 @@ class MainViewModel: ObservableObject {
         self.co2Level = CarbonDataModel(co2Level: 0.0)
         self.faq = Faq(faqs: [])
         self.userData = UtilizationResponseModel(firstName: "", lastName: "", email: "", phone: "", street: "", houseNumber: "", postcode: "", city: "", floor: "", readingReason: "", meters: [], askForSubscribeNewsletter: false)
-        self.postModelData = PostModelRecord(verificationCode: "", language: "en", meterReadings: [], firstName: "", secondName: "", email: "", phone: "", sendCopy: false, getMeterReadingLetterByEmail: false, subscribeNewsletter: false)
+        self.postModelData = PostModelRecord(verificationCode: "", language: "en", meterReadings: [], firstName: "", lastName: "", email: "", phone: "", sendCopy: true, getMeterReadingLetterByEmail: true, subscribeNewsletter: true)
         self.contactFormData = ContactFormData(name: "", email: "", subject: "", message: "")
         self.verificationError = ErrorModel(message: "")
         self.meterInitModelArray = []
@@ -85,7 +85,7 @@ class MainViewModel: ObservableObject {
         self.isTestingMeterPopupVisible = false
         self.isTestingIntroFinalPopupVisible = false
         
-        self.testMeterResult = TestMeterResults(meterRawValue: "", meterResultCode: "", counterValue: 0.0)
+        self.testMeterResult = TestMeterResults(meterRawValue: "", meterResultCode: "", counterValue: "")
         self.testMeterConfiguration = MeterConfiguration(meterAppearance: "auto_DE_Water_Home", fractionDigitsAuto: true, integerDigitsAuto: true, numberOfCountersAuto: true)
         
         self.testingMeterIndex = 0
@@ -206,13 +206,13 @@ class MainViewModel: ObservableObject {
         case "LCD":
             return PIXMeterAppearance.LCD
 
-        case "mechanicalBlack":
+        case "MECHANICAL_BLACK":
             return PIXMeterAppearance.mechanicalBlack
 
-        case "mechanicalWhite":
+        case "MECHANICAL_WHITE":
             return PIXMeterAppearance.mechanicalWhite
 
-        case "auto_DE_Gas_Home":
+        case "AUTO_DE_GAS_HOME":
             return PIXMeterAppearance.auto_DE_Gas_Home
 
         case "AUTO_DE_WATER_HOME":
@@ -289,7 +289,7 @@ class MainViewModel: ObservableObject {
 
     func populatePostModelData(pin: String) {
         self.postModelData.firstName = self.userData.firstName
-        self.postModelData.secondName = self.userData.lastName
+        self.postModelData.lastName = self.userData.lastName
         self.postModelData.email = self.userData.email
         self.postModelData.phone = self.userData.phone
         self.postModelData.verificationCode = pin
@@ -398,7 +398,6 @@ class MainViewModel: ObservableObject {
                     self.populatePostModelData(pin: pin)
                     self.appendPostModelMeters()
                     self.readingStepsProgress = newBoolArray
-                    self.readingStepsProgress[newBoolArray.endIndex-1] = self.areContactDetailsValid()
                     self.isProgressBarActive = false
                     if error == nil {
                         self.previousReadingView = ReadingFlowEnum.codeReadingView

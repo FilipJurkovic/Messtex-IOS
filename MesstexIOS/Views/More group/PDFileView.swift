@@ -42,7 +42,7 @@ struct PDFileView: View {
 
             }.frame(width: UIScreen.main.bounds.size.width, height: 50)
 
-            PDFKitRepresentedView(url)
+            PDFKitRepresentedView(url, width: Double(UIScreen.main.bounds.size.width), height: Double(UIScreen.main.bounds.size.height)-50)
 
         }.navigationBarBackButtonHidden(true)
         .navigationBarTitle("")

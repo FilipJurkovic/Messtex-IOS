@@ -11,10 +11,15 @@ import UIKit
 struct HomeView: View {
     @ObservedObject var viewModel: MainViewModel
 
-    var faq_home = Faq(faqs: [
-                        FaqItem(sortNumber: 0, question: "Where can I find my electricity meter?", answer: "You can usually find the water meters in your apartment in the kitchen, bathroom and / or toilet."),
-                        FaqItem(sortNumber: 1, question: "Where can I find my cold water meter?", answer: "You can usually find the water meters in your apartment in the kitchen, bathroom and / or toilet."),
-                        FaqItem(sortNumber: 2, question: "Where can I find my RMVs?", answer: "You can usually find the RMWs in your apartment.")])
+    var faq_home_en = Faq(faqs: [
+                        FaqItem(sortNumber: 0, question: "When do I have to read the meters?", answer: "The meter readings currently have to be done once a year. We will inform you in advance when it is due again. Afterwards, you will have a time period of 2 weeks for entering your meter readings."),
+                        FaqItem(sortNumber: 1, question: "Why should I use the Messtex app?", answer: "The Messtex app helps you enter meter readings quickly, conveniently, as well as cost- and time-efficiently from home without the necessity of waiting for a service technician. "),
+                        FaqItem(sortNumber: 2, question: "Why do I need to read my meter?", answer: "Your meter reading is used to determine your annual consumption. If you provide us with your actual meter reading, you will receive a fair and comprehensible bill. If you do not report your meter reading, it will be estimated. Then your bill will differ from your actual consumption in any case.")])
+    
+    var faq_home_de = Faq(faqs: [
+                        FaqItem(sortNumber: 0, question: "Wann muss ich die Zähler ablesen?", answer: "Die Zählerstände müssen aktuell einmal im Jahr abgelesen werden. Wir informieren Sie rechtzeitig, wenn es wieder soweit ist. Sie haben dann einen Zeitraum von 2 Wochen, in dem Sie Ihre Zählerstände eintragen können."),
+                        FaqItem(sortNumber: 1, question: "Warum mit der Messtex App ablesen?", answer: "Die Messtex-App hilft Ihnen die Zählerstände schnell, bequem, kostensparend und zeiteffizient von Zuhause aus einzutragen. "),
+                        FaqItem(sortNumber: 2, question: "Warum muss ich meinen Zählerstand ablesen?", answer: "Mit Ihrem Zählerstand wird Ihr Jahresverbrauch ermittelt. Wenn Sie uns Ihren tatsächlichen Zählerstand mitteilen, erhalten Sie eine faire und nachvollziehbare Abrechnung. Sollten Sie Ihren Zählerstand nicht melden, wird er geschätzt. Dann wird Ihre Rechnung in jedem Fall von Ihrem tatsächlichen Verbrauch abweichen.")])
 
     @State  var flags: [Bool] = [false, false, false]
 
@@ -114,13 +119,8 @@ struct HomeView: View {
                 }.padding(.horizontal, 24)
                 .padding(.bottom, 33)
 
-                if viewModel.faq.faqs.isEmpty {
-                    FaqWidget(questionCount: faq_home.faqs.count, flags: $flags, faq: faq_home)
-                        .padding(.bottom, 25)
-                } else {
-                    FaqWidget(questionCount: 3, flags: $flags, faq: viewModel.faq)
-                        .padding(.bottom, 25)
-                }
+                FaqWidget(questionCount: faq_home_en.faqs.count, flags: $flags, faq: viewModel.language == "English" ? faq_home_en : faq_home_de)
+                    .padding(.bottom, 25)
 
                 NavigationLink(
                     destination: FaqView(viewModel: viewModel),

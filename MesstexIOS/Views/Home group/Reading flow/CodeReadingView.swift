@@ -52,7 +52,7 @@ public struct CodeReadingView: View {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.tetriary_30, lineWidth: 1)
-                                    Image("example_brief")
+                                    Image("example_EN")
                                         .resizable()
                                         .frame(width: 132, height: 186)
                                 }.frame(width: 172, height: 215)
@@ -104,9 +104,17 @@ public struct CodeReadingView: View {
                                 viewModel.testingMeterIndex = 0
                                 
                             case "111111":
-                                viewModel.testMeterConfiguration = MeterConfiguration(meterAppearance: "LCD", fractionDigitsAuto: false, integerDigitsAuto: false, numberOfCountersAuto: true, fractionDigits: 3, integerDigits: 5)
+                                viewModel.testMeterConfiguration = MeterConfiguration(meterAppearance: "LCD", fractionDigitsAuto: false, integerDigitsAuto: true, numberOfCountersAuto: true, fractionDigits: 3)
                                 viewModel.previousReadingView = viewModel.currentReadingView
                                 viewModel.currentReadingView = ReadingFlowEnum.testingView
+                                viewModel.testingMeterResults = []
+                                viewModel.testingMeterIndex = 0
+                                
+                            case "222222":
+                                viewModel.testMeterConfiguration = MeterConfiguration(meterAppearance: "MECHANICAL_BLACK", fractionDigitsAuto: true, integerDigitsAuto: true, numberOfCountersAuto: true)
+                                viewModel.previousReadingView = viewModel.currentReadingView
+                                viewModel.currentReadingView = ReadingFlowEnum.testingView
+                                viewModel.isTestingIntroPopupVisible.toggle()
                                 viewModel.testingMeterResults = []
                                 viewModel.testingMeterIndex = 0
                                 
@@ -174,7 +182,15 @@ public struct CodeReadingView: View {
                         viewModel.testingMeterIndex = 0
                         
                     case "111111":
-                        viewModel.testMeterConfiguration = MeterConfiguration(meterAppearance: "LCD", fractionDigitsAuto: false, integerDigitsAuto: false, numberOfCountersAuto: true, fractionDigits: 3, integerDigits: 5)
+                        viewModel.testMeterConfiguration = MeterConfiguration(meterAppearance: "LCD", fractionDigitsAuto: false, integerDigitsAuto: true, numberOfCountersAuto: true, fractionDigits: 3)
+                        viewModel.previousReadingView = viewModel.currentReadingView
+                        viewModel.currentReadingView = ReadingFlowEnum.testingView
+                        viewModel.isTestingIntroPopupVisible.toggle()
+                        viewModel.testingMeterResults = []
+                        viewModel.testingMeterIndex = 0
+                        
+                    case "222222":
+                        viewModel.testMeterConfiguration = MeterConfiguration(meterAppearance: "MECHANICAL_BLACK", fractionDigitsAuto: true, integerDigitsAuto: true, numberOfCountersAuto: true)
                         viewModel.previousReadingView = viewModel.currentReadingView
                         viewModel.currentReadingView = ReadingFlowEnum.testingView
                         viewModel.isTestingIntroPopupVisible.toggle()

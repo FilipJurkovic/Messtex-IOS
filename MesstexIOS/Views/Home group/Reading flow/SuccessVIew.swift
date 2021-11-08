@@ -55,11 +55,10 @@ struct SuccessVIew: View {
                 .padding(.horizontal, 24)
 
             }
+            .padding(.top, 62)
+            .navigationTitle("")
+            .navigationBarHidden(true)
         }
-        .navigationTitle("")
-        .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
-        .frame(height: UIScreen.main.bounds.size.height)
     }
 }
 

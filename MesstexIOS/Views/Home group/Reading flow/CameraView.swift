@@ -217,12 +217,12 @@ struct CameraView: UIViewRepresentable {
     }
     
     class Coordinator: NSObject, PIXMeterReadingViewDelegate {
-        var callback: ([PIXMeterReadingResult], UIImage) -> Void
-
         func meterReadingView(_ meterReadingView: PIXMeterReadingView, didScanReadings readingResults: [PIXMeterReadingResult], in image: UIImage, metadata: PIXMetadata) {
             meterReadingView.stopProcessing()
             self.callback(readingResults, image)
         }
+        
+        var callback: ([PIXMeterReadingResult], UIImage) -> Void
         
         func cameraView(_ cameraView: PIXCameraView, didScanBarcodes barcodeResults: [PIXBarcodeReadingResult], in image: UIImage, metadata: PIXMetadata) {
             // TODO: handle barcode scanning result

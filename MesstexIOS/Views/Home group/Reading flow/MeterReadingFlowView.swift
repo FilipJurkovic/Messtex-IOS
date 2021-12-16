@@ -82,6 +82,10 @@ struct MeterReadingFlowView: View {
                             viewModel.currentReadingView = .codeReadingView
                             
                         case .manualReadingView:
+                            
+                            if(viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue != ""){
+                                viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue = viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue.replacingOccurrences(of: ",", with: ".")
+                            }
                             viewModel.currentReadingView = viewModel.previousReadingView
 
                         default:

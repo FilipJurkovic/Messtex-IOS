@@ -73,7 +73,7 @@ struct MainView: View {
                 case .meterReadingView :
                     MeterReadingView(viewModel: viewModel) { _, values, rawStrings, resultCodes in
 //                        if !viewModel.postModelData.meterReadings.isEmpty && viewModel.postModelData.meterReadings.endIndex-1 >= viewModel.currentMeterIndex {
-                            viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue = viewModel.removePoint(value: values[0])
+                        viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue = values[0].replacingOccurrences(of: ".", with: ",")
                             viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].cleanReadingString = values[0]
                             viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].rawReadingString = rawStrings[0]
                             viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].readingResultStatus = viewModel.getResultCode(code: resultCodes[0].rawValue)

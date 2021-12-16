@@ -52,7 +52,7 @@ public struct CodeReadingView: View {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.tetriary_30, lineWidth: 1)
-                                    Image("example_EN")
+                                    Image("example_ENG")
                                         .resizable()
                                         .frame(width: 132, height: 186)
                                 }.frame(width: 172, height: 215)

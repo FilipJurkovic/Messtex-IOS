@@ -16,6 +16,7 @@
 		F83908FB26AAC142002FFCCA /* MeterReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83908FA26AAC142002FFCCA /* MeterReadingView.swift */; };
 		F83908FD26AAC192002FFCCA /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83908FC26AAC192002FFCCA /* CameraView.swift */; };
 		F83E195326B7EEA50092C675 /* ReadingFlowEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E195226B7EEA50092C675 /* ReadingFlowEnum.swift */; };
+		F86601B2276B6298005DB176 /* MeterReading.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86601B1276B6298005DB176 /* MeterReading.framework */; };
 		F87BBCD026B41D500033D270 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87BBCCF26B41D500033D270 /* ErrorModel.swift */; };
 		F87BBCD326B7EB660033D270 /* MeterReadingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87BBCD226B7EB660033D270 /* MeterReadingFlowView.swift */; };
 		F89B43DD26AC12B5000308BA /* ManualReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89B43DC26AC12B5000308BA /* ManualReadingView.swift */; };
@@ -26,7 +27,6 @@
 		F89B43F126AEB993000308BA /* FaqItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89B43F026AEB993000308BA /* FaqItem.swift */; };
 		F8A62AB126B9435100368756 /* OnboardingPageTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A62AB026B9435100368756 /* OnboardingPageTemplate.swift */; };
 		F8AABE6F26AC09D0002EF80F /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AABE6E26AC09D0002EF80F /* InfoView.swift */; };
-		F8B1713226BBD1B80066DE58 /* MeterReading.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8B1713126BBD1B80066DE58 /* MeterReading.framework */; };
 		F8B4150626A94E5F0050B25D /* ExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B4150526A94E5F0050B25D /* ExampleView.swift */; };
 		F8B4150826A95B160050B25D /* ReadingStepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B4150726A95B160050B25D /* ReadingStepsView.swift */; };
 		F8B90D5B26BBCCD2006953F1 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F8B90D5A26BBCC9C006953F1 /* libc++.tbd */; };
@@ -82,6 +82,7 @@
 		F83908FA26AAC142002FFCCA /* MeterReadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterReadingView.swift; sourceTree = "<group>"; };
 		F83908FC26AAC192002FFCCA /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		F83E195226B7EEA50092C675 /* ReadingFlowEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingFlowEnum.swift; sourceTree = "<group>"; };
+		F86601B1276B6298005DB176 /* MeterReading.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MeterReading.framework; path = MesstexIOS.xcodeproj/MeterReading.framework; sourceTree = "<group>"; };
 		F87BBCCF26B41D500033D270 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		F87BBCD226B7EB660033D270 /* MeterReadingFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterReadingFlowView.swift; sourceTree = "<group>"; };
 		F89B43DC26AC12B5000308BA /* ManualReadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualReadingView.swift; sourceTree = "<group>"; };
@@ -92,7 +93,6 @@
 		F89B43F026AEB993000308BA /* FaqItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqItem.swift; sourceTree = "<group>"; };
 		F8A62AB026B9435100368756 /* OnboardingPageTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageTemplate.swift; sourceTree = "<group>"; };
 		F8AABE6E26AC09D0002EF80F /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
-		F8B1713126BBD1B80066DE58 /* MeterReading.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MeterReading.framework; sourceTree = "<group>"; };
 		F8B4150526A94E5F0050B25D /* ExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView.swift; sourceTree = "<group>"; };
 		F8B4150726A95B160050B25D /* ReadingStepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingStepsView.swift; sourceTree = "<group>"; };
 		F8B90D5A26BBCC9C006953F1 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -142,8 +142,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8B90D5B26BBCCD2006953F1 /* libc++.tbd in Frameworks */,
-				F8B1713226BBD1B80066DE58 /* MeterReading.framework in Frameworks */,
 				F8DD632A26CA4CE20018D01F /* LanguageManagerSwiftUI in Frameworks */,
+				F86601B2276B6298005DB176 /* MeterReading.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,7 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				F8B90D5A26BBCC9C006953F1 /* libc++.tbd */,
-				F8B1713126BBD1B80066DE58 /* MeterReading.framework */,
+				F86601B1276B6298005DB176 /* MeterReading.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -614,7 +614,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_ASSET_PATHS = "\"MesstexIOS/Preview Content\"";
 				DEVELOPMENT_TEAM = BB2TX7YC42;
 				ENABLE_PREVIEWS = YES;
@@ -623,6 +623,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/MesstexIOS",
 					"$(PROJECT_DIR)/MesstexIOS/Views",
+					"$(PROJECT_DIR)/MesstexIOS.xcodeproj",
 				);
 				INFOPLIST_FILE = MesstexIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -644,7 +645,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_ASSET_PATHS = "\"MesstexIOS/Preview Content\"";
 				DEVELOPMENT_TEAM = BB2TX7YC42;
 				ENABLE_PREVIEWS = YES;
@@ -653,6 +654,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/MesstexIOS",
 					"$(PROJECT_DIR)/MesstexIOS/Views",
+					"$(PROJECT_DIR)/MesstexIOS.xcodeproj",
 				);
 				INFOPLIST_FILE = MesstexIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;

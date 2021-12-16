@@ -154,7 +154,7 @@ struct MeterReadingView: View {
                             let meterModel: MeterReceivingData = viewModel.userData.meters[viewModel.currentMeterIndex]
                             if !viewModel.postModelData.meterReadings.isEmpty && viewModel.postModelData.meterReadings.endIndex-1 >= viewModel.currentMeterIndex{
                                 if viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue != ""{
-                                viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue = viewModel.removePoint(value: viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue)
+                                    viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue = viewModel.postModelData.meterReadings[viewModel.currentMeterIndex].counterValue.replacingOccurrences(of: ".", with: ",")
                             }
                                 
                             } else {
